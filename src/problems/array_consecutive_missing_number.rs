@@ -22,6 +22,7 @@ pub fn find_missing_number(list: Vec<i32>) -> Option<i32> {
 #[cfg(test)]
 mod test {
   use super::*;
+
   #[test]
   fn name() {
     let my_list = vec![1, 2, 3, 4, 6];
