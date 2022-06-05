@@ -1,3 +1,7 @@
+/*
+Given a string, reverse the order of its characters
+*/
+
 pub fn string_reverse_one(string: String) -> String {
   string.chars().rev().collect()
 }

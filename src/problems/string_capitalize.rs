@@ -1,3 +1,7 @@
+/*
+Given a string, capitalize the first charachter
+*/
+
 pub fn string_capitalize_one(string: String) -> String {
   let mut chars = string.chars();
   let first_char = chars.next().unwrap().to_ascii_uppercase();
