@@ -2,6 +2,8 @@
 
 Some rust exercises
 
+## List
+
 - [fizzbuzz](./src/problems/fizzbuzz.rs)
 - [mistery_algorithm](./src/problems/mistery_algorithm.rs)
 - [linear_searching](./src/problems/linear_searching.rs)
@@ -15,3 +17,7 @@ Some rust exercises
 - [mod](./src/problems/mod.rs)
 - [string_capitalize](./src/problems/string_capitalize.rs)
 - [string_reverse](./src/problems/string_reverse.rs)
+
+## Run
+
+    cargo test
