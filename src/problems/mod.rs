@@ -1,3 +1,4 @@
+mod anagram;
 mod array_consecutive_missing_number;
 mod calculate_list_max_items_difference;
 mod calculate_no_overlaps;
@@ -11,4 +12,5 @@ pub use fizzbuzz::{execute_fizzbuzz, print_controller};
 pub use string_capitalize::{string_capitalize_one, string_capitalize_two};
 pub use string_reverse::{string_reverse_one, string_reverse_two};
 mod gigasecond;
+pub use anagram::find_anagrams;
 pub use gigasecond::{calculate_date_one, calculate_date_two};
