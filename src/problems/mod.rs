@@ -10,3 +10,5 @@ pub use calculate_no_overlaps::calculate_no_overlaps;
 pub use fizzbuzz::{execute_fizzbuzz, print_controller};
 pub use string_capitalize::{string_capitalize_one, string_capitalize_two};
 pub use string_reverse::{string_reverse_one, string_reverse_two};
+mod gigasecond;
+pub use gigasecond::calculate_date;
