@@ -9,7 +9,6 @@ Output: false
 Example 2:
 Input: intervals = [[7,10],[2,4]]
 Output: true
-
 */
 
 type Intervals = Vec<(i16, i16)>;

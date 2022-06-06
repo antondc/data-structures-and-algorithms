@@ -17,7 +17,6 @@ Your output lines should not have any trailing or leading.
     oletomeR si emosewa
     setadidnaC evig weivretni
     tseb setadidnac era detceles
-
 */
 
 pub fn reverse_words_in_a_sentence(_number: i32, lines: String) -> String {

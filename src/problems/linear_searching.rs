@@ -2,7 +2,6 @@
 Write a program that takes input of a list of integers in the first line, and then a list of intergers of every new line. For each of the integers (from line 2 onwards), the program outputs true, if that number was present in the first line, and False otherwise.
 
   Input:
-
       99 12 10 23
       23
       25
@@ -12,7 +11,6 @@ Write a program that takes input of a list of integers in the first line, and th
       True
       False
       True
-
 */
 
 pub fn linear_searching(string: String) -> String {

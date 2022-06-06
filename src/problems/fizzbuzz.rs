@@ -1,3 +1,7 @@
+/*
+Write a program that prints the numbers from 1 to 100 and for multiples of ‘3’ print “Fizz” instead of the number and for the multiples of ‘5’ print “Buzz”.
+*/
+
 pub fn print_controller(index: i32) -> String {
   match (index % 3, index % 5) {
     (0, 0) => String::from("FizzBuzz"),

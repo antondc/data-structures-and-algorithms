@@ -7,7 +7,6 @@ Write a mistery algorithm that:
 4. If a < b sets b as b - a
 6. Repeats 2., 3. and 4.
 7. If a == b returns either a or b
-
 */
 
 pub fn mistery_algorithm(mut a: i128, mut b: i128) -> (i128, i128) {

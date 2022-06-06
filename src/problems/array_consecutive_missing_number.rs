@@ -1,4 +1,6 @@
-// Given an array with consecutive numbers from 1 to n, but where you know that a number is missing, calculate which number is not in the array
+/*
+Given an array with consecutive numbers from 1 to n, but where you know that a number is missing, calculate which number is not in the array
+*/
 
 pub fn find_missing_number(list: Vec<i32>) -> Option<i32> {
   let cloned_list = list.clone();

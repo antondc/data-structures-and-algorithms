@@ -1,4 +1,6 @@
-// You have a two axis chart. Calculate the maximum difference between two successive elements:
+/*
+You have a two axis chart. Calculate the maximum difference between two successive elements:
+*/
 
 pub fn calculate_list_max_items_difference(list: Vec<i32>) -> i32 {
   // Save the max number in an accumulator
