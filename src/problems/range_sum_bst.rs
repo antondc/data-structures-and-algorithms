@@ -19,12 +19,24 @@ impl TreeNode {
   }
 }
 
-pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, _min: i32, _max: i32) -> i32 {
-  if input.is_none() {
-    return 0;
-  }
+pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, min: i32, max: i32) -> i32 {
+  let mut sum = 0;
 
-  0
+  if let Some(root_node) = input {
+    let tree = root_node.borrow();
+
+    // println!("-----------");
+    // println!("{:#?}", tree);
+    // println!("-----------");
+
+    if tree.val <= max && tree.val >= min {
+      sum += tree.val
+    }
+
+    sum
+  } else {
+    sum
+  }
 }
 
 #[cfg(test)]
@@ -37,6 +49,19 @@ mod test {
     let input: Option<Rc<RefCell<TreeNode>>> = None;
     let expected_output: i32 = 0;
     let result = range_sum_bst(input, 0, 0);
+
+    assert_eq!(expected_output, result);
+  }
+
+  #[test]
+  fn input_is_tree_only_root_node() {
+    // Build input
+    let node_1 = TreeNode::new(1, None, None);
+
+    // Process
+    let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_1)));
+    let expected_output: i32 = 1;
+    let result = range_sum_bst(input, 0, 1);
 
     assert_eq!(expected_output, result);
   }
