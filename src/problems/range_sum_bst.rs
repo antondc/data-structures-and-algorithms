@@ -19,20 +19,24 @@ impl TreeNode {
   }
 }
 
-pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, min: i32, max: i32) -> i32 {
-  let mut sum = 0;
+pub struct Solution;
 
-  if let Some(root_node) = input {
-    let tree = root_node.borrow();
-    if tree.val <= max && tree.val >= min {
-      sum += &tree.val
+impl Solution {
+  pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, min: i32, max: i32) -> i32 {
+    let mut sum = 0;
+
+    if let Some(root_node) = input {
+      let tree = root_node.borrow();
+      if tree.val <= max && tree.val >= min {
+        sum += &tree.val
+      }
+      sum += Self::range_sum_bst(tree.left.clone(), min, max);
+      sum += Self::range_sum_bst(tree.right.clone(), min, max);
+
+      sum
+    } else {
+      sum
     }
-    sum += range_sum_bst(tree.left.clone(), min, max);
-    sum += range_sum_bst(tree.right.clone(), min, max);
-
-    sum
-  } else {
-    sum
   }
 }
 
@@ -45,7 +49,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = None;
     let expected_output: i32 = 0;
-    let result = range_sum_bst(input, 0, 0);
+    let result = Solution::range_sum_bst(input, 0, 0);
 
     assert_eq!(expected_output, result);
   }
@@ -58,7 +62,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_1)));
     let expected_output: i32 = 1;
-    let result = range_sum_bst(input, 0, 1);
+    let result = Solution::range_sum_bst(input, 0, 1);
 
     assert_eq!(expected_output, result);
   }
@@ -77,7 +81,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_1)));
     let expected_output: i32 = 6;
-    let result = range_sum_bst(input, 0, 4);
+    let result = Solution::range_sum_bst(input, 0, 4);
 
     assert_eq!(expected_output, result);
   }
@@ -103,7 +107,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_10)));
     let expected_output: i32 = 32;
-    let result = range_sum_bst(input, 7, 15);
+    let result = Solution::range_sum_bst(input, 7, 15);
 
     assert_eq!(expected_output, result);
   }
@@ -140,7 +144,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_10)));
     let expected_output: i32 = 23;
-    let result = range_sum_bst(input, 6, 10);
+    let result = Solution::range_sum_bst(input, 6, 10);
 
     assert_eq!(expected_output, result);
   }

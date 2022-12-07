@@ -1,7 +1,5 @@
 # Leetcode 938. Range Sum of BST
 
-⚠️ Work in Progress
-
 ## Description
 
 <https://leetcode.com/problems/range-sum-of-bst/description/>
@@ -66,7 +64,7 @@ impl Solution {
 ## Run
 
 ```bash
-cargo watch -x "test -- --nocapture -- range_sum_bst"
+cargo test -- range_sum_bst
 ```
 
 ## Solution

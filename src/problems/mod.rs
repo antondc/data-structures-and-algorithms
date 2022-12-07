@@ -24,5 +24,5 @@ mod gigasecond;
 pub use anagram::find_anagrams;
 pub use gigasecond::{calculate_date_one, calculate_date_two};
 pub use list_sum_largest_n_numbers::list_sum_largest_n_numbers;
-pub use range_sum_bst::range_sum_bst;
+pub use range_sum_bst::Solution as RangeSumSolution;
 pub use sort_strings::sort_strings;
