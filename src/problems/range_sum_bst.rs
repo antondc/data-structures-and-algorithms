@@ -19,7 +19,7 @@ impl TreeNode {
   }
 }
 
-pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, _min: i32, _max: i32) -> i32 {
   if input.is_none() {
     return 0;
   }
@@ -36,7 +36,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = None;
     let expected_output: i32 = 0;
-    let result = range_sum_bst(input);
+    let result = range_sum_bst(input, 0, 0);
 
     assert_eq!(expected_output, result);
   }
@@ -62,7 +62,7 @@ mod test {
     // Process
     let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_10)));
     let expected_output: i32 = 0;
-    let result = range_sum_bst(input);
+    let result = range_sum_bst(input, 0, 0);
 
     assert_eq!(expected_output, result);
   }
