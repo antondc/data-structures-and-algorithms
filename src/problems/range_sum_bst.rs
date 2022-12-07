@@ -24,16 +24,11 @@ pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, min: i32, max: i32) -
 
   if let Some(root_node) = input {
     let tree = root_node.borrow();
-
     if tree.val <= max && tree.val >= min {
       sum += &tree.val
     }
-
-    let sum_left = range_sum_bst(tree.left.clone(), min, max);
-    sum += sum_left;
-
-    let sum_right = range_sum_bst(tree.right.clone(), min, max);
-    sum += sum_right;
+    sum += range_sum_bst(tree.left.clone(), min, max);
+    sum += range_sum_bst(tree.right.clone(), min, max);
 
     sum
   } else {
