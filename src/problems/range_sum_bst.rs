@@ -29,19 +29,11 @@ pub fn range_sum_bst(input: Option<Rc<RefCell<TreeNode>>>, min: i32, max: i32) -
       sum += &tree.val
     }
 
-    if let Some(root_node_left) = tree.left.clone() {
-      let child_left: Option<Rc<RefCell<TreeNode>>> = Some(root_node_left);
+    let sum_left = range_sum_bst(tree.left.clone(), min, max);
+    sum += sum_left;
 
-      let sum_left = range_sum_bst(child_left, min, max);
-      sum += sum_left;
-    }
-
-    if let Some(root_node_right) = tree.right.clone() {
-      let child_right: Option<Rc<RefCell<TreeNode>>> = Some(root_node_right);
-
-      let sum_right = range_sum_bst(child_right, min, max);
-      sum += sum_right;
-    }
+    let sum_right = range_sum_bst(tree.right.clone(), min, max);
+    sum += sum_right;
 
     sum
   } else {
