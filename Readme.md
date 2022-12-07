@@ -16,6 +16,7 @@ Some rust exercises
 - [Gigasecond](./src/problems/gigasecond.rs)
 - [String Capitalize](./src/problems/string_capitalize.rs)
 - [String Reverse](./src/problems/string_reverse.rs)
+- [Range Sum BST](./src/problems/range_sum_bst.md)
 
 ## Run
 
