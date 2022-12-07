@@ -120,4 +120,41 @@ mod test {
 
     assert_eq!(expected_output, result);
   }
+
+  #[test]
+  fn input_is_example_2() {
+    // Build input
+    let node_1 = TreeNode::new(1, None, None);
+    let node_3 = TreeNode::new(3, Some(Rc::new(RefCell::new(node_1))), None);
+
+    let node_6 = TreeNode::new(6, None, None);
+    let node_7 = TreeNode::new(7, Some(Rc::new(RefCell::new(node_6))), None);
+
+    let node_5 = TreeNode::new(
+      5,
+      Some(Rc::new(RefCell::new(node_3))),
+      Some(Rc::new(RefCell::new(node_7))),
+    );
+
+    let node_13 = TreeNode::new(13, None, None);
+    let node_18 = TreeNode::new(18, None, None);
+    let node_15 = TreeNode::new(
+      15,
+      Some(Rc::new(RefCell::new(node_13))),
+      Some(Rc::new(RefCell::new(node_18))),
+    );
+
+    let node_10 = TreeNode::new(
+      10,
+      Some(Rc::new(RefCell::new(node_5))),
+      Some(Rc::new(RefCell::new(node_15))),
+    );
+
+    // Process
+    let input: Option<Rc<RefCell<TreeNode>>> = Some(Rc::new(RefCell::new(node_10)));
+    let expected_output: i32 = 23;
+    let result = range_sum_bst(input, 6, 10);
+
+    assert_eq!(expected_output, result);
+  }
 }

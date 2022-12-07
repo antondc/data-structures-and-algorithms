@@ -63,6 +63,12 @@ impl Solution {
 }
 ```
 
+## Run
+
+```bash
+cargo watch -x "test -- --nocapture -- range_sum_bst"
+```
+
 ## Solution
 
 [Range Sum BST](./src/problems/range_sum_bst.rs)
