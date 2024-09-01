@@ -1,0 +1,60 @@
+\ProvidesPackage{preamble}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=2cm]{geometry} % Margins
+\pagenumbering{gobble} % No page numbers
+\usepackage[UKenglish]{isodate}% http://ctan.org/pkg/isodate
+\usepackage[sf=oldstyle]{cfr-lm}
+\usepackage{pagecolor}
+\usepackage{xcolor}
+
+% For plotter
+\usepackage{pgfplots}
+\pgfplotsset{
+  compat=newest,
+  every tick label/.append style={
+    font=\scriptsize
+  },
+  every axis label/.append style={
+    font=\scriptsize
+  },
+  axis_style/.style= {
+    width=8cm, % Total width
+    height=8cm, % Total height
+    axis lines=center, % Show only center lines, no frame
+    samples=1000, % Necessary for smoothness
+    % ymode=log, % Use logarithmic display
+    % grid=both, % Grids
+    xlabel = {$x$}, % Label for x axis
+    % xticklabels={,,}, % X axis marks, no numbers
+    ylabel = {$y$}, % Label for y axis
+    % yticklabels={,,}, % Y axis marks, no numbers
+    % restrict y to domain=-1:10,
+    % ticks={none}, % Display marks or not
+    xmin=-1, xmax=100, % Ranges
+    ymin=-1, ymax=1000, % Ranges
+    enlarge y limits={rel=0.18}, % Padding to make space for labels
+    enlarge x limits={rel=0.18}, % Padding to make space for labels
+  },
+  background_plot_style/.style= {
+    ->,
+    color=lightgray,
+  },
+  main_plot_style/.style= {
+    background_plot_style,
+    color=black,
+  },
+}
+\tikzset{
+  node_style/.style={
+    right,
+    font=\scriptsize,
+  }
+}
+% For Pseudocode
+\usepackage{algpseudocode}
+
+% colors
+
+\definecolor{background_color}{HTML}{FFFFF9}
+\pagecolor{background_color}
+
+% END HEADER
