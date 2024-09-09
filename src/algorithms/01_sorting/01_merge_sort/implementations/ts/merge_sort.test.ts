@@ -1,4 +1,4 @@
-import { merge_already_sorted_arrays, merge_sort } from "./01-merge-sort";
+import { merge_already_sorted_arrays, merge_sort } from "./merge_sort";
 
 describe("FizzBuzz", () => {
   test("Returns correct result", async () => {

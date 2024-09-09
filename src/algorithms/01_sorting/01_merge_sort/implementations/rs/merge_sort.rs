@@ -61,15 +61,6 @@ pub fn merge_sort(unsorted_array: &Vec<i32>) -> Vec<i32> {
   }
 }
 
-pub fn main() {
-  let unsorted_array: Vec<i32> = vec![2, 1, 4, 3];
-
-  let sorted_array = merge_sort(&unsorted_array);
-
-  println!("unsorted_array: {:?}", unsorted_array);
-  println!("sorted_array: {:?}", sorted_array);
-}
-
 #[cfg(test)]
 mod tests {
   use super::*;
