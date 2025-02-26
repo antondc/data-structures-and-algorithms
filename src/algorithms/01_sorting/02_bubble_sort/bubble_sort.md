@@ -9,25 +9,26 @@ Merge Sort or Quick Sort.
 
 ```
 BUBBLE_SORT(A):
-    n = length of A
-    repeat (n - 1) times:
-        swapped = false
-        for i from 0 to n - 2:
-            if A[i] > A[i + 1]:
-                swap A[i] and A[i + 1]
-                swapped = true
-        if not swapped:
-            break
+  repeat:
+    swapped ← false
+    
+    for i from 0 to length of A - 1:
+      if A[i] > A[i + 1]:
+        swap A[i] and A[i + 1]
+        swapped ← true
+        
+    if not swapped:
+      break
 ```
 
 ## Explanation
 
 Bubble Sort works by making multiple passes through the array:
 
-1. In each pass, adjacent elements are compared and swapped if they are out of order.
-2. The largest element "bubbles up" to its correct position at the end.
-3. The process repeats for the remaining unsorted portion of the array.
-4. If no swaps occur in a pass, the array is already sorted, and the algorithm terminates early.
+- In each pass, the current item and its next adjacent element are compared and swapped if they are out of order.
+- The largest element "bubbles up" to its correct position at the end.
+- The process repeats for the remaining unsorted portion of the array.
+- If no swaps occur in a pass, the array is already sorted, and the algorithm terminates early.
 
 Time complexity:
 
@@ -44,19 +45,47 @@ Time complexity:
 ### Execution Steps:
 
 ```
-[5, 3, 8, 4, 2]  → Compare (5,3) → Swap → [3, 5, 8, 4, 2]
-[3, 5, 8, 4, 2]  → Compare (5,8) → No swap
-[3, 5, 8, 4, 2]  → Compare (8,4) → Swap → [3, 5, 4, 8, 2]
-[3, 5, 4, 8, 2]  → Compare (8,2) → Swap → [3, 5, 4, 2, 8]
-
-[3, 5, 4, 2, 8]  → Compare (3,5) → No swap
-[3, 5, 4, 2, 8]  → Compare (5,4) → Swap → [3, 4, 5, 2, 8]
-[3, 4, 5, 2, 8]  → Compare (5,2) → Swap → [3, 4, 2, 5, 8]
-
-[3, 4, 2, 5, 8]  → Compare (3,4) → No swap
-[3, 4, 2, 5, 8]  → Compare (4,2) → Swap → [3, 2, 4, 5, 8]
-
-[3, 2, 4, 5, 8]  → Compare (3,2) → Swap → [2, 3, 4, 5, 8]
+[5, 3, 8, 4, 2]
+ 3, 5           ← Swap   
+[3, 5, 8, 4, 2]
+    5, 8
+[3, 5, 8, 4, 2]
+       4, 8     ← Swap
+[3, 5, 4, 8, 2]
+          2, 8  ← Swap
+[3, 5, 4, 2, 8]
+ 3, 5
+[3, 5, 4, 2, 8]
+    4, 5        ← Swap
+[3, 4, 5, 2, 8]
+       2, 5     ← Swap
+[3, 4, 2, 5, 8]
+          5, 8
+[3, 4, 2, 5, 8]
+ 3, 4
+[3, 4, 2, 5, 8]
+    2, 4        ← Swap
+[3, 2, 4, 5, 8]
+       4, 5
+[3, 2, 4, 5, 8]
+          5, 8
+[3, 2, 4, 5, 8]
+ 2, 3           ← Swap
+[2, 3, 4, 5, 8]
+    3, 4
+[2, 3, 4, 5, 8]
+       4, 5
+[2, 3, 4, 5, 8]
+          5, 8
+[2, 3, 4, 5, 8]
+ 2, 3          
+[2, 3, 4, 5, 8]
+    3, 4
+[2, 3, 4, 5, 8]
+       4, 5
+[2, 3, 4, 5, 8]
+          5, 8
+[2, 3, 4, 5, 8]
 ```
 
 ### Output:

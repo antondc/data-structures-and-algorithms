@@ -7,7 +7,7 @@ export const bubble_sort = (unsorted_array: Array<number>): Array<number> => {
 
     // Iterate for window right item
     for (let i = 0; i < cloned_array.length - 1; i++) {
-      if (cloned_array[i + 1] < cloned_array[i]) {
+      if (cloned_array[i] > cloned_array[i + 1]) {
         [cloned_array[i], cloned_array[i + 1]] = [cloned_array[i + 1], cloned_array[i]];
 
         swapped = true;

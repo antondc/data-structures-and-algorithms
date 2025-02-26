@@ -7,28 +7,28 @@ and then merges them back together.
 
 ```
 MERGE_SORT(A):
-    if length of A ≤ 1:
-        return A
+  if length of A ≤ 1:
+    return A
 
-    left_half ← MERGE_SORT([A₁, ..., A(n/2)])
-    right_half ← MERGE_SORT([A(n/2) + 1, ..., Aₙ];])
-    
-    return MERGE(left_half, right_half)
+  left_half ← MERGE_SORT([A₁, ..., A(n/2)])
+  right_half ← MERGE_SORT([A(n/2) + 1, ..., Aₙ];])
+  
+  return MERGE(left_half, right_half)
 
 MERGE(left, right):
-    sorted = []
-    
-    while left is not empty and right is not empty:
-        if left[0] ≤ right[0]:
-            append left[0] to sorted
-            remove left[0] from left
-        else:
-            append right[0] to sorted
-            remove right[0] from right
-    append all remaining elements of left to sorted
-    append all remaining elements of right to sorted
-    
-    return sorted
+  sorted = []
+  
+  while left is not empty and right is not empty:
+    if left[0] ≤ right[0]:
+      append left[0] to sorted
+      remove left[0] from left
+    else:
+      append right[0] to sorted
+      remove right[0] from right
+  append all remaining elements of left to sorted
+  append all remaining elements of right to sorted
+  
+  return sorted
 ```
 
 ## Explanation
