@@ -20,16 +20,3 @@ pub fn find_missing_number(list: Vec<i32>) -> Option<i32> {
   // Base case, return None
   None
 }
-
-#[cfg(test)]
-mod test {
-  use super::*;
-
-  #[test]
-  fn name() {
-    let my_list = vec![1, 2, 3, 4, 6];
-    let missing_number = find_missing_number(my_list);
-
-    assert_eq!(missing_number, Some(5));
-  }
-}

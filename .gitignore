@@ -14,3 +14,4 @@
 /**/*.toc
 /**/*.synctex*
 /**/*latexmk
+./main

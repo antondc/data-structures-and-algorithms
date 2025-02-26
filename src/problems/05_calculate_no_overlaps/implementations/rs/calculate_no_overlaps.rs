@@ -11,7 +11,7 @@ Input: intervals = [[7,10],[2,4]]
 Output: true
 */
 
-type Intervals = Vec<(i16, i16)>;
+pub type Intervals = Vec<(i16, i16)>;
 
 pub fn calculate_no_overlaps(intervals: &Intervals) -> bool {
   let mut intervals_cloned = intervals.clone();
@@ -27,33 +27,4 @@ pub fn calculate_no_overlaps(intervals: &Intervals) -> bool {
   }
 
   true
-}
-
-#[cfg(test)]
-mod tests {
-  use super::*;
-
-  #[test]
-  fn one() {
-    let intervals: Intervals = vec![(5, 6), (3, 4), (1, 2)];
-
-    let result = calculate_no_overlaps(&intervals);
-    assert!(result);
-  }
-
-  #[test]
-  fn two() {
-    let intervals: Intervals = vec![(0, 30), (5, 10), (15, 20)];
-
-    let result = calculate_no_overlaps(&intervals);
-    assert!(!result);
-  }
-
-  #[test]
-  fn three() {
-    let intervals: Intervals = vec![(7, 10), (2, 4)];
-
-    let result = calculate_no_overlaps(&intervals);
-    assert!(result);
-  }
 }

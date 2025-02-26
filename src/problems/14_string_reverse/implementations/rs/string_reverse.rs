@@ -17,24 +17,3 @@ pub fn string_reverse_two(mut string: String) -> String {
     string
   }
 }
-
-#[cfg(test)]
-mod tests {
-  use super::*;
-
-  #[test]
-  fn string_reverse_one_works() {
-    let string = String::from("1234");
-    let reversed_string = string_reverse_one(string);
-
-    assert_eq!(reversed_string, "4321");
-  }
-
-  #[test]
-  fn string_reverse_two_works() {
-    let string = String::from("1234");
-    let reversed_string = string_reverse_one(string);
-
-    assert_eq!(reversed_string, "4321");
-  }
-}

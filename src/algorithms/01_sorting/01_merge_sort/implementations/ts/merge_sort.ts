@@ -1,4 +1,4 @@
-export const merge = (
+export const merge_already_sorted_arrays = (
   left: Array<number>,
   right: Array<number>
 ): Array<number> => {
@@ -30,5 +30,5 @@ export const merge_sort = (unsorted_array: Array<number>): Array<number> => {
   let right_sorted = merge_sort(right);
 
 
-  return merge(left_sorted, right_sorted)
+  return merge_already_sorted_arrays(left_sorted, right_sorted)
 };

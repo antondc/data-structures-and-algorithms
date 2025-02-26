@@ -1,4 +1,4 @@
-import { merge, merge_sort } from "./merge_sort";
+import { merge_already_sorted_arrays, merge_sort } from "./merge_sort";
 
 describe("MergeSort", () => {
   test("Returns correct result", async () => {
@@ -28,7 +28,7 @@ describe("MergeSort", () => {
   test("Returns correct result", async () => {
     let left = [1, 2];
     let right = [3, 4];
-    let merged = merge(left, right);
+    let merged = merge_already_sorted_arrays(left, right);
     let expected_result = [1, 2, 3, 4];
 
     expect(merged).toEqual(expected_result);
@@ -37,7 +37,7 @@ describe("MergeSort", () => {
   test("Returns correct result", async () => {
     let left = [3, 4];
     let right = [1, 2];
-    let merged = merge(left, right);
+    let merged = merge_already_sorted_arrays(left, right);
     let expected_result = [1, 2, 3, 4];
 
     expect(merged).toEqual(expected_result);
@@ -47,7 +47,7 @@ describe("MergeSort", () => {
   test("Returns correct result", async () => {
     let left = [3, 4, 5];
     let right = [1, 2];
-    let merged = merge(left, right);
+    let merged = merge_already_sorted_arrays(left, right);
     let expected_result = [1, 2, 3, 4, 5];
 
     expect(merged).toEqual(expected_result);
@@ -56,7 +56,7 @@ describe("MergeSort", () => {
   test("Returns correct result", async () => {
     let left = [3];
     let right = [1];
-    let merged = merge(left, right);
+    let merged = merge_already_sorted_arrays(left, right);
     let expected_result = [1, 3];
 
     expect(merged).toEqual(expected_result);

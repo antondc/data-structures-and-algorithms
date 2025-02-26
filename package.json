@@ -1,7 +1,7 @@
 {
-  "name": "typescript-jest-tests",
+  "name": "data-structures-algorithms-problems",
   "version": "1.0.0",
-  "description": "Some tests with TypeScript as jest examples",
+  "description": "Catalog of data structures, algorithms and problems",
   "keywords": [
     "node",
     "tests"

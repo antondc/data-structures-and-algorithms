@@ -15,3 +15,8 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
     cargo install
     cargo watch -x test
+
+### Golang
+
+    go build main.go
+    go test ./... -v

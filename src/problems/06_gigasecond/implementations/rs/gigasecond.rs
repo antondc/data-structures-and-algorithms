@@ -20,26 +20,3 @@ pub fn calculate_date_two(date_time: PrimitiveDateTime) -> PrimitiveDateTime {
 
   date_time + gigaseconds
 }
-
-#[cfg(test)]
-mod tests {
-  use super::*;
-
-  #[test]
-  fn one() {
-    let itended_result = PrimitiveDateTime::new(date!(2050 - 09 - 09), time!(11:47:40));
-    let primitive_datetime = PrimitiveDateTime::new(date!(2019 - 01 - 01), time!(10:01));
-    let calculated_date = calculate_date_one(primitive_datetime);
-
-    assert_eq!(calculated_date, itended_result);
-  }
-
-  #[test]
-  fn two() {
-    let itended_result = PrimitiveDateTime::new(date!(2050 - 09 - 09), time!(11:47:40));
-    let primitive_datetime = PrimitiveDateTime::new(date!(2019 - 01 - 01), time!(10:01));
-    let calculated_date = calculate_date_two(primitive_datetime);
-
-    assert_eq!(calculated_date, itended_result);
-  }
-}
