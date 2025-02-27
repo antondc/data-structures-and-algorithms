@@ -4,6 +4,8 @@
 // Algorithms
 #[path = "./src/algorithms/01_sorting/01_merge_sort/implementations/rs/mod.rs"]
 mod merge_sort;
+#[path = "./src/algorithms/01_sorting/02_bubble_sort/implementations/rs/mod.rs"]
+mod bubble_sort;
 
 // Data structures
 // ...

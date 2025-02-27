@@ -1,6 +1,6 @@
 import { bubble_sort } from "./bubble_sort";
 
-describe("MergeSort", () => {
+describe("BubbleSort", () => {
   test("Returns correct result", async () => {
     let unsorted_array = [1, 2, 3, 4];
     let sorted_array = bubble_sort(unsorted_array);
