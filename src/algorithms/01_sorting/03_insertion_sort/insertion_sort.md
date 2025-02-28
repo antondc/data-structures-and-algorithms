@@ -55,8 +55,6 @@ Time complexity:
 [1, 2, 3, 4]
 ```
 
-₃
-
 ### Output:
 
 `[1, 2, 3, 4]`
