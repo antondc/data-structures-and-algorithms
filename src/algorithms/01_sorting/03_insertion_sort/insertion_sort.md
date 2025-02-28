@@ -20,7 +20,7 @@ INSERTION_SORT(A):
 
 ## Explanation
 
-The algorithm iterates over the array, starting from index 1 (assuming the first element is already sorted).  
+The algorithm iterates over the array, starting from index 1.  
 Each element is compared with previous elements and inserted into its correct position.  
 This process continues until the entire array is sorted.
 
