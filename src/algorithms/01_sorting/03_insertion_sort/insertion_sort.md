@@ -26,9 +26,9 @@ This process continues until the entire array is sorted.
 
 Time complexity:
 
-- Best case (already sorted): O(n)
-- Average case: O(n²)
-- Worst case (reverse sorted): O(n²)
+- Best case (already sorted): `O(n)`.
+- Average case: `O(n²)`.
+- Worst case (reverse sorted): `O(n²)`.
 
 ## Example
 
