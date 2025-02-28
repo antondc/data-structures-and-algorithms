@@ -16,14 +16,6 @@ INSERTION_SORT(A):
       j ← j - 1
     
     A[j + 1] ← key
-    
-    
-[8, 7, 6, 5, 4, 3, 2, 1]
-key = 7
-j = 0
-8 > 7
-
-
 ```
 
 ## Explanation
