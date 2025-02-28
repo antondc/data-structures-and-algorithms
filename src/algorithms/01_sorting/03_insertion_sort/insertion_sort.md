@@ -1,7 +1,7 @@
 # Insertion Sort
 
-Insertion Sort is a simple and efficient sorting algorithm that builds the sorted array one element at a time by
-inserting each element into its correct position.
+Simple and efficient sorting algorithm that builds the sorted array one element at a time by inserting each element into
+its correct position.
 
 ## Pseudocode
 
