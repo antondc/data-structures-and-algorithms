@@ -10,8 +10,8 @@ MERGE_SORT(A):
   if length of A ≤ 1:
     return A
 
-  left_half ← MERGE_SORT([A₁, ..., A(n/2)])
-  right_half ← MERGE_SORT([A(n/2) + 1, ..., Aₙ];])
+  left_half = MERGE_SORT([A₁, ..., A(n/2)])
+  right_half = MERGE_SORT([A(n/2) + 1, ..., Aₙ];])
   
   return MERGE(left_half, right_half)
 

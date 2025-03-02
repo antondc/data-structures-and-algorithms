@@ -10,12 +10,12 @@ Merge Sort or Quick Sort.
 ```
 BUBBLE_SORT(A):
   repeat:
-    swapped ← false
+    swapped = false
     
     for i from 0 to length of A - 1:
       if A[i] > A[i + 1]:
         swap A[i] and A[i + 1]
-        swapped ← true
+        swapped = true
         
     if not swapped:
       break
@@ -46,31 +46,31 @@ Time complexity:
 
 ```
 [5, 3, 8, 4, 2]
- 3, 5           ← Swap   
+ 3, 5           = Swap   
 [3, 5, 8, 4, 2]
     5, 8
 [3, 5, 8, 4, 2]
-       4, 8     ← Swap
+       4, 8     = Swap
 [3, 5, 4, 8, 2]
-          2, 8  ← Swap
+          2, 8  = Swap
 [3, 5, 4, 2, 8]
  3, 5
 [3, 5, 4, 2, 8]
-    4, 5        ← Swap
+    4, 5        = Swap
 [3, 4, 5, 2, 8]
-       2, 5     ← Swap
+       2, 5     = Swap
 [3, 4, 2, 5, 8]
           5, 8
 [3, 4, 2, 5, 8]
  3, 4
 [3, 4, 2, 5, 8]
-    2, 4        ← Swap
+    2, 4        = Swap
 [3, 2, 4, 5, 8]
        4, 5
 [3, 2, 4, 5, 8]
           5, 8
 [3, 2, 4, 5, 8]
- 2, 3           ← Swap
+ 2, 3           = Swap
 [2, 3, 4, 5, 8]
     3, 4
 [2, 3, 4, 5, 8]

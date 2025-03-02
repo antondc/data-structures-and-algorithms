@@ -8,14 +8,14 @@ its correct position.
 ```
 INSERTION_SORT(A):
   for i from 1 to length(A) - 1:
-    key ← A[i]
-    j ← i - 1
+    key = A[i]
+    j = i - 1
 
     while j ≥ 0 and A[j] > key:
-      A[j + 1] ← A[j]
-      j ← j - 1
+      A[j + 1] = A[j]
+      j = j - 1
     
-    A[j + 1] ← key
+    A[j + 1] = key
 ```
 
 ## Explanation
