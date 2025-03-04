@@ -1,27 +1,27 @@
 export function quick_sort(
-  A: Array<number>,
-  L: number,
-  R: number
+  unsortedArray: Array<number>,
+  low: number,
+  high: number
 ): Array<number> {
-  if (L >= R) return A;
+  if (low >= high) return unsortedArray;
 
-  const { pivotIndex, partitionedArray } = partition(A, L, R);
+  const {pivotIndex, partitionedArray} = partition(unsortedArray, low, high);
 
-  const leftSorted = quick_sort(partitionedArray, L, pivotIndex - 1);
-  const rightSorted = quick_sort(leftSorted, pivotIndex + 1, R);
+  const leftSorted = quick_sort(partitionedArray, low, pivotIndex - 1);
+  const rightSorted = quick_sort(leftSorted, pivotIndex + 1, high);
 
   return rightSorted;
 }
 
 export function partition(
-  A: Array<number>,
+  unsortedArray: Array<number>,
   low: number,
   high: number
 ): {
   pivotIndex: number;
   partitionedArray: Array<number>;
 } {
-  const array = [...A];
+  const array = [...unsortedArray];
   let pivot = array[high]; // last item
   let i = low - 1; // start pointer on first item
 

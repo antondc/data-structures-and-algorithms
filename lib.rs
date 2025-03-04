@@ -8,6 +8,8 @@ mod merge_sort;
 mod bubble_sort;
 #[path = "./src/algorithms/01_sorting/03_insertion_sort/implementations/rs/mod.rs"]
 mod insertion_sort;
+#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/rs/mod.rs"]
+mod quick_sort;
 
 // Data structures
 // ...
