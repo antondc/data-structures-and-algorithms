@@ -6,10 +6,13 @@ pub fn quick_sort(unsorted_array: Vec<i32>) -> Vec<i32> {
   }
 
   let (pivot_index, partitioned_array) = partition(cloned_array);
-  let left_array = quick_sort(partitioned_array[..pivot_index].to_owned());
-  let right_array = quick_sort(partitioned_array[pivot_index..].to_owned());
+  let left = partitioned_array[..pivot_index].to_owned();
+  let right = partitioned_array[pivot_index..].to_owned();
 
-  [left_array, right_array].concat()
+  let left_sorted = quick_sort(left);
+  let right_sorted = quick_sort(right);
+
+  [left_sorted, right_sorted].concat()
 }
 
 pub fn partition(unpartitioned_array: Vec<i32>) -> (usize, Vec<i32>) {

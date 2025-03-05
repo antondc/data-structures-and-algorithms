@@ -7,28 +7,32 @@ QuickSort is one of the most efficient sorting algorithms and is widely used in 
 ## Pseudocode
 
 ```
-QUICKSORT(A, low, high):
-  if low < high:
-    pivot_index, B = PARTITION(A, low, high)
-    left_sorted = QUICKSORT(B, low, pivot_index - 1)
-    right_sorted QUICKSORT(left_sorted, pivot_index + 1, high)
+QUICKSORT(A):
+  if length of A <= 1
+    return unsortedArray;
 
-    return right_sorted
+  pivot_index, B = PARTITION(A)
+  left = B from 0 to pivot_index;
+  right = B from pivot_index to end;
 
-PARTITION(A, low, high):
-  B = A
-  pivot = B[high] // last item
-  i = low - 1 // start pointer on first item
+  left_sorted = QUICKSORT(left)
+  right_sorted QUICKSORT(right)
+
+  return concat of left_sorted and right_sorted
+
+PARTITION(A):
+  i = 0
+  right = length of B - 1
 
   // from pointer to item before last
-  for j from low to high - 1:
+  for j from 0 to right:
   // if current item is smaller than pivot, swap it with item under pointer and increase pointer
-    if B[j] ≤ pivot:
+    if B[j] ≤ B[right]:
       i = i + 1
       swap B[i] and B[j]
 
   // Center the pivot between lesser and greater items by swapping it with first greater item
-  swap B[i + 1] and B[high]
+  swap B[i] and B[right]
 
   return i, B
 ```

@@ -1,44 +1,40 @@
-export function quick_sort(
-  unsortedArray: Array<number>,
-  low: number,
-  high: number
-): Array<number> {
-  if (low >= high) return unsortedArray;
+export function quick_sort(unsortedArray: Array<number>): Array<number> {
+  if (unsortedArray.length <= 1) {
+    return unsortedArray;
+  }
 
-  const {pivotIndex, partitionedArray} = partition(unsortedArray, low, high);
+  const { pivotIndex, partitionedArray } = partition(unsortedArray);
+  const left = partitionedArray.slice(0, pivotIndex);
+  const right = partitionedArray.slice(pivotIndex);
 
-  const leftSorted = quick_sort(partitionedArray, low, pivotIndex - 1);
-  const rightSorted = quick_sort(leftSorted, pivotIndex + 1, high);
+  const leftSorted = quick_sort(left);
+  const rightSorted = quick_sort(right);
 
-  return rightSorted;
+  return leftSorted.concat(rightSorted);
 }
 
-export function partition(
-  unsortedArray: Array<number>,
-  low: number,
-  high: number
-): {
+export function partition(unsortedArray: Array<number>): {
   pivotIndex: number;
   partitionedArray: Array<number>;
 } {
   const array = [...unsortedArray];
-  let pivot = array[high]; // last item
-  let i = low - 1; // start pointer on first item
+  let i = 0; // start pointer on first item
+  let right = array.length - 1; // last item
 
   // from pointer to item before last
-  for (let j = low; j < high; j++) {
+  for (let j = 0; j < right; j++) {
     // if current item is smaller than pivot, swap it with item under pointer and increase pointer
-    if (array[j] <= pivot) {
-      i++;
+    if (array[j] <= array[right]) {
       [array[i], array[j]] = [array[j], array[i]];
+      i++;
     }
   }
 
   // Center the pivot between lesser and greater items by swapping it with first greater item
-  [array[i + 1], array[high]] = [array[high], array[i + 1]];
+  [array[i], array[right]] = [array[right], array[i]];
 
   return {
-    pivotIndex: i + 1,
+    pivotIndex: i,
     partitionedArray: array,
   };
 }
