@@ -1,18 +1,3 @@
-export function quick_sort(unsortedArray: Array<number>): Array<number> {
-  if (unsortedArray.length <= 1) {
-    return unsortedArray;
-  }
-
-  const { pivotIndex, partitionedArray } = partition(unsortedArray);
-  const left = partitionedArray.slice(0, pivotIndex);
-  const right = partitionedArray.slice(pivotIndex);
-
-  const leftSorted = quick_sort(left);
-  const rightSorted = quick_sort(right);
-
-  return leftSorted.concat(rightSorted);
-}
-
 export function partition(unsortedArray: Array<number>): {
   pivotIndex: number;
   partitionedArray: Array<number>;
@@ -37,4 +22,19 @@ export function partition(unsortedArray: Array<number>): {
     pivotIndex: i,
     partitionedArray: array,
   };
+}
+
+export function quick_sort(unsortedArray: Array<number>): Array<number> {
+  if (unsortedArray.length <= 1) {
+    return unsortedArray;
+  }
+
+  const { pivotIndex, partitionedArray } = partition(unsortedArray);
+  const left = partitionedArray.slice(0, pivotIndex);
+  const right = partitionedArray.slice(pivotIndex);
+
+  const leftSorted = quick_sort(left);
+  const rightSorted = quick_sort(right);
+
+  return leftSorted.concat(rightSorted);
 }

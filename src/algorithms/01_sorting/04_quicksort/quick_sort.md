@@ -6,20 +6,32 @@ QuickSort is one of the most efficient sorting algorithms and is widely used in 
 
 ## Pseudocode
 
+### In-place
+
 ```
-QUICKSORT(A):
-  if length of A <= 1
-    return unsortedArray;
+PARTITION(A, left, right):
+  pivot = A[right]
+  i = left - 1
 
-  pivot_index, B = PARTITION(A)
-  left = B from 0 to pivot_index;
-  right = B from pivot_index to end;
+  for j from left to right - 1:
+    if B[j] < pivot:
+      i = i + 1
+      swap B[i] and B[j]
 
-  left_sorted = QUICKSORT(left)
-  right_sorted QUICKSORT(right)
+  swap B[i + 1] and B[right]
 
-  return concat of left_sorted and right_sorted
+  return i + 1
 
+QUICKSORT(A, left = 0, right = (length of A) - 1):
+  if left < right:
+    pivot_index = PARTITION(A, left, right)
+    QUICKSORT(B, left, pivot_index - 1)
+    QUICKSORT(left_sorted, pivot_index + 1, right)
+```
+
+### Functional
+
+```
 PARTITION(A):
   i = 0
   right = length of B - 1
@@ -35,6 +47,19 @@ PARTITION(A):
   swap B[i] and B[right]
 
   return i, B
+
+QUICKSORT(A):
+  if length of A <= 1
+    return unsortedArray;
+
+  pivot_index, B = PARTITION(A)
+  left = B from 0 to pivot_index;
+  right = B from pivot_index to end;
+
+  left_sorted = QUICKSORT(left)
+  right_sorted QUICKSORT(right)
+
+  return concat of left_sorted and right_sorted
 ```
 
 ## Explanation
