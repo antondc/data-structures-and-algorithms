@@ -1,25 +1,28 @@
 #![allow(dead_code)]
 
-
 // Algorithms
+
+// Merge Sort
 #[path = "./src/algorithms/01_sorting/01_merge_sort/implementations/rs/mod.rs"]
 mod merge_sort;
+// Bubble Sort
 #[path = "./src/algorithms/01_sorting/02_bubble_sort/implementations/rs/mod.rs"]
 mod bubble_sort;
+// Insertion Sort
 #[path = "./src/algorithms/01_sorting/03_insertion_sort/implementations/rs/mod.rs"]
 mod insertion_sort;
-#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/rs/mod.rs"]
+// Quick Sort
+#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/in_place/rs/mod.rs"]
 mod quick_sort;
+#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/functional/rs/mod.rs"]
+mod quick_sort_functional;
 
 // Data structures
 // ...
 
 // Problem solving techniques
-// ...
 
-// Problems
-#[path = "./src/problems/01_fizzbuzz/implementations/rs/mod.rs"]
-mod fizzbuzz;
+//// Problems
 #[path = "./src/problems/02_anagram/implementations/rs/mod.rs"]
 mod anagram;
 #[path = "./src/problems/03_array_consecutive_missing_numbers/implementations/rs/mod.rs"]
@@ -28,6 +31,8 @@ mod array_consecutive_missing_numbers;
 mod calculate_list_max_items_difference;
 #[path = "./src/problems/05_calculate_no_overlaps/implementations/rs/mod.rs"]
 mod calculate_no_overlaps;
+#[path = "./src/problems/01_fizzbuzz/implementations/rs/mod.rs"]
+mod fizzbuzz;
 #[path = "./src/problems/06_gigasecond/implementations/rs/mod.rs"]
 mod gigasecond;
 #[path = "./src/problems/07_linear_searching/implementations/rs/mod.rs"]
