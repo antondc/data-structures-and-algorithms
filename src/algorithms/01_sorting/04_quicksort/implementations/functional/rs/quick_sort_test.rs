@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-  use super::super::quick_sort::{quick_sort, partition};
+  use super::super::quick_sort::{partition, quick_sort};
 
   #[test]
   fn partitions_an_array_correctly() {
