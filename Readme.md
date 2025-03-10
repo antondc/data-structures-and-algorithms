@@ -19,5 +19,4 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
 ### Golang
 
-    go build main.go
     go test ./... -v
