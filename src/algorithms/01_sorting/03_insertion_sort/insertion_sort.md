@@ -7,21 +7,21 @@ its correct position.
 
 ```
 INSERTION_SORT(A):
-  for i from 1 to length(A) - 1:
+  for i from 1 to length(A):
     key = A[i]
     j = i - 1
 
     while j ≥ 0 and A[j] > key:
       A[j + 1] = A[j]
       j = j - 1
-    
+
     A[j + 1] = key
 ```
 
 ## Explanation
 
-The algorithm iterates over the array, starting from index 1.  
-Each element is compared with previous elements and inserted into its correct position.  
+The algorithm iterates over the array, starting from index 1.
+Each element is compared with previous elements and inserted into its correct position.
 This process continues until the entire array is sorted.
 
 Time complexity:

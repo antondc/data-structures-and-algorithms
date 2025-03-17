@@ -1,19 +1,16 @@
 package insertionSort
 
-func InsertionSort(unsortedArray []int) []int {
-	clonedArray := unsortedArray
-
-	for i := 1; i < len(unsortedArray); i++ {
-		key := clonedArray[i]
+func InsertionSort(array []int) {
+	for i := 1; i < len(array); i++ {
+		key := array[i]
 		j := i
 
-		for j > 0 && clonedArray[j-1] > key {
-			clonedArray[j] = clonedArray[j-1]
+		for j > 0 && array[j-1] > key {
+			array[j] = array[j-1]
 			j--
 		}
 
-		clonedArray[j] = key
+		array[j] = key
 	}
 
-	return clonedArray
 }
