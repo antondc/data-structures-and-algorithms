@@ -21,6 +21,7 @@ export function partition(
   return i + 1;
 }
 
+// As JavaScript does not have slices we can not pass a slice of the original array recursively. Thus, we need the left-right indexes.
 export function quick_sort(
   array: Array<number>,
   left: number = 0,

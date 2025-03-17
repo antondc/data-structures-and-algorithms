@@ -9,27 +9,28 @@ QuickSort is one of the most efficient sorting algorithms and is widely used in 
 ### In-place
 
 ```
-PARTITION(A, left, right):
-  pivot = A[right]
-  i = left - 1
+PARTITION(A):
+  right = length of A - 1
+  i = 0
 
-  for j from left to right - 1:
-    if B[j] < pivot:
-      i = i + 1
+  for j from 0 to right:
+    if A[j] <= A[right]:
       swap B[i] and B[j]
+      i = i + 1
 
-  swap B[i + 1] and B[right]
+  swap B[i ] and B[right]
 
-  return i + 1
+  return i
 
-QUICKSORT(A, left = 0, right = (length of A) - 1):
-  if left < right:
-    pivot_index = PARTITION(A, left, right)
-    QUICKSORT(B, left, pivot_index - 1)
-    QUICKSORT(left_sorted, pivot_index + 1, right)
+QUICKSORT(A):
+  if length of A > 1:
+    pivot_index = PARTITION(A)
+    QUICKSORT(B[0:pivot_index])
+    QUICKSORT(B[pivot_index + 1:...])
 ```
 
 ### Functional
+A functional version will have a O(n) space complexity due to the need to clone arrays instead of working with their references.
 
 ```
 PARTITION(A):
