@@ -12,10 +12,8 @@ mod bubble_sort;
 #[path = "./src/algorithms/01_sorting/03_insertion_sort/implementations/rs/mod.rs"]
 mod insertion_sort;
 // Quick Sort
-#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/in_place/rs/mod.rs"]
+#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/rs/mod.rs"]
 mod quick_sort;
-#[path = "./src/algorithms/01_sorting/04_quicksort/implementations/functional/rs/mod.rs"]
-mod quick_sort_functional;
 #[path = "./src/algorithms/01_sorting/05_selection_sort/implementations/rs/mod.rs"]
 mod selection_sort;
 
