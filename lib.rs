@@ -16,6 +16,8 @@ mod insertion_sort;
 mod quick_sort;
 #[path = "./src/algorithms/01_sorting/04_quicksort/implementations/functional/rs/mod.rs"]
 mod quick_sort_functional;
+#[path = "./src/algorithms/01_sorting/05_selection_sort/implementations/rs/mod.rs"]
+mod selection_sort;
 
 // Data structures
 // ...
