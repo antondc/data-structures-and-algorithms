@@ -4,28 +4,44 @@
 
 A Heap is a complete binary tree where the value of each parent node is greater than or equal to the values of its children. This ensures that the maximum element is always at the root.
 It may be the already described max-heap or a min-heap.
-Heaps are commonly used in priority queues and heapsort algorithms.
+Commonly used in priority queues and heapsort algorithms.
 
 ## Pseudocode
 
-### Insertion
+### Heap
+
+Builds a heap from an unordered array.
+
+```
+function heap(array):
+  for i = (size of array // 2) down to 0:
+    heapify(array, i, size of array)
+```
+
+### Insert
+
+Inserts an element into the heap.
 
 ```
 function insert(heap, value):
-  append value to heap
+  append value to heap array
   index = size of heap - 1
+
   while index > 0 and heap[parent(index)] < heap[index]:
     swap heap[parent(index)] with heap[index]
     index = parent(index)
 ```
 
-### Heapify (Used for deletion and heap construction)
+### Heapify
+
+Swaps parent and children of a specific node if neccesary.
+Utility for deletion and heap construction.
 
 ```
-function maxHeapify(heap, index, heapSize):
+function heapify(heap, index, heapSize):
+  largest = index
   left = 2 * index + 1
   right = 2 * index + 2
-  largest = index
 
   if left < heapSize and heap[left] > heap[largest]:
     largest = left
@@ -34,36 +50,29 @@ function maxHeapify(heap, index, heapSize):
 
   if largest != index:
     swap heap[index] with heap[largest]
-    maxHeapify(heap, largest, heapSize)
+    heapify(heap, largest, heapSize)
 ```
 
-### Deletion (Extract Max)
+### Extract
 
 ```
-function extractMax(heap):
+function extract(heap):
   if heap is empty:
       return None
   maxVal = heap[0]
   heap[0] = heap[last element]
-  remove last element
-  maxHeapify(heap, 0, size of heap)
+
+  heapify(heap, 0, size of heap)
+
   return maxVal
-```
-
-### Building a Max Heap
-
-```
-function buildMaxHeap(heap):
-  for i = (size of heap // 2) down to 0:
-    maxHeapify(heap, i, size of heap)
 ```
 
 ## Explanation
 
-1. **Insertion:** Adds an element at the end of the heap and reorders it to maintain the heap property.
-2. **Heapify:** Ensures that a subtree with a given root follows the max heap property.
-3. **Deletion (Extract Max):** Removes the maximum element (root), replaces it with the last element, and heapifies.
-4. **Building a Max Heap:** Converts an unordered array into a max heap in O(n) time.
+1. **Heap (build):** Converts an unordered array into a max heap in O(n) time.
+1. **Insert:** Adds an element at the end of the heap and reorders it to maintain the heap property.
+1. **Heapify:** Ensures that a subtree with a given root follows the max heap property.
+1. **Extract:** Removes and and returns the maximum element (root), replacing it with the last element and heapifying if necessary.
 
 ### Time Complexity:
 
