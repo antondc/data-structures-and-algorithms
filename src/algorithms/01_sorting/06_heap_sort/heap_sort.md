@@ -1,34 +1,13 @@
-# Heap Sort
+# Max Heap
 
-Comparison-based sorting algorithm that utilizes a binary heap data structure to sort elements. It first transforms the input array into a max heap, ensuring that the largest element is at the root. The algorithm then repeatedly swaps the root with the last unsorted element and reduces the heap size, maintaining the heap property until the array is sorted.​
+## Description
+
+Comparison-based in-place sorting algorithm that utilizes a binary heap data structure to sort elements. It first transforms the input array into a max heap, ensuring that the largest element is at the root. The algorithm then repeatedly swaps the root with the last unsorted element and reduces the heap size, maintaining the heap property until the array is sorted.​
 
 ## Pseudocode
 
 ```
-HEAP_SORT(A):
-  BUILD_MAX_HEAP(A)
-  for i from length of A - 1 downto 1:
-    swap A[0] and A[i]
-    HEAPIFY(A, 0, i)
 
-BUILD_MAX_HEAP(A):
-  for i from floor(length of A / 2) - 1 downto 0:
-    HEAPIFY(A, i, length of A)
-
-HEAPIFY(A, i, heap_size):
-  largest = i
-  left = 2 * i + 1
-  right = 2 * i + 2
-
-  if left < heap_size and A[left] > A[largest]:
-    largest = left
-
-  if right < heap_size and A[right] > A[largest]:
-    largest = right
-
-  if largest ≠ i:
-    swap A[i] and A[largest]
-    HEAPIFY(A, largest, heap_size)
 ```
 
 ## Explanation

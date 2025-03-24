@@ -1,1 +1,1 @@
-export const heap_sort = (array: Array<number>) => {};
+export const heapSort = (array: Array<number>) => {};
