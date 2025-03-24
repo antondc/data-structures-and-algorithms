@@ -1,6 +1,7 @@
-# Insertion Sort
+# Selection Sort
 
-Simple comparison-based sorting algorithm that repeatedly selects the smallest element from the unsorted portion and swaps it with the first unsorted element.
+Comparison-based sorting algorithm that repeatedly selects the smallest element from the unsorted portion and swaps it with the first unsorted element.
+Simple and inefficient, for educational purposes only.
 
 ## Pseudocode
 

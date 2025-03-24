@@ -1,8 +1,7 @@
 # Quick Sort
 
-QuickSort is a divide-and-conquer sorting algorithm that selects a pivot element, partitions the array into elements
-less than and greater than the pivot, and recursively sorts the sub-arrays.
-QuickSort is one of the most efficient sorting algorithms and is widely used in practice.
+Divide-and-conquer sorting algorithm that selects a pivot element, partitions the array into elements less than and greater than the pivot, and recursively sorts the sub-arrays.
+Efficient.
 
 ## Pseudocode
 

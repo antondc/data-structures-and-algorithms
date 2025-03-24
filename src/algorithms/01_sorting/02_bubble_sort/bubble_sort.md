@@ -1,9 +1,7 @@
 # Bubble Sort
 
-Bubble Sort is a simple comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent
-elements, and swaps them if they are in the wrong order. The process continues until the list is sorted.  
-Mainly used for educational purposes due to its inefficiency compared to other sorting algorithms like
-Merge Sort or Quick Sort.
+Comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+Simple and inefficient, for educational purposes only.
 
 ## Pseudocode
 
@@ -11,12 +9,12 @@ Merge Sort or Quick Sort.
 BUBBLE_SORT(A):
   repeat:
     swapped = false
-    
+
     for i from 0 to length of A - 1:
       if A[i] > A[i + 1]:
         swap A[i] and A[i + 1]
         swapped = true
-        
+
     if not swapped:
       break
 ```
@@ -33,7 +31,7 @@ Bubble Sort works by making multiple passes through the array:
 Time complexity:
 
 - Best case (already sorted): `O(n)`
-- Average case:  `O(n²)`
+- Average case: `O(n²)`
 - Worst case: `O(n²)`
 
 ## Example
@@ -46,7 +44,7 @@ Time complexity:
 
 ```
 [5, 3, 8, 4, 2]
- 3, 5           = Swap   
+ 3, 5           = Swap
 [3, 5, 8, 4, 2]
     5, 8
 [3, 5, 8, 4, 2]
@@ -78,7 +76,7 @@ Time complexity:
 [2, 3, 4, 5, 8]
           5, 8
 [2, 3, 4, 5, 8]
- 2, 3          
+ 2, 3
 [2, 3, 4, 5, 8]
     3, 4
 [2, 3, 4, 5, 8]

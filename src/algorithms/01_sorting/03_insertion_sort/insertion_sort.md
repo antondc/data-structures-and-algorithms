@@ -1,7 +1,7 @@
 # Insertion Sort
 
-Simple and efficient sorting algorithm that builds the sorted array one element at a time by inserting each element into
-its correct position.
+Sorting algorithm that builds the sorted array one element at a time by inserting each element into its correct position.
+Simple and barely efficient.
 
 ## Pseudocode
 
