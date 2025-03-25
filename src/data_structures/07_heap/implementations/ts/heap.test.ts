@@ -116,7 +116,7 @@ describe("heapify()", () => {
     //        /  \
     //       5←  10
     //   ok / \  /
-    //     4  2  1
+    //     4  2 1
 
     const array = [3, 5, 10, 4, 2, 1];
     heapify(array, 1, array.length);
@@ -128,7 +128,7 @@ describe("heapify()", () => {
     //        /  \ swap
     //       5    3
     //      / \  /
-    //     4  2  1
+    //     4  2 1
     const array = [3, 5, 10, 4, 2, 1];
     heapify(array, 0, array.length);
 
@@ -144,7 +144,7 @@ describe("heap()", () => {
     //     /  \
     //    5    3
     //   / \  /
-    //  4  2  1
+    //  4  2 1
     expect(array).toEqual([10, 5, 3, 4, 2, 1]);
   });
   test("builds the heap correctly", async () => {

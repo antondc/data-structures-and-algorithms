@@ -19,7 +19,8 @@ mod selection_sort;
 
 // Data structures
 // ...
-
+#[path = "./src/data_structures/07_heap/implementations/rs/mod.rs"]
+mod heap;
 // Problem solving techniques
 
 //// Problems

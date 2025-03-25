@@ -61,6 +61,7 @@ function extract(heap):
       return None
   maxVal = heap[0]
   heap[0] = heap[last element]
+  remove last element from heap array
 
   heapify(heap, 0, size of heap)
 
