@@ -39,3 +39,17 @@ export const insert = (heap: Array<number>, value: number) => {
     index = parent(index);
   }
 };
+
+export const extract = (heap: Array<number>): number | null => {
+  if (!heap.length) {
+    return null;
+  }
+
+  let maxVal = heap[0];
+  heap[0] = heap[heap.length - 1];
+  heap.pop();
+
+  heapify(heap, 0, heap.length);
+
+  return maxVal;
+};

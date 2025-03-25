@@ -1,4 +1,4 @@
-import { heap, heapify, insert, parent } from "./heap";
+import { extract, heap, heapify, insert, parent } from "./heap";
 
 describe("parent()", () => {
   test("computes correct parent index for child index", async () => {
@@ -9,9 +9,9 @@ describe("parent()", () => {
     //     6  2 1   3
     //    / \
     //   5   0
-    const result = parent(1);
+    const parentIndex = parent(1);
 
-    expect(result).toBe(0);
+    expect(parentIndex).toBe(0);
   });
   test("computes correct parent index for child index", async () => {
     //          8
@@ -21,9 +21,9 @@ describe("parent()", () => {
     //     6  2 1   3
     //    / \
     //   5   0
-    const result = parent(2);
+    const parentIndex = parent(2);
 
-    expect(result).toBe(0);
+    expect(parentIndex).toBe(0);
   });
   test("computes correct parent index for child index", async () => {
     //          8
@@ -33,9 +33,9 @@ describe("parent()", () => {
     //     6← 2 1   3
     //    / \
     //   5   0
-    const result = parent(3);
+    const parentIndex = parent(3);
 
-    expect(result).toBe(1);
+    expect(parentIndex).toBe(1);
   });
   test("computes correct parent index for child index", async () => {
     //          8
@@ -45,9 +45,9 @@ describe("parent()", () => {
     //     6  2←1   3
     //    / \
     //   5   0
-    const result = parent(4);
+    const parentIndex = parent(4);
 
-    expect(result).toBe(1);
+    expect(parentIndex).toBe(1);
   });
   test("computes correct parent index for child index", async () => {
     //          8
@@ -57,9 +57,9 @@ describe("parent()", () => {
     //     6  2 1←  3
     //    / \
     //   5   0
-    const result = parent(5);
+    const parentIndex = parent(5);
 
-    expect(result).toBe(2);
+    expect(parentIndex).toBe(2);
   });
   test("computes correct parent index for child index", async () => {
     //          8
@@ -140,25 +140,39 @@ describe("heap()", () => {
   test("builds the heap correctly", async () => {
     const array = [3, 5, 1, 4, 2, 10];
     heap(array);
-
+    //      10
+    //     /  \
+    //    5    3
+    //   / \  /
+    //  4  2  1
     expect(array).toEqual([10, 5, 3, 4, 2, 1]);
   });
   test("builds the heap correctly", async () => {
     const array = [3, 5, 1, 4, 2];
     heap(array);
-
+    //       5
+    //     /  \
+    //    4    1
+    //   / \
+    //  3  2
     expect(array).toEqual([5, 4, 1, 3, 2]);
   });
   test("builds the heap correctly", async () => {
     const array = [0, 2, 4, 6, 8, 1, 3, 5, 7];
     heap(array);
-
+    //          8
+    //        /  \
+    //       7    4
+    //      / \  / \
+    //     6  2 1   3
+    //    / \
+    //   5  0
     expect(array).toEqual([8, 7, 4, 6, 2, 1, 3, 5, 0]);
   });
 });
 
 describe("insert()", () => {
-  test("builds the heap correctly", async () => {
+  test("inserts a value into the heap correctly", async () => {
     const array = [3, 2, 4, 1];
     heap(array);
     //          4
@@ -175,5 +189,27 @@ describe("insert()", () => {
     //      / \
     //     1  2
     expect(array).toEqual([5, 4, 3, 1, 2]);
+  });
+});
+
+describe("extract()", () => {
+  test("extracts a value from the heap correctly", async () => {
+    const array = [1, 2, 3, 4, 5];
+    heap(array);
+    //          5
+    //        /  \
+    //       4    3
+    //      / \
+    //     1  2
+    expect(array).toEqual([5, 4, 3, 1, 2]);
+
+    const maxValue = extract(array);
+    //          4
+    //        /  \
+    //       2    3
+    //      /
+    //     1
+    expect(maxValue).toEqual(5);
+    expect(array).toEqual([4, 2, 3, 1]);
   });
 });

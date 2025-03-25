@@ -18,20 +18,6 @@ function heap(array):
     heapify(array, i, size of array)
 ```
 
-### Insert
-
-Inserts an element into the heap.
-
-```
-function insert(heap, value):
-  append value to heap array
-  index = size of heap - 1
-
-  while index > 0 and heap[parent(index)] < heap[index]:
-    swap heap[parent(index)] with heap[index]
-    index = parent(index)
-```
-
 ### Heapify
 
 Swaps parent and children of a specific node if neccesary.
@@ -51,6 +37,20 @@ function heapify(heap, index, heapSize):
   if largest != index:
     swap heap[index] with heap[largest]
     heapify(heap, largest, heapSize)
+```
+
+### Insert
+
+Inserts an element into the heap.
+
+```
+function insert(heap, value):
+  append value to heap array
+  index = size of heap - 1
+
+  while index > 0 and heap[parent(index)] < heap[index]:
+    swap heap[parent(index)] with heap[index]
+    index = parent(index)
 ```
 
 ### Extract
