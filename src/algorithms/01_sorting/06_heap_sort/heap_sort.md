@@ -1,4 +1,4 @@
-# Max Heap
+# Heap Sort
 
 ## Description
 
@@ -19,7 +19,6 @@ Heap Sort operates by leveraging the properties of a max heap—a complete binar
   - Swap the root (maximum element) with the last element of the heap.​
     - Reduce the heap size by one to exclude the last element from the heap.​
     - Heapify the root to restore the max heap property.​
-    - Wikipedia+1Fully Understood+1
     - Repeat the process until the heap size is reduced to one.​
 
 This method ensures that the array is sorted in ascending order.​

@@ -2,8 +2,8 @@
 
 ## Description
 
-A Heap is a complete binary tree where the value of each parent node is greater than or equal to the values of its children. This ensures that the maximum element is always at the root.
-It may be the already described max-heap or a min-heap.
+A Heap is a complete ordered binary tree with the restriction that the value of a parent nodes are greater of equal than the value of children nodes.
+There is the already described min-heap, and the min-heap, where the value of the parent nodes are lesser or equal than the value of the children nodes.
 Commonly used in priority queues and heapsort algorithms.
 
 ## Pseudocode
@@ -13,7 +13,7 @@ Commonly used in priority queues and heapsort algorithms.
 Builds a heap from an unordered array.
 
 ```
-function heap(array):
+HEAP(array):
   for i = (size of array // 2) down to 0:
     heapify(array, i, size of array)
 ```
@@ -24,7 +24,7 @@ Swaps parent and children of a specific node if neccesary.
 Utility for deletion and heap construction.
 
 ```
-function heapify(heap, index, heapSize):
+HEAPIFY(heap, index, heapSize):
   largest = index
   left = 2 * index + 1
   right = 2 * index + 2
@@ -44,7 +44,7 @@ function heapify(heap, index, heapSize):
 Inserts an element into the heap.
 
 ```
-function insert(heap, value):
+INSERT(heap, value):
   append value to heap array
   index = size of heap - 1
 
@@ -56,7 +56,7 @@ function insert(heap, value):
 ### Extract
 
 ```
-function extract(heap):
+EXTRACT(heap):
   if heap is empty:
       return None
   maxVal = heap[0]
