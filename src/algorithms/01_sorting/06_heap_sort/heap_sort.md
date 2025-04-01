@@ -7,21 +7,38 @@ Comparison-based in-place sorting algorithm that utilizes a binary heap data str
 ## Pseudocode
 
 ```
+HEAPSORT(array):
+  HEAP(array)
 
+  for i = size of array - 1 down to 1:
+    swap array[0] with array[i]
+    heapify(array, 0, i)
 ```
 
 ## Explanation
 
-Heap Sort operates by leveraging the properties of a max heap—a complete binary tree where each node is greater than or equal to its children. The algorithm consists of two main phases:​
+### As array
+
+Heap Sort uses a max-heap structure. The algorithm consists of two main phases:​
 
 - Build Max Heap: Convert the unsorted array into a max heap. This ensures that the largest element is at the root of the heap.​
-- Sort the Array:
-  - Swap the root (maximum element) with the last element of the heap.​
-    - Reduce the heap size by one to exclude the last element from the heap.​
-    - Heapify the root to restore the max heap property.​
-    - Repeat the process until the heap size is reduced to one.​
+- Traverse the heap array from last to first:
+  - Swap the first element of the array with the last unsorted element.​
+  - Heapify unsorted array.
+
+### As a tree
+
+If we want to see it as a Heap tree:
+
+- Convert the unsorted array into a max-heap.
+- Swap the root (maximum element) with the last element of the heap.​
+- Reduce the heap size by one to exclude the last element from the heap.​
+- Heapify the root to restore the max heap property.​
+- Repeat the process until the heap size is reduced to one.​
 
 This method ensures that the array is sorted in ascending order.​
+
+## Characteristics:
 
 ### Time Complexity:
 
