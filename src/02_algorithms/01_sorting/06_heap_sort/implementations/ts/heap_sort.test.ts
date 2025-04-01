@@ -13,7 +13,6 @@ describe("SelectionSort", () => {
     let array = [4, 3, 2, 1];
     heapSort(array);
     let expected_result = [1, 2, 3, 4];
-    console.log("test::array: ", array);
 
     expect(array).toEqual(expected_result);
   });

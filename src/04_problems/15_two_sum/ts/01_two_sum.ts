@@ -27,7 +27,7 @@ export const findIndexesSquaredTime = (nums: Nums, target: Target) => {
     }
   }
 
-  throw new Error('No solution found');
+  throw new Error("No solution found");
 };
 
 // O(n log n) time complexity solution
@@ -50,7 +50,7 @@ export const findIndexesNLogNTime = (nums: Nums, target: Target) => {
     }
   }
 
-  throw new Error('No solution found');
+  throw new Error("No solution found");
 };
 
 // O(n) time complexity solution
@@ -74,21 +74,19 @@ export const findIndexesNTime = (nums: Nums, target: Target) => {
     myHashMap.set(nums[j], j);
   }
 
-  throw new Error('No solution found');
+  throw new Error("No solution found");
 };
 
 const checkConstrains = (nums: Nums, currentIndex: number, target: number) => {
   if (nums.length < 2 || 104 < nums.length) {
-    console.log('test::nums.length: ', nums.length);
-
-    throw new Error('Array length out of bounds');
+    throw new Error("Array length out of bounds");
   }
 
   if (nums[currentIndex] < -109 || 109 < nums[currentIndex]) {
-    throw new Error('Current index out of bounds');
+    throw new Error("Current index out of bounds");
   }
 
   if (target < -109 || 109 < target) {
-    throw new Error('Current index out of bounds');
+    throw new Error("Current index out of bounds");
   }
 };
