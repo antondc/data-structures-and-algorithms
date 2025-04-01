@@ -14,8 +14,12 @@ mod insertion_sort;
 // Quick Sort
 #[path = "./src/algorithms/01_sorting/04_quicksort/implementations/rs/mod.rs"]
 mod quick_sort;
+// Selection Sort
 #[path = "./src/algorithms/01_sorting/05_selection_sort/implementations/rs/mod.rs"]
 mod selection_sort;
+// Heap Sort
+#[path = "./src/algorithms/01_sorting/06_heap_sort/implementations/rs/mod.rs"]
+mod heap_sort;
 
 // Data structures
 // ...
