@@ -35,7 +35,9 @@ QUICKSORT(A):
 - Place the pivot in its correct position.
 - Recursively apply QuickSort to the left and right partitions.
 
-Time complexity:
+## Characteristics
+
+### Time complexity:
 
 - Best: `O(n log n)`.
 - Average case: `O(n log n)`.

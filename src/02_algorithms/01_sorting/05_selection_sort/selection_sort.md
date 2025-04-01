@@ -23,7 +23,9 @@ SELECTION_SORT(A):
 The algorithm divides the array into two parts: sorted and unsorted.
 It finds the smallest element from the unsorted section and moves it to its correct position in the sorted section.
 
-Time complexity:
+## Characteristics
+
+### Time complexity:
 
 - Best case: O(n²).
 - Average case: O(n²).

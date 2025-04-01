@@ -75,6 +75,8 @@ EXTRACT(heap):
 1. **Heapify:** Ensures that a subtree with a given root follows the max heap property.
 1. **Extract:** Removes and and returns the maximum element (root), replacing it with the last element and heapifying if necessary.
 
+## Characteristics
+
 ### Time Complexity:
 
 - Insertion: **O(log n)**
