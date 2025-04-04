@@ -19,4 +19,4 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
 ### Golang
 
-    go test ./... -v
+    go test src/01_data_structures/02_linked_list/implementations/go/linked_list_test.go -v
