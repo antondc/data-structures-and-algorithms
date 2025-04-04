@@ -36,8 +36,7 @@ func TestLinkedListPrependItemToAlreadyFilledList(t *testing.T) {
 
 func TestLinkedListAppendItem(t *testing.T) {
 	linkedList := LinkedList{}
-	linkedList.prepend(1)
-	linkedList.append(2)
+	linkedList.prepend(1).append(2)
 	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: nil}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
@@ -57,9 +56,7 @@ func TestLinkedListAppendsToEmptyList(t *testing.T) {
 
 func TestLinkedListRemoveItem(t *testing.T) {
 	linkedList := LinkedList{}
-	linkedList.append(1)
-	linkedList.append(2)
-	linkedList.append(3)
+	linkedList.append(1).append(2).append(3)
 	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: &Node{value: 3, next: nil}}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
@@ -76,9 +73,7 @@ func TestLinkedListRemoveItem(t *testing.T) {
 
 func TestLinkedListRemoveNonExistingItem(t *testing.T) {
 	linkedList := LinkedList{}
-	linkedList.append(1)
-	linkedList.append(2)
-	linkedList.append(3)
+	linkedList.append(1).append(2).append(3)
 	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: &Node{value: 3, next: nil}}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
@@ -104,9 +99,7 @@ func TestLinkedListRemoveItemFromEmptyList(t *testing.T) {
 
 func TestLinkedListFindItem(t *testing.T) {
 	linkedList := LinkedList{}
-	linkedList.append(1)
-	linkedList.append(2)
-	linkedList.append(3)
+	linkedList.append(1).append(2).append(3)
 	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: &Node{value: 3, next: nil}}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {

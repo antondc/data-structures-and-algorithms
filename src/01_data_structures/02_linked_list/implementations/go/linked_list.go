@@ -9,25 +9,27 @@ type LinkedList struct {
 	head *Node
 }
 
-func (list *LinkedList) prepend(value int) {
+func (list *LinkedList) prepend(value int) *LinkedList {
 	if list.head == nil {
 		newNode := &Node{value: value, next: nil}
 		list.head = newNode
 
-		return
+		return list
 	}
 
 	list.head = &Node{
 		value: value,
 		next:  list.head,
 	}
+
+	return list
 }
 
-func (list *LinkedList) append(value int) {
+func (list *LinkedList) append(value int) *LinkedList {
 	if list.head == nil {
 		list.head = &Node{value: value, next: nil}
 
-		return
+		return list
 	}
 
 	current := list.head
@@ -40,15 +42,17 @@ func (list *LinkedList) append(value int) {
 		value: value,
 		next:  nil,
 	}
+
+	return list
 }
 
-func (list *LinkedList) remove(value int) {
+func (list *LinkedList) remove(value int) *LinkedList {
 	if list.head == nil {
-		return
+		return list
 	}
 
 	if list.head.value == value {
-		return
+		return list
 	}
 
 	current := list.head
@@ -60,8 +64,10 @@ func (list *LinkedList) remove(value int) {
 	if current.next != nil {
 		current.next = current.next.next
 
-		return
+		return list
 	}
+
+	return list
 }
 
 func (list *LinkedList) find(value int) bool {
