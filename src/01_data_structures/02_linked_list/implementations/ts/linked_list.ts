@@ -1,16 +1,10 @@
-// Singly linked list implemented as plain functions
-
-type ListNode<T> = { value: T; next: ListNode<T> | null };
-type LinkedList<T> = {
-  head: ListNode<T> | null;
-  append: (value) => LinkedList<T>;
-  prepend: (value) => LinkedList<T>;
-  remove: (value) => LinkedList<T>;
-  find: (value) => boolean;
+type ListNode<T> = {
+  value: T;
+  next: ListNode<T> | null;
 };
 
-export class LinkedListImpl<T> implements LinkedList<T> {
-  head = null;
+export class LinkedList<T> {
+  head: ListNode<T> = null;
 
   constructor(value: T) {
     this.head = {
@@ -21,9 +15,11 @@ export class LinkedListImpl<T> implements LinkedList<T> {
 
   append(value: any): LinkedList<T> {
     let current = this.head;
+
     while (current.next !== null) {
       current = current.next;
     }
+
     current.next = { value, next: null };
 
     return this;
@@ -54,7 +50,7 @@ export class LinkedListImpl<T> implements LinkedList<T> {
     if (current.next !== null) {
       current.next = current.next.next;
 
-      return this.head;
+      return this;
     }
 
     return this;

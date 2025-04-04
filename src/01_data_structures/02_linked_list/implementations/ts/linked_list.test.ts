@@ -1,8 +1,8 @@
-import { LinkedListImpl } from "./linked_list";
+import { LinkedList } from "./linked_list";
 
 describe("createNode()", () => {
   test("Creates a linked list with a single node", async () => {
-    const linkedList = new LinkedListImpl(1);
+    const linkedList = new LinkedList(1);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -13,7 +13,7 @@ describe("createNode()", () => {
 
 describe("append()", () => {
   test("Appends a node into a linked list", async () => {
-    const linkedList = new LinkedListImpl(1).append(2);
+    const linkedList = new LinkedList(1).append(2);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -40,7 +40,7 @@ describe("append()", () => {
 
 describe("prepend()", () => {
   test("Prepends a node into a single list", async () => {
-    const linkedList = new LinkedListImpl(1).prepend(2);
+    const linkedList = new LinkedList(1).prepend(2);
 
     expect(linkedList.head).toEqual({
       value: 2,
@@ -66,7 +66,7 @@ describe("prepend()", () => {
 
 describe("remove()", () => {
   test("Removes the first node from a linked list", async () => {
-    const linkedList = new LinkedListImpl(1).append(2).append(3);
+    const linkedList = new LinkedList(1).append(2).append(3);
     expect(linkedList.head).toEqual({
       value: 1,
       next: {
@@ -90,7 +90,7 @@ describe("remove()", () => {
   });
 
   test("Removes the second node from a linked list", async () => {
-    const linkedList = new LinkedListImpl(1).append(2).append(3);
+    const linkedList = new LinkedList(1).append(2).append(3);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -105,7 +105,7 @@ describe("remove()", () => {
 
     const removed = linkedList.remove(2);
 
-    expect(removed).toEqual({
+    expect(removed.head).toEqual({
       value: 1,
       next: {
         value: 3,
@@ -115,7 +115,7 @@ describe("remove()", () => {
   });
 
   test("Removes the third node from a linked list", async () => {
-    const linkedList = new LinkedListImpl(1).append(2).append(3);
+    const linkedList = new LinkedList(1).append(2).append(3);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -129,7 +129,7 @@ describe("remove()", () => {
     });
 
     const removed = linkedList.remove(3);
-    expect(removed).toEqual({
+    expect(removed.head).toEqual({
       value: 1,
       next: {
         value: 2,
@@ -141,7 +141,7 @@ describe("remove()", () => {
 
 describe("find()", () => {
   test("Finds if at least one item is present in a linked list", async () => {
-    const linkedList = new LinkedListImpl(1).append(2).append(3);
+    const linkedList = new LinkedList(1).append(2).append(3);
 
     expect(linkedList.head).toEqual({
       value: 1,
