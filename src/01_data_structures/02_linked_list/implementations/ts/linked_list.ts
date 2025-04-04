@@ -1,59 +1,76 @@
 // Singly linked list implemented as plain functions
 
 type ListNode<T> = { value: T; next: ListNode<T> | null };
-
-export const createLinkedList = <T>(value: T): ListNode<T> => ({
-  value,
-  next: null,
-});
-
-export const append = <T>(head: ListNode<T>, value: T): ListNode<T> => {
-  let current = head;
-
-  while (current.next !== null) {
-    current = current.next;
-  }
-
-  current.next = { value, next: null };
-
-  return head;
+type LinkedList<T> = {
+  head: ListNode<T> | null;
+  append: (value) => LinkedList<T>;
+  prepend: (value) => LinkedList<T>;
+  remove: (value) => LinkedList<T>;
+  find: (value) => boolean;
 };
 
-export const prepend = <T>(head: ListNode<T>, value: T): ListNode<T> => ({
-  value,
-  next: head,
-});
+export class LinkedListImpl<T> implements LinkedList<T> {
+  head = null;
 
-export const remove = <T>(head: ListNode<T>, value: T): ListNode<T> => {
-  if (head.value === value) {
-    return head.next;
+  constructor(value: T) {
+    this.head = {
+      value,
+      next: null,
+    };
   }
 
-  let current = head;
-
-  while (current.next !== null && current.next.value !== value) {
-    current = current.next;
-  }
-
-  if (current.next !== null) {
-    current.next = current.next.next;
-
-    return head;
-  }
-
-  return head;
-};
-
-export const find = <T>(head: ListNode<T>, value: T): boolean => {
-  let current = head;
-
-  while (current.next !== null) {
-    current = current.next;
-
-    if (current.value === value) {
-      return true;
+  append(value: any): LinkedList<T> {
+    let current = this.head;
+    while (current.next !== null) {
+      current = current.next;
     }
+    current.next = { value, next: null };
+
+    return this;
   }
 
-  return false;
-};
+  prepend(value: any): LinkedList<T> {
+    this.head = {
+      value,
+      next: this.head,
+    };
+
+    return this;
+  }
+
+  remove(value: any): LinkedList<T> {
+    if (this.head.value === value) {
+      this.head = this.head.next;
+
+      return this;
+    }
+
+    let current = this.head;
+
+    while (current.next !== null && current.next.value !== value) {
+      current = current.next;
+    }
+
+    if (current.next !== null) {
+      current.next = current.next.next;
+
+      return this.head;
+    }
+
+    return this;
+  }
+
+  find(value: any): boolean {
+    let current = this.head;
+
+    while (current.next !== null) {
+      current = current.next;
+
+      if (current.value === value) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+}
