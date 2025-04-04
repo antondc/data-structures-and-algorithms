@@ -1,23 +1,23 @@
 package linkedList
 
-type Node struct {
-	value int
-	next  *Node
+type Node[T comparable] struct {
+	value T
+	next  *Node[T]
 }
 
-type LinkedList struct {
-	head *Node
+type LinkedList[T comparable] struct {
+	head *Node[T]
 }
 
-func (list *LinkedList) prepend(value int) *LinkedList {
+func (list *LinkedList[T]) prepend(value T) *LinkedList[T] {
 	if list.head == nil {
-		newNode := &Node{value: value, next: nil}
+		newNode := &Node[T]{value: value, next: nil}
 		list.head = newNode
 
 		return list
 	}
 
-	list.head = &Node{
+	list.head = &Node[T]{
 		value: value,
 		next:  list.head,
 	}
@@ -25,9 +25,9 @@ func (list *LinkedList) prepend(value int) *LinkedList {
 	return list
 }
 
-func (list *LinkedList) append(value int) *LinkedList {
+func (list *LinkedList[T]) append(value T) *LinkedList[T] {
 	if list.head == nil {
-		list.head = &Node{value: value, next: nil}
+		list.head = &Node[T]{value: value, next: nil}
 
 		return list
 	}
@@ -38,7 +38,7 @@ func (list *LinkedList) append(value int) *LinkedList {
 		current = current.next
 	}
 
-	current.next = &Node{
+	current.next = &Node[T]{
 		value: value,
 		next:  nil,
 	}
@@ -46,7 +46,7 @@ func (list *LinkedList) append(value int) *LinkedList {
 	return list
 }
 
-func (list *LinkedList) remove(value int) *LinkedList {
+func (list *LinkedList[T]) remove(value T) *LinkedList[T] {
 	if list.head == nil {
 		return list
 	}
@@ -70,7 +70,7 @@ func (list *LinkedList) remove(value int) *LinkedList {
 	return list
 }
 
-func (list *LinkedList) find(value int) bool {
+func (list *LinkedList[T]) find(value T) bool {
 	if list.head == nil {
 		return false
 	}

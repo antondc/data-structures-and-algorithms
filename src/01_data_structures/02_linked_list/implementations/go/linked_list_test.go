@@ -6,8 +6,8 @@ import (
 )
 
 func TestLinkedListCreate(t *testing.T) {
-	result := LinkedList{}
-	expectedResult := LinkedList{head: nil}
+	result := LinkedList[int]{}
+	expectedResult := LinkedList[int]{head: nil}
 
 	if !reflect.DeepEqual(result, expectedResult) {
 		t.Errorf("%v != %v", result, expectedResult)
@@ -15,9 +15,9 @@ func TestLinkedListCreate(t *testing.T) {
 }
 
 func TestLinkedListPrependItem(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.prepend(1)
-	expectedResult := LinkedList{head: &Node{value: 1, next: nil}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: nil}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -25,9 +25,9 @@ func TestLinkedListPrependItem(t *testing.T) {
 }
 
 func TestLinkedListPrependItemToAlreadyFilledList(t *testing.T) {
-	linkedList := LinkedList{head: &Node{value: 2, next: nil}}
+	linkedList := LinkedList[int]{head: &Node[int]{value: 2, next: nil}}
 	linkedList.prepend(1)
-	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: nil}}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: nil}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -35,9 +35,9 @@ func TestLinkedListPrependItemToAlreadyFilledList(t *testing.T) {
 }
 
 func TestLinkedListAppendItem(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.prepend(1).append(2)
-	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: nil}}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: nil}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -45,9 +45,9 @@ func TestLinkedListAppendItem(t *testing.T) {
 }
 
 func TestLinkedListAppendsToEmptyList(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.append(1)
-	expectedResult := LinkedList{head: &Node{value: 1, next: nil}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: nil}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -55,9 +55,9 @@ func TestLinkedListAppendsToEmptyList(t *testing.T) {
 }
 
 func TestLinkedListRemoveItem(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.append(1).append(2).append(3)
-	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: &Node{value: 3, next: nil}}}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: &Node[int]{value: 3, next: nil}}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -65,16 +65,16 @@ func TestLinkedListRemoveItem(t *testing.T) {
 
 	linkedList.remove(2)
 
-	expectedResult2 := LinkedList{head: &Node{value: 1, next: &Node{value: 3, next: nil}}}
+	expectedResult2 := LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 3, next: nil}}}
 	if !reflect.DeepEqual(linkedList, expectedResult2) {
 		t.Errorf("%v != %v", linkedList, expectedResult2)
 	}
 }
 
 func TestLinkedListRemoveNonExistingItem(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.append(1).append(2).append(3)
-	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: &Node{value: 3, next: nil}}}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: &Node[int]{value: 3, next: nil}}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -88,19 +88,19 @@ func TestLinkedListRemoveNonExistingItem(t *testing.T) {
 }
 
 func TestLinkedListRemoveItemFromEmptyList(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.remove(2)
 
-	expectedResult := LinkedList{head: nil}
+	expectedResult := LinkedList[int]{head: nil}
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
 	}
 }
 
 func TestLinkedListFindItem(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	linkedList.append(1).append(2).append(3)
-	expectedResult := LinkedList{head: &Node{value: 1, next: &Node{value: 2, next: &Node{value: 3, next: nil}}}}
+	expectedResult := LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: &Node[int]{value: 3, next: nil}}}}
 
 	if !reflect.DeepEqual(linkedList, expectedResult) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
@@ -114,7 +114,7 @@ func TestLinkedListFindItem(t *testing.T) {
 	}
 }
 func TestLinkedListFindItemInEmptyList(t *testing.T) {
-	linkedList := LinkedList{}
+	linkedList := LinkedList[int]{}
 	result := linkedList.find(2)
 
 	expectedResult := false
