@@ -43,6 +43,10 @@ func (list *LinkedList) append(value int) {
 }
 
 func (list *LinkedList) remove(value int) {
+	if list.head == nil {
+		return
+	}
+
 	if list.head.value == value {
 		return
 	}
@@ -61,6 +65,10 @@ func (list *LinkedList) remove(value int) {
 }
 
 func (list *LinkedList) find(value int) bool {
+	if list.head == nil {
+		return false
+	}
+
 	current := list.head
 
 	for current.next != nil {
