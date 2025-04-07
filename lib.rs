@@ -2,8 +2,12 @@
 
 // Data structures
 
+// Queue
+#[path = "./src/01_data_structures/03_queue/implementations/rs/mod.rs"]
+mod queue;
+
 // Heap
-#[path = "./src/01_data_structures/07_heap/implementations/rs/mod.rs"]
+#[path = "./src/01_data_structures/08_heap/implementations/rs/mod.rs"]
 mod heap;
 
 // Algorithms
