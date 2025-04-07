@@ -10,13 +10,7 @@ type LinkedList[T comparable] struct {
 }
 
 func (list *LinkedList[T]) prepend(value T) *LinkedList[T] {
-	if list.head == nil {
-		newNode := &Node[T]{value: value, next: nil}
-		list.head = newNode
-
-		return list
-	}
-
+	// Create new node with value and head as next and prepend it
 	list.head = &Node[T]{
 		value: value,
 		next:  list.head,
@@ -26,18 +20,20 @@ func (list *LinkedList[T]) prepend(value T) *LinkedList[T] {
 }
 
 func (list *LinkedList[T]) append(value T) *LinkedList[T] {
+	// If list is empty, create and add node
 	if list.head == nil {
 		list.head = &Node[T]{value: value, next: nil}
 
 		return list
 	}
 
+	// Iterate list
 	current := list.head
-
 	for current.next != nil {
 		current = current.next
 	}
 
+	// At the end, append new node with value
 	current.next = &Node[T]{
 		value: value,
 		next:  nil,
@@ -47,41 +43,52 @@ func (list *LinkedList[T]) append(value T) *LinkedList[T] {
 }
 
 func (list *LinkedList[T]) remove(value T) *LinkedList[T] {
+	// If list empty, return
 	if list.head == nil {
 		return list
 	}
 
+	// If first item, remove and return
 	if list.head.value == value {
+		list.head = list.head.next
+
 		return list
 	}
 
+	// Iterate list
 	current := list.head
-
 	for current.next != nil && current.next.value != value {
 		current = current.next
 	}
 
-	if current.next != nil {
-		current.next = current.next.next
-
+	// If last item, return
+	if current.next == nil {
 		return list
 	}
+
+	// Item found, link current to next next item and return
+	current.next = current.next.next
 
 	return list
 }
 
 func (list *LinkedList[T]) find(value T) bool {
+	// If list is empty
 	if list.head == nil {
 		return false
 	}
 
+	// Iterate list
 	current := list.head
-
 	for current.next != nil {
 		current = current.next
 
-		return current.value == value
+		// If value found, return true
+		if current.value == value {
+			return true
+		}
 	}
 
+	// If not found, return false
 	return false
 }
