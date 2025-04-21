@@ -51,16 +51,28 @@ PEEK ()
 
 ## Characteristics
 
-An array-based queue has an enqueue time complexity of O(1), but dequeue operations take O(n). That is due to the need of reindexing all elements of the array storage once extracted the dequeued item.
+Linked list-based queues are more performant than array-based queues. The reason is that arrays are stored in memory contiguous locations. So, when dequeuing, all subsequent elements need to be shifted, which is a costly operation —O(n)—. With linked list-based queues this operation will have a time complexity of O(1).
 
-For large queues or applications with strict performance needs, a linked list–based queue is usually a more suitable.
+Therefore, for large queues or applications with strict performance needs, a linked list–based queue is usually more suitable.
 
-### Operation Time Complexity (Array based)
+### Operations
+
+#### Array based
 
 | Operation | Time Complexity |
 | --------- | --------------- |
 | Enqueue   | O(1)            |
 | Dequeue   | O(n)            |
+| Is empty  | O(1)            |
+| Length    | O(1)            |
+| Peek      | O(1)            |
+
+#### Linked-list based
+
+| Operation | Time Complexity |
+| --------- | --------------- |
+| Enqueue   | O(1)            |
+| Dequeue   | O(1)            |
 | Is empty  | O(1)            |
 | Length    | O(1)            |
 | Peek      | O(1)            |
