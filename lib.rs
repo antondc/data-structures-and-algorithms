@@ -6,6 +6,10 @@
 #[path = "./src/01_data_structures/03_queue/implementations/rs/mod.rs"]
 mod queue;
 
+// Stack
+#[path = "./src/01_data_structures/04_stack/implementations/rs/mod.rs"]
+mod stack;
+
 // Heap
 #[path = "./src/01_data_structures/08_heap/implementations/rs/mod.rs"]
 mod heap;

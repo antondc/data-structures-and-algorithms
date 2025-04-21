@@ -74,14 +74,12 @@ mod tests {
 
   #[test]
   fn peeks() {
-    let mut array_queue: ArrayQueue<i32> = ArrayQueue::new().enqueue(1).enqueue(2);
-    let first_item = array_queue.peek();
-    assert_eq!(first_item, Some(1).as_ref());
+    let array_queue: ArrayQueue<i32> = ArrayQueue::new();
+    let no_item = array_queue.peek();
+    assert_eq!(no_item, None.as_ref());
 
-    let dequeued_first_item = array_queue.dequeue();
-    assert_eq!(dequeued_first_item, Some(1));
-    let dequeued_second_item = array_queue.dequeue();
-    assert_eq!(dequeued_second_item, Some(2));
-    assert_eq!(array_queue.is_empty(), true);
+    let array_queue_updated = array_queue.enqueue(1).enqueue(2);
+    let first_item = array_queue_updated.peek();
+    assert_eq!(first_item, Some(1).as_ref());
   }
 }
