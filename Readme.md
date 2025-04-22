@@ -19,4 +19,5 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
 ### Golang
 
-     go test src/01_data_structures/04_stack/implementations/go/**/* -v
+    go test ./... -v
+    go test src/01_data_structures/04_stack/implementations/go/**/* -v
