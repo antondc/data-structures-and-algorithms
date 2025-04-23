@@ -3,7 +3,14 @@ type ListNode<T> = {
   next: ListNode<T> | null;
 };
 
-export class LinkedList<T> {
+interface ILinkedList<T> {
+  prepend(value: any): LinkedList<T>;
+  append(value: any): LinkedList<T>;
+  remove(value: any): LinkedList<T>;
+  find(value: any): boolean;
+}
+
+export class LinkedList<T> implements ILinkedList<T> {
   head: ListNode<T> = null;
 
   prepend(value: any): LinkedList<T> {
@@ -53,36 +60,29 @@ export class LinkedList<T> {
 
     // Iterate list
     let current = this.head;
-    while (current.next !== null && current.next.value !== value) {
+    while (current.next !== null) {
+      if (current.next.value === value) {
+        // Remove the node by skipping it
+        current.next = current.next.next;
+
+        return this;
+      }
+
       current = current.next;
     }
-
-    // If last item, return
-    if (current.next === null) {
-      return this;
-    }
-
-    // Item found, link current to next next item and return
-    current.next = current.next.next;
 
     return this;
   }
 
   find(value: any): boolean {
-    // If empty list, not found
-    if (this.head === null) {
-      return false;
-    }
-
-    // Iterate list
     let current = this.head;
-    while (current.next !== null) {
-      current = current.next;
 
+    while (current !== null) {
       // If found
       if (current.value === value) {
         return true;
       }
+      current = current.next;
     }
 
     // Not found

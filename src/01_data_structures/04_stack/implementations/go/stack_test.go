@@ -6,7 +6,7 @@ import (
 )
 
 func TestCreatesEmptyStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 
 	if !reflect.DeepEqual(arrayStack.isEmpty(), true) {
 		t.Errorf("%v != %v", arrayStack.isEmpty(), true)
@@ -14,7 +14,7 @@ func TestCreatesEmptyStack(t *testing.T) {
 }
 
 func TestPushItemToEmptyStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 	arrayStack.push(1)
 
 	if !reflect.DeepEqual(arrayStack.isEmpty(), false) {
@@ -23,7 +23,7 @@ func TestPushItemToEmptyStack(t *testing.T) {
 }
 
 func TestPushTwoItemsToEmptyStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 	arrayStack.push(1).push(2)
 
 	if !reflect.DeepEqual(arrayStack.isEmpty(), false) {
@@ -32,7 +32,7 @@ func TestPushTwoItemsToEmptyStack(t *testing.T) {
 }
 
 func TestPopItemFromEmptyStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 	poped, ok := arrayStack.pop()
 
 	if !reflect.DeepEqual(arrayStack.isEmpty(), true) {
@@ -49,7 +49,7 @@ func TestPopItemFromEmptyStack(t *testing.T) {
 }
 
 func TestPopItemFromStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 	arrayStack.push(1).push(2)
 
 	firstItem, ok := arrayStack.pop()
@@ -70,15 +70,14 @@ func TestPopItemFromStack(t *testing.T) {
 }
 
 func TestReturnsLengthForEmptyStack(t *testing.T) {
-	arrayStack := Stack[int]{}
-
+	var arrayStack IStack[int] = &Stack[int]{}
 	if !reflect.DeepEqual(arrayStack.length(), 0) {
 		t.Errorf("%v != %v", arrayStack.length(), 0)
 	}
 }
 
 func TestReturnsLengthForStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 	arrayStack.push(1).push(2)
 
 	arrayStack.pop()
@@ -98,7 +97,7 @@ func TestReturnsLengthForStack(t *testing.T) {
 }
 
 func TestIsEmptyForEmptyStack(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 
 	if !reflect.DeepEqual(arrayStack.isEmpty(), true) {
 		t.Errorf("%v != %v", arrayStack.isEmpty(), true)
@@ -106,7 +105,7 @@ func TestIsEmptyForEmptyStack(t *testing.T) {
 }
 
 func TestIsEmptyWhenStackHasValues(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 
 	arrayStack.push(1)
 	if !reflect.DeepEqual(arrayStack.isEmpty(), false) {
@@ -115,7 +114,7 @@ func TestIsEmptyWhenStackHasValues(t *testing.T) {
 }
 
 func TestPeeks(t *testing.T) {
-	arrayStack := Stack[int]{}
+	var arrayStack IStack[int] = &Stack[int]{}
 
 	result, ok := arrayStack.peek()
 	if !reflect.DeepEqual(ok, false) {

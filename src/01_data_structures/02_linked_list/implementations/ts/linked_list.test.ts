@@ -40,6 +40,17 @@ describe("prepend()", () => {
 });
 
 describe("remove()", () => {
+  test("Removes item from empty list return null", async () => {
+    const linkedList = new LinkedList().remove(1);
+    expect(linkedList.head).toEqual(null);
+  });
+
+  test("Removes one item from a list containing only this item", async () => {
+    const linkedList = new LinkedList().append(1).remove(1);
+
+    expect(linkedList.head).toEqual(null);
+  });
+
   test("Removes first item from a linked list", async () => {
     const linkedList = new LinkedList()
       .append(1)
@@ -134,15 +145,24 @@ describe("remove()", () => {
       },
     });
   });
-
-  test("Removes item from empty list", async () => {
-    const linkedList = new LinkedList().remove(1);
-    expect(linkedList.head).toEqual(null);
-  });
 });
 
 describe("find()", () => {
-  test("Finds if at least one item is present in a linked list", async () => {
+  test("Finds returns false in an empty list", async () => {
+    const linkedList = new LinkedList();
+
+    const result = linkedList.find(1);
+    expect(result).toEqual(false);
+  });
+
+  test("Finds if one item is present in a linked list", async () => {
+    const linkedList = new LinkedList().append(1);
+
+    const result = linkedList.find(1);
+    expect(result).toEqual(true);
+  });
+
+  test("Finds if several items are present in a linked list", async () => {
     const linkedList = new LinkedList().append(1).append(2).append(3);
 
     const result1 = linkedList.find(2);

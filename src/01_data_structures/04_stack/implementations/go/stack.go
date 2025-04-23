@@ -1,5 +1,13 @@
 package stack
 
+type IStack[T comparable] interface {
+	push(value T) *Stack[T]
+	pop() (T, bool)
+	isEmpty() bool
+	length() int
+	peek() (T, bool)
+}
+
 type Stack[T comparable] struct {
 	storage []T
 }

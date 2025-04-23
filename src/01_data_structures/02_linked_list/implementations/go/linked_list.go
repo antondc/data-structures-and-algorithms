@@ -5,6 +5,13 @@ type Node[T comparable] struct {
 	next  *Node[T]
 }
 
+type ILinkedList[T comparable] interface {
+	prepend(value T) *LinkedList[T]
+	append(value T) *LinkedList[T]
+	remove(value T) *LinkedList[T]
+	find(value T) bool
+}
+
 type LinkedList[T comparable] struct {
 	head *Node[T]
 }
@@ -73,20 +80,15 @@ func (list *LinkedList[T]) remove(value T) *LinkedList[T] {
 }
 
 func (list *LinkedList[T]) find(value T) bool {
-	// If list is empty
-	if list.head == nil {
-		return false
-	}
-
 	// Iterate list
 	current := list.head
-	for current.next != nil {
-		current = current.next
-
+	for current != nil {
 		// If value found, return true
 		if current.value == value {
 			return true
 		}
+
+		current = current.next
 	}
 
 	// If not found, return false
