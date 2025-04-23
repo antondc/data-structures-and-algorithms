@@ -1,4 +1,4 @@
-import { HashTable } from "./hashTable";
+import { HashTable } from "./hash_table";
 
 describe("new HashTable()", () => {
   test("Creates a HashTable object", async () => {

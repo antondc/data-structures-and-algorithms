@@ -7,14 +7,14 @@ import { LinkedList } from "../../../02_linked_list/implementations/ts/linked_li
   Thus, we extend the Linked list to add this behavior.
 */
 interface IHashTableLinkedList<T> extends LinkedList<T> {
-  getItemByCallback(matcher: (arg: T) => boolean): T | null;
+  getItemIf(matcher: (arg: T) => boolean): T | null;
 }
 
 export class HashTableLinkedList<T>
   extends LinkedList<T>
   implements IHashTableLinkedList<T>
 {
-  getItemByCallback(matcher: (arg: T) => boolean): T | null {
+  getItemIf(matcher: (arg: T) => boolean): T | null {
     let current = this.head;
 
     while (current !== null) {

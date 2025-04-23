@@ -1,4 +1,4 @@
-import { HashTableLinkedList } from "./hashTableLinkedList";
+import { HashTableLinkedList } from "./hash_table_linked_list";
 
 interface IHashTable<T> {
   set(key: string, value: T): HashTable<T>;
@@ -43,7 +43,7 @@ export class HashTable<T> implements IHashTable<T> {
     const bucket = this.buckets[index];
     if (!bucket) return null;
 
-    const item = bucket.getItemByCallback((item) => item[0] === key);
+    const item = bucket.getItemIf((item) => item[0] === key);
     if (!item) return null;
 
     return item[1];
