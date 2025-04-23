@@ -8,8 +8,8 @@ type Node[T comparable] struct {
 type ILinkedList[T comparable] interface {
 	prepend(value T) *LinkedList[T]
 	append(value T) *LinkedList[T]
-	remove(value T) *LinkedList[T]
-	find(value T) bool
+	remove(matcher func(T) bool) *LinkedList[T]
+	find(matcher func(T) bool) bool
 }
 
 type LinkedList[T comparable] struct {
@@ -49,14 +49,14 @@ func (list *LinkedList[T]) append(value T) *LinkedList[T] {
 	return list
 }
 
-func (list *LinkedList[T]) remove(value T) *LinkedList[T] {
+func (list *LinkedList[T]) remove(matcher func(T) bool) *LinkedList[T] {
 	// If list empty, return
 	if list.head == nil {
 		return list
 	}
 
 	// If first item, remove and return
-	if list.head.value == value {
+	if matcher(list.head.value) {
 		list.head = list.head.next
 
 		return list
@@ -64,7 +64,7 @@ func (list *LinkedList[T]) remove(value T) *LinkedList[T] {
 
 	// Iterate list
 	current := list.head
-	for current.next != nil && current.next.value != value {
+	for current.next != nil && !matcher(current.next.value) {
 		current = current.next
 	}
 
@@ -79,12 +79,12 @@ func (list *LinkedList[T]) remove(value T) *LinkedList[T] {
 	return list
 }
 
-func (list *LinkedList[T]) find(value T) bool {
+func (list *LinkedList[T]) find(matcher func(T) bool) bool {
 	// Iterate list
 	current := list.head
 	for current != nil {
 		// If value found, return true
-		if current.value == value {
+		if matcher(current.value) {
 			return true
 		}
 

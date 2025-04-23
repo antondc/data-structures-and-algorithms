@@ -41,12 +41,12 @@ describe("prepend()", () => {
 
 describe("remove()", () => {
   test("Removes item from empty list return null", async () => {
-    const linkedList = new LinkedList().remove(1);
+    const linkedList = new LinkedList().remove((el) => el === 1);
     expect(linkedList.head).toEqual(null);
   });
 
   test("Removes one item from a list containing only this item", async () => {
-    const linkedList = new LinkedList().append(1).remove(1);
+    const linkedList = new LinkedList().append(1).remove((el) => el === 1);
 
     expect(linkedList.head).toEqual(null);
   });
@@ -57,7 +57,7 @@ describe("remove()", () => {
       .append(2)
       .append(3)
       .append(4)
-      .remove(1);
+      .remove((el) => el === 1);
 
     expect(linkedList.head).toEqual({
       value: 2,
@@ -77,7 +77,7 @@ describe("remove()", () => {
       .append(2)
       .append(3)
       .append(4)
-      .remove(2);
+      .remove((el) => el === 2);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -97,7 +97,7 @@ describe("remove()", () => {
       .append(2)
       .append(3)
       .append(4)
-      .remove(3);
+      .remove((el) => el === 3);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -117,7 +117,7 @@ describe("remove()", () => {
       .append(2)
       .append(3)
       .append(4)
-      .remove(4);
+      .remove((el) => el === 4);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -132,7 +132,11 @@ describe("remove()", () => {
   });
 
   test("Tries to remove non existing item from a linked list", async () => {
-    const linkedList = new LinkedList().append(1).append(2).append(3).remove(4);
+    const linkedList = new LinkedList()
+      .append(1)
+      .append(2)
+      .append(3)
+      .remove((el) => el === 4);
 
     expect(linkedList.head).toEqual({
       value: 1,
@@ -151,31 +155,31 @@ describe("find()", () => {
   test("Finds returns false in an empty list", async () => {
     const linkedList = new LinkedList();
 
-    const result = linkedList.find(1);
+    const result = linkedList.find((item) => item === 1);
     expect(result).toEqual(false);
   });
 
   test("Finds if one item is present in a linked list", async () => {
     const linkedList = new LinkedList().append(1);
 
-    const result = linkedList.find(1);
+    const result = linkedList.find((item) => item === 1);
     expect(result).toEqual(true);
   });
 
   test("Finds if several items are present in a linked list", async () => {
     const linkedList = new LinkedList().append(1).append(2).append(3);
 
-    const result1 = linkedList.find(2);
+    const result1 = linkedList.find((item) => item === 2);
     expect(result1).toEqual(true);
 
-    const result2 = linkedList.find(4);
+    const result2 = linkedList.find((item) => item === 4);
     expect(result2).toEqual(false);
   });
 
   test("Tries to find within an empty list", async () => {
     const linkedList = new LinkedList();
 
-    const result1 = linkedList.find(1);
-    expect(result1).toEqual(false);
+    const result = linkedList.find((item) => item === 1);
+    expect(result).toEqual(false);
   });
 });

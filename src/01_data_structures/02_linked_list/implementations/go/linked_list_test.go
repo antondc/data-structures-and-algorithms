@@ -60,7 +60,7 @@ func TestLinkedListAppendsToEmptyList(t *testing.T) {
 
 func TestLinkedListRemoveFirstItem(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	linkedList.append(1).append(2).append(3).append(4).remove(1)
+	linkedList.append(1).append(2).append(3).append(4).remove(func(v int) bool { return v == 1 })
 
 	var expectedResult ILinkedList[int] = &LinkedList[int]{head: &Node[int]{value: 2, next: &Node[int]{value: 3, next: &Node[int]{value: 4, next: nil}}}}
 
@@ -71,7 +71,7 @@ func TestLinkedListRemoveFirstItem(t *testing.T) {
 
 func TestLinkedListRemoveSecondItem(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	linkedList.append(1).append(2).append(3).append(4).remove(2)
+	linkedList.append(1).append(2).append(3).append(4).remove(func(v int) bool { return v == 2 })
 
 	var expectedResult ILinkedList[int] = &LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 3, next: &Node[int]{value: 4, next: nil}}}}
 
@@ -82,7 +82,7 @@ func TestLinkedListRemoveSecondItem(t *testing.T) {
 
 func TestLinkedListRemoveThirdItem(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	linkedList.append(1).append(2).append(3).append(4).remove(3)
+	linkedList.append(1).append(2).append(3).append(4).remove(func(v int) bool { return v == 3 })
 
 	var expectedResult ILinkedList[int] = &LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: &Node[int]{value: 4, next: nil}}}}
 
@@ -93,7 +93,7 @@ func TestLinkedListRemoveThirdItem(t *testing.T) {
 
 func TestLinkedListRemoveLastItem(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	linkedList.append(1).append(2).append(3).append(4).remove(4)
+	linkedList.append(1).append(2).append(3).append(4).remove(func(v int) bool { return v == 4 })
 
 	var expectedResult ILinkedList[int] = &LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: &Node[int]{value: 3, next: nil}}}}
 
@@ -104,7 +104,7 @@ func TestLinkedListRemoveLastItem(t *testing.T) {
 
 func TestLinkedListRemoveNonExistingItem(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	linkedList.append(1).append(2).append(3).remove(4)
+	linkedList.append(1).append(2).append(3).remove(func(v int) bool { return v == 4 })
 
 	var expectedResult ILinkedList[int] = &LinkedList[int]{head: &Node[int]{value: 1, next: &Node[int]{value: 2, next: &Node[int]{value: 3, next: nil}}}}
 
@@ -115,7 +115,7 @@ func TestLinkedListRemoveNonExistingItem(t *testing.T) {
 
 func TestLinkedListRemoveItemFromEmptyList(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	linkedList.remove(1)
+	linkedList.remove(func(v int) bool { return v == 1 })
 
 	var expectedResult ILinkedList[int] = &LinkedList[int]{head: nil}
 
@@ -134,7 +134,7 @@ func TestLinkedListFindOnlyItem(t *testing.T) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
 	}
 
-	result := linkedList.find(1)
+	result := linkedList.find(func(v int) bool { return v == 1 })
 
 	expectedResult2 := true
 	if !reflect.DeepEqual(result, expectedResult2) {
@@ -152,7 +152,7 @@ func TestLinkedListFindItem(t *testing.T) {
 		t.Errorf("%v != %v", linkedList, expectedResult)
 	}
 
-	result := linkedList.find(2)
+	result := linkedList.find(func(v int) bool { return v == 2 })
 
 	expectedResult2 := true
 	if !reflect.DeepEqual(result, expectedResult2) {
@@ -162,7 +162,7 @@ func TestLinkedListFindItem(t *testing.T) {
 
 func TestLinkedListFindItemInEmptyList(t *testing.T) {
 	var linkedList ILinkedList[int] = &LinkedList[int]{}
-	result := linkedList.find(2)
+	result := linkedList.find(func(v int) bool { return v == 2 })
 
 	expectedResult := false
 	if !reflect.DeepEqual(result, expectedResult) {

@@ -4,16 +4,16 @@ type ListNode<T> = {
 };
 
 interface ILinkedList<T> {
-  prepend(value: any): LinkedList<T>;
-  append(value: any): LinkedList<T>;
-  remove(value: any): LinkedList<T>;
-  find(value: any): boolean;
+  prepend(value: any): this;
+  append(value: any): this;
+  remove(matcher: (arg: T) => boolean): this;
+  find(matcher: (arg: T) => boolean): boolean;
 }
 
 export class LinkedList<T> implements ILinkedList<T> {
   head: ListNode<T> = null;
 
-  prepend(value: any): LinkedList<T> {
+  prepend(value: any): this {
     // Create new node with value and head as next and prepend it
     this.head = {
       value,
@@ -23,7 +23,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     return this;
   }
 
-  append(value: any): LinkedList<T> {
+  append(value: any): this {
     // If list is empty, create and add node
     if (this.head === null) {
       this.head = {
@@ -45,14 +45,14 @@ export class LinkedList<T> implements ILinkedList<T> {
     return this;
   }
 
-  remove(value: any): LinkedList<T> {
+  remove(matcher: (arg: T) => boolean): this {
     // If list empty, return
     if (this.head === null) {
       return this;
     }
 
     // If first item, remove and return
-    if (this.head.value === value) {
+    if (matcher(this.head.value)) {
       this.head = this.head.next;
 
       return this;
@@ -61,7 +61,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     // Iterate list
     let current = this.head;
     while (current.next !== null) {
-      if (current.next.value === value) {
+      if (matcher(current.next.value)) {
         // Remove the node by skipping it
         current.next = current.next.next;
 
@@ -74,12 +74,12 @@ export class LinkedList<T> implements ILinkedList<T> {
     return this;
   }
 
-  find(value: any): boolean {
+  find(matcher: (arg: T) => boolean): boolean {
     let current = this.head;
 
     while (current !== null) {
       // If found
-      if (current.value === value) {
+      if (matcher(current.value)) {
         return true;
       }
       current = current.next;
