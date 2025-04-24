@@ -1,94 +1,94 @@
 package linkedList
 
 type Node[T comparable] struct {
-	value T
-	next  *Node[T]
+	Value T
+	Next  *Node[T]
 }
 
 type ILinkedList[T comparable] interface {
-	prepend(value T) *LinkedList[T]
-	append(value T) *LinkedList[T]
-	remove(matcher func(T) bool) *LinkedList[T]
-	find(matcher func(T) bool) bool
+	Prepend(value T) *LinkedList[T]
+	Append(value T) *LinkedList[T]
+	Remove(matcher func(T) bool) *LinkedList[T]
+	Find(matcher func(T) bool) bool
 }
 
 type LinkedList[T comparable] struct {
-	head *Node[T]
+	Head *Node[T]
 }
 
-func (list *LinkedList[T]) prepend(value T) *LinkedList[T] {
+func (list *LinkedList[T]) Prepend(value T) *LinkedList[T] {
 	// Create new node with value and head as next and prepend it
-	list.head = &Node[T]{
-		value: value,
-		next:  list.head,
+	list.Head = &Node[T]{
+		Value: value,
+		Next:  list.Head,
 	}
 
 	return list
 }
 
-func (list *LinkedList[T]) append(value T) *LinkedList[T] {
+func (list *LinkedList[T]) Append(value T) *LinkedList[T] {
 	// If list is empty, create and add node
-	if list.head == nil {
-		list.head = &Node[T]{value: value, next: nil}
+	if list.Head == nil {
+		list.Head = &Node[T]{Value: value, Next: nil}
 
 		return list
 	}
 
 	// Iterate list
-	current := list.head
-	for current.next != nil {
-		current = current.next
+	current := list.Head
+	for current.Next != nil {
+		current = current.Next
 	}
 
 	// At the end, append new node with value
-	current.next = &Node[T]{
-		value: value,
-		next:  nil,
+	current.Next = &Node[T]{
+		Value: value,
+		Next:  nil,
 	}
 
 	return list
 }
 
-func (list *LinkedList[T]) remove(matcher func(T) bool) *LinkedList[T] {
+func (list *LinkedList[T]) Remove(matcher func(T) bool) *LinkedList[T] {
 	// If list empty, return
-	if list.head == nil {
+	if list.Head == nil {
 		return list
 	}
 
 	// If first item, remove and return
-	if matcher(list.head.value) {
-		list.head = list.head.next
+	if matcher(list.Head.Value) {
+		list.Head = list.Head.Next
 
 		return list
 	}
 
 	// Iterate list
-	current := list.head
-	for current.next != nil && !matcher(current.next.value) {
-		current = current.next
+	current := list.Head
+	for current.Next != nil && !matcher(current.Next.Value) {
+		current = current.Next
 	}
 
 	// If last item, return
-	if current.next == nil {
+	if current.Next == nil {
 		return list
 	}
 
 	// Item found, link current to next next item and return
-	current.next = current.next.next
+	current.Next = current.Next.Next
 
 	return list
 }
 
-func (list *LinkedList[T]) find(matcher func(T) bool) bool {
+func (list *LinkedList[T]) Find(matcher func(T) bool) bool {
 	// Iterate list
-	current := list.head
+	current := list.Head
 	for current != nil {
 		// If value found, return true
-		if matcher(current.value) {
+		if matcher(current.Value) {
 			return true
 		}
 
-		current = current.next
+		current = current.Next
 	}
 
 	// If not found, return false
