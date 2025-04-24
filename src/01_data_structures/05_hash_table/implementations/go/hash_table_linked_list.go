@@ -8,9 +8,9 @@ type HashTableLinkedListItem[T comparable] struct {
 }
 
 type IHashTableLinkedList[T comparable] interface {
-	Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) *HashTableLinkedList[T]
-	Append(hashTableLinkedListItem HashTableLinkedListItem[T]) *HashTableLinkedList[T]
-	Remove(matcher func(HashTableLinkedListItem[T]) bool) *HashTableLinkedList[T]
+	Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T]
+	Append(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T]
+	Remove(matcher func(HashTableLinkedListItem[T]) bool) IHashTableLinkedList[T]
 	Find(matcher func(HashTableLinkedListItem[T]) bool) bool
 	GetItemIf(matcher func(HashTableLinkedListItem[T]) bool) (T, bool)
 }
@@ -20,19 +20,19 @@ type HashTableLinkedList[T comparable] struct {
 	Head       *linkedList.Node[T]
 }
 
-func (this *HashTableLinkedList[T]) Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) *HashTableLinkedList[T] {
+func (this *HashTableLinkedList[T]) Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T] {
 	this.LinkedList.Prepend(hashTableLinkedListItem)
 
 	return this
 }
 
-func (this *HashTableLinkedList[T]) Append(hashTableLinkedListItem HashTableLinkedListItem[T]) *HashTableLinkedList[T] {
+func (this *HashTableLinkedList[T]) Append(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T] {
 	this.LinkedList.Append(hashTableLinkedListItem)
 
 	return this
 }
 
-func (this *HashTableLinkedList[T]) Remove(matcher func(HashTableLinkedListItem[T]) bool) *HashTableLinkedList[T] {
+func (this *HashTableLinkedList[T]) Remove(matcher func(HashTableLinkedListItem[T]) bool) IHashTableLinkedList[T] {
 	this.LinkedList.Remove(matcher)
 
 	return this

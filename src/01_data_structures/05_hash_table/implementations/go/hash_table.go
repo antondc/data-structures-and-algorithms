@@ -7,7 +7,6 @@ import (
 var DEFAULT_HASH_TABLE_SIZE = 50
 
 type IHashTable[T comparable] interface {
-	New(size int) HashTable[T]
 	Set(key string, value T) IHashTable[T]
 	Get(key string) (T, bool)
 	Remove(key string) IHashTable[T]
@@ -18,7 +17,7 @@ type HashTable[T comparable] struct {
 	size    int
 }
 
-func (hashTable HashTable[T]) New(size int) HashTable[T] {
+func NewHashTable[T comparable](size int) HashTable[T] {
 	if size == 0 {
 		size = DEFAULT_HASH_TABLE_SIZE
 	}
@@ -71,9 +70,6 @@ func (hashTable HashTable[T]) Get(key string) (T, bool) {
 	if !ok {
 		return zero, false
 	}
-	// const item = bucket.getItemIf((item) => item[0] === key);
-	// if (!item) return null;
-	// return item[1];
 
 	return item, true
 }
