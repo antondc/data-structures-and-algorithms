@@ -17,7 +17,6 @@ type IHashTableLinkedList[T comparable] interface {
 
 type HashTableLinkedList[T comparable] struct {
 	LinkedList *linkedList.LinkedList[HashTableLinkedListItem[T]]
-	Head       *linkedList.Node[T]
 }
 
 func (this *HashTableLinkedList[T]) Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T] {

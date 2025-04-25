@@ -33,7 +33,8 @@ export class HashTable<T> implements IHashTable<T> {
       this.buckets[index] = new HashTableLinkedList();
     }
 
-    this.buckets[index].append([key, value]);
+    const bucket = this.buckets[index];
+    bucket.append([key, value]);
 
     return this;
   }
@@ -41,6 +42,7 @@ export class HashTable<T> implements IHashTable<T> {
   get(key: string): T | null {
     const index = this.hash(key);
     const bucket = this.buckets[index];
+    
     if (!bucket) return null;
 
     const item = bucket.getItemIf((item) => item[0] === key);

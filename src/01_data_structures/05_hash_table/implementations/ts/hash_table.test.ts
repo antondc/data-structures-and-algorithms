@@ -16,21 +16,21 @@ describe("set()", () => {
 });
 
 describe("get()", () => {
-  test("Gets an item within an empty hash table", async () => {
+  test("Gets an item from an empty hash table", async () => {
     const hashTable = new HashTable();
     const item = hashTable.get("a");
 
     expect(item).toBe(null);
   });
 
-  test("Gets an item within a bucket with a single item", async () => {
+  test("Gets an item from a bucket with a single item", async () => {
     const hashTable = new HashTable().set("a", 1);
     const item = hashTable.get("a");
 
     expect(item).toBe(1);
   });
 
-  test("Gets an item within a bucket with several items with collisions", async () => {
+  test("Gets an item from a bucket with several items with collisions", async () => {
     const hashTable = new HashTable().set("abc", 1).set("cba", 2);
 
     const abc = hashTable.get("abc");

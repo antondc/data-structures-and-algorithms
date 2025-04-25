@@ -44,14 +44,17 @@ func (hashTable *HashTable[T]) hash(key string) int {
 
 func (hashTable HashTable[T]) Set(key string, value T) IHashTable[T] {
 	index := hashTable.hash(key)
+	bucket := hashTable.buckets[index]
 
-	if hashTable.buckets[index] == nil {
+	if bucket == nil {
 		hashTable.buckets[index] = &HashTableLinkedList[T]{
 			LinkedList: &linkedList.LinkedList[HashTableLinkedListItem[T]]{},
 		}
+
+		bucket = hashTable.buckets[index]
 	}
 
-	hashTable.buckets[index].Append(HashTableLinkedListItem[T]{Key: key, Value: value})
+	bucket.Append(HashTableLinkedListItem[T]{Key: key, Value: value})
 
 	return hashTable
 }
@@ -59,9 +62,9 @@ func (hashTable HashTable[T]) Set(key string, value T) IHashTable[T] {
 func (hashTable HashTable[T]) Get(key string) (T, bool) {
 	var zero T
 	index := hashTable.hash(key)
+	bucket := hashTable.buckets[index]
 
-	var bucket = hashTable.buckets[index]
-	if hashTable.buckets[index] == nil {
+	if bucket == nil {
 		return zero, false
 	}
 
@@ -75,5 +78,12 @@ func (hashTable HashTable[T]) Get(key string) (T, bool) {
 }
 
 func (hashTable HashTable[T]) Remove(key string) IHashTable[T] {
+	index := hashTable.hash(key)
+	bucket := hashTable.buckets[index]
+
+	if bucket != nil {
+		bucket.Remove(func(item HashTableLinkedListItem[T]) bool { return item.Key == key })
+	}
+
 	return hashTable
 }
