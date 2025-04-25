@@ -1,3 +1,10 @@
+/*
+  LINKED LIST FOR HASH TABLES
+  In hash tables we will store items in our linked lists as key, value tuples.
+  To find an item by the key we need a method that receives a matcher function, and will return the item that matches it.
+  Thus, we extend the Linked list to add this behavior.
+*/
+
 package hash_table
 
 import linkedList "data-structures-algorithms-problems/src/01_data_structures/02_linked_list/implementations/go"
