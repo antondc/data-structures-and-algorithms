@@ -3,14 +3,7 @@ type ListNode<T> = {
   next: ListNode<T> | null;
 };
 
-interface ILinkedList<T> {
-  prepend(value: any): this;
-  append(value: any): this;
-  remove(matcher: (arg: T) => boolean): this;
-  find(matcher: (arg: T) => boolean): boolean;
-}
-
-export class LinkedList<T> implements ILinkedList<T> {
+export class LinkedList<T> {
   head: ListNode<T> = null;
 
   prepend(value: any): this {

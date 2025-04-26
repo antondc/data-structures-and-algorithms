@@ -6,12 +6,6 @@ import (
 
 var DEFAULT_HASH_TABLE_SIZE = 50
 
-type IHashTable[T comparable] interface {
-	Set(key string, value T) IHashTable[T]
-	Get(key string) (T, bool)
-	Remove(key string) IHashTable[T]
-}
-
 type HashTable[T comparable] struct {
 	buckets []*HashTableLinkedList[T]
 	size    int
@@ -30,7 +24,7 @@ func NewHashTable[T comparable](size int) HashTable[T] {
 	}
 }
 
-func (hashTable *HashTable[T]) hash(key string) int {
+func (hashTable HashTable[T]) hash(key string) int {
 	var hash int
 
 	for _, r := range key {
@@ -42,7 +36,7 @@ func (hashTable *HashTable[T]) hash(key string) int {
 	return result
 }
 
-func (hashTable HashTable[T]) Set(key string, value T) IHashTable[T] {
+func (hashTable HashTable[T]) Set(key string, value T) HashTable[T] {
 	index := hashTable.hash(key)
 	bucket := hashTable.buckets[index]
 
@@ -77,7 +71,7 @@ func (hashTable HashTable[T]) Get(key string) (T, bool) {
 	return item, true
 }
 
-func (hashTable HashTable[T]) Remove(key string) IHashTable[T] {
+func (hashTable HashTable[T]) Remove(key string) HashTable[T] {
 	index := hashTable.hash(key)
 	bucket := hashTable.buckets[index]
 

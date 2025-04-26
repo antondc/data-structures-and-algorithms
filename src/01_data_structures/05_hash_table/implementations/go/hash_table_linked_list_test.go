@@ -7,7 +7,7 @@ import (
 )
 
 func TestGetItemIfEmptyList(t *testing.T) {
-	var hashTableLinkedList IHashTableLinkedList[int] = &HashTableLinkedList[int]{
+	var hashTableLinkedList = HashTableLinkedList[int]{
 		LinkedList: &linkedList.LinkedList[HashTableLinkedListItem[int]]{},
 	}
 	expectedResult := 0
@@ -23,7 +23,7 @@ func TestGetItemIfEmptyList(t *testing.T) {
 }
 
 func TestGetItemIfFromListWithOneItem(t *testing.T) {
-	var hashTableLinkedList IHashTableLinkedList[int] = &HashTableLinkedList[int]{
+	var hashTableLinkedList = HashTableLinkedList[int]{
 		LinkedList: &linkedList.LinkedList[HashTableLinkedListItem[int]]{},
 	}
 	hashTableLinkedList.Append(HashTableLinkedListItem[int]{Key: "a", Value: 1})
@@ -41,7 +41,7 @@ func TestGetItemIfFromListWithOneItem(t *testing.T) {
 }
 
 func TestGetItemIfFromListWithSeveralItems(t *testing.T) {
-	var hashTableLinkedList IHashTableLinkedList[int] = &HashTableLinkedList[int]{
+	var hashTableLinkedList = HashTableLinkedList[int]{
 		LinkedList: &linkedList.LinkedList[HashTableLinkedListItem[int]]{},
 	}
 
@@ -74,7 +74,7 @@ func TestGetItemIfFromListWithComplexItems(t *testing.T) {
 		age  int
 	}
 
-	var hashTableLinkedList IHashTableLinkedList[Item] = &HashTableLinkedList[Item]{
+	var hashTableLinkedList = HashTableLinkedList[Item]{
 		LinkedList: &linkedList.LinkedList[HashTableLinkedListItem[Item]]{},
 	}
 

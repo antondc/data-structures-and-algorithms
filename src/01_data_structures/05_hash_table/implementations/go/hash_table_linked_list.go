@@ -14,41 +14,33 @@ type HashTableLinkedListItem[T comparable] struct {
 	Value T
 }
 
-type IHashTableLinkedList[T comparable] interface {
-	Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T]
-	Append(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T]
-	Remove(matcher func(HashTableLinkedListItem[T]) bool) IHashTableLinkedList[T]
-	Find(matcher func(HashTableLinkedListItem[T]) bool) bool
-	GetItemIf(matcher func(HashTableLinkedListItem[T]) bool) (T, bool)
-}
-
 type HashTableLinkedList[T comparable] struct {
 	LinkedList *linkedList.LinkedList[HashTableLinkedListItem[T]]
 }
 
-func (this *HashTableLinkedList[T]) Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T] {
+func (this HashTableLinkedList[T]) Prepend(hashTableLinkedListItem HashTableLinkedListItem[T]) HashTableLinkedList[T] {
 	this.LinkedList.Prepend(hashTableLinkedListItem)
 
 	return this
 }
 
-func (this *HashTableLinkedList[T]) Append(hashTableLinkedListItem HashTableLinkedListItem[T]) IHashTableLinkedList[T] {
+func (this HashTableLinkedList[T]) Append(hashTableLinkedListItem HashTableLinkedListItem[T]) HashTableLinkedList[T] {
 	this.LinkedList.Append(hashTableLinkedListItem)
 
 	return this
 }
 
-func (this *HashTableLinkedList[T]) Remove(matcher func(HashTableLinkedListItem[T]) bool) IHashTableLinkedList[T] {
+func (this HashTableLinkedList[T]) Remove(matcher func(HashTableLinkedListItem[T]) bool) HashTableLinkedList[T] {
 	this.LinkedList.Remove(matcher)
 
 	return this
 }
 
-func (this *HashTableLinkedList[T]) Find(matcher func(HashTableLinkedListItem[T]) bool) bool {
+func (this HashTableLinkedList[T]) Find(matcher func(HashTableLinkedListItem[T]) bool) bool {
 	return this.LinkedList.Find(matcher)
 }
 
-func (this *HashTableLinkedList[T]) GetItemIf(matcher func(HashTableLinkedListItem[T]) bool) (T, bool) {
+func (this HashTableLinkedList[T]) GetItemIf(matcher func(HashTableLinkedListItem[T]) bool) (T, bool) {
 	var zero T
 
 	current := this.LinkedList.Head

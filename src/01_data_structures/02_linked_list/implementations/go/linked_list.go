@@ -5,13 +5,6 @@ type Node[T comparable] struct {
 	Next  *Node[T]
 }
 
-type ILinkedList[T comparable] interface {
-	Prepend(value T) *LinkedList[T]
-	Append(value T) *LinkedList[T]
-	Remove(matcher func(T) bool) *LinkedList[T]
-	Find(matcher func(T) bool) bool
-}
-
 type LinkedList[T comparable] struct {
 	Head *Node[T]
 }

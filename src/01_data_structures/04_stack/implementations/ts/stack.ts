@@ -1,12 +1,5 @@
-interface IStack<T> {
-  push(value: any): IStack<T>;
-  pop(): T | null;
-  length(): number;
-  isEmpty(): boolean;
-  peek(): T | null;
-}
 
-export class Stack<T> implements IStack<T> {
+export class Stack<T>  {
   private storage: Array<T> = [];
 
   push(value: any): Stack<T> {

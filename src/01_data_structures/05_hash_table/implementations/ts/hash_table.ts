@@ -1,12 +1,6 @@
 import { HashTableLinkedList } from "./hash_table_linked_list";
 
-interface IHashTable<T> {
-  set(key: string, value: T): IHashTable<T>;
-  get(key: string): T;
-  remove(key: string): IHashTable<T>;
-}
-
-export class HashTable<T> implements IHashTable<T> {
+export class HashTable<T> {
   private buckets: Array<HashTableLinkedList<[string, T]>>;
   private size;
 
@@ -26,7 +20,7 @@ export class HashTable<T> implements IHashTable<T> {
     return hash % this.size;
   }
 
-  set(key: string, value: T): IHashTable<T> {
+  set(key: string, value: T): HashTable<T> {
     const index = this.hash(key);
 
     if (!this.buckets[index]) {
@@ -42,7 +36,7 @@ export class HashTable<T> implements IHashTable<T> {
   get(key: string): T | null {
     const index = this.hash(key);
     const bucket = this.buckets[index];
-    
+
     if (!bucket) return null;
 
     const item = bucket.getItemIf((item) => item[0] === key);
@@ -51,7 +45,7 @@ export class HashTable<T> implements IHashTable<T> {
     return item[1];
   }
 
-  remove(key: string): IHashTable<T> {
+  remove(key: string): HashTable<T> {
     const index = this.hash(key);
     const bucket = this.buckets[index];
 

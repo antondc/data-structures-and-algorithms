@@ -7,14 +7,7 @@
 
 import { LinkedList } from "../../../02_linked_list/implementations/ts/linked_list";
 
-interface IHashTableLinkedList<T> extends LinkedList<T> {
-  getItemIf(matcher: (arg: T) => boolean): T | null;
-}
-
-export class HashTableLinkedList<T>
-  extends LinkedList<T>
-  implements IHashTableLinkedList<T>
-{
+export class HashTableLinkedList<T> extends LinkedList<T> {
   getItemIf(matcher: (arg: T) => boolean): T | null {
     let current = this.head;
 
