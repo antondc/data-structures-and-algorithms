@@ -1,4 +1,6 @@
+#![feature(linked_list_remove)]
 #![allow(dead_code)]
+#![feature(extract_if)]
 
 // Data structures
 
@@ -9,6 +11,10 @@ mod queue;
 // Stack
 #[path = "./src/01_data_structures/04_stack/implementations/rs/mod.rs"]
 mod stack;
+
+// Hash Table
+#[path = "./src/01_data_structures/05_hash_table/implementations/rs/mod.rs"]
+mod hash_table;
 
 // Heap
 #[path = "./src/01_data_structures/08_heap/implementations/rs/mod.rs"]
