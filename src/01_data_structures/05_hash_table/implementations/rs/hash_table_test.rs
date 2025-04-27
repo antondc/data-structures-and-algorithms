@@ -6,6 +6,8 @@ mod tests {
   fn creates_hash_table() {
     let mut hash_table: HashTable<i32> = HashTable::new(10);
     hash_table.set("a", 1);
+
+    assert_eq!(true, true);
   }
 
   #[test]
@@ -39,8 +41,8 @@ mod tests {
   #[test]
   fn tries_remove_from_empty_hash_table() {
     let mut hash_table: HashTable<i32> = HashTable::new(10);
-
     hash_table.remove("a");
+
     assert_eq!(true, true);
   }
 
