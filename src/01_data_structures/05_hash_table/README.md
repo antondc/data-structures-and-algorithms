@@ -57,11 +57,11 @@ They should aim to distribute outputs as uniquely and evenly as possible, althou
 
 There are several types of Hash Functions depending of their use case:
 
-- **General-purpose hashing**: lightweight, used in hash tables, e.g.: simple modulo hash, MurmurHash, CityHash.
+- **General-purpose hashing**: lightweight, used in hash tables.
 - **Cryptographic hashing**: heavy, used in security, authentication and data integrity, e.g.: MD2, SHA-1, SHA-256, SHA-3.
 - **Checksums and error detection**: lightweight, used to catch random accidents in storage, data transmission and integrity verification: e.g.: CRC32, CRC23.
 
-There are also several types of general-purpose hashing functions used for hash tables:
+Some general-purpose hashing functions used for hash tables are:
 
 - **Additive**: simple and fast, but poor collision resistance, e.g.: the sum of the ASCII values —$ord(c)$— of all characters in the string, modulo the size $m$ of the hash table.
   $$
