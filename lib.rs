@@ -17,7 +17,7 @@ mod stack;
 mod hash_table;
 
 // Heap
-#[path = "./src/01_data_structures/08_heap/implementations/rs/mod.rs"]
+#[path = "./src/01_data_structures/06_trees/02_heap/implementations/rs/mod.rs"]
 mod heap;
 
 // Algorithms

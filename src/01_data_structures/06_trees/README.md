@@ -15,9 +15,9 @@
 
 ## Types
 
-- **Binary Heap**: A complete binary tree that satisfies the heap property: every parent node is greater than or equal to (max-heap) or less than or equal to (min-heap) its children. Used in priority queues.
+- [**Binary Search Tree**](./01_binary_search_tree/README.md): A binary tree where the left child contains a value less than the node, and the right child contains a value greater than the node. Efficient search, insertion, and deletion.
 
-- **Binary Search Tree (BST)**: A binary tree where the left child contains a value less than the node, and the right child contains a value greater than the node. Efficient search, insertion, and deletion.
+- [**Heap**](./02_heap/README.md): A complete binary tree that satisfies the heap property: every parent node is greater than or equal to (max-heap) or less than or equal to (min-heap) its children. Used in priority queues.
 
 - **AVL Tree**: A self-balancing binary search tree where the heights of the left and right subtrees differ by at most one. Guarantees $O(\log n)$ time for insert, delete, and search.
 
@@ -27,4 +27,4 @@
 
 - **B+ Tree**: Variant of the B-Tree where all values are stored at the leaf nodes, and internal nodes store only keys. Leaf nodes are usually linked, allowing efficient range queries and sequential access. Used in database indexes.
 
-- **Trie**: A tree used for storing strings, where each level represents a character of the string. Fast prefix lookups, commonly used in autocomplete systems and dictionaries.
+- [**Trie**](./03_trie/README/md): A tree used for storing strings, where each level represents a character of the string. Fast prefix lookups, commonly used in autocomplete systems and dictionaries.
