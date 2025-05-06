@@ -28,3 +28,44 @@
 - **B+ Tree**: Variant of the B-Tree where all values are stored at the leaf nodes, and internal nodes store only keys. Leaf nodes are usually linked, allowing efficient range queries and sequential access. Used in database indexes.
 
 - [**Trie**](./03_trie/README/md): A tree used for storing strings, where each level represents a character of the string. Fast prefix lookups, commonly used in autocomplete systems and dictionaries.
+
+## Traversal algorithms
+
+Traversal algorithms describe how you move through the nodes of a tree. There are two types
+
+- **Depth-First Search (DFS)**.
+- **Breadth-First Search (BFS)**.
+
+We will use the following Binary Search Tree as an example:
+
+```
+      20
+    /    \
+  10      30
+ /  \    /  \
+5   15  25  35
+```
+
+### Depth-First Search (DFS)
+
+DFS explores a tree by going as deep as possible along each branch before backtracking.
+Implemented with recursion or using a stack.
+In binary trees, DFS comes in three common variants:
+
+- **In-order**: Left → Node → Right
+  - In a Binary Search Tree (BST), this traversal returns nodes in sorted order:
+  - Example: `[5, 10, 15, 20, 25, 30, 35]`
+- **Pre-order**: Node → Left → Right
+  - Useful for copying or serializing a tree.
+  - Example: `[20, 10, 5, 15, 30, 25, 35]`
+- **Post-order**: Left → Right → Node
+  - Useful for safely deleting nodes or evaluating expression trees.
+  - Example: `[5, 15, 10, 25, 35, 30, 20]`
+
+### Breadth-First Search (BFS)
+
+BFS visits all nodes at the current depth level before moving to the next level. It processes the tree level-by-level from top to bottom and left to right.
+
+Typically implemented using a queue. Commonly used for visualizing tree structure or solving shortest-path problems in graphs.
+
+- Example: `[20, 10, 30, 5, 15, 25, 35]`
