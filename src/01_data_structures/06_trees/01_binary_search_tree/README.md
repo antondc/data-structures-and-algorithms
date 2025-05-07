@@ -16,11 +16,11 @@ Typically implemented with pointers —and not with arrays— as they are not al
 ## Methods
 
 - **Search:** Traverse left or right depending on comparison with the current node.
-- **Insert:** Recursively insert in the left or right subtree as a leafe, maintaining the BST ordering.
+- **Insert:** Recursively insert in the left or right subtree *as a leaf*, maintaining the BST ordering.
 - **Delete:** Handle three cases: leaf, one child, or two children. There are two ways to perform the deletion:
   - **In-order successor**: replace the node with the smallest node in the right subtree.
   - **In-order predecessor**: Replace the node with the largest node in the left subtree.
-- **Min Value Node:** Finds the smallest value in a subtree (used for deletion).
+- **Min Value Node:** Finds the smallest value in a subtree —used for deletion—.
 
 ## Pseudocode
 
