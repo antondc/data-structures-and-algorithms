@@ -15,7 +15,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
     cargo install
     cargo watch -x test
-    cargo watch -x 'test hash_table_test -- --nocapture'
+    cargo watch -x 'test binary_search_tree_test -- --nocapture'
 
 ### Golang
 
