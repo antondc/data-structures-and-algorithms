@@ -29,13 +29,59 @@ describe("insert()", () => {
     });
   });
 
+  test("inserts node into a tree without creating duplicates", async () => {
+    const bst = new BinarySearchTree();
+    const expectedTree = {
+      root: {
+        value: 5,
+        left: {
+          value: 1,
+          left: null,
+          right: {
+            value: 4,
+            left: {
+              value: 2,
+              left: null,
+              right: null,
+            },
+            right: null,
+          },
+        },
+        right: {
+          value: 9,
+          left: {
+            value: 6,
+            left: null,
+            right: {
+              value: 8,
+              left: null,
+              right: null,
+            },
+          },
+          right: null,
+        },
+      },
+    };
+    bst.insert(5).insert(1).insert(9).insert(4).insert(6).insert(2).insert(8);
+    //     5
+    //   /   \
+    //  1     9
+    //  \    /
+    //   4  6
+    //  /    \
+    // 2      8
+    expect(bst).toEqual(expectedTree);
+
+    bst.insert(5).insert(1).insert(9).insert(4).insert(6).insert(2).insert(8);
+    expect(bst).toEqual(expectedTree);
+  });
+
   test("inserts node into tree with existing greater node value", async () => {
     const bst = new BinarySearchTree()
       .insert(20)
       .insert(5)
       .insert(10)
       .insert(25);
-
     //    20
     //   /  \
     // 5     25

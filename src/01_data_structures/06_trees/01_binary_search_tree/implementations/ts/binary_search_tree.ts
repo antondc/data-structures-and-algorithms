@@ -22,7 +22,7 @@ export class BinarySearchTree {
 
     if (value < node.value) {
       node.left = this.insertNode(node.left, value);
-    } else {
+    } else if (value > node.value) {
       node.right = this.insertNode(node.right, value);
     }
 
