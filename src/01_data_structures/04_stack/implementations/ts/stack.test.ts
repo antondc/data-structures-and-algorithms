@@ -28,7 +28,7 @@ describe("pop()", () => {
     const stack = new Stack();
 
     const result = stack.pop();
-    expect(result).toEqual(null);
+    expect(result).toBeNull();
   });
 
   test("pop an item from a queue", async () => {
@@ -78,7 +78,7 @@ describe("peek()", () => {
 
   test("Peek returns null if stack is empty", async () => {
     const noItem = stack.peek();
-    expect(noItem).toEqual(null);
+    expect(noItem).toBeNull();
   });
 
   test("Returns last item without removing it", async () => {

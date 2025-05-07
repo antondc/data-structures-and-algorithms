@@ -64,7 +64,29 @@ export class BinarySearchTree {
     return node;
   }
 
-  search(): number {
-    return this.root.value;
+  search(value): Node {
+    const result = this.searchNode(this.root, value);
+
+    return result;
+  }
+
+  private searchNode(node: Node, value: number): Node {
+    if (!node || node.value === value) return node;
+
+    if (value < node.value) {
+      return this.searchNode(node.left, value);
+    } else {
+      return this.searchNode(node.right, value);
+    }
+  }
+
+  length(): number {
+    return this.countNodes(this.root);
+  }
+
+  private countNodes(node: Node): number {
+    if (!node) return 0;
+
+    return 1 + this.countNodes(node.left) + this.countNodes(node.right);
   }
 }

@@ -5,7 +5,7 @@ describe("getItemIf()", () => {
     const linkedList = new HashTableLinkedList();
 
     const result = linkedList.getItemIf((item) => item === 1);
-    expect(result).toEqual(null);
+    expect(result).toBeNull();
   });
 
   test("Gets an item that matches a callback from a list with a single item", async () => {

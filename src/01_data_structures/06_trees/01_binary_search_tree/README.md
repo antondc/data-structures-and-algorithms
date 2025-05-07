@@ -32,10 +32,12 @@ Inserts a value into the tree while maintaining its ordering property.
 INSERT(node, value):
   if node is null:
     return new Node(value)
+
   if value < node.value:
     node.left = INSERT(node.left, value)
   else:
     node.right = INSERT(node.right, value)
+
   return node
 ```
 
@@ -50,10 +52,8 @@ DELETE(node, value):
 
   if value < node.value:
     node.left = DELETE(node.left, value)
-
   else if value > node.value:
     node.right = DELETE(node.right, value)
-
   else:
     if node.left is null:
       return node.right
@@ -64,6 +64,7 @@ DELETE(node, value):
     sucessor = MIN_VALUE_NODE(node.right)
     node.value = sucessor.value
     node.right = DELETE(node.right, sucessor.value)
+
   return node
 ```
 

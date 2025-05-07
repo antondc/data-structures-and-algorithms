@@ -42,13 +42,13 @@ describe("prepend()", () => {
 describe("remove()", () => {
   test("Removes item from empty list return null", async () => {
     const linkedList = new LinkedList().remove((el) => el === 1);
-    expect(linkedList.head).toEqual(null);
+    expect(linkedList.head).toBeNull();
   });
 
   test("Removes one item from a list containing only this item", async () => {
     const linkedList = new LinkedList().append(1).remove((el) => el === 1);
 
-    expect(linkedList.head).toEqual(null);
+    expect(linkedList.head).toBeNull();
   });
 
   test("Removes first item from a linked list", async () => {

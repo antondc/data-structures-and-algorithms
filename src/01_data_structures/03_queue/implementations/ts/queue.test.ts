@@ -28,7 +28,7 @@ describe("dequeue()", () => {
     const arrayQueue = new ArrayQueue();
 
     const result = arrayQueue.dequeue();
-    expect(result).toEqual(null);
+    expect(result).toBeNull();
   });
 
   test("dequeue an item from a queue", async () => {
