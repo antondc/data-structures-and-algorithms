@@ -12,44 +12,32 @@ export class BinarySearchTree {
   root: Node = null;
 
   insert(value: number): BinarySearchTree {
-    if (!this.root) {
-      this.root = new Node(value);
-
-      return this;
-    }
-
-    this.insertNode(this.root, value);
+    this.root = this.insertNode(this.root, value);
 
     return this;
   }
 
-  private insertNode(node: Node, value: number) {
+  private insertNode(node: Node, value: number): Node {
+    if (!node) return new Node(value);
+
     if (value < node.value) {
-      if (!node.left) {
-        node.left = new Node(value);
-      } else {
-        this.insertNode(node.left, value);
-      }
+      node.left = this.insertNode(node.left, value);
     } else {
-      if (!node.right) {
-        node.right = new Node(value);
-      } else {
-        this.insertNode(node.right, value);
-      }
+      node.right = this.insertNode(node.right, value);
     }
+
+    return node;
   }
 
   delete(value: number): BinarySearchTree {
-    if (!this.root) {
-      return this;
-    }
-
     this.root = this.deleteNode(this.root, value);
 
     return this;
   }
 
   private deleteNode(node: Node, value: number): Node {
+    if (!node) return null;
+
     if (value < node.value) {
       node.left = this.deleteNode(node.left, value);
     } else if (value > node.value) {
@@ -67,6 +55,10 @@ export class BinarySearchTree {
   }
 
   private minValueNode(node: Node): Node {
+    while (node.left) {
+      node = node.left;
+    }
+
     return node;
   }
 

@@ -82,7 +82,6 @@ describe("delete()", () => {
       .insert(5)
       .insert(10)
       .insert(25);
-
     //    20
     //   /  \
     // 5     25
@@ -90,7 +89,6 @@ describe("delete()", () => {
     //  10
 
     bst.delete(20);
-
     //    25
     //   /
     // 5
@@ -115,33 +113,98 @@ describe("delete()", () => {
   });
   test("deletes node from tree with several nodes with in-order sucessor", async () => {
     const bst = new BinarySearchTree()
+      .insert(40)
+      .insert(30)
       .insert(20)
-      .insert(5)
       .insert(10)
-      .insert(25);
-
-    //    20
-    //   /  \
-    // 5     25
-    //  \
-    //  10
-
-    bst.delete(10);
-
-    //    20
-    //   / \
-    //  5  25
+      .insert(45);
+    //         40
+    //        /  \
+    //      30   45
+    //     /
+    //   20
+    //  /
+    // 10
 
     expect(bst).toEqual({
       root: {
-        value: 20,
+        value: 40,
         left: {
-          value: 5,
+          value: 30,
+          left: {
+            value: 20,
+            left: {
+              value: 10,
+              left: null,
+              right: null,
+            },
+            right: null,
+          },
+          right: null,
+        },
+        right: {
+          value: 45,
+          left: null,
+          right: null,
+        },
+      },
+    });
+
+    bst.delete(10);
+    //         40
+    //        /  \
+    //      30   45
+    //     /
+    //   20
+
+    expect(bst).toEqual({
+      root: {
+        value: 40,
+        left: {
+          value: 30,
+          left: {
+            value: 20,
+            left: null,
+            right: null,
+          },
+          right: null,
+        },
+        right: {
+          value: 45,
+          left: null,
+          right: null,
+        },
+      },
+    });
+  });
+
+  test("deletes a node with two children", () => {
+    const bst = new BinarySearchTree()
+      .insert(20)
+      .insert(10)
+      .insert(30)
+      .insert(25);
+    //    20
+    //   /  \
+    // 10    30
+    //      /
+    //    25
+
+    bst.delete(20);
+    //    25
+    //   /  \
+    // 10    30
+
+    expect(bst).toEqual({
+      root: {
+        value: 25,
+        left: {
+          value: 10,
           left: null,
           right: null,
         },
         right: {
-          value: 25,
+          value: 30,
           left: null,
           right: null,
         },
