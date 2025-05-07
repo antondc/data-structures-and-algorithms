@@ -2,11 +2,14 @@
 
 ## Description
 
-A Heap is a *complete* *ordered* *binary* tree with the restriction that the value of a parent nodes are greater of equal than the value of children nodes.
-There is the already described min-heap, and the min-heap, where the value of the parent nodes are lesser or equal than the value of the children nodes.
-Commonly used in priority queues and heapsort algorithms.
+A Heap is a _complete_ _ordered_ _binary_ tree with the restriction that the value of parent nodes are greater of equal than the value of children nodes.
+There are two types:
 
-Typically implement with arrays as they are complete trees.
+- Max-heap: parent nodes are greater of equal than the value of children nodes.
+- Min-heap: where the value of the parent nodes are lesser or equal than the value of the children nodes.
+
+Commonly used in priority queues and heapsort algorithms.
+Typically implemented with arrays, as they are complete trees.
 
 ## Pseudocode
 

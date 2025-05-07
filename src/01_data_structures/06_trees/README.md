@@ -8,10 +8,10 @@
 - **Balanced**: A tree where the height is kept as small as possible, often by ensuring that the heights of the left and right subtrees differ by no more than one level. Efficient search, insert, and delete.
 - **Balanced Factor**: tree where each node maintains a balance factor —difference in height between left and right subtrees—. Used in trees like AVL.
 - **Full**: Binary tree in which every node has either 0 or 2 children, and there are no nodes with only one child.
-- **Complete**: Binary tree where all levels are completely filled except maybe the last, and the last level is filled from left to right. Heaps are Complete trees.
+- **Complete**: Binary tree where all levels are completely filled except maybe the last, and where the last level is filled from left to right. E.g.: Heaps.
 - **Ordered**: The position of children matters, typically used in syntax trees or expression trees.
 - **Perfect**: Binary tree where all internal nodes have two children, and all leaves are at the same level. It's both full and complete.
-- **Degenerate/Pathological**: Tree where each parent has only one child, resembling a linked list. Worst-case performance in unbalanced BSTs.
+- **Degenerate/Pathological**: Tree where each parent has only one child, resembling a linked list. Worst-case performance in unbalanced Binary Search Trees.
 
 ## Types
 
