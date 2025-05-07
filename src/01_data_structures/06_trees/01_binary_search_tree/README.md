@@ -108,39 +108,77 @@ SEARCH(node, value):
 
 ### Space Complexity:
 
-- Recursive implementations may use up to O($h$) stack space, where $h$ is the height of the tree.
+- Recursive implementations may use up to O(h) stack space, where h is the height of the tree.
 
 ## Example
 
 ### Insertion
 
+INSERT(10)
+
 ```
-Insert 10 ->         10
-Insert 5  ->        /  \
-                   5
-Insert 15 ->       /  \
-                  5   15
-Insert 3  ->      /
-                 3
+10
+```
+
+INSERT(5)
+
+```
+  10
+ /
+5
+```
+
+INSERT(15)
+
+```
+  10
+ /  \
+5    15
+```
+
+INSERT(3)
+
+```
+    10
+   /  \
+  5    15
+ /
+3
 ```
 
 ### Deletion
 
 ```
-BST: [10, 5, 15, 3]
-Delete 5:
-- Node 5 has one child (3)
-Resulting BST:
-      10
+    10
+   /  \
+  5   15
      /  \
-    3   15
+   14    16
+  /
+ 13
+```
+
+DELETE(10)
+
+```
+   13
+  /  \
+ 5    15
+     /  \
+   14    16
 ```
 
 ### Searching
 
 ```
-Search 15 -> found
-Search 7  -> not found
+   13
+  /  \
+ 5    15
+     /  \
+   14    16
 ```
 
-A Binary Search Tree efficiently supports ordered data access, making it a foundational structure in many search-based algorithms and applications.
+```
+Search 15 -> Node 15
+Search 7  -> NULL
+```
