@@ -48,7 +48,7 @@ export class BinarySearchTree {
       if (!node.right) return node.left; // No right, replace with left
 
       // Node has two children, traverse with in-order sucessor
-      const sucessor = this.minValueNode(node.right); // Get sucessor —deepest leftmost leaf—.
+      const sucessor = this.minValueNode(node.right); // Get sucessor —deepest rights child leftmost leaf—.
       node.value = sucessor.value; // Set target as sucessor value.
       node.right = this.deleteNode(node.right, sucessor.value); // Remove min value from subtree.
     }
