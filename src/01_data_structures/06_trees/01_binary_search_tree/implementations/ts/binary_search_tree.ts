@@ -43,12 +43,14 @@ export class BinarySearchTree {
     } else if (value > node.value) {
       node.right = this.deleteNode(node.right, value);
     } else {
-      if (!node.left) return node.right;
-      if (!node.right) return node.left;
+      // Node is target
+      if (!node.left) return node.right; // No left, replace with right
+      if (!node.right) return node.left; // No right, replace with left
 
-      const min = this.minValueNode(node.right);
-      node.value = min.value;
-      node.right = this.deleteNode(node.right, min.value);
+      // Node has two children, traverse with in-order sucessor
+      const sucessor = this.minValueNode(node.right); // Get sucessor —deepest leftmost leaf—.
+      node.value = sucessor.value; // Set target as sucessor value.
+      node.right = this.deleteNode(node.right, sucessor.value); // Remove min value from subtree.
     }
 
     return node;
