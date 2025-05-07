@@ -322,3 +322,15 @@ func TestSearchFromPopulatedTree(t *testing.T) {
 		t.Errorf("Expected node5:\n%+v\nGot:\n%+v", expectedNode5, node5)
 	}
 }
+
+func TestCalculatesLengthOfTree(t *testing.T) {
+	bst := &BinarySearchTree{}
+	bst.Insert(1).Insert(2).Insert(3).Insert(4).Insert(5)
+
+	expectedLength := 5
+	actualLength := bst.Length()
+
+	if actualLength != expectedLength {
+		t.Errorf("Length mismatch: got %d, want %d", actualLength, expectedLength)
+	}
+}

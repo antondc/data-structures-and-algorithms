@@ -89,3 +89,15 @@ func (binarySearchTree BinarySearchTree) searchNode(node *Node, value int) *Node
 		return binarySearchTree.searchNode(node.Right, value)
 	}
 }
+
+func (binarySearchTree BinarySearchTree) Length() int {
+	return binarySearchTree.countNodes(binarySearchTree.Root)
+}
+
+func (binarySearchTree BinarySearchTree) countNodes(node *Node) int {
+	if node == nil {
+		return 0
+	}
+
+	return 1 + binarySearchTree.countNodes(node.Left) + binarySearchTree.countNodes(node.Right)
+}
