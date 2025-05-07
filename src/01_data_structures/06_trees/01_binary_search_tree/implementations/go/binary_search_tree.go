@@ -12,10 +12,10 @@ type BinarySearchTree struct {
 	Root *Node
 }
 
-func (bst *BinarySearchTree) Insert(value int) *BinarySearchTree {
-	bst.Root = bst.insertNode(bst.Root, value)
+func (binarySearchTree *BinarySearchTree) Insert(value int) *BinarySearchTree {
+	binarySearchTree.Root = binarySearchTree.insertNode(binarySearchTree.Root, value)
 
-	return bst
+	return binarySearchTree
 }
 
 func (binarySearchTree BinarySearchTree) insertNode(node *Node, value int) *Node {
@@ -27,6 +27,49 @@ func (binarySearchTree BinarySearchTree) insertNode(node *Node, value int) *Node
 		node.Left = binarySearchTree.insertNode(node.Left, value)
 	} else if value > node.Value {
 		node.Right = binarySearchTree.insertNode(node.Right, value)
+	}
+
+	return node
+}
+
+func (binarySearchTree *BinarySearchTree) Delete(value int) *BinarySearchTree {
+	binarySearchTree.Root = binarySearchTree.deleteNode(binarySearchTree.Root, value)
+
+	return binarySearchTree
+}
+
+func (binarySearchTree *BinarySearchTree) deleteNode(node *Node, value int) *Node {
+	if node == nil {
+		return node
+	}
+	if value < node.Value {
+		node.Left = binarySearchTree.deleteNode(node.Left, value)
+	} else if value > node.Value {
+		node.Right = binarySearchTree.deleteNode(node.Right, value)
+	} else {
+		// Node is targer
+		if node.Left == nil {
+			return node.Right
+		}
+		if node.Right == nil {
+			return node.Left
+		}
+
+		// Node has two children, traverse with in-order sucessor
+		// Get sucessor —deepest rights child
+		successor := binarySearchTree.minValueNode(node.Right)
+		// Set target as sucessor value.
+		node.Value = successor.Value
+		// Remove min value from subtree.
+		node.Right = binarySearchTree.deleteNode(node.Right, successor.Value)
+	}
+
+	return node
+}
+
+func (binarySearchTree *BinarySearchTree) minValueNode(node *Node) *Node {
+	for node.Left != nil {
+		node = node.Left
 	}
 
 	return node

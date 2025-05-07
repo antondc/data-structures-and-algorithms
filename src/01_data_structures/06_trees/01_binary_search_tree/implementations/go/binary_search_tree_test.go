@@ -7,7 +7,9 @@ import (
 
 func TestBinarySearchTreeIsInstantiated(t *testing.T) {
 	bst := BinarySearchTree{}
-	expectedResult := BinarySearchTree{Root: nil}
+	expectedResult := BinarySearchTree{
+		Root: nil,
+	}
 
 	if !reflect.DeepEqual(bst, expectedResult) {
 		t.Errorf("%v != %v", bst, expectedResult)
@@ -17,7 +19,13 @@ func TestBinarySearchTreeIsInstantiated(t *testing.T) {
 func TestInsertsNodeIntoEmptyTree(t *testing.T) {
 	bst := BinarySearchTree{}
 	bst.Insert(1)
-	expectedResult := BinarySearchTree{Root: &Node{Value: 1, Left: nil, Right: nil}}
+	expectedResult := BinarySearchTree{
+		Root: &Node{
+			Value: 1,
+			Left:  nil,
+			Right: nil,
+		},
+	}
 
 	if !reflect.DeepEqual(bst, expectedResult) {
 		t.Errorf("%v != %v", bst, expectedResult)
@@ -27,7 +35,30 @@ func TestInsertsNodeIntoEmptyTree(t *testing.T) {
 func TestInsertsNodeWithoutCreatingDuplicates(t *testing.T) {
 	bst := BinarySearchTree{}
 	bst.Insert(5).Insert(1).Insert(9).Insert(4).Insert(6).Insert(2).Insert(8)
-	expectedResult := BinarySearchTree{Root: &Node{Value: 5, Left: &Node{Value: 1, Left: nil, Right: &Node{Value: 4, Left: &Node{Value: 2}}}, Right: &Node{Value: 9, Left: &Node{Value: 6, Right: &Node{Value: 8}}}}}
+	expectedResult := BinarySearchTree{
+		Root: &Node{
+			Value: 5,
+			Left: &Node{
+				Value: 1,
+				Left:  nil,
+				Right: &Node{
+					Value: 4,
+					Left: &Node{
+						Value: 2,
+					},
+				},
+			},
+			Right: &Node{
+				Value: 9,
+				Left: &Node{
+					Value: 6,
+					Right: &Node{
+						Value: 8,
+					},
+				},
+			},
+		},
+	}
 
 	if !reflect.DeepEqual(bst, expectedResult) {
 		t.Errorf("%v != %v", bst, expectedResult)
@@ -36,5 +67,192 @@ func TestInsertsNodeWithoutCreatingDuplicates(t *testing.T) {
 	bst.Insert(5).Insert(1).Insert(9).Insert(4).Insert(6).Insert(2).Insert(8)
 	if !reflect.DeepEqual(bst, expectedResult) {
 		t.Errorf("%v != %v", bst, expectedResult)
+	}
+}
+
+func TestInsertsNodeInTreeWithGreaterNodeValue(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Insert(20).Insert(5).Insert(10).Insert(25)
+	expectedResult := BinarySearchTree{Root: &Node{Value: 20, Left: &Node{Value: 5, Left: nil, Right: &Node{Value: 10}}, Right: &Node{Value: 25}}}
+
+	if !reflect.DeepEqual(bst, expectedResult) {
+		t.Errorf("%v != %v", bst, expectedResult)
+	}
+}
+
+func TestDeletesNodeFromEmptyTree(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Delete(20)
+	expectedResult := BinarySearchTree{
+		Root: nil,
+	}
+
+	if !reflect.DeepEqual(bst, expectedResult) {
+		t.Errorf("%v != %v", bst, expectedResult)
+	}
+}
+
+func TestDeletesNodeFromTreeWithSingleNode(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Insert(1).Delete(1)
+	expectedResult := BinarySearchTree{
+		Root: nil,
+	}
+
+	if !reflect.DeepEqual(bst, expectedResult) {
+		t.Errorf("%v != %v", bst, expectedResult)
+	}
+}
+
+func TestDeletesNodeFromTreeWithSeveralNodesInOrderSucessor1(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Insert(20).Insert(5).Insert(10).Insert(25)
+	//    20
+	//   /  \
+	// 5     25
+	//  \
+	//  10
+
+	expectedResult := BinarySearchTree{
+		Root: &Node{
+			Value: 20,
+			Left: &Node{
+				Value: 5,
+				Right: &Node{
+					Value: 10,
+				},
+			},
+			Right: &Node{
+				Value: 25},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedResult) {
+		t.Errorf("%v != %v", bst, expectedResult)
+	}
+
+	bst.Delete(20)
+	//    25
+	//   /
+	// 5
+	//  \
+	//  10
+
+	expectedResultAfterDelete := BinarySearchTree{
+		Root: &Node{
+			Value: 25,
+			Left: &Node{
+				Value: 5,
+				Right: &Node{
+					Value: 10,
+				},
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedResultAfterDelete) {
+		t.Errorf("%v != %v", bst, expectedResultAfterDelete)
+	}
+}
+
+func TestDeletesNodeFromTreeWithSeveralNodesInOrderSuccessor2(t *testing.T) {
+	bst := &BinarySearchTree{}
+	bst.Insert(40).Insert(30).Insert(20).Insert(10).Insert(45)
+	//         40
+	//        /  \
+	//      30   45
+	//     /
+	//   20
+	//  /
+	// 10
+
+	expectedBeforeDelete := &BinarySearchTree{
+		Root: &Node{
+			Value: 40,
+			Left: &Node{
+				Value: 30,
+				Left: &Node{
+					Value: 20,
+					Left: &Node{
+						Value: 10,
+					},
+				},
+			},
+			Right: &Node{
+				Value: 45,
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedBeforeDelete) {
+		t.Errorf("Before delete: got %v, want %v", bst, expectedBeforeDelete)
+	}
+
+	bst.Delete(10)
+	//         40
+	//        /  \
+	//      30   45
+	//     /
+	//   20
+
+	expectedAfterDelete := &BinarySearchTree{
+		Root: &Node{
+			Value: 40,
+			Left: &Node{
+				Value: 30,
+				Left: &Node{
+					Value: 20,
+				},
+			},
+			Right: &Node{
+				Value: 45,
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedAfterDelete) {
+		t.Errorf("After delete: got %v, want %v", bst, expectedAfterDelete)
+	}
+}
+
+func TestDeletesNodeWithTwoChildrenInOrderSuccessor(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Insert(20).Insert(10).Insert(30).Insert(25)
+	//    20
+	//   /  \
+	// 10    30
+	//       /
+	//     25
+
+	expectedBeforeDelete := BinarySearchTree{
+		Root: &Node{
+			Value: 20,
+			Left:  &Node{Value: 10},
+			Right: &Node{
+				Value: 30,
+				Left:  &Node{Value: 25},
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedBeforeDelete) {
+		t.Errorf("Before delete:\nGot:  %+v\nWant: %+v", bst, expectedBeforeDelete)
+	}
+
+	bst.Delete(20)
+	//    25
+	//   /  \
+	// 10    30
+
+	expectedAfterDelete := BinarySearchTree{
+		Root: &Node{
+			Value: 25,
+			Left:  &Node{Value: 10},
+			Right: &Node{Value: 30},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedAfterDelete) {
+		t.Errorf("After delete:\nGot:  %+v\nWant: %+v", bst, expectedAfterDelete)
 	}
 }
