@@ -271,7 +271,7 @@ describe("search()", () => {
     expect(node).toBeNull();
   });
 
-  test("searches node from empty tree", async () => {
+  test("searches node from populated tree", async () => {
     const bst = new BinarySearchTree()
       .insert(1)
       .insert(2)

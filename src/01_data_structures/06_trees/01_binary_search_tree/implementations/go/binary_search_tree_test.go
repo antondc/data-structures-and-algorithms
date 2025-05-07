@@ -256,3 +256,69 @@ func TestDeletesNodeWithTwoChildrenInOrderSuccessor(t *testing.T) {
 		t.Errorf("After delete:\nGot:  %+v\nWant: %+v", bst, expectedAfterDelete)
 	}
 }
+
+func TestSearchFromEmptyTree(t *testing.T) {
+	bst := BinarySearchTree{}
+
+	result := bst.Search(1)
+
+	if result != nil {
+		t.Errorf("Expected nil, got %v", result)
+	}
+}
+
+func TestSearchFromPopulatedTree(t *testing.T) {
+	bst := BinarySearchTree{}
+	bst.Insert(1).Insert(2).Insert(3).Insert(4).Insert(5)
+
+	expectedTree := BinarySearchTree{
+		Root: &Node{
+			Value: 1,
+			Right: &Node{
+				Value: 2,
+				Right: &Node{
+					Value: 3,
+					Right: &Node{
+						Value: 4,
+						Right: &Node{
+							Value: 5,
+						},
+					},
+				},
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(bst, expectedTree) {
+		t.Errorf("Expected tree:\n%+v\nGot:\n%+v", expectedTree, bst)
+	}
+
+	// Search for 2
+	node2 := bst.Search(2)
+	expectedNode2 := &Node{
+		Value: 2,
+		Right: &Node{
+			Value: 3,
+			Right: &Node{
+				Value: 4,
+				Right: &Node{
+					Value: 5,
+				},
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(node2, expectedNode2) {
+		t.Errorf("Expected node2:\n%+v\nGot:\n%+v", expectedNode2, node2)
+	}
+
+	// Search for 5
+	node5 := bst.Search(5)
+	expectedNode5 := &Node{
+		Value: 5,
+	}
+
+	if !reflect.DeepEqual(node5, expectedNode5) {
+		t.Errorf("Expected node5:\n%+v\nGot:\n%+v", expectedNode5, node5)
+	}
+}

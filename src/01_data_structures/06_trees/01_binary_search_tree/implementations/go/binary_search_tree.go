@@ -74,3 +74,18 @@ func (binarySearchTree *BinarySearchTree) minValueNode(node *Node) *Node {
 
 	return node
 }
+
+func (binarySearchTree BinarySearchTree) Search(value int) *Node {
+	return binarySearchTree.searchNode(binarySearchTree.Root, value)
+}
+
+func (binarySearchTree BinarySearchTree) searchNode(node *Node, value int) *Node {
+	if node == nil || node.Value == value {
+		return node
+	}
+	if value < node.Value {
+		return binarySearchTree.searchNode(node.Left, value)
+	} else {
+		return binarySearchTree.searchNode(node.Right, value)
+	}
+}
