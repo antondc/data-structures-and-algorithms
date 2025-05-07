@@ -39,15 +39,38 @@ export class BinarySearchTree {
     }
   }
 
-  delete(): BinarySearchTree {
+  delete(value: number): BinarySearchTree {
+    if (!this.root) {
+      return this;
+    }
+
+    this.root = this.deleteNode(this.root, value);
+
     return this;
+  }
+
+  private deleteNode(node: Node, value: number): Node {
+    if (value < node.value) {
+      node.left = this.deleteNode(node.left, value);
+    } else if (value > node.value) {
+      node.right = this.deleteNode(node.right, value);
+    } else {
+      if (!node.left) return node.right;
+      if (!node.right) return node.left;
+
+      const min = this.minValueNode(node.right);
+      node.value = min.value;
+      node.right = this.deleteNode(node.right, min.value);
+    }
+
+    return node;
+  }
+
+  private minValueNode(node: Node): Node {
+    return node;
   }
 
   search(): number {
     return this.root.value;
-  }
-
-  minValueNode(tree: BinarySearchTree): Node {
-    return tree.root;
   }
 }

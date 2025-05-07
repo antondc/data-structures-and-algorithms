@@ -2,7 +2,7 @@
 
 ## Description
 
-A Binary Search Tree is an _ordered_ _binary_ tree, where:
+A Binary Search Tree is an **ordered** **binary** tree, where:
 
 - The left subtree of a node contains only nodes with values **less than** the node's value.
 - The right subtree of a node contains only nodes with values **greater than** the node's value.
@@ -12,6 +12,15 @@ This property enables efficient search, insertion, and deletion operations.
 Binary Search Trees are commonly used in scenarios requiring sorted data access, such as symbol tables, set/map implementations and range queries.
 
 Typically implemented with pointers —and not with arrays— as they are not always complete trees.
+
+## Methods
+
+- **Search:** Traverse left or right depending on comparison with the current node.
+- **Insert:** Recursively insert in the left or right subtree, maintaining the BST ordering.
+- **Delete:** Handle three cases: leaf, one child, or two children. There are two ways to perform the deletion:
+  - **In-order successor**: replace the node with the smallest node in the right subtree.
+  - **In-order predecessor**: Replace the node with the largest node in the left subtree.
+- **Min Value Node:** Finds the smallest value in a subtree (used for deletion).
 
 ## Pseudocode
 
@@ -32,25 +41,29 @@ INSERT(node, value):
 
 ### Delete
 
-Deletes a value from the tree.
+Deletes a value from the tree with in-order sucessor.
 
 ```
 DELETE(node, value):
   if node is null:
     return node
+
   if value < node.value:
     node.left = DELETE(node.left, value)
+
   else if value > node.value:
     node.right = DELETE(node.right, value)
+
   else:
     if node.left is null:
       return node.right
+
     if node.right is null:
       return node.left
 
-    min = MIN_VALUE_NODE(node.right)
-    node.value = min.value
-    node.right = DELETE(node.right, min.value)
+    sucessor = MIN_VALUE_NODE(node.right)
+    node.value = sucessor.value
+    node.right = DELETE(node.right, sucessor.value)
   return node
 ```
 
@@ -78,13 +91,6 @@ SEARCH(node, value):
   else:
     return SEARCH(node.right, value)
 ```
-
-## Explanation
-
-- **Search:** Traverse left or right depending on comparison with the current node.
-- **Insert:** Recursively insert in the left or right subtree, maintaining the BST ordering.
-- **Delete:** Handle three cases — leaf, one child, or two children (replace with in-order successor).
-- **Min Value Node:** Finds the smallest value in a subtree (used for deletion).
 
 ## Characteristics
 
