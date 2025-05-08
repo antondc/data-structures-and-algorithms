@@ -27,7 +27,7 @@ INSERT(root, word):
       node.children[char] = new Node()
     node = node.children[char]
 
-  node.is_end_of_word = true
+  node.is_end = true
 ```
 
 ### Search
@@ -42,7 +42,7 @@ SEARCH(root, word):
       return false
     node = node.children[char]
 
-  return node.is_end_of_word
+  return node.is_end
 ```
 
 ### StartsWith
@@ -51,23 +51,18 @@ Recursively removes a word from the trie, cleaning up nodes if they become unnec
 
 ```
 DELETE(node, word, depth = 0):
-  if node is null:
-    return false
-
   if depth == length of word:
-    if node.is_end_of_word:
-      node.is_end_of_word = false
-
-      return true // node has no children
+    if node.is_end:
+      node.is_end = false
+      return true if node has no children
     return false
 
   char = word[depth]
   if char in node.children:
     should_delete = DELETE(node.children[char], word, depth + 1)
-
     if should_delete:
       delete node.children[char]
-      return true // node has no children and not node.is_end_of_word
+      return true if node has no children and not node.is_end
 
   return false
 ```
