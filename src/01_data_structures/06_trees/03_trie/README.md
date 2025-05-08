@@ -26,6 +26,7 @@ INSERT(root, word):
     if char not in node.children:
       node.children[char] = new Node()
     node = node.children[char]
+
   node.is_end_of_word = true
 ```
 
@@ -40,21 +41,35 @@ SEARCH(root, word):
     if char not in node.children:
       return false
     node = node.children[char]
+
   return node.is_end_of_word
 ```
 
 ### StartsWith
 
-Checks if any word in the trie starts with a given prefix.
+Recursively removes a word from the trie, cleaning up nodes if they become unnecessary.
 
 ```
-STARTS_WITH(root, prefix):
-  node = root
-  for char in prefix:
-    if char not in node.children:
-      return false
-    node = node.children[char]
-  return true
+DELETE(node, word, depth = 0):
+  if node is null:
+    return false
+
+  if depth == length of word:
+    if node.is_end_of_word:
+      node.is_end_of_word = false
+
+      return true // node has no children
+    return false
+
+  char = word[depth]
+  if char in node.children:
+    should_delete = DELETE(node.children[char], word, depth + 1)
+
+    if should_delete:
+      delete node.children[char]
+      return true // node has no children and not node.is_end_of_word
+
+  return false
 ```
 
 ## Characteristics
