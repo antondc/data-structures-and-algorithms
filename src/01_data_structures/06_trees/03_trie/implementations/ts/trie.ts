@@ -35,43 +35,30 @@ export class Trie {
   }
 
   private deleteWord(node: Node, word: string, depth: number): boolean {
-    if (!node) return false;
-
-    // If we reached length of word
+    // Reached final node of word
     if (depth === word.length) {
-      // If is the end of word
+      // If it is marked as end of word
       if (node.end) {
-        node.end = false;
-
-        // If node is a leaf —no more children—, return true.
+        node.end = false; // Unset `end`, node can be removed.
+        // If node has no children, it is leaf, remove it.
         return Object.keys(node.children).length === 0;
       }
-
-      // If node is not end, return false
-      return false;
     }
 
-    // Get current character
     const char = word[depth];
+    const child = node.children[char];
+    if (!child) return false; // If no child, word not present, nothing to delete.
 
-    // If char is not in children
-    if (!node.children[char]) {
-      // Word not present, nothing to delete
-      return false;
-    }
+    const shouldDeleteChild = this.deleteWord(child, word, depth + 1); // Check recursively if next node should be deleted.
 
-    // Check recursively if should delete
-    const shouldDelete = this.deleteWord(node.children[char], word, depth + 1);
-
-    // Delete char from children
-    if (shouldDelete) {
+    // Delete
+    if (shouldDeleteChild) {
       delete node.children[char];
-
-      // Return true if current node is leaf and is not the end.
+      // If node is leaf, and is not an end of another word, delete it.
       return Object.keys(node.children).length === 0 && !node.end;
     }
 
-    // Node still has valid children, do not delete.
+    // Otherwise, delete it
     return false;
   }
 }
