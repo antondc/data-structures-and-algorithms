@@ -192,4 +192,14 @@ mod tests {
     let expected5 = Node::new(5, None, None);
     assert_eq!(node5, Some(expected5.as_ref()));
   }
+
+  #[test]
+  fn calculates_length_of_the_tree() {
+    let mut bst = BinarySearchTree::new();
+    bst.insert(1).insert(2).insert(3).insert(4).insert(5);
+
+    let length = bst.length();
+
+    assert_eq!(length, 5);
+  }
 }

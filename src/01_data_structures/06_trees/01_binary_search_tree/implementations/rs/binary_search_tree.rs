@@ -106,4 +106,15 @@ impl BinarySearchTree {
       None => None,
     }
   }
+
+  pub fn length(&self) -> usize {
+    Self::count_nodes(&self.root)
+  }
+
+  fn count_nodes(node: &Option<Box<Node>>) -> usize {
+    match node {
+      Some(node) => 1 + Self::count_nodes(&node.left) + Self::count_nodes(&node.right),
+      None => 0,
+    }
+  }
 }
