@@ -149,4 +149,47 @@ mod tests {
 
     assert_eq!(bst, expected_result);
   }
+
+  fn searches_node_from_empty_tree() {
+    let bst = BinarySearchTree::new();
+    let node = bst.search(1);
+    assert!(node.is_none());
+  }
+
+  #[test]
+  fn searches_node_from_tree_with_single_item() {
+    let mut bst = BinarySearchTree::new();
+    bst.insert(1);
+
+    let expected = Node::new(1, None, None);
+    let node = bst.search(1);
+    assert_eq!(node, Some(expected.as_ref()));
+  }
+
+  #[test]
+  fn searches_node_from_populated_tree() {
+    let mut bst = BinarySearchTree::new();
+    bst.insert(1).insert(2).insert(3).insert(4).insert(5);
+
+    let expected_tree = BinarySearchTree {
+      root: Some(Node::new(
+        1,
+        None,
+        Some(Node::new(
+          2,
+          None,
+          Some(Node::new(3, None, Some(Node::new(4, None, Some(Node::new(5, None, None)))))),
+        )),
+      )),
+    };
+    assert_eq!(bst, expected_tree);
+
+    let node2 = bst.search(2);
+    let expected2 = Node::new(2, None, Some(Node::new(3, None, Some(Node::new(4, None, Some(Node::new(5, None, None)))))));
+    assert_eq!(node2, Some(expected2.as_ref()));
+
+    let node5 = bst.search(5);
+    let expected5 = Node::new(5, None, None);
+    assert_eq!(node5, Some(expected5.as_ref()));
+  }
 }

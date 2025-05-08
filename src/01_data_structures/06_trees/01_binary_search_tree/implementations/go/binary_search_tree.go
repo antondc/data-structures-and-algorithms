@@ -68,8 +68,8 @@ func (binarySearchTree *BinarySearchTree) deleteNode(node *Node, value int) *Nod
 }
 
 func (binarySearchTree *BinarySearchTree) minValueNode(node *Node) *Node {
-	for node.Left != nil {
-		node = node.Left
+	if node.Left != nil {
+		return binarySearchTree.minValueNode(node.Left)
 	}
 
 	return node

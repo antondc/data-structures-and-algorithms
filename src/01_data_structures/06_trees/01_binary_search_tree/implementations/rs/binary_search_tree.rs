@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct Node {
   pub value: i32,
   pub left: Option<Box<Node>>,
@@ -55,42 +55,55 @@ impl BinarySearchTree {
   fn delete_node(node: Option<Box<Node>>, value: i32) -> Option<Box<Node>> {
     match node {
       None => None,
-      Some(mut boxed_node) => {
-        if value < boxed_node.value {
-          boxed_node.left = Self::delete_node(boxed_node.left.take(), value);
+      Some(mut node) => {
+        if value < node.value {
+          node.left = Self::delete_node(node.left.take(), value);
 
-          return Some(boxed_node);
+          return Some(node);
         }
 
-        if value > boxed_node.value {
-          boxed_node.right = Self::delete_node(boxed_node.right.take(), value);
+        if value > node.value {
+          node.right = Self::delete_node(node.right.take(), value);
 
-          return Some(boxed_node);
+          return Some(node);
         }
 
         // Node to delete found
-        if boxed_node.left.is_none() {
-          return boxed_node.right;
+        if node.left.is_none() {
+          return node.right;
         }
 
-        if boxed_node.right.is_none() {
-          return boxed_node.left;
+        if node.right.is_none() {
+          return node.left;
         }
 
         // Node has two children, traverse with in-order sucessor
-        let successor_value = Self::min_value_node(boxed_node.right.as_ref().unwrap()).value; // Get sucessor —deepest rights child leftmost leaf—.
-        boxed_node.value = successor_value; // Set target as sucessor value.
-        boxed_node.right = Self::delete_node(boxed_node.right, successor_value); // Remove min value from subtree.
+        let successor_value = Self::min_value_node(node.right.as_ref().unwrap()).value; // Get sucessor —deepest rights child leftmost leaf—.
+        node.value = successor_value; // Set target as sucessor value.
+        node.right = Self::delete_node(node.right, successor_value); // Remove min value from subtree.
 
-        Some(boxed_node)
+        Some(node)
       }
     }
   }
 
-  fn min_value_node(mut node: &Box<Node>) -> &Box<Node> {
-    while let Some(ref left) = node.left {
-      node = left;
+  fn min_value_node(node: &Box<Node>) -> &Box<Node> {
+    match &node.left {
+      Some(left) => Self::min_value_node(left),
+      None => node,
     }
-    node
+  }
+
+  pub fn search(&self, value: i32) -> Option<&Node> {
+    Self::search_node(self.root.as_ref(), value)
+  }
+
+  fn search_node(node: Option<&Box<Node>>, value: i32) -> Option<&Node> {
+    match node {
+      Some(node) if value == node.value => Some(node),
+      Some(node) if value < node.value => Self::search_node(node.left.as_ref(), value),
+      Some(node) => Self::search_node(node.right.as_ref(), value),
+      None => None,
+    }
   }
 }

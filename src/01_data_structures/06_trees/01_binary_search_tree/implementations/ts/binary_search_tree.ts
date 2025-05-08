@@ -57,9 +57,7 @@ export class BinarySearchTree {
   }
 
   private minValueNode(node: Node): Node {
-    while (node.left) {
-      node = node.left;
-    }
+    if (node.left) return this.minValueNode(node.left);
 
     return node;
   }
