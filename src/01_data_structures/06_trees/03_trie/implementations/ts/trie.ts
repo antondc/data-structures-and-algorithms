@@ -61,4 +61,32 @@ export class Trie {
     // Otherwise, delete it
     return false;
   }
+
+  suggest(prefix: string): Array<string> {
+    let node = this.root;
+
+    for (const char of prefix) {
+      if (!node.children[char]) {
+        return [];
+      }
+
+      node = node.children[char];
+    }
+
+    const results = [];
+
+    this.depthFirstSearch(node, prefix, results);
+
+    return results;
+  }
+
+  depthFirstSearch(node: Node, prefix: string, results: Array<string>) {
+    if (node.end) {
+      results.push(prefix);
+    }
+
+    for (const [char, child] of Object.entries(node.children)) {
+      this.depthFirstSearch(child, prefix + char, results);
+    }
+  }
 }

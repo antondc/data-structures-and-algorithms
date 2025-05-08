@@ -45,7 +45,7 @@ SEARCH(root, word):
   return node.is_end
 ```
 
-### StartsWith
+### Delete
 
 Recursively removes a word from the trie, cleaning up nodes if they become unnecessary.
 
@@ -65,6 +65,30 @@ DELETE(node, word, depth = 0):
       return true if node has no children and not node.is_end
 
   return false
+```
+
+### Autocomplete
+
+Finds all words in the trie that begin with a given prefix.
+
+```
+AUTOCOMPLETE(root, prefix):
+  node = root
+  for char in prefix:
+    if char not in node.children:
+      return []
+    node = node.children[char]
+
+  results = []
+  DFS(node, prefix, results)
+  return results
+
+DFS(node, path, results):
+  if node.is_end:
+    results.append(path)
+
+  for char, child in node.children:
+    DFS(child, path + char, results)
 ```
 
 ## Characteristics

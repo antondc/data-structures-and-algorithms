@@ -240,3 +240,17 @@ describe("Delete()", () => {
     });
   });
 });
+
+describe("Autocomplete()", () => {
+  test("...", async () => {
+    const trie = new Trie()
+      .insert("abcd")
+      .insert("abce")
+      .insert("abcf")
+      .insert("ayxz");
+
+    const autocomplete = trie.suggest("ab");
+
+    expect(autocomplete).toEqual(["abcd", "abce", "abcf"]);
+  });
+});
