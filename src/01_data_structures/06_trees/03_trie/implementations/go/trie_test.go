@@ -8,7 +8,7 @@ import (
 func TestTrieIsInstantiated(t *testing.T) {
 	trie := NewTrie()
 
-	expected := Trie{
+	expected := &Trie{
 		Root: NewNode(),
 	}
 
@@ -21,7 +21,7 @@ func TestInsertsDataIntoTrie(t *testing.T) {
 	trie := NewTrie()
 	trie.Insert("ab")
 
-	expected := Trie{
+	expected := &Trie{
 		Root: &Node{
 			End: false,
 			Children: map[string]*Node{
@@ -44,10 +44,9 @@ func TestInsertsDataIntoTrie(t *testing.T) {
 }
 
 func TestInsertsEmptyStringIntoTrie(t *testing.T) {
-	trie := NewTrie()
-	trie.Insert("")
+	trie := NewTrie().Insert("")
 
-	expected1 := Trie{
+	expected1 := &Trie{
 		Root: &Node{
 			End:      true,
 			Children: map[string]*Node{},
@@ -60,7 +59,7 @@ func TestInsertsEmptyStringIntoTrie(t *testing.T) {
 	trie.Insert("a")
 	trie.Insert("b")
 
-	expected2 := Trie{
+	expected2 := &Trie{
 		Root: &Node{
 			End: true,
 			Children: map[string]*Node{
@@ -131,5 +130,149 @@ func TestSearchMultipleCharacterSeveralWords(t *testing.T) {
 	foundAc := trie.Search("ac")
 	if !reflect.DeepEqual(foundAc, true) {
 		t.Errorf("Expected %v, got %v", foundAc, true)
+	}
+}
+
+func TestDeleteFromEmptyTrie(t *testing.T) {
+	trie := NewTrie().Delete("abc")
+
+	expected := &Trie{
+		Root: &Node{
+			End:      false,
+			Children: map[string]*Node{},
+		},
+	}
+
+	if !reflect.DeepEqual(trie, expected) {
+		t.Errorf("Expected %+v, got %+v", expected, trie)
+	}
+
+}
+
+func TestDeleteFromPopulatedTrie(t *testing.T) {
+	trie := NewTrie()
+
+	// Initial state
+	expectedEmpty := &Trie{
+		Root: &Node{
+			End:      false,
+			Children: map[string]*Node{},
+		},
+	}
+	if !reflect.DeepEqual(trie, expectedEmpty) {
+		t.Errorf("Expected %+v, got %+v", expectedEmpty, trie)
+	}
+
+	// Insert "abc"
+	trie.Insert("abc")
+	expectedWithABC := &Trie{
+		Root: &Node{
+			End: false,
+			Children: map[string]*Node{
+				"a": {
+					End: false,
+					Children: map[string]*Node{
+						"b": {
+							End: false,
+							Children: map[string]*Node{
+								"c": {
+									End:      true,
+									Children: map[string]*Node{},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	if !reflect.DeepEqual(trie, expectedWithABC) {
+		t.Errorf("Expected %+v, got %+v", expectedWithABC, trie)
+	}
+
+	// Delete "abc"
+	trie.Delete("abc")
+
+	if !reflect.DeepEqual(trie, expectedEmpty) {
+		t.Errorf("Expected %+v, got %+v", expectedEmpty, trie)
+	}
+}
+
+func TestDeleteFromTrieWithLongerWord(t *testing.T) {
+	trie := NewTrie()
+	trie.Insert("abc").Insert("abcd")
+
+	expectedBeforeDeletes := &Trie{
+		Root: &Node{
+			End: false,
+			Children: map[string]*Node{
+				"a": {
+					End: false,
+					Children: map[string]*Node{
+						"b": {
+							End: false,
+							Children: map[string]*Node{
+								"c": {
+									End: true,
+									Children: map[string]*Node{
+										"d": {
+											End:      true,
+											Children: map[string]*Node{},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	if !reflect.DeepEqual(trie, expectedBeforeDeletes) {
+		t.Errorf("Expected %+v, got %+v", expectedBeforeDeletes, trie)
+	}
+
+	// Delete "abc"
+	trie.Delete("abc")
+	expectedAfterFirstDelete := &Trie{
+		Root: &Node{
+			End: false,
+			Children: map[string]*Node{
+				"a": {
+					End: false,
+					Children: map[string]*Node{
+						"b": {
+							End: false,
+							Children: map[string]*Node{
+								"c": {
+									End: false,
+									Children: map[string]*Node{
+										"d": {
+											End:      true,
+											Children: map[string]*Node{},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	if !reflect.DeepEqual(trie, expectedAfterFirstDelete) {
+		t.Errorf("Expected %+v, got %+v", expectedAfterFirstDelete, trie)
+	}
+
+	// Delete "abcd"
+	trie.Delete("abcd")
+	expectedEmpty := &Trie{
+		Root: &Node{
+			End:      false,
+			Children: map[string]*Node{},
+		},
+	}
+	if !reflect.DeepEqual(trie, expectedEmpty) {
+		t.Errorf("Expected %+v, got %+v", expectedEmpty, trie)
 	}
 }
