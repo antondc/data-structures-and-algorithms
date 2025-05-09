@@ -84,3 +84,52 @@ func TestInsertsEmptyStringIntoTrie(t *testing.T) {
 		t.Errorf("Expected %v, got %v", expected2, trie)
 	}
 }
+
+func TestSearchEmptyTrie(t *testing.T) {
+	trie := NewTrie()
+	found := trie.Search("a")
+
+	if !reflect.DeepEqual(found, false) {
+		t.Errorf("Expected %v, got %v", found, false)
+	}
+}
+
+func TestSearchSingleCharacter(t *testing.T) {
+	trie := NewTrie()
+	trie.Insert("a")
+	found := trie.Search("a")
+
+	if !reflect.DeepEqual(found, true) {
+		t.Errorf("Expected %v, got %v", found, true)
+	}
+}
+
+func TestSearchMultipleCharacter(t *testing.T) {
+	trie := NewTrie()
+	trie.Insert("ab")
+	found := trie.Search("ab")
+
+	if !reflect.DeepEqual(found, true) {
+		t.Errorf("Expected %v, got %v", found, true)
+	}
+}
+
+func TestSearchMultipleCharacterSeveralWords(t *testing.T) {
+	trie := NewTrie()
+	trie.Insert("ab").Insert("ab").Insert("abc").Insert("ac")
+
+	foundAb := trie.Search("ab")
+	if !reflect.DeepEqual(foundAb, true) {
+		t.Errorf("Expected %v, got %v", foundAb, true)
+	}
+
+	foundAbc := trie.Search("abc")
+	if !reflect.DeepEqual(foundAbc, true) {
+		t.Errorf("Expected %v, got %v", foundAbc, true)
+	}
+
+	foundAc := trie.Search("ac")
+	if !reflect.DeepEqual(foundAc, true) {
+		t.Errorf("Expected %v, got %v", foundAc, true)
+	}
+}

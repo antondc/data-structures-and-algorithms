@@ -10,23 +10,24 @@ export class Trie {
     // Iterate string tracking nodes from root.
     const node = word.split("").reduce((acc, char) => {
       if (!acc.children[char]) {
-        acc.children[char] = new Node(); // Add node with `char` as key
+        acc.children[char] = new Node(); // Add node with `char` as key.
       }
 
-      return acc.children[char]; // Replace acc with current node
+      return acc.children[char]; // Replace acc with current node.
     }, this.root);
 
-    node.end = true; // End of word, mark it
+    node.end = true; // End of word, mark it.
 
     return this;
   }
 
   search(word: string): boolean {
+    // Iterate string tracking nodes from root to reach the end.
     const node = word
       .split("")
       .reduce((acc, char) => acc?.children[char], this.root);
 
-    return !!node?.end;
+    return !!node?.end; // If last character is marked as end, word found.
   }
 
   delete(word: string): Trie {

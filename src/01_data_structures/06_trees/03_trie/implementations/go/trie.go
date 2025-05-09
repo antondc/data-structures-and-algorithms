@@ -27,15 +27,30 @@ func (trie *Trie) Insert(word string) *Trie {
 
 	// Iterate word
 	for _, unicode := range word {
-		char := string(unicode) // Get string from unicode
+		char := string(unicode) // Get string from unicode.
 
-		if node.Children[char] == nil { // If no character in map, create it
+		if node.Children[char] == nil { // If no character in map, create it.
 			node.Children[char] = NewNode()
 		}
-		node = node.Children[char] // Replace node with current node to traverse the tree branch
+		node = node.Children[char] // Replace node with current node to traverse the tree branch.
 	}
 
-	node.End = true // End of word, mark it
+	node.End = true // End of word, mark it.
 
 	return trie
+}
+
+func (trie *Trie) Search(word string) bool {
+	node := trie.Root
+
+	// Iterate word
+	for _, unicode := range word {
+		char := string(unicode)
+		if node.Children[char] == nil { // If no character in map, word not present.
+			return false
+		}
+		node = node.Children[char] // Replace node with current node to traverse the tree branch.
+	}
+
+	return node.End // If last character is marked as end, word found.
 }
