@@ -163,7 +163,6 @@ func TestDeleteFromPopulatedTrie(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expectedEmpty, trie)
 	}
 
-	// Insert "abc"
 	trie.Insert("abc")
 	expectedWithABC := &Trie{
 		Root: &Node{
@@ -190,7 +189,6 @@ func TestDeleteFromPopulatedTrie(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expectedWithABC, trie)
 	}
 
-	// Delete "abc"
 	trie.Delete("abc")
 
 	if !reflect.DeepEqual(trie, expectedEmpty) {
@@ -232,7 +230,6 @@ func TestDeleteFromTrieWithLongerWord(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expectedBeforeDeletes, trie)
 	}
 
-	// Delete "abc"
 	trie.Delete("abc")
 	expectedAfterFirstDelete := &Trie{
 		Root: &Node{
@@ -264,7 +261,6 @@ func TestDeleteFromTrieWithLongerWord(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expectedAfterFirstDelete, trie)
 	}
 
-	// Delete "abcd"
 	trie.Delete("abcd")
 	expectedEmpty := &Trie{
 		Root: &Node{
