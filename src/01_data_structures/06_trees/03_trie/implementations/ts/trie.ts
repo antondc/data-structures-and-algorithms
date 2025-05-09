@@ -6,16 +6,17 @@ class Node {
 export class Trie {
   root: Node = new Node();
 
-  insert(string: string): Trie {
-    const node = string.split("").reduce((node, char) => {
-      if (!node.children[char]) {
-        node.children[char] = new Node();
+  insert(word: string): Trie {
+    // Iterate string tracking nodes from root.
+    const node = word.split("").reduce((acc, char) => {
+      if (!acc.children[char]) {
+        acc.children[char] = new Node(); // Add node with `char` as key
       }
 
-      return node.children[char];
+      return acc.children[char]; // Replace acc with current node
     }, this.root);
 
-    node.end = true;
+    node.end = true; // End of word, mark it
 
     return this;
   }
@@ -23,7 +24,7 @@ export class Trie {
   search(word: string): boolean {
     const node = word
       .split("")
-      .reduce((node, char) => node?.children[char], this.root);
+      .reduce((acc, char) => acc?.children[char], this.root);
 
     return !!node?.end;
   }
@@ -65,7 +66,7 @@ export class Trie {
   suggest(prefix: string): Array<string> {
     const node = prefix
       .split("")
-      .reduce((node, char) => node.children[char], this.root);
+      .reduce((acc, char) => acc.children[char], this.root);
     if (!node) return [];
     const results = [];
     this.depthFirstSearch(node, prefix, results);
