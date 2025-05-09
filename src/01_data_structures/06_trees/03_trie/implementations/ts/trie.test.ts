@@ -242,7 +242,7 @@ describe("Delete()", () => {
 });
 
 describe("Autocomplete()", () => {
-  test("...", async () => {
+  test("Autocomplete returns valid options from prefix", async () => {
     const trie = new Trie()
       .insert("abcd")
       .insert("abce")

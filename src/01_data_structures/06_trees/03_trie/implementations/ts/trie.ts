@@ -63,18 +63,11 @@ export class Trie {
   }
 
   suggest(prefix: string): Array<string> {
-    let node = this.root;
-
-    for (const char of prefix) {
-      if (!node.children[char]) {
-        return [];
-      }
-
-      node = node.children[char];
-    }
-
+    const node = prefix
+      .split("")
+      .reduce((node, char) => node.children[char], this.root);
+    if (!node) return [];
     const results = [];
-
     this.depthFirstSearch(node, prefix, results);
 
     return results;
