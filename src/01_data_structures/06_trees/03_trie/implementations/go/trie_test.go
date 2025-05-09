@@ -276,3 +276,13 @@ func TestDeleteFromTrieWithLongerWord(t *testing.T) {
 		t.Errorf("Expected %+v, got %+v", expectedEmpty, trie)
 	}
 }
+
+func TestSuggestsReturnsValidOptionsFromPrefix(t *testing.T) {
+	trie := NewTrie().Insert("abcd").Insert("abce").Insert("abcf").Insert("ayxz")
+	autocomplete := trie.Suggest("ab")
+	expected := []string{"abcd", "abce", "abcf"}
+
+	if !reflect.DeepEqual(autocomplete, expected) {
+		t.Errorf("Expected %v, got %v", expected, autocomplete)
+	}
+}

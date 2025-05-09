@@ -83,3 +83,29 @@ func (trie *Trie) DeleteNode(node *Node, word string, depth int) bool {
 
 	return false
 }
+
+func (trie *Trie) Suggest(prefix string) []string {
+	node := trie.Root
+	for _, unicode := range prefix {
+		char := string(unicode)
+		if node.Children[char] == nil {
+			return []string{}
+		}
+		node = node.Children[char]
+	}
+
+	results := []string{}
+	trie.depthFirstSearch(node, prefix, &results)
+
+	return results
+}
+
+func (trie *Trie) depthFirstSearch(node *Node, prefix string, results *[]string) {
+	if node.End {
+		*results = append(*results, prefix)
+	}
+
+	for char, child := range node.Children {
+		trie.depthFirstSearch(child, prefix+char, results)
+	}
+}

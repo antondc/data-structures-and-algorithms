@@ -241,8 +241,8 @@ describe("Delete()", () => {
   });
 });
 
-describe("Autocomplete()", () => {
-  test("Autocomplete returns valid options from prefix", async () => {
+describe("Suggests()", () => {
+  test("Suggests returns valid options from prefix", async () => {
     const trie = new Trie()
       .insert("abcd")
       .insert("abce")

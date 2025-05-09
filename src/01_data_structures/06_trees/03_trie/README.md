@@ -67,12 +67,12 @@ DELETE(node, word, depth = 0):
   return false
 ```
 
-### Autocomplete
+### Suggest
 
 Finds all words in the trie that begin with a given prefix.
 
 ```
-AUTOCOMPLETE(root, prefix):
+SUGGEST(root, prefix):
   node = root
   for char in prefix:
     if char not in node.children:
@@ -83,12 +83,12 @@ AUTOCOMPLETE(root, prefix):
   DFS(node, prefix, results)
   return results
 
-DFS(node, path, results):
+DFS(node, prefix, results):
   if node.is_end:
-    results.append(path)
+    results.append(prefix)
 
   for char, child in node.children:
-    DFS(child, path + char, results)
+    DFS(child, prefix + char, results)
 ```
 
 ## Characteristics
