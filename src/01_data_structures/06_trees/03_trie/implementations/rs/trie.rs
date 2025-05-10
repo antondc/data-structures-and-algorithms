@@ -1,15 +1,15 @@
-use std::collections::HashMap;
+use crate::hash_table::hash_table::HashTable;
 
 #[derive(Debug, PartialEq)]
 pub struct Node {
-  pub children: HashMap<String, Node>,
+  pub children: HashTable<Node>,
   pub end: bool,
 }
 
 impl Node {
   pub fn new() -> Node {
     return Node {
-      children: HashMap::new(),
+      children: HashTable::new(2),
       end: false,
     };
   }
@@ -17,29 +17,41 @@ impl Node {
 
 #[derive(Debug, PartialEq)]
 pub struct Trie {
-  pub root: Node,
+  pub root: Box<Node>,
 }
 
 impl Trie {
   pub fn new() -> Trie {
-    return Trie { root: Node::new() };
+    return Trie { root: Box::new(Node::new()) };
   }
 
   pub fn insert(&mut self, word: &str) -> &mut Self {
     let mut node = &mut self.root;
 
-    for c in word.chars() {
-      let key = c.to_string();
-
-      if !node.children.contains_key(&key) {
-        node.children.insert(key, Node::new());
+    for unicode in word.chars() {
+      let key = unicode.to_string();
+      if !node.children.has(&key) {
+        node.children.set(&key, Node::new());
       }
-
-      node = node.children.get_mut(&c.to_string()).unwrap();
+      node = node.children.get_mut(&key).unwrap();
     }
 
     node.end = true;
 
     self
+  }
+  pub fn search(&mut self, word: &str) -> bool {
+    let mut node = &mut self.root;
+
+    for unicode in word.chars() {
+      let key = unicode.to_string();
+
+      if !node.children.has(&key) {
+        return false;
+      }
+      node = node.children.get_mut(&key).unwrap();
+    }
+
+    return node.end;
   }
 }

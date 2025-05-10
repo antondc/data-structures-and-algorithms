@@ -23,7 +23,7 @@ mod tests {
     let mut hash_table: HashTable<i32> = HashTable::new(10);
     let result = hash_table.set("a", 1).get("a");
 
-    assert_eq!(result, Some(1));
+    assert_eq!(result, Some(1).as_ref());
   }
 
   #[test]
@@ -32,10 +32,25 @@ mod tests {
     hash_table.set("abc", 1).set("cba", 2);
 
     let abc = hash_table.get("abc");
-    assert_eq!(abc, Some(1));
+    assert_eq!(abc, Some(1).as_ref());
 
     let cba = hash_table.get("cba");
-    assert_eq!(cba, Some(2));
+    assert_eq!(cba, Some(2).as_ref());
+  }
+
+  #[test]
+  fn has_item_from_bucket_with_collisions() {
+    let mut hash_table: HashTable<i32> = HashTable::new(10);
+    hash_table.set("abc", 1).set("bcd", 2);
+
+    let contains_abc = hash_table.has("abc");
+    assert_eq!(contains_abc, true);
+
+    let contains_bcd = hash_table.has("bcd");
+    assert_eq!(contains_bcd, true);
+
+    let contains_cde = hash_table.has("cde");
+    assert_eq!(contains_cde, false);
   }
 
   #[test]
@@ -51,7 +66,7 @@ mod tests {
     let mut hash_table: HashTable<i32> = HashTable::new(10);
     let result = hash_table.set("a", 1).get("a");
 
-    assert_eq!(result, Some(1));
+    assert_eq!(result, Some(1).as_ref());
   }
 
   #[test]
@@ -62,8 +77,8 @@ mod tests {
     let a = hash_table.get("a");
     let b = hash_table.get("b");
 
-    assert_eq!(a, Some(1));
-    assert_eq!(b, Some(2));
+    assert_eq!(a, Some(1).as_ref());
+    assert_eq!(b, Some(2).as_ref());
 
     let removed_a = hash_table.remove("a").get("a");
     assert_eq!(removed_a, None);

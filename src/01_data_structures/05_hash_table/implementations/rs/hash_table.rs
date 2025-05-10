@@ -1,10 +1,12 @@
 use std::collections::LinkedList;
 
+#[derive(Debug, PartialEq)]
 pub struct HashTableItem<T> {
   key: String,
-  value: T,
+  value: Box<T>,
 }
 
+#[derive(Debug, PartialEq)]
 pub struct HashTable<T> {
   buckets: Vec<LinkedList<HashTableItem<T>>>,
   size: usize,
@@ -44,25 +46,38 @@ impl<T: std::fmt::Debug> HashTable<T> {
 
     let bucket = &mut self.buckets[bucket_index];
 
-    bucket.push_back(HashTableItem { key: key.to_string(), value });
+    bucket.push_back(HashTableItem {
+      key: key.to_string(),
+      value: Box::new(value),
+    });
 
     return self;
   }
 
-  pub fn get(&self, key: &str) -> Option<T>
-  where
-    T: Clone,
-  {
+  // Get an inmutable reference to the item
+  pub fn get(&self, key: &str) -> Option<&T> {
     let bucket_index = self.hash(key);
     let bucket = &self.buckets[bucket_index];
 
-    bucket.iter().find(|item| item.key == key).map(|item| item.value.clone())
+    bucket.iter().find(|item| item.key == key).map(|item| item.value.as_ref())
   }
 
-  pub fn remove(&mut self, key: &str) -> &mut Self
-  where
-    T: Clone,
-  {
+  // Get a mutable reference to the item
+  pub fn get_mut(&mut self, key: &str) -> Option<&mut Box<T>> {
+    let bucket_index = self.hash(key);
+    let bucket = &mut self.buckets[bucket_index];
+
+    bucket.iter_mut().find(|item| item.key == key).map(|item| &mut item.value)
+  }
+
+  pub fn has(&self, key: &str) -> bool {
+    let bucket_index = self.hash(key);
+    let bucket = &self.buckets[bucket_index];
+
+    bucket.iter().any(|item| item.key == key)
+  }
+
+  pub fn remove(&mut self, key: &str) -> &mut Self {
     let bucket_index = self.hash(key);
     let bucket = &mut self.buckets[bucket_index];
 

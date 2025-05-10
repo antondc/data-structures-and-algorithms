@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq)]
 pub struct Node {
   pub value: i32,
   pub left: Option<Box<Node>>,
