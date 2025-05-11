@@ -87,4 +87,8 @@ impl<T: std::fmt::Debug> HashTable<T> {
 
     self
   }
+
+  pub fn is_empty(&mut self) -> bool {
+    return self.buckets.iter().all(|item| item.is_empty());
+  }
 }

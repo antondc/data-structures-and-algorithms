@@ -181,3 +181,19 @@ func TestRemovesItemsFromHashTable(t *testing.T) {
 		t.Errorf("%v != %v", thirdItemRemoved, 0)
 	}
 }
+
+func TestIsEmptyHashTable(t *testing.T) {
+	hashTable := NewHashTable[int](1)
+	isEmpty := hashTable.isEmpty()
+
+	if !reflect.DeepEqual(isEmpty, true) {
+		t.Errorf("%v != %v", isEmpty, true)
+	}
+
+	hashTable.Set("a", 1)
+	isEmptyAfterSet := hashTable.isEmpty()
+
+	if !reflect.DeepEqual(isEmptyAfterSet, false) {
+		t.Errorf("%v != %v", isEmptyAfterSet, false)
+	}
+}

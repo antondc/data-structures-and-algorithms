@@ -1,3 +1,4 @@
+import { insert } from "./../../../06_trees/02_heap/implementations/ts/heap";
 import { HashTable } from "./hash_table";
 
 describe("new HashTable()", () => {
@@ -71,5 +72,19 @@ describe("remove()", () => {
     hashTable.remove("b");
     expect(hashTable.get("a")).toBe(null);
     expect(hashTable.get("b")).toBe(null);
+  });
+});
+
+describe("isEmpty()", () => {
+  test("Checks that hash table is empty", async () => {
+    const hashTable = new HashTable();
+    const isEmpty = hashTable.isEmpty();
+
+    expect(isEmpty).toBe(true);
+
+    hashTable.set("a", 1);
+    const isEmptyAfterInsert = hashTable.isEmpty();
+
+    expect(isEmptyAfterInsert).toBe(false);
   });
 });

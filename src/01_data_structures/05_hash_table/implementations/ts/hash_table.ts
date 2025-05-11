@@ -55,4 +55,8 @@ export class HashTable<T> {
 
     return this;
   }
+
+  isEmpty(): boolean {
+    return this.buckets.every((item) => item.head == null);
+  }
 }

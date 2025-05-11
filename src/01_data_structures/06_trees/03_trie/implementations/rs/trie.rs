@@ -66,8 +66,10 @@ impl Trie {
       if node.end {
         node.end = false;
 
-        return node.children.buckets().iter().all(|item| item.is_empty());
+        return node.children.is_empty();
       }
+
+      return false;
     }
 
     let key = word.chars().nth(depth).unwrap().to_string();
@@ -76,7 +78,7 @@ impl Trie {
       if should_delete {
         node.children.remove(&key);
 
-        return node.children.buckets().iter().all(|item| item.is_empty()) && !node.end;
+        return node.children.is_empty() && !node.end;
       }
     }
 

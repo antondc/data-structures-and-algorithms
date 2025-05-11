@@ -86,4 +86,17 @@ mod tests {
     let removed_b = hash_table.remove("b").get("b");
     assert_eq!(removed_b, None);
   }
+
+  #[test]
+  fn check_hash_table_is_empty() {
+    let mut hash_table: HashTable<i32> = HashTable::new(10);
+    let is_empty = hash_table.is_empty();
+
+    assert_eq!(is_empty, true);
+
+    hash_table.set("a", 1);
+    let is_empty_after_set = hash_table.is_empty();
+
+    assert_eq!(is_empty_after_set, false);
+  }
 }

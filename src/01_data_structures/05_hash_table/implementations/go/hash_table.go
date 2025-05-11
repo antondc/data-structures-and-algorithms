@@ -18,6 +18,12 @@ func NewHashTable[T comparable](size int) HashTable[T] {
 
 	buckets := make([]*HashTableLinkedList[T], size)
 
+	for i := range buckets {
+		buckets[i] = &HashTableLinkedList[T]{
+			LinkedList: &linkedList.LinkedList[HashTableLinkedListItem[T]]{},
+		}
+	}
+
 	return HashTable[T]{
 		buckets: buckets,
 		size:    size,
@@ -80,4 +86,14 @@ func (hashTable HashTable[T]) Remove(key string) HashTable[T] {
 	}
 
 	return hashTable
+}
+
+func (hashTable HashTable[T]) isEmpty() bool {
+	for _, bucket := range hashTable.buckets {
+		if bucket.LinkedList.Head != nil {
+			return false
+		}
+	}
+
+	return true
 }
