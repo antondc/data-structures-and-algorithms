@@ -1,5 +1,7 @@
 use crate::hash_table::hash_table::HashTable;
 
+pub const ALPHABET_SIZE: usize = 27;
+
 #[derive(Debug, PartialEq)]
 pub struct Node {
   pub children: HashTable<Node>,
@@ -9,7 +11,7 @@ pub struct Node {
 impl Node {
   pub fn new() -> Node {
     return Node {
-      children: HashTable::new(1),
+      children: HashTable::new(ALPHABET_SIZE),
       end: false,
     };
   }
@@ -88,9 +90,11 @@ impl Trie {
   pub fn suggest(&self, prefix: &str) -> Vec<String> {
     let mut node: &Node = self.root.as_ref();
 
+    // Iterate prefix to reachthe Node corresponding to last character of prefix
     for unicode in prefix.chars() {
       let key = unicode.to_string();
 
+      // If no key, no suggestions
       if !node.children.has(&key) {
         return vec![];
       }
@@ -98,24 +102,35 @@ impl Trie {
       node = node.children.get(&key).unwrap();
     }
 
+    // Initialize vector to store results
     let mut results: Vec<String> = Vec::new();
+    // Initialize vector to store the possible prefix paths
     let mut buffer: Vec<char> = prefix.chars().collect();
 
+    // Start iterating tree from the Node corresponding to last character of prefix
     Self::depth_first_breadth(node, &mut buffer, &mut results);
 
     results
   }
 
   fn depth_first_breadth(node: &Node, buffer: &mut Vec<char>, results: &mut Vec<String>) {
+    // If node is marked as end, push word to results
     if node.end {
       results.push(buffer.iter().collect());
     }
 
+    // Iterate the buckets of children of current node
     for bucket in node.children.buckets() {
+      // Iterate linked list of each bucket.
       for item in bucket.iter() {
+        // Get key character
         let key_char = item.key.chars().next().unwrap();
+        // Push key character to the buffer
         buffer.push(key_char);
+        // Search from this node onwards with new buffer
         Self::depth_first_breadth(&item.value, buffer, results);
+
+        // Extract character to continue with new node
         buffer.pop();
       }
     }
