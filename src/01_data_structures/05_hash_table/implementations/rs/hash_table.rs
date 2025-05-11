@@ -2,8 +2,8 @@ use std::collections::LinkedList;
 
 #[derive(Debug, PartialEq)]
 pub struct HashTableItem<T> {
-  key: String,
-  value: T,
+  pub key: String,
+  pub value: T,
 }
 
 #[derive(Debug, PartialEq)]

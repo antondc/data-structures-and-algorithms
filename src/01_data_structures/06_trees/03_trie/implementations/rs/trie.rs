@@ -9,7 +9,7 @@ pub struct Node {
 impl Node {
   pub fn new() -> Node {
     return Node {
-      children: HashTable::new(2),
+      children: HashTable::new(1),
       end: false,
     };
   }
@@ -83,5 +83,41 @@ impl Trie {
     }
 
     false
+  }
+
+  pub fn suggest(&self, prefix: &str) -> Vec<String> {
+    let mut node: &Node = self.root.as_ref();
+
+    for unicode in prefix.chars() {
+      let key = unicode.to_string();
+
+      if !node.children.has(&key) {
+        return vec![];
+      }
+
+      node = node.children.get(&key).unwrap();
+    }
+
+    let mut results: Vec<String> = Vec::new();
+    let mut buffer: Vec<char> = prefix.chars().collect();
+
+    Self::depth_first_breadth(node, &mut buffer, &mut results);
+
+    results
+  }
+
+  fn depth_first_breadth(node: &Node, buffer: &mut Vec<char>, results: &mut Vec<String>) {
+    if node.end {
+      results.push(buffer.iter().collect());
+    }
+
+    for bucket in node.children.buckets() {
+      for item in bucket.iter() {
+        let key_char = item.key.chars().next().unwrap();
+        buffer.push(key_char);
+        Self::depth_first_breadth(&item.value, buffer, results);
+        buffer.pop();
+      }
+    }
   }
 }

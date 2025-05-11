@@ -231,4 +231,15 @@ mod tests {
 
     assert_eq!(trie, expected);
   }
+
+  #[test]
+  fn suggests_returns_valid_options() {
+    let mut trie = Trie::new();
+    trie.insert("abcd").insert("abce").insert("abcf").insert("ayxz");
+
+    let suggestions = trie.suggest("ab");
+    let expected = vec!["abcd", "abce", "abcf"];
+
+    assert_eq!(suggestions, expected);
+  }
 }
