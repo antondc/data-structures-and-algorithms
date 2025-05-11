@@ -52,6 +52,34 @@ impl Trie {
       node = node.children.get_mut(&key).unwrap();
     }
 
-    return node.end;
+    node.end
+  }
+
+  pub fn delete(&mut self, word: &str) -> &mut Self {
+    Self::delete_node(&mut self.root, word, 0);
+
+    self
+  }
+
+  fn delete_node(node: &mut Node, word: &str, depth: usize) -> bool {
+    if word.len() == depth {
+      if node.end {
+        node.end = false;
+
+        return node.children.buckets().iter().all(|item| item.is_empty());
+      }
+    }
+
+    let key = word.chars().nth(depth).unwrap().to_string();
+    if let Some(child) = node.children.get_mut(&key) {
+      let should_delete = Self::delete_node(child, word, depth + 1);
+      if should_delete {
+        node.children.remove(&key);
+
+        return node.children.buckets().iter().all(|item| item.is_empty()) && !node.end;
+      }
+    }
+
+    false
   }
 }
