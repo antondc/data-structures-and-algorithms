@@ -3,12 +3,12 @@ use std::collections::LinkedList;
 #[derive(Debug, PartialEq)]
 pub struct HashTableItem<T> {
   key: String,
-  value: Box<T>,
+  value: T,
 }
 
 #[derive(Debug, PartialEq)]
 pub struct HashTable<T> {
-  buckets: Vec<LinkedList<HashTableItem<T>>>,
+  buckets: Vec<LinkedList<HashTableItem<Box<T>>>>,
   size: usize,
 }
 
@@ -33,7 +33,7 @@ impl<T: std::fmt::Debug> HashTable<T> {
     return hash % self.size;
   }
 
-  pub fn buckets(&self) -> &Vec<LinkedList<HashTableItem<T>>> {
+  pub fn buckets(&self) -> &Vec<LinkedList<HashTableItem<Box<T>>>> {
     &self.buckets
   }
 
