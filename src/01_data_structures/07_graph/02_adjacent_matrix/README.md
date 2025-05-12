@@ -1,3 +1,0 @@
-# Adjacent Matrix
-
-🚧 Pending

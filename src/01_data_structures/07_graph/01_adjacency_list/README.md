@@ -1,4 +1,4 @@
-# Adjacent List
+# Adjacency List
 
 ## Description
 
@@ -21,10 +21,9 @@ Widely used because they are space-efficient and allow quick access to a node's 
 
 Adds a vertex to the graph.
 
-    ADD_EDGE(graph, u, v, directed):
-      graph[u].append(v)
-      if not directed:
-      graph[v].append(u)
+    ADD_VERTEX(graph, vertex):
+      if vertex not in graph:
+        graph[vertex] = []
 
 ### Add Edge
 
@@ -33,7 +32,7 @@ Adds a connection from `u` to `v`. For undirected graphs, also connect `v` to `u
     ADD_EDGE(graph, u, v, directed):
       graph[u].append(v)
       if not directed:
-      graph[v].append(u)
+        graph[v].append(u)
 
 ### Remove Vertex
 
@@ -41,7 +40,7 @@ Removes the vertex and all references to it from neighbors.
 
     REMOVE_VERTEX(graph, vertex):
       for neighbor in graph[vertex]:
-      graph[neighbor].remove(vertex)
+        graph[neighbor].remove(vertex)
       delete graph[vertex]
 
 ### Remove Edge
@@ -51,7 +50,7 @@ Removes an edge between two nodes.
     REMOVE_EDGE(graph, u, v, directed):
       graph[u].remove(v)
       if not directed:
-      graph[v].remove(u)
+        graph[v].remove(u)
 
 ### Get Neighbors
 
@@ -100,48 +99,48 @@ Adjacency List:
 
 #### Add Vertex
 
-    ADD_VERTEX(G, 'E')
-      G = {
-        A: [B, C],
-        B: [A, D],
-        C: [A],
-        D: [B],
-        E: []
-      }
+    ADD_VERTEX('E')
+    G = {
+      A: [B, C],
+      B: [A, D],
+      C: [A],
+      D: [B],
+      E: []
+    }
 
 #### Add Edge
 
-    ADD_EDGE(G, 'E', 'B', false)
-      G = {
-        A: [B, C],
-        B: [A, D, E],
-        C: [A],
-        D: [B],
-        E: [B]
-      }
+    ADD_EDGE('E', 'B', false)
+    G = {
+      A: [B, C],
+      B: [A, D, E],
+      C: [A],
+      D: [B],
+      E: [B]
+    }
 
 #### Remove Edge
 
-    REMOVE_EDGE(G, 'A', 'C', false)
-      G = {
-        A: [B],
-        B: [A, D, E],
-        C: [],
-        D: [B],
-        E: [B]
-      }
+    REMOVE_EDGE('A', 'C', false)
+    G = {
+      A: [B],
+      B: [A, D, E],
+      C: [],
+      D: [B],
+      E: [B]
+    }
 
 #### Remove Vertex
 
-    REMOVE_VERTEX(G, 'B')
-      G = {
-        A: [],
-        C: [],
-        D: [],
-        E: []
-      }
+    REMOVE_VERTEX('B')
+    G = {
+      A: [],
+      C: [],
+      D: [],
+      E: []
+    }
 
 ### Get Neighbors
 
-    GET_NEIGHBORS(G, 'A') → [B]
-    GET_NEIGHBORS(G, 'C') → []
+    GET_NEIGHBORS('A') → [B]
+    GET_NEIGHBORS('C') → []
