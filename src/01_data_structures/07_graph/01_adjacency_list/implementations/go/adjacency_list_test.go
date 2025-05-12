@@ -158,3 +158,80 @@ func TestRemoveEdge(t *testing.T) {
 		}
 	})
 }
+
+func TestRemoveVertex(t *testing.T) {
+	t.Run("Removes vertex from empty graph", func(t *testing.T) {
+		graph := NewAdjacencyList()
+		graph.RemoveVertex("a")
+
+		expected := &AdjacencyList{
+			graph: map[string][]string{},
+		}
+
+		if !reflect.DeepEqual(graph, expected) {
+			t.Errorf("Expected %v, got %v", expected, graph)
+		}
+	})
+
+	t.Run("Removes vertex from graph with one vertex", func(t *testing.T) {
+		graph := NewAdjacencyList().
+			AddVertex("a").
+			RemoveVertex("a")
+
+		expected := &AdjacencyList{
+			graph: map[string][]string{},
+		}
+
+		if !reflect.DeepEqual(graph, expected) {
+			t.Errorf("Expected %v, got %v", expected, graph)
+		}
+	})
+
+	t.Run("Removes vertex from graph with vertices and edges", func(t *testing.T) {
+		graph := NewAdjacencyList().
+			AddVertex("a").
+			AddVertex("b").
+			AddEdge("a", "b", EdgeOptions{}).
+			RemoveVertex("a")
+
+		expected := &AdjacencyList{
+			graph: map[string][]string{
+				"b": {},
+			},
+		}
+
+		if !reflect.DeepEqual(graph, expected) {
+			t.Errorf("Expected %v, got %v", expected, graph)
+		}
+	})
+}
+
+func TestGetNeighbors(t *testing.T) {
+	t.Run("Gets neighbors from graph vertex", func(t *testing.T) {
+		graph := NewAdjacencyList().
+			AddVertex("a").
+			AddVertex("b").
+			AddEdge("a", "b", EdgeOptions{})
+
+		neighbors := graph.GetNeighbors("a")
+		expected := []string{"b"}
+
+		if !reflect.DeepEqual(neighbors, expected) {
+			t.Errorf("Expected %v, got %v", expected, neighbors)
+		}
+	})
+
+	t.Run("Gets neighbors from graph vertex with multiple calls", func(t *testing.T) {
+		graph := NewAdjacencyList().
+			AddVertex("a").
+			AddVertex("b").
+			AddEdge("a", "b", EdgeOptions{})
+
+		neighbors := graph.GetNeighbors("a")
+		expected := []string{"b"}
+
+		if !reflect.DeepEqual(neighbors, expected) {
+			t.Errorf("Expected %v, got %v", expected, neighbors)
+		}
+	})
+}

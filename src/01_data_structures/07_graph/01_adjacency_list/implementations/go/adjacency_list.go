@@ -23,6 +23,26 @@ func (adjacencyList *AdjacencyList) AddVertex(u string) *AdjacencyList {
 	return adjacencyList
 }
 
+func (adjacencyList *AdjacencyList) RemoveVertex(u string) *AdjacencyList {
+	if adjacencyList.graph[u] == nil {
+		return adjacencyList
+	}
+
+	for vertex, list := range adjacencyList.graph {
+		newList := []string{}
+		for _, adjacent := range list {
+			if adjacent != u {
+				newList = append(newList, u)
+			}
+		}
+		adjacencyList.graph[vertex] = newList
+	}
+
+	delete(adjacencyList.graph, u)
+
+	return adjacencyList
+}
+
 func (adjacencyList *AdjacencyList) AddEdge(u string, v string, options EdgeOptions) *AdjacencyList {
 	if adjacencyList.graph[u] == nil || adjacencyList.graph[v] == nil {
 		return adjacencyList
@@ -37,30 +57,34 @@ func (adjacencyList *AdjacencyList) AddEdge(u string, v string, options EdgeOpti
 	return adjacencyList
 }
 
-func (adjacentList *AdjacencyList) RemoveEdge(u string, v string, options EdgeOptions) *AdjacencyList {
-	if adjacentList.graph[u] == nil || adjacentList.graph[v] == nil {
-		return adjacentList
+func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeOptions) *AdjacencyList {
+	if adjacencyList.graph[u] == nil || adjacencyList.graph[v] == nil {
+		return adjacencyList
 	}
 
-	newAdjacentListU := []string{}
-	for _, adjacent := range adjacentList.graph[u] {
+	newAdjacencyListU := []string{}
+	for _, adjacent := range adjacencyList.graph[u] {
 		if adjacent != v {
-			newAdjacentListU = append(newAdjacentListU, adjacent)
+			newAdjacencyListU = append(newAdjacencyListU, adjacent)
 		}
 	}
-	adjacentList.graph[u] = newAdjacentListU
+	adjacencyList.graph[u] = newAdjacencyListU
 
 	if options.Directed {
-		return adjacentList
+		return adjacencyList
 	}
 
-	newAdjacentListV := []string{}
-	for _, adjacent := range adjacentList.graph[v] {
+	newAdjacencyListV := []string{}
+	for _, adjacent := range adjacencyList.graph[v] {
 		if adjacent != u {
-			newAdjacentListV = append(newAdjacentListV, adjacent)
+			newAdjacencyListV = append(newAdjacencyListV, adjacent)
 		}
 	}
-	adjacentList.graph[v] = newAdjacentListV
+	adjacencyList.graph[v] = newAdjacencyListV
 
-	return adjacentList
+	return adjacencyList
+}
+
+func (adjacencyList *AdjacencyList) GetNeighbors(u string) []string {
+	return adjacencyList.graph[u]
 }
