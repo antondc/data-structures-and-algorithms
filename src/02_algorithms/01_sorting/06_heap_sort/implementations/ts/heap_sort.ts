@@ -1,7 +1,7 @@
 import {
   heap,
   heapify,
-} from "../../../../../01_data_structures/06_trees/02_heap/implementations/ts/heap";
+} from "../../../../../01_data_structures/06_tree/02_heap/implementations/ts/heap";
 
 export const heapSort = (array: Array<number>) => {
   heap(array);

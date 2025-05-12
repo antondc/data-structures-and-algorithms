@@ -30,8 +30,8 @@ func (adjacencyList *AdjacencyList) RemoveVertex(u string) *AdjacencyList {
 
 	for vertex, list := range adjacencyList.graph {
 		newList := []string{}
-		for _, adjacent := range list {
-			if adjacent != u {
+		for _, neighbor := range list {
+			if neighbor != u {
 				newList = append(newList, u)
 			}
 		}
@@ -63,9 +63,9 @@ func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeO
 	}
 
 	newAdjacencyListU := []string{}
-	for _, adjacent := range adjacencyList.graph[u] {
-		if adjacent != v {
-			newAdjacencyListU = append(newAdjacencyListU, adjacent)
+	for _, neighbor := range adjacencyList.graph[u] {
+		if neighbor != v {
+			newAdjacencyListU = append(newAdjacencyListU, neighbor)
 		}
 	}
 	adjacencyList.graph[u] = newAdjacencyListU
@@ -75,9 +75,9 @@ func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeO
 	}
 
 	newAdjacencyListV := []string{}
-	for _, adjacent := range adjacencyList.graph[v] {
-		if adjacent != u {
-			newAdjacencyListV = append(newAdjacencyListV, adjacent)
+	for _, neighbor := range adjacencyList.graph[v] {
+		if neighbor != u {
+			newAdjacencyListV = append(newAdjacencyListV, neighbor)
 		}
 	}
 	adjacencyList.graph[v] = newAdjacencyListV
