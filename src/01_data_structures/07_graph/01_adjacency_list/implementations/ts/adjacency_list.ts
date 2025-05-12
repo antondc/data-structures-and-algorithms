@@ -36,46 +36,36 @@ export class AdjacencyList {
     return this;
   }
 
-  addEdge({
-    u,
-    v,
-    weight = 1,
-    directed = false,
-  }: {
-    u: string;
-    v: string;
-    weight?: number;
-    directed?: boolean;
-  }): AdjacencyList {
+  addEdge(
+    u: string,
+    v: string,
+    options: { directed?: boolean; weight?: number } = {}
+  ): AdjacencyList {
     if (!this.graph[u] || !this.graph[v]) {
       return this;
     }
 
-    this.graph[u].push({ value: v, weight });
+    this.graph[u].push({ value: v, weight: options.weight });
 
-    if (!directed) {
-      this.graph[v].push({ value: u, weight });
+    if (!options.directed) {
+      this.graph[v].push({ value: u, weight: options.weight });
     }
 
     return this;
   }
 
-  removeEdge({
-    u,
-    v,
-    directed = false,
-  }: {
-    u: string;
-    v: string;
-    directed?: boolean;
-  }): AdjacencyList {
+  removeEdge(
+    u: string,
+    v: string,
+    options: { directed?: boolean } = {}
+  ): AdjacencyList {
     if (!this.graph[u] || !this.graph[v]) {
       return this;
     }
 
     this.graph[v] = this.graph[v].filter((item) => item.value !== u);
 
-    if (!directed) {
+    if (!options.directed) {
       this.graph[u] = this.graph[u].filter((item) => item.value !== v);
     }
 

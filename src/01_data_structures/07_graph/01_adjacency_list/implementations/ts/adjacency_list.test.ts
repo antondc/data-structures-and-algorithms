@@ -27,20 +27,20 @@ describe("addEdge()", () => {
   test("Inserts an undirected edge", async () => {
     const graph = new AdjacencyList();
     graph.addVertex("a").addVertex("b");
-    graph.addEdge({ u: "a", v: "b" });
+    graph.addEdge("a", "b");
 
     expect(graph).toEqual({
       graph: {
         a: [
           {
             value: "b",
-            weight: 1,
+            weight: undefined,
           },
         ],
         b: [
           {
             value: "a",
-            weight: 1,
+            weight: undefined,
           },
         ],
       },
@@ -50,11 +50,11 @@ describe("addEdge()", () => {
   test("Inserts a directed edge", async () => {
     const graph = new AdjacencyList();
     graph.addVertex("a").addVertex("b");
-    graph.addEdge({ u: "a", v: "b", directed: true });
+    graph.addEdge("a", "b", { directed: true });
 
     expect(graph).toEqual({
       graph: {
-        a: [{ value: "b", weight: 1 }],
+        a: [{ value: "b", weight: undefined }],
         b: [],
       },
     });
@@ -62,15 +62,13 @@ describe("addEdge()", () => {
 
   test("Inserts an edge into an empty graph", async () => {
     const graph = new AdjacencyList();
-    graph.addEdge({ u: "a", v: "b" });
+    graph.addEdge("a", "b");
 
     expect(graph).toEqual({ graph: {} });
   });
 
   test("Inserts an edge into a graph missing one vertex", async () => {
-    const graph = new AdjacencyList()
-      .addVertex("a")
-      .addEdge({ u: "a", v: "b" });
+    const graph = new AdjacencyList().addVertex("a").addEdge("a", "b");
 
     expect(graph).toEqual({ graph: { a: [] } });
   });
@@ -78,7 +76,7 @@ describe("addEdge()", () => {
 
 describe("removeEdge()", () => {
   test("Removes edge from empty graph", async () => {
-    const graph = new AdjacencyList().removeEdge({ u: "a", v: "b" });
+    const graph = new AdjacencyList().removeEdge("a", "b");
 
     expect(graph).toEqual({ graph: {} });
   });
@@ -87,7 +85,7 @@ describe("removeEdge()", () => {
     const graph = new AdjacencyList()
       .addVertex("a")
       .addVertex("b")
-      .removeEdge({ u: "a", v: "b" });
+      .removeEdge("a", "b");
 
     expect(graph).toEqual({ graph: { a: [], b: [] } });
   });
@@ -96,8 +94,8 @@ describe("removeEdge()", () => {
     const graph = new AdjacencyList()
       .addVertex("a")
       .addVertex("b")
-      .addEdge({ u: "a", v: "b" })
-      .removeEdge({ u: "a", v: "b" });
+      .addEdge("a", "b")
+      .removeEdge("a", "b");
 
     expect(graph).toEqual({ graph: { a: [], b: [] } });
   });
@@ -120,7 +118,7 @@ describe("removeVertex()", () => {
     const graph = new AdjacencyList()
       .addVertex("a")
       .addVertex("b")
-      .addEdge({ u: "a", v: "b" })
+      .addEdge("a", "b")
       .removeVertex("a");
 
     expect(graph).toEqual({ graph: { b: [] } });
@@ -132,19 +130,19 @@ describe("getNeighbors()", () => {
     const graph = new AdjacencyList()
       .addVertex("a")
       .addVertex("b")
-      .addEdge({ u: "a", v: "b" });
+      .addEdge("a", "b");
     const neighbors = graph.getNeighbors("a");
 
-    expect(neighbors).toEqual([{ value: "b", weight: 1 }]);
+    expect(neighbors).toEqual([{ value: "b", weight: undefined }]);
   });
 
   test("Gets neighbors from graph vertex", async () => {
     const graph = new AdjacencyList()
       .addVertex("a")
       .addVertex("b")
-      .addEdge({ u: "a", v: "b" });
+      .addEdge("a", "b");
     const neighbors = graph.getNeighbors("a");
 
-    expect(neighbors).toEqual([{ value: "b", weight: 1 }]);
+    expect(neighbors).toEqual([{ value: "b", weight: undefined }]);
   });
 });
