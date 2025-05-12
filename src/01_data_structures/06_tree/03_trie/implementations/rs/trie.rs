@@ -121,7 +121,7 @@ impl Trie {
 
     // Iterate the buckets of children of current node
     for bucket in node.children.buckets() {
-      // Iterate linked list of each bucket.
+      // Iterate linked list of each bucket, as collisions may occur depending on size of hash table holding alphabets.
       for item in bucket.iter() {
         // Get key character
         let key_char = item.key.chars().next().unwrap();

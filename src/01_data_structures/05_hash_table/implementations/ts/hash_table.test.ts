@@ -1,4 +1,3 @@
-import { insert } from "./../../../06_trees/02_heap/implementations/ts/heap";
 import { HashTable } from "./hash_table";
 
 describe("new HashTable()", () => {
@@ -13,6 +12,13 @@ describe("set()", () => {
     const hashTable = new HashTable().set("a", 1);
 
     expect(hashTable).not.toBe(undefined);
+  });
+
+  test("Sets an item with multibite character key into an empty HashTable", async () => {
+    const hashTable = new HashTable().set("ñ", 1);
+    const item = hashTable.get("ñ");
+
+    expect(item).toBe(1);
   });
 });
 

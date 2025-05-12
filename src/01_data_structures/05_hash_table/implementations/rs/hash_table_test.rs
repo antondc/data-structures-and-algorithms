@@ -4,10 +4,25 @@ mod tests {
 
   #[test]
   fn creates_hash_table() {
-    let mut hash_table: HashTable<i32> = HashTable::new(10);
-    hash_table.set("a", 1);
+    let _hash_table: HashTable<i32> = HashTable::new(10);
 
     assert_eq!(true, true);
+  }
+
+  #[test]
+  fn set_item_to_empty_hash_table() {
+    let mut hash_table: HashTable<i32> = HashTable::new(3);
+    let result = hash_table.set("a", 1).get("a");
+
+    assert_eq!(result, Some(1).as_ref());
+  }
+
+  #[test]
+  fn set_item_to_empty_hash_table_with_multibyte_characters() {
+    let mut hash_table: HashTable<i32> = HashTable::new(3);
+    let result = hash_table.set("ñ", 1).get("ñ");
+
+    assert_eq!(result, Some(1).as_ref());
   }
 
   #[test]

@@ -24,6 +24,19 @@ func TestSetItemToHashTable(t *testing.T) {
 	}
 }
 
+func TestSetItemWithMultibyteKeyToHashTable(t *testing.T) {
+	hashTable := NewHashTable[int](50).Set("ñ", 1)
+	result, ok := hashTable.Get("ñ")
+
+	if !reflect.DeepEqual(ok, true) {
+		t.Errorf("%v != %v", ok, true)
+	}
+
+	if !reflect.DeepEqual(result, 1) {
+		t.Errorf("%v != %v", result, 1)
+	}
+}
+
 func TestGetItemFromEmptyHashTable(t *testing.T) {
 	hashTable := NewHashTable[int](50)
 	result, ok := hashTable.Get("a")

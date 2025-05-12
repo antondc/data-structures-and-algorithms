@@ -26,8 +26,8 @@ impl<T: std::fmt::Debug> HashTable<T> {
   fn hash(&self, key: &str) -> usize {
     let mut hash = 0;
 
-    for i in 0..key.len() {
-      hash = hash + key.chars().nth(i).unwrap() as usize
+    for unicode in key.chars() {
+      hash = hash + unicode as usize
     }
 
     return hash % self.size;
