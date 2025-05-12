@@ -17,15 +17,15 @@ mod stack;
 mod hash_table;
 
 // Binary Search Tree
-#[path = "./src/01_data_structures/06_trees/01_binary_search_tree/implementations/rs/mod.rs"]
+#[path = "./src/01_data_structures/06_tree/01_binary_search_tree/implementations/rs/mod.rs"]
 mod binary_search_tree;
 
 // Heap
-#[path = "./src/01_data_structures/06_trees/02_heap/implementations/rs/mod.rs"]
+#[path = "./src/01_data_structures/06_tree/02_heap/implementations/rs/mod.rs"]
 mod heap;
 
 // Heap
-#[path = "./src/01_data_structures/06_trees/03_trie/implementations/rs/mod.rs"]
+#[path = "./src/01_data_structures/06_tree/03_trie/implementations/rs/mod.rs"]
 mod trie;
 
 // Algorithms

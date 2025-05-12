@@ -1,6 +1,6 @@
 package heapSort
 
-import heap "data-structures-algorithms-problems/src/01_data_structures/06_trees/02_heap/implementations/go"
+import heap "data-structures-algorithms-problems/src/01_data_structures/06_tree/02_heap/implementations/go"
 
 func HeapSort(array []int) {
 	heap.Heap(array)
