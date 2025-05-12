@@ -8,8 +8,8 @@ describe("AdjacencyList()", () => {
   });
 });
 
-describe("insertVertex()", () => {
-  test("Inserts a vertex", async () => {
+describe("addVertex()", () => {
+  test("Adds a vertex", async () => {
     const graph = new AdjacencyList();
 
     graph.addVertex("a");
@@ -24,7 +24,7 @@ describe("insertVertex()", () => {
 });
 
 describe("addEdge()", () => {
-  test("Inserts an undirected edge", async () => {
+  test("Adds an undirected edge", async () => {
     const graph = new AdjacencyList();
     graph.addVertex("a").addVertex("b");
     graph.addEdge("a", "b");
@@ -47,7 +47,7 @@ describe("addEdge()", () => {
     });
   });
 
-  test("Inserts a directed edge", async () => {
+  test("Adds a directed edge", async () => {
     const graph = new AdjacencyList();
     graph.addVertex("a").addVertex("b");
     graph.addEdge("a", "b", { directed: true });
@@ -60,14 +60,14 @@ describe("addEdge()", () => {
     });
   });
 
-  test("Inserts an edge into an empty graph", async () => {
+  test("Adds an edge into an empty graph", async () => {
     const graph = new AdjacencyList();
     graph.addEdge("a", "b");
 
     expect(graph).toEqual({ graph: {} });
   });
 
-  test("Inserts an edge into a graph missing one vertex", async () => {
+  test("Adds an edge into a graph missing one vertex", async () => {
     const graph = new AdjacencyList().addVertex("a").addEdge("a", "b");
 
     expect(graph).toEqual({ graph: { a: [] } });

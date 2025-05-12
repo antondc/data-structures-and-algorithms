@@ -18,8 +18,7 @@ func TestTrieIsInstantiated(t *testing.T) {
 }
 
 func TestInsertsDataIntoTrie(t *testing.T) {
-	trie := NewTrie()
-	trie.Insert("ab")
+	trie := NewTrie().Insert("ab")
 
 	expected := &Trie{
 		Root: &Node{
