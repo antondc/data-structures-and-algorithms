@@ -91,4 +91,10 @@ impl<T: std::fmt::Debug> HashTable<T> {
   pub fn is_empty(&mut self) -> bool {
     return self.buckets.iter().all(|item| item.is_empty());
   }
+
+  /// Iterator function, useful to access all Hash Table contents, including those in lists, through its interface.
+  /// Returns a type that implements Iterator trait with a tupe of references of key/value pairs.
+  pub fn iter(&self) -> impl Iterator<Item = (&String, &Box<T>)> {
+    self.buckets.iter().flat_map(|bucket| bucket.iter().map(|item| (&item.key, &item.value)))
+  }
 }

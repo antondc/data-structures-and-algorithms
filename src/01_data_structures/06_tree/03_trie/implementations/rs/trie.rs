@@ -89,12 +89,11 @@ impl Trie {
 
   pub fn suggest(&self, prefix: &str) -> Vec<String> {
     let mut node: &Node = self.root.as_ref();
-
-    // Iterate prefix to reachthe Node corresponding to last character of prefix
+    // Iterate prefix to reach the Node corresponding to last character of prefix.
     for unicode in prefix.chars() {
       let key = unicode.to_string();
 
-      // If no key, no suggestions
+      // If no key, no suggestions.
       if !node.children.has(&key) {
         return vec![];
       }
@@ -102,37 +101,29 @@ impl Trie {
       node = node.children.get(&key).unwrap();
     }
 
-    // Initialize vector to store results
+    // Initialize vector to store results.
     let mut results: Vec<String> = Vec::new();
-    // Initialize vector to store the possible prefix paths
+    // Initialize vector to store the possible prefix paths.
     let mut buffer: Vec<char> = prefix.chars().collect();
 
-    // Start iterating tree from the Node corresponding to last character of prefix
+    // Start iterating tree from the Node corresponding to last character of prefix.
     Self::depth_first_breadth(node, &mut buffer, &mut results);
 
     results
   }
 
   fn depth_first_breadth(node: &Node, buffer: &mut Vec<char>, results: &mut Vec<String>) {
-    // If node is marked as end, push word to results
+    // If node is marked as end, push word to results.
     if node.end {
       results.push(buffer.iter().collect());
     }
 
-    // Iterate the buckets of children of current node
-    for bucket in node.children.buckets() {
-      // Iterate linked list of each bucket, as collisions may occur depending on size of hash table holding alphabets.
-      for item in bucket.iter() {
-        // Get key character
-        let key_char = item.key.chars().next().unwrap();
-        // Push key character to the buffer
-        buffer.push(key_char);
-        // Search from this node onwards with new buffer
-        Self::depth_first_breadth(&item.value, buffer, results);
-
-        // Extract character to continue with new node
-        buffer.pop();
-      }
+    // Iterate all hash table contents through `iter()` method.
+    for (key, child_node) in node.children.iter() {
+      let key_char = key.chars().next().unwrap(); // Get key character.
+      buffer.push(key_char); // Push key character to the buffer.
+      Self::depth_first_breadth(child_node, buffer, results); // Search from this node onwards with new buffer.
+      buffer.pop(); // Extract character to continue with new node.
     }
   }
 }
