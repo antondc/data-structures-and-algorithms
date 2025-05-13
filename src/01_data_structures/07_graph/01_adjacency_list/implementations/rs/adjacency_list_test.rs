@@ -154,4 +154,37 @@ mod tests {
 
     assert_eq!(graph, expected);
   }
+
+  #[test]
+  fn remove_vertex_from_empty_graph() {
+    let mut graph = AdjacencyList::new();
+    graph.remove_vertex("a");
+
+    let expected = AdjacencyList { graph: HashTable::new(2) };
+
+    assert_eq!(graph, expected);
+  }
+
+  #[test]
+  fn remove_vertex_from_graph_with_one_vertex() {
+    let mut graph = AdjacencyList::new();
+    graph.add_vertex("a").remove_vertex("a");
+
+    let expected = AdjacencyList { graph: HashTable::new(2) };
+
+    assert_eq!(graph, expected);
+  }
+
+  #[test]
+  fn remove_vertex_from_graph_with_vertices_and_edges() {
+    let mut graph = AdjacencyList::new();
+    graph.add_vertex("a").add_vertex("b").add_edge("a", "b", None).remove_vertex("a");
+
+    let mut hash_table = HashTable::new(2);
+    hash_table.set("b", vec![]);
+
+    let expected = AdjacencyList { graph: hash_table };
+
+    assert_eq!(graph, expected);
+  }
 }

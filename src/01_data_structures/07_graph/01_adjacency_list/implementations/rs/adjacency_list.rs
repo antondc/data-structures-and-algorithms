@@ -32,6 +32,22 @@ impl AdjacencyList {
     return self;
   }
 
+  pub fn remove_vertex(&mut self, u: &str) -> &mut Self {
+    if !self.graph.has(u) {
+      return self;
+    }
+
+    for key in self.graph.keys() {
+      if let Some(neighbor_list) = self.graph.get_mut(&key) {
+        neighbor_list.retain(|vertex| vertex.value != u);
+      }
+    }
+
+    self.graph.remove(u);
+
+    self
+  }
+
   pub fn add_edge(&mut self, u: &str, v: &str, options: Option<EdgeOptions>) -> &mut Self {
     if !self.graph.has(u) || !self.graph.has(v) {
       return self;

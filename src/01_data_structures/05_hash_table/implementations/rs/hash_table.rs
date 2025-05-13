@@ -97,4 +97,9 @@ impl<T: std::fmt::Debug> HashTable<T> {
   pub fn iter(&self) -> impl Iterator<Item = (&String, &Box<T>)> {
     self.buckets.iter().flat_map(|bucket| bucket.iter().map(|item| (&item.key, &item.value)))
   }
+
+  /// Returns all keys of Hash Table
+  pub fn keys(&self) -> Vec<String> {
+    self.iter().map(|(key, _value)| key.clone()).collect()
+  }
 }
