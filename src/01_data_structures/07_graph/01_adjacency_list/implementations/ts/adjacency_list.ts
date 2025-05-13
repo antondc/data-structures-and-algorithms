@@ -1,6 +1,6 @@
-type Graph = Record<string, Array<Node>>;
+type Graph = Record<string, Array<Vertex>>;
 
-type Node = {
+type Vertex = {
   value: string;
   weight: number;
 };
@@ -72,7 +72,7 @@ export class AdjacencyList {
     return this;
   }
 
-  getNeighbors(vertex: string): Array<Node> {
+  getNeighbors(vertex: string): Array<Vertex> {
     return this.graph[vertex];
   }
 }
