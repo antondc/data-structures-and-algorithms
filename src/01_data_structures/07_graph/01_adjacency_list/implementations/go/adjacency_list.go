@@ -5,19 +5,24 @@ type EdgeOptions struct {
 	Weight   int
 }
 
+type Vertex struct {
+	Value  string
+	Weight int
+}
+
 type AdjacencyList struct {
-	graph map[string][]string
+	graph map[string][]Vertex
 }
 
 func NewAdjacencyList() *AdjacencyList {
 	return &AdjacencyList{
-		graph: make(map[string][]string),
+		graph: make(map[string][]Vertex),
 	}
 }
 
 func (adjacencyList *AdjacencyList) AddVertex(u string) *AdjacencyList {
 	if _, exists := adjacencyList.graph[u]; !exists {
-		adjacencyList.graph[u] = []string{}
+		adjacencyList.graph[u] = []Vertex{}
 	}
 
 	return adjacencyList
@@ -29,10 +34,10 @@ func (adjacencyList *AdjacencyList) RemoveVertex(u string) *AdjacencyList {
 	}
 
 	for vertex, list := range adjacencyList.graph {
-		newList := []string{}
+		newList := []Vertex{}
 		for _, neighbor := range list {
-			if neighbor != u {
-				newList = append(newList, u)
+			if neighbor.Value != u {
+				newList = append(newList, neighbor)
 			}
 		}
 		adjacencyList.graph[vertex] = newList
@@ -48,10 +53,10 @@ func (adjacencyList *AdjacencyList) AddEdge(u string, v string, options EdgeOpti
 		return adjacencyList
 	}
 
-	adjacencyList.graph[u] = append(adjacencyList.graph[u], v)
+	adjacencyList.graph[u] = append(adjacencyList.graph[u], Vertex{Value: v, Weight: options.Weight})
 
 	if !options.Directed {
-		adjacencyList.graph[v] = append(adjacencyList.graph[v], u)
+		adjacencyList.graph[v] = append(adjacencyList.graph[v], Vertex{Value: u, Weight: options.Weight})
 	}
 
 	return adjacencyList
@@ -62,9 +67,9 @@ func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeO
 		return adjacencyList
 	}
 
-	newAdjacencyListU := []string{}
+	newAdjacencyListU := []Vertex{}
 	for _, neighbor := range adjacencyList.graph[u] {
-		if neighbor != v {
+		if neighbor.Value != v {
 			newAdjacencyListU = append(newAdjacencyListU, neighbor)
 		}
 	}
@@ -74,9 +79,9 @@ func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeO
 		return adjacencyList
 	}
 
-	newAdjacencyListV := []string{}
+	newAdjacencyListV := []Vertex{}
 	for _, neighbor := range adjacencyList.graph[v] {
-		if neighbor != u {
+		if neighbor.Value != u {
 			newAdjacencyListV = append(newAdjacencyListV, neighbor)
 		}
 	}
@@ -85,6 +90,6 @@ func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeO
 	return adjacencyList
 }
 
-func (adjacencyList *AdjacencyList) GetNeighbors(u string) []string {
+func (adjacencyList *AdjacencyList) GetNeighbors(u string) []Vertex {
 	return adjacencyList.graph[u]
 }

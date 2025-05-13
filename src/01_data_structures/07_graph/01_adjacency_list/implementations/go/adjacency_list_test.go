@@ -7,7 +7,7 @@ import (
 
 func TestAdjacencyListInstantiation(t *testing.T) {
 	graph := NewAdjacencyList()
-	expected := &AdjacencyList{graph: map[string][]string{}}
+	expected := &AdjacencyList{graph: map[string][]Vertex{}}
 
 	if !reflect.DeepEqual(graph, expected) {
 		t.Errorf("Expected %v, got %v", expected, graph)
@@ -19,16 +19,15 @@ func TestAddVertex(t *testing.T) {
 
 	graph.AddVertex("a")
 	expected1 := &AdjacencyList{
-		graph: map[string][]string{"a": {}},
+		graph: map[string][]Vertex{"a": {}},
 	}
-
 	if !reflect.DeepEqual(graph, expected1) {
 		t.Errorf("Expected %v, got %v", expected1, graph)
 	}
 
 	graph.AddVertex("b")
 	expected2 := &AdjacencyList{
-		graph: map[string][]string{"a": {}, "b": {}},
+		graph: map[string][]Vertex{"a": {}, "b": {}},
 	}
 	if !reflect.DeepEqual(graph, expected2) {
 		t.Errorf("Expected %v, got %v", expected2, graph)
@@ -36,7 +35,7 @@ func TestAddVertex(t *testing.T) {
 
 	graph.AddVertex("c")
 	expected3 := &AdjacencyList{
-		graph: map[string][]string{"a": {}, "b": {}, "c": {}},
+		graph: map[string][]Vertex{"a": {}, "b": {}, "c": {}},
 	}
 	if !reflect.DeepEqual(graph, expected3) {
 		t.Errorf("Expected %v, got %v", expected3, graph)
@@ -50,12 +49,11 @@ func TestAddEdge(t *testing.T) {
 		graph.AddEdge("a", "b", EdgeOptions{})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{
-				"a": {"b"},
-				"b": {"a"},
+			graph: map[string][]Vertex{
+				"a": {Vertex{Value: "b"}},
+				"b": {Vertex{Value: "a"}},
 			},
 		}
-
 		if !reflect.DeepEqual(graph, expected) {
 			t.Errorf("Expected %v, got %v", expected, graph)
 		}
@@ -67,8 +65,25 @@ func TestAddEdge(t *testing.T) {
 		graph.AddEdge("a", "b", EdgeOptions{Directed: true})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{
-				"a": {"b"},
+			graph: map[string][]Vertex{
+				"a": {Vertex{Value: "b"}},
+				"b": {},
+			},
+		}
+
+		if !reflect.DeepEqual(graph, expected) {
+			t.Errorf("Expected %v, got %v", expected, graph)
+		}
+	})
+
+	t.Run("Adds a weighted directed edge", func(t *testing.T) {
+		graph := NewAdjacencyList()
+		graph.AddVertex("a").AddVertex("b")
+		graph.AddEdge("a", "b", EdgeOptions{Directed: true, Weight: 2})
+
+		expected := &AdjacencyList{
+			graph: map[string][]Vertex{
+				"a": {Vertex{Value: "b", Weight: 2}},
 				"b": {},
 			},
 		}
@@ -83,7 +98,7 @@ func TestAddEdge(t *testing.T) {
 		graph.AddEdge("a", "b", EdgeOptions{})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{},
+			graph: map[string][]Vertex{},
 		}
 
 		if !reflect.DeepEqual(graph, expected) {
@@ -96,7 +111,7 @@ func TestAddEdge(t *testing.T) {
 		graph.AddEdge("a", "b", EdgeOptions{})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{
+			graph: map[string][]Vertex{
 				"a": {},
 			},
 		}
@@ -113,7 +128,7 @@ func TestRemoveEdge(t *testing.T) {
 		graph.RemoveEdge("a", "b", EdgeOptions{})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{},
+			graph: map[string][]Vertex{},
 		}
 
 		if !reflect.DeepEqual(graph, expected) {
@@ -128,7 +143,7 @@ func TestRemoveEdge(t *testing.T) {
 			RemoveEdge("a", "b", EdgeOptions{})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{
+			graph: map[string][]Vertex{
 				"a": {},
 				"b": {},
 			},
@@ -147,7 +162,7 @@ func TestRemoveEdge(t *testing.T) {
 			RemoveEdge("a", "b", EdgeOptions{})
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{
+			graph: map[string][]Vertex{
 				"a": {},
 				"b": {},
 			},
@@ -165,7 +180,7 @@ func TestRemoveVertex(t *testing.T) {
 		graph.RemoveVertex("a")
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{},
+			graph: map[string][]Vertex{},
 		}
 
 		if !reflect.DeepEqual(graph, expected) {
@@ -179,7 +194,7 @@ func TestRemoveVertex(t *testing.T) {
 			RemoveVertex("a")
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{},
+			graph: map[string][]Vertex{},
 		}
 
 		if !reflect.DeepEqual(graph, expected) {
@@ -195,7 +210,7 @@ func TestRemoveVertex(t *testing.T) {
 			RemoveVertex("a")
 
 		expected := &AdjacencyList{
-			graph: map[string][]string{
+			graph: map[string][]Vertex{
 				"b": {},
 			},
 		}
@@ -214,8 +229,7 @@ func TestGetNeighbors(t *testing.T) {
 			AddEdge("a", "b", EdgeOptions{})
 
 		neighbors := graph.GetNeighbors("a")
-		expected := []string{"b"}
-
+		expected := []Vertex{{Value: "b"}}
 		if !reflect.DeepEqual(neighbors, expected) {
 			t.Errorf("Expected %v, got %v", expected, neighbors)
 		}
@@ -228,7 +242,7 @@ func TestGetNeighbors(t *testing.T) {
 			AddEdge("a", "b", EdgeOptions{})
 
 		neighbors := graph.GetNeighbors("a")
-		expected := []string{"b"}
+		expected := []Vertex{{Value: "b"}}
 
 		if !reflect.DeepEqual(neighbors, expected) {
 			t.Errorf("Expected %v, got %v", expected, neighbors)
