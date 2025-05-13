@@ -24,9 +24,13 @@ mod binary_search_tree;
 #[path = "./src/01_data_structures/06_tree/02_heap/implementations/rs/mod.rs"]
 mod heap;
 
-// Heap
+// Trie
 #[path = "./src/01_data_structures/06_tree/03_trie/implementations/rs/mod.rs"]
 mod trie;
+
+// Adjacency List
+#[path = "./src/01_data_structures/07_graph/01_adjacency_list/implementations/rs/mod.rs"]
+mod adjacency_list;
 
 // Algorithms
 
