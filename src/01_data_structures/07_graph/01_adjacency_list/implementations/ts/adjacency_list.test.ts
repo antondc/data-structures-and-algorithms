@@ -126,6 +126,15 @@ describe("removeVertex()", () => {
 });
 
 describe("getNeighbors()", () => {
+  test("Gets neighbors from non-existing vertex", async () => {
+    const graph = new AdjacencyList()
+      .addVertex("a")
+      .addVertex("b")
+      .addEdge("a", "b");
+    const neighbors = graph.getNeighbors("c");
+
+    expect(neighbors).toEqual(null);
+  });
   test("Gets neighbors from graph vertex", async () => {
     const graph = new AdjacencyList()
       .addVertex("a")

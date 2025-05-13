@@ -187,4 +187,18 @@ mod tests {
 
     assert_eq!(graph, expected);
   }
+
+  #[test]
+  fn get_neighbors() {
+    let mut graph = AdjacencyList::new();
+    graph.add_vertex("a").add_vertex("b").add_edge("a", "b", None);
+
+    let neighbors = graph.get_neighbors("a");
+    let expected = Some(vec![Vertex {
+      value: String::from("b"),
+      weight: None,
+    }]);
+
+    assert_eq!(neighbors, expected.as_ref());
+  }
 }

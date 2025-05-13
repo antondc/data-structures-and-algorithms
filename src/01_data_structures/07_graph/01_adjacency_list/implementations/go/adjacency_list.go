@@ -90,6 +90,10 @@ func (adjacencyList *AdjacencyList) RemoveEdge(u string, v string, options EdgeO
 	return adjacencyList
 }
 
-func (adjacencyList *AdjacencyList) GetNeighbors(u string) []Vertex {
-	return adjacencyList.graph[u]
+func (adjacencyList *AdjacencyList) GetNeighbors(u string) ([]Vertex, bool) {
+	if adjacencyList.graph[u] == nil {
+		return []Vertex{}, false
+	}
+
+	return adjacencyList.graph[u], true
 }

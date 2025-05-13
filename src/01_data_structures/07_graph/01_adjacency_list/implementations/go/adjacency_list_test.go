@@ -222,13 +222,30 @@ func TestRemoveVertex(t *testing.T) {
 }
 
 func TestGetNeighbors(t *testing.T) {
+	t.Run("Gets neighbors from non-existing vertex", func(t *testing.T) {
+		graph := NewAdjacencyList().
+			AddVertex("a").
+			AddVertex("b").
+			AddEdge("a", "b", EdgeOptions{})
+
+		neighbors, ok := graph.GetNeighbors("c")
+		if !reflect.DeepEqual(ok, false) {
+			t.Errorf("Expected %v, got %v", false, ok)
+		}
+
+		expected := []Vertex{}
+		if !reflect.DeepEqual(neighbors, expected) {
+			t.Errorf("Expected %v, got %v", expected, neighbors)
+		}
+	})
+
 	t.Run("Gets neighbors from graph vertex", func(t *testing.T) {
 		graph := NewAdjacencyList().
 			AddVertex("a").
 			AddVertex("b").
 			AddEdge("a", "b", EdgeOptions{})
 
-		neighbors := graph.GetNeighbors("a")
+		neighbors, _ := graph.GetNeighbors("a")
 		expected := []Vertex{{Value: "b"}}
 		if !reflect.DeepEqual(neighbors, expected) {
 			t.Errorf("Expected %v, got %v", expected, neighbors)
@@ -241,7 +258,7 @@ func TestGetNeighbors(t *testing.T) {
 			AddVertex("b").
 			AddEdge("a", "b", EdgeOptions{})
 
-		neighbors := graph.GetNeighbors("a")
+		neighbors, _ := graph.GetNeighbors("a")
 		expected := []Vertex{{Value: "b"}}
 
 		if !reflect.DeepEqual(neighbors, expected) {

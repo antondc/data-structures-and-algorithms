@@ -91,4 +91,8 @@ impl AdjacencyList {
 
     self
   }
+
+  pub fn get_neighbors(&mut self, u: &str) -> Option<&Vec<Vertex>> {
+    self.graph.get(u)
+  }
 }

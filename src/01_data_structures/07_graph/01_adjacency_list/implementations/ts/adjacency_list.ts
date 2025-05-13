@@ -72,7 +72,11 @@ export class AdjacencyList {
     return this;
   }
 
-  getNeighbors(vertex: string): Array<Vertex> {
+  getNeighbors(vertex: string): Array<Vertex> | null {
+    if (!this.graph[vertex]) {
+      return null;
+    }
+
     return this.graph[vertex];
   }
 }
