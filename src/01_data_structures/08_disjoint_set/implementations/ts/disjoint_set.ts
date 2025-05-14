@@ -1,44 +1,51 @@
 export class DisjointSet {
-  root: Array<number> = [];
+  representatives: Array<number> = [];
   rank: Array<number> = [];
 
   constructor(size: number) {
-    this.root = Array.from({ length: size }, (_, i) => i);
+    this.representatives = Array.from({ length: size }, (_, i) => i);
     this.rank = Array(size).fill(0);
   }
 
+  /* Returns the root of the tree that 'index' belongs to.
+     Here 'index' is the value, and `this.representatives[index]` the group’s current representative.
+  */
   find(index: number): number {
-    if (index >= this.root.length) {
+    if (index >= this.representatives.length) {
       throw new Error("Index out of bound");
     }
 
-    if (this.root[index] !== index) {
-      this.root[index] = this.find(this.root[index]);
-
-      this.root[index];
+    if (index == this.representatives[index]) {
+      return this.representatives[index]; // Return representative of `index`.
     }
 
-    return this.root[index];
+    // Path compression: set node’s representative to its representative’s representative.
+    this.representatives[index] = this.find(this.representatives[index]);
+
+    return this.representatives[index]; // Return representative of `index`.
   }
 
   union(a: number, b: number): DisjointSet {
-    if (a >= this.root.length || b >= this.root.length) {
+    if (a >= this.representatives.length || b >= this.representatives.length) {
       throw new Error("Index out of bound");
     }
 
     const rootA = this.find(a);
     const rootB = this.find(b);
 
+    // Same representative, both are part of same group, no action needed.
     if (rootA === rootB) {
       return this;
     }
 
+    // Update the representative of the group with smaller representative rank as the representative of the group with the largest representative rank.
     if (this.rank[rootA] < this.rank[rootB]) {
-      this.root[rootA] = rootB;
+      this.representatives[rootA] = rootB;
     } else if (this.rank[rootA] > this.rank[rootB]) {
-      this.root[rootB] = rootA;
+      this.representatives[rootB] = rootA;
     } else {
-      this.root[rootB] = rootA;
+      this.representatives[rootB] = rootA;
+      // Update rank as if we were not doing path compression.
       this.rank[rootA] = this.rank[rootA] + 1;
     }
 
@@ -46,7 +53,7 @@ export class DisjointSet {
   }
 
   connected(a: number, b: number): boolean {
-    if (a >= this.root.length || b >= this.root.length) {
+    if (a >= this.representatives.length || b >= this.representatives.length) {
       throw new Error("Index out of bound");
     }
 

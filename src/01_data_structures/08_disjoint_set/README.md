@@ -12,8 +12,8 @@ Especially useful in graph-related algorithms and in problems where group member
 
 Typically implemented using an array or a parent-pointer tree, often optimized with:
 
-- **Path compression** (flattening the structure for fast lookups),
-- **Union by rank or size** (keeping trees balanced).
+- **Path compression**: flattening the structure, useful for fast lookups,
+- **Union by rank or size**: keep track of tree's depths to decide the representative of the new tree.
 
 ## Methods
 

@@ -5,7 +5,7 @@ describe("DisjointSet()", () => {
     const set = new DisjointSet(3);
 
     expect(set).toEqual({
-      root: [0, 1, 2],
+      representatives: [0, 1, 2],
       rank: [0, 0, 0],
     });
   });
@@ -32,7 +32,7 @@ describe("Union()", () => {
     set.union(1, 2);
 
     expect(set).toEqual({
-      root: [0, 1, 1],
+      representatives: [0, 1, 1],
       rank: [0, 1, 0],
     });
   });
