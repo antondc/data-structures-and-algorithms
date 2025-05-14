@@ -32,6 +32,10 @@ mod trie;
 #[path = "./src/01_data_structures/07_graph/01_adjacency_list/implementations/rs/mod.rs"]
 mod adjacency_list;
 
+// Disjoint set
+#[path = "./src/01_data_structures/08_disjoint_set/implementations/rs/mod.rs"]
+mod disjoint_set;
+
 // Algorithms
 
 // Merge Sort
