@@ -14,9 +14,9 @@ describe("DisjointSet()", () => {
 describe("Find()", () => {
   test("Finds an item in the set", async () => {
     const set = new DisjointSet(3);
-    const item = set.find(1);
+    const representative = set.find(1);
 
-    expect(item).toBe(1);
+    expect(representative).toBe(1);
   });
 
   test("Throws if item is out of bound", async () => {
@@ -27,7 +27,7 @@ describe("Find()", () => {
 });
 
 describe("Union()", () => {
-  test("Unions an item in the set", async () => {
+  test("Unions groups of given representatives", async () => {
     const set = new DisjointSet(3);
     set.union(1, 2);
 
@@ -37,7 +37,7 @@ describe("Union()", () => {
     });
   });
 
-  test("Throws if one or both items are out of bound", async () => {
+  test("Throws if one or both representatives are out of bound", async () => {
     const set = new DisjointSet(3);
 
     expect(() => set.union(1, 3)).toThrow();

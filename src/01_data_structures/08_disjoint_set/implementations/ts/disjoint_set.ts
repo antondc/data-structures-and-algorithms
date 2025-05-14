@@ -1,10 +1,10 @@
 export class DisjointSet {
   representatives: Array<number> = [];
-  rank: Array<number> = [];
+  ranks: Array<number> = [];
 
   constructor(size: number) {
     this.representatives = Array.from({ length: size }, (_, i) => i);
-    this.rank = Array(size).fill(0);
+    this.ranks = Array(size).fill(0);
   }
 
   /* Returns the representative of the tree that 'index' belongs to.
@@ -39,14 +39,14 @@ export class DisjointSet {
     }
 
     // Update the representative of the group with smaller representative rank as the representative of the group with the largest representative rank.
-    if (this.rank[representativeA] < this.rank[representativeB]) {
+    if (this.ranks[representativeA] < this.ranks[representativeB]) {
       this.representatives[representativeA] = representativeB;
-    } else if (this.rank[representativeA] > this.rank[representativeB]) {
+    } else if (this.ranks[representativeA] > this.ranks[representativeB]) {
       this.representatives[representativeB] = representativeA;
     } else {
       this.representatives[representativeB] = representativeA;
       // Update rank as if we were not doing path compression.
-      this.rank[representativeA] = this.rank[representativeA] + 1;
+      this.ranks[representativeA] = this.ranks[representativeA] + 1;
     }
 
     return this;
