@@ -2,59 +2,59 @@
 
 ## Description
 
-**Disjoint Set Union (DSU)**, also known as **Union-Find**, is a data structure used to efficiently manage a collection of disjoint (non-overlapping) sets.
-It supports two primary operations:
+**Disjoint Set Union (DSU)** is a data structure used to efficiently manage a collection of disjoint (non-overlapping) groups.
 
-- **Find**: Determine which set a particular element belongs to.
-- **Union**: Merge two sets together.
-
-Especially useful in graph-related algorithms and in problems where group membership must be tracked efficiently.
-
-Typically implemented using an array or a parent-pointer tree, often optimized with:
+Typically implemented using an array or a parent-pointer tree. Often optimized with:
 
 - **Path compression**: flattening the structure, useful for fast lookups,
 - **Union by rank or size**: keep track of tree's depths to decide the representative of the new tree.
 
+Especially useful in graph-related algorithms and problems where group membership must be tracked efficiently.
+
 ## Methods
 
-- **Make Set:** Initialize each element in its own set.
-- **Find:** Return the representative (root) of the set containing the element.
-- **Union:** Merge two sets, updating parent pointers.
-- **Connected:** Check if two elements are in the same set.
+- **Find:** Return the representative of the group containing the element.
+- **Union:** Merge two groups by setting the represtative of one as the representative of the other.
+- **Connected:** Check if two elements are in the same group.
 
 ## Pseudocode
 
+When implemented with an array `representatives`, the indexes are the values we are tracking, and the values are the indexes of their representatives.
+This, x is a value, and representatives[x] holds the representative.
+If a value is equal to the representative it holds, this value is the representative of its group.
+To merge groups, we hold a ranks array where each representative has a rank. To decide which representative prevails we compare their ranks, and act accordingly.
+
 ### Find (with path compression)
 
-Finds the root of the set and compresses the path:
+Finds the representative of the group and compresses the path:
 
     FIND(x):
-      if parent[x] != x:
-        parent[x] = FIND(parent[x])
-      return parent[x]
+      if representatives[x] != x:
+        representatives[x] = FIND(representatives[x])
+      return representatives[x] // returns the representative.
 
 ### Union (by rank)
 
-Merges the sets containing x and y:
+Merges the groups containing x and y:
 
     UNION(x, y):
-      rootX = FIND(x)
-      rootY = FIND(y)
+      representativeX = FIND(x)
+      representativeY = FIND(y)
 
-      if rootX == rootY:
+      if representativeX == representativeY:
         return
 
-      if rank[rootX] < rank[rootY]:
-        parent[rootX] = rootY
-      else if rank[rootX] > rank[rootY]:
-        parent[rootY] = rootX
+      if rank[representativeX] < rank[representativeY]:
+        representatives[representativeX] = representativeY
+      else if rank[representativeX] > rank[representativeY]:
+        representatives[representativeY] = representativeX
       else:
-        parent[rootY] = rootX
-        rank[rootX] += 1
+        representatives[representativeY] = representativeX
+        rank[representativeX] += 1
 
 ### Connected
 
-Checks if two elements are in the same set.
+Checks if two elements are in the same group.
 
     CONNECTED(x, y):
       return FIND(x) == FIND(y)
@@ -70,38 +70,8 @@ Checks if two elements are in the same set.
 | Union     | O(α(n))                   |
 | Connected | O(α(n))                   |
 
-- Where **α(n)** is the inverse Ackermann function — practically constant for all realistic values of `n`.
+- Where **α(n)** is the inverse Ackermann function, which is practically constant for all realistic values of `n`.
 
 ### Space Complexity
 
-- O(n): One entry per element in `parent` and optionally `rank` arrays.
-
-## Example
-
-### Initial State
-
-Create sets for 5 elements:
-
-    MAKE_SET(1)
-    MAKE_SET(2)
-    MAKE_SET(3)
-    MAKE_SET(4)
-    MAKE_SET(5)
-
-    parent = { 1:1, 2:2, 3:3, 4:4, 5:5 }
-
-### Union Operations
-
-    UNION(1, 2)
-    UNION(3, 4)
-    UNION(2, 3)
-
-    parent might look like:
-    { 1:1, 2:1, 3:1, 4:3, 5:5 }
-
-### Find / Connected
-
-    FIND(4) → 1
-    FIND(5) → 5
-    CONNECTED(2, 4) → true
-    CONNECTED(1, 5) → false
+- O(n): One entry per element in `representative` and optionally `rank` arrays.

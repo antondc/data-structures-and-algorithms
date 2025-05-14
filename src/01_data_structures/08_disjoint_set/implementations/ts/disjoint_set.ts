@@ -7,7 +7,7 @@ export class DisjointSet {
     this.rank = Array(size).fill(0);
   }
 
-  /* Returns the root of the tree that 'index' belongs to.
+  /* Returns the representative of the tree that 'index' belongs to.
      Here 'index' is the value, and `this.representatives[index]` the group’s current representative.
   */
   find(index: number): number {
@@ -30,23 +30,23 @@ export class DisjointSet {
       throw new Error("Index out of bound");
     }
 
-    const rootA = this.find(a);
-    const rootB = this.find(b);
+    const representativeA = this.find(a);
+    const representativeB = this.find(b);
 
     // Same representative, both are part of same group, no action needed.
-    if (rootA === rootB) {
+    if (representativeA === representativeB) {
       return this;
     }
 
     // Update the representative of the group with smaller representative rank as the representative of the group with the largest representative rank.
-    if (this.rank[rootA] < this.rank[rootB]) {
-      this.representatives[rootA] = rootB;
-    } else if (this.rank[rootA] > this.rank[rootB]) {
-      this.representatives[rootB] = rootA;
+    if (this.rank[representativeA] < this.rank[representativeB]) {
+      this.representatives[representativeA] = representativeB;
+    } else if (this.rank[representativeA] > this.rank[representativeB]) {
+      this.representatives[representativeB] = representativeA;
     } else {
-      this.representatives[rootB] = rootA;
+      this.representatives[representativeB] = representativeA;
       // Update rank as if we were not doing path compression.
-      this.rank[rootA] = this.rank[rootA] + 1;
+      this.rank[representativeA] = this.rank[representativeA] + 1;
     }
 
     return this;
