@@ -59,4 +59,22 @@ impl DisjointSet {
 
     return Ok(self);
   }
+
+  pub fn connected(&mut self, a: usize, b: usize) -> Result<bool, &str> {
+    if a >= self.representatives.len() || b >= self.representatives.len() {
+      return Err(OUT_OF_BOUNDS_ERROR);
+    } else {
+      let representative_a = if let Ok(representative) = self.find(a) {
+        representative
+      } else {
+        return Err(OUT_OF_BOUNDS_ERROR);
+      };
+      let representative_b = if let Ok(representative) = self.find(a) {
+        representative
+      } else {
+        return Err(OUT_OF_BOUNDS_ERROR);
+      };
+      return Ok(representative_a == representative_b);
+    }
+  }
 }

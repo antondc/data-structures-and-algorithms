@@ -53,4 +53,23 @@ mod tests {
 
     assert_eq!(result, expected);
   }
+
+  #[test]
+  fn connected_returns_if_two_items_connected() {
+    let mut disjoint_set = DisjointSet::new(3);
+    let _ = disjoint_set.union(1, 2);
+    let connected = disjoint_set.connected(1, 2);
+
+    assert_eq!(connected, Ok(true));
+  }
+
+  #[test]
+  fn returns_error_if_item_out_of_bounds() {
+    let mut disjoint_set = DisjointSet::new(3);
+    let _ = disjoint_set.union(1, 2);
+    let connected = disjoint_set.connected(1, 4);
+    let expected = Err(OUT_OF_BOUNDS_ERROR);
+
+    assert_eq!(connected, expected);
+  }
 }
