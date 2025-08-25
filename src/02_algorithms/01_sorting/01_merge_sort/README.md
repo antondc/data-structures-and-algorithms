@@ -35,9 +35,8 @@ MERGE(left, right):
 
 The array is divided into two halves until each sub-array contains at most one element.
 Then, the sorted sub-arrays are merged by comparing elements and arranging them in order.
-Time complexity:
 
-## Characteristics
+## Time complexity
 
 - Best case (already sorted): `O(n log n)`
 - Average case: `O(n log n)`

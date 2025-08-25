@@ -28,9 +28,7 @@ Bubble Sort works by making multiple passes through the array:
 - The process repeats for the remaining unsorted portion of the array.
 - If no swaps occur in a pass, the array is already sorted, and the algorithm terminates early.
 
-## Characteristics
-
-### Time complexity:
+## Time complexity:
 
 - Best case (already sorted): `O(n)`
 - Average case: `O(n²)`
