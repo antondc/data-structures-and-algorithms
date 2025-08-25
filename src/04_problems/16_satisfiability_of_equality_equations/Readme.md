@@ -29,7 +29,3 @@ Constraints:
     equations[i][1] is either '=' or '!'.
     equations[i][2] is '='.
     equations[i][3] is a lowercase letter.
-
-## Note ⚠️
-
-For the sake of simplcity we will accept only four different letters as variables: `"a"`, `"b"`, `"c"` or `"d"`.
