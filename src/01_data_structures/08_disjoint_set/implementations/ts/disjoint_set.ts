@@ -38,7 +38,7 @@ export class DisjointSet {
       return this;
     }
 
-    // Update the representative of the group with smaller representative rank as the representative of the group with the largest representative rank.
+    // Update the representative of the group having smaller representative rank with the representative of the group having the largest representative rank.
     if (this.ranks[representativeA] < this.ranks[representativeB]) {
       this.representatives[representativeA] = representativeB;
     } else if (this.ranks[representativeA] > this.ranks[representativeB]) {

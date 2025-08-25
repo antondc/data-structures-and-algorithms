@@ -24,7 +24,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
   - 🚧 [02_adjacency_matrix](./src/01_data_structures/07_graph/02_adjacency_matrix)
   - 🚧 [03_edge_list](./src/01_data_structures/07_graph/03_edge_list)
   - 🚧 [04_dag](./src/01_data_structures/07_graph/04_dag)
-- [08_disjoint_set](./src/01_data_structures/08_disjoint_set)
+- 🚧 [08_disjoint_set](./src/01_data_structures/08_disjoint_set)
 
 ### 02. Algorithms
 
