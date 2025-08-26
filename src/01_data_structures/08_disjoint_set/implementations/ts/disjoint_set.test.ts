@@ -2,17 +2,12 @@ import { DisjointSet } from "./disjoint_set";
 
 describe("DisjointSet()", () => {
   test("Is instantiated", async () => {
-    const set = new DisjointSet(8);
-    console.log("set: ", set);
+    const set = new DisjointSet(3);
 
-    set.union(2, 5).union(2, 7);
-    console.log("set: ", set);
-
-    set.union(1, 3);
-    console.log("set: ", set);
-
-    set.union(1, 2);
-    console.log("set: ", set);
+    expect(set).toEqual({
+      representatives: [0, 1, 2],
+      ranks: [0, 0, 0],
+    });
   });
 });
 
@@ -55,7 +50,6 @@ describe("Connected()", () => {
     set.union(1, 2);
 
     const connected = set.connected(1, 2);
-
     expect(connected).toBe(true);
   });
 
