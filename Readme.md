@@ -104,6 +104,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
 ### Rust
 
+    rustup default nightly
     cargo install
     cargo watch -x test
     cargo watch -x 'test trie_test -- --nocapture'

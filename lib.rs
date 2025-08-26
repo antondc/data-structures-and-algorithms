@@ -1,6 +1,5 @@
 #![feature(linked_list_remove)]
 #![allow(dead_code)]
-#![feature(extract_if)]
 
 // Data structures
 
@@ -58,6 +57,8 @@ mod selection_sort;
 mod heap_sort;
 
 // Problem solving techniques
+#[path = "./src/03_problem_solving_techniques/05_divide_and_conquer/rs/mod.rs"]
+mod divide_and_conquer;
 
 //// Problems
 #[path = "./src/04_problems/02_anagram/implementations/rs/mod.rs"]
