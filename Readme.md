@@ -19,6 +19,8 @@ Ongoing effort to document most common data structures and algorithms, with impl
   - ✅ [03_trie](./src/01_data_structures/06_tree/03_trie)
   - 🚧 [04_AVL_tree](./src/01_data_structures/06_tree/04_AVL_tree)
   - 🚧 [05_B_tree](./src/01_data_structures/06_tree/05_B_tree)
+  - 🚧 [06_red_black_tree](./src/01_data_structures/06_tree/06_red_black_tree)
+  - 🚧 [07_b_plus_tree](./src/01_data_structures/06_tree/07_b_plus_tree)
 - [07_graph](./src/01_data_structures/07_graph)
   - ✅ [01_adjacency_list](./src/01_data_structures/07_graph/01_adjacency_list)
   - 🚧 [02_adjacency_matrix](./src/01_data_structures/07_graph/02_adjacency_matrix)
