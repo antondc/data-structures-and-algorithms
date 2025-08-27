@@ -24,7 +24,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
   - 🚧 [02_adjacency_matrix](./src/01_data_structures/07_graph/02_adjacency_matrix)
   - 🚧 [03_edge_list](./src/01_data_structures/07_graph/03_edge_list)
   - 🚧 [04_dag](./src/01_data_structures/07_graph/04_dag)
-- ✅ [08_disjoint_set](./src/01_data_structures/08_disjoint_set)
+- ✅ [08_disjoint_set_union_find](./src/01_data_structures/08_disjoint_set_union_find)
 
 ### 02. Algorithms
 
@@ -49,7 +49,10 @@ Ongoing effort to document most common data structures and algorithms, with impl
 - [05_graph_algorithms](./src/02_algorithms/05_graph_algorithms)
   - 🚧 [01_dfs_bfs](./src/02_algorithms/05_graph_algorithms/01_dfs_bfs)
   - 🚧 [02_topological_sort](./src/02_algorithms/05_graph_algorithms/02_topological_sort)
-  - 🚧 [03_shortest_path](./src/02_algorithms/05_graph_algorithms/03_shortest_path)
+  - 🚧 [03_shortest_path](./src/02_algorithms/05_graph_algorithms/03_shortest_path/)
+    - 🚧 [01_dijkstra](./src/02_algorithms/05_graph_algorithms/03_shortest_path/01_dijkstra)
+    - 🚧 [02_bellman_ford](./src/02_algorithms/05_graph_algorithms/03_shortest_path/02_bellman_ford)
+    - 🚧 [03_floyd_warshall](./src/02_algorithms/05_graph_algorithms/03_shortest_path/03_floyd_warshall)
   - 🚧 [04_minimum_spanning_tree](./src/02_algorithms/05_graph_algorithms/04_minimum_spanning_tree)
 
 ### 03. Problem Solving Techniques
