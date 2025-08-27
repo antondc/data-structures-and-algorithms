@@ -90,16 +90,19 @@ Given this undirected graph:
 
 Adjacency List:
 
-    A: [B, C]
-    B: [A, D]
-    C: [A]
-    D: [B]
+    G = {
+        A: [B, C]
+        B: [A, D]
+        C: [A]
+        D: [B]
+    }
 
 ### Operations
 
 #### Add Vertex
 
     ADD_VERTEX('E')
+
     G = {
       A: [B, C],
       B: [A, D],
@@ -111,6 +114,7 @@ Adjacency List:
 #### Add Edge
 
     ADD_EDGE('E', 'B', false)
+
     G = {
       A: [B, C],
       B: [A, D, E],
@@ -122,6 +126,7 @@ Adjacency List:
 #### Remove Edge
 
     REMOVE_EDGE('A', 'C', false)
+    
     G = {
       A: [B],
       B: [A, D, E],
