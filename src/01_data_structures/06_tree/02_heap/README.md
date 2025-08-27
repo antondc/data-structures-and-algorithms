@@ -2,13 +2,13 @@
 
 ## Description
 
-A Heap is a _complete_ _ordered_ _binary_ tree with the restriction that the value of parent nodes are greater of equal than the value of children nodes.
+A Heap is a _complete_ _ordered_ _binary_ tree with the restriction that the value of parent nodes are greater or equal than the value of children nodes.
 There are two types:
 
 - Max-heap: parent nodes are greater of equal than the value of children nodes.
 - Min-heap: where the value of the parent nodes are lesser or equal than the value of the children nodes.
 
-Commonly used in priority queues and heapsort algorithms.
+Commonly used in `priority queues` and `heapsort` algorithms.
 Typically implemented with arrays, as they are complete trees.
 
 ## Pseudocode
@@ -84,15 +84,14 @@ EXTRACT(heap):
 
 ### Time Complexity:
 
-- Insertion: **O(log n)**
-- Heapify: **O(log n)**
-- Extract Max: **O(log n)**
-- Build Max Heap: **O(n)**
-- Heapsort: **O(n log n)**
+- Insertion: O(log n).
+- Heapify: O(log n).
+- Extract Max: O(log n).
+- Heap (build): O(n).
 
 ### Space Complexity:
 
-- **O(1)** for in-place heap operations
+- O(1) for in-place heap operations
 
 ## Example
 

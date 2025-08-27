@@ -2,10 +2,10 @@
 
 ## Description
 
-A Binary Search Tree is an **ordered** **binary** tree, where:
+A Binary Search Tree is an _ordered_ _binary_ tree, where:
 
-- The left subtree of a node contains only nodes with values **less than** the node's value.
-- The right subtree of a node contains only nodes with values **greater than** the node's value.
+- The left subtree of a node contains only nodes with values _less than_ the node's value.
+- The right subtree of a node contains only nodes with values _greater than_ the node's value.
 
 This property enables efficient search, insertion, and deletion operations.
 
@@ -99,13 +99,13 @@ SEARCH(node, value):
 ### Time Complexity:
 
 - Best/Average Case:
-  - Search: O(log n)
-  - Insert: O(log n)
-  - Delete: O(log n)
+  - Search: O(log n).
+  - Insert: O(log n).
+  - Delete: O(log n).
 - Worst Case (unbalanced tree):
-  - Search: O(n)
-  - Insert: O(n)
-  - Delete: O(n)
+  - Search: O(n).
+  - Insert: O(n).
+  - Delete: O(n).
 
 ### Space Complexity:
 
