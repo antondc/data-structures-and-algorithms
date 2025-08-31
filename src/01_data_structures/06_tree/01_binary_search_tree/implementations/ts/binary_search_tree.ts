@@ -1,4 +1,4 @@
-class Node {
+export class Node {
   value: number = null;
   left: Node = null;
   right: Node = null;

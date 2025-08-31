@@ -1,0 +1,55 @@
+# Trees traversal algorithms
+
+Traversal algorithms describe how you move through the nodes of a tree. There are two basic types:
+
+- **Depth-First Search (DFS)**.
+- **Breadth-First Search (BFS)**.
+
+## Depth-First Search (DFS)
+
+          20
+        /    \
+      10      30
+     /  \    /  \
+    5   15  25  35
+
+Depth-First Search explores a tree by going as deep as possible along left branch first before backtracking.
+Implemented using a stack (FILO) explicitly or with recursion, wich is a implicit stack.
+In binary trees, Depth-First Search comes in three common variants:
+
+- **In-order**: Left → Parent → Right
+  - Order:
+    - Traverse the left subtree (in-order).
+    - Visit the current node.
+    - Traverse the right subtree (in-order).
+  - In a Binary Search Tree this traversal returns nodes in sorted order: `[5, 10, 15, 20, 25, 30, 35]`.
+- **Pre-order**: Parent → Left → Right
+  - Order:
+    - Traverse the current node.
+    - Traverse the left subtree (pre-order).
+    - Traverse the right subtree (pre-order).
+  - In a Binary Search Tree this traversal returns: `[20, 10, 5, 15,2 5, 35]`.
+  - Useful for copying or serializing a tree.
+- **Post-order**: Left → Right → Parent
+  - Order:
+    - Traverse the left subtree (post-order).
+    - Traverse the right subtree (post-order).
+    - Visit the current node.
+  - Useful for deletion or evaluating expression trees (postfix notation).
+  - In a Binary Search Tree this traversal returns: `[5, 15, 10, 25, 35, 30, 20]`.
+
+## Breadth-First Search (BFS)
+
+          20
+        /    \
+      10      30
+     /  \    /  \
+    5   15  25  35
+
+BFS visits all nodes at the current depth level before moving to the next level.
+It processes the tree level-by-level from top to bottom and left to right.
+
+Typically implemented using a queue (FIFO).
+Commonly used for visualizing tree structure or solving shortest-path problems in graphs.
+
+- In a Binary Search Tree this traversal returns: `[20, 10, 30, 5, 15, 25, 35]`.
