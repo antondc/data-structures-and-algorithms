@@ -1,8 +1,4 @@
-# Trees traversal algorithms
-
-Traversal algorithms describe how you move through the nodes of a tree. There are two basic types:
-
-## Depth-First Search (DFS)
+# Depth-First Search (DFS)
 
           20
         /    \
@@ -34,19 +30,3 @@ In binary trees, Depth-First Search comes in three common variants:
     - Visit the current node.
   - Useful for deletion or evaluating expression trees (postfix notation).
   - In a Binary Search Tree this traversal returns: `[5, 15, 10, 25, 35, 30, 20]`.
-
-## Breadth-First Search (BFS)
-
-          20
-        /    \
-      10      30
-     /  \    /  \
-    5   15  25  35
-
-BFS visits all nodes at the current depth level before moving to the next level.
-It processes the tree level-by-level from top to bottom and left to right.
-
-Typically implemented using a queue (FIFO).
-Commonly used for visualizing tree structure or solving shortest-path problems in graphs.
-
-In a Binary Search Tree this traversal returns: `[20, 10, 30, 5, 15, 25, 35]`.
