@@ -2,56 +2,56 @@ import { Node } from "../../../../01_data_structures/06_tree/01_binary_search_tr
 
 export const dfsInOrderRecursive = (
   node: Node | null,
-  result: Array<number> = []
+  visitNode: (node: number) => void
 ) => {
-  if (!node) return result;
+  if (!node) return;
 
-  dfsInOrderRecursive(node.left, result);
-  result.push(node.value);
-  dfsInOrderRecursive(node.right, result);
+  dfsInOrderRecursive(node.left, visitNode);
+  visitNode(node.value);
+  dfsInOrderRecursive(node.right, visitNode);
 
-  return result;
+  return;
 };
 
 export const dfsPreOrderRecursive = (
   node: Node | null,
-  result: Array<number> = []
+  visitNode: (node: number) => void
 ): Array<number> => {
-  if (!node) return result;
+  if (!node) return;
 
-  result.push(node.value);
-  dfsPreOrderRecursive(node.left, result);
-  dfsPreOrderRecursive(node.right, result);
+  visitNode(node.value);
+  dfsPreOrderRecursive(node.left, visitNode);
+  dfsPreOrderRecursive(node.right, visitNode);
 
-  return result;
+  return;
 };
 
 export const dfsPostOrderRecursive = (
   node: Node | null,
-  result: Array<number> = []
+  visitNode: (node: number) => void
 ) => {
-  if (!node) return result;
+  if (!node) return;
 
-  dfsPostOrderRecursive(node.left, result); // Visit left
-  dfsPostOrderRecursive(node.right, result); // Visit right
-  result.push(node.value);
+  dfsPostOrderRecursive(node.left, visitNode);
+  dfsPostOrderRecursive(node.right, visitNode);
+  visitNode(node.value);
 
-  return result;
+  return;
 };
 
 export const breadthFirstSearch = (
   node: Node | null,
-  result: Array<number> = []
+  visitNode: (node: number) => void
 ) => {
   const queue: Array<Node> = [node];
 
   while (queue.length > 0) {
     const node: Node = queue.shift();
 
-    result.push(node.value);
+    visitNode(node.value);
 
     if (node.left) queue.push(node.left);
     if (node.right) queue.push(node.right);
   }
-  return result;
+  return;
 };
