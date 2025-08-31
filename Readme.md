@@ -9,7 +9,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | Data Structure                                                                               | JS  | Go  | Rust |
 | -------------------------------------------------------------------------------------------- | --- | --- | ---- |
 | • [01_array](./src/01_data_structures/01_array)                                              | -   | -   | -    |
-| • [02_linked_list](./src/01_data_structures/02_linked_list)                                  | ✓   | ✓   | ⚠    |
+| • [02_linked_list](./src/01_data_structures/02_linked_list)                                  | ✓   | ✓   | -    |
 | • [03_queue](./src/01_data_structures/03_queue)                                              | ✓   | ✗   | ✓    |
 | • [04_stack](./src/01_data_structures/04_stack)                                              | ✓   | ✓   | ✓    |
 | • [05_hash_table](./src/01_data_structures/05_hash_table)                                    | ✓   | ✓   | ✓    |
