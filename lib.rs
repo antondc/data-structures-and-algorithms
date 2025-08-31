@@ -32,7 +32,7 @@ mod trie;
 mod adjacency_list;
 
 // Disjoint set
-#[path = "./src/01_data_structures/08_disjoint_set/implementations/rs/mod.rs"]
+#[path = "./src/01_data_structures/08_disjoint_set_union_find/implementations/rs/mod.rs"]
 mod disjoint_set;
 
 // Algorithms
