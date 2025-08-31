@@ -1,39 +1,39 @@
 import { Node } from "../../../../01_data_structures/06_tree/01_binary_search_tree/implementations/ts/binary_search_tree";
 
-export const dfsInOrderRecursive = (
+export const depthFirstSearchInOrder = (
   node: Node | null,
   visitNode: (node: number) => void
 ) => {
   if (!node) return;
 
-  dfsInOrderRecursive(node.left, visitNode);
+  depthFirstSearchInOrder(node.left, visitNode);
   visitNode(node.value);
-  dfsInOrderRecursive(node.right, visitNode);
+  depthFirstSearchInOrder(node.right, visitNode);
 
   return;
 };
 
-export const dfsPreOrderRecursive = (
+export const depthFirstSearchPreOrder = (
   node: Node | null,
   visitNode: (node: number) => void
 ): Array<number> => {
   if (!node) return;
 
   visitNode(node.value);
-  dfsPreOrderRecursive(node.left, visitNode);
-  dfsPreOrderRecursive(node.right, visitNode);
+  depthFirstSearchPreOrder(node.left, visitNode);
+  depthFirstSearchPreOrder(node.right, visitNode);
 
   return;
 };
 
-export const dfsPostOrderRecursive = (
+export const depthFirstSearchPostOrder = (
   node: Node | null,
   visitNode: (node: number) => void
 ) => {
   if (!node) return;
 
-  dfsPostOrderRecursive(node.left, visitNode);
-  dfsPostOrderRecursive(node.right, visitNode);
+  depthFirstSearchPostOrder(node.left, visitNode);
+  depthFirstSearchPostOrder(node.right, visitNode);
   visitNode(node.value);
 
   return;
