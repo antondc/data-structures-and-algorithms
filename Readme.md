@@ -45,7 +45,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [01_linear_search](./src/02_algorithms/02_searching/01_linear_search)                                           | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [02_binary_search](./src/02_algorithms/02_searching/02_binary_search)                                           | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [03_hash_table_lookup](./src/02_algorithms/02_searching/03_hash_table_lookup)                                   | ✗   | ✗   | ✗    |
-| ⠀⠀⁃ [04_bst_search](./src/02_algorithms/02_searching/04_bst_search)                                                 | ✗   | ✗   | ✗    |
+| ⠀⠀⁃ [04_binary_search_tree_search](./src/02_algorithms/02_searching/04_binary_search_tree_search)                   | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [05_trie_search](./src/02_algorithms/02_searching/05_trie_search)                                               | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [06_depth_first_search](./src/02_algorithms/02_searching/06_depth_first_search)                                 | -   | -   | -    |
 | ⠀⠀⁃ [07_breadth_first_search](./src/02_algorithms/02_searching/07_breadth_first_search)                             | -   | -   | -    |
