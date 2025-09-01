@@ -1,9 +1,12 @@
 export const linearSearch = <T>(
   items: Array<T>,
-  compare: (element: T) => boolean
+  target: T,
+  onStep?: (element) => void
 ): T | null => {
   for (let i = 0; i < items.length; i++) {
-    if (compare(items[i])) return items[i];
+    onStep(items[i]);
+
+    if (items[i] === target) return items[i];
   }
 
   return null;
