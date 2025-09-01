@@ -42,7 +42,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [07_bucket_sort](./src/02_algorithms/01_sorting/07_bucket_sort)                                                 | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [08_radix_sort](./src/02_algorithms/01_sorting/08_radix_sort)                                                   | ✗   | ✗   | ✗    |
 | • [02_searching](./src/02_algorithms/02_searching)                                                                  |     |     |      |
-| ⠀⠀⁃ [01_linear_search](./src/02_algorithms/02_searching/01_linear_search)                                           | ✗   | ✗   | ✗    |
+| ⠀⠀⁃ [01_linear_search](./src/02_algorithms/02_searching/01_linear_search)                                           | ✓   | ✗   | ✗    |
 | ⠀⠀⁃ [02_binary_search](./src/02_algorithms/02_searching/02_binary_search)                                           | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [03_hash_table_lookup](./src/02_algorithms/02_searching/03_hash_table_lookup)                                   | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [04_binary_search_tree_search](./src/02_algorithms/02_searching/04_binary_search_tree_search)                   | ✗   | ✗   | ✗    |
