@@ -3,22 +3,21 @@ export function partition(
   left: number,
   right: number
 ): number {
-  let pivot = array[right]; // last item
-  let i = left - 1; // start pointer before first item
+  let i = left; // start pointer on first item
 
   // from pointer to item before last
   for (let j = left; j < right; j++) {
     // if current item is smaller or equal than pivot, swap it with item under pointer and increase pointer
-    if (array[j] < pivot) {
-      i++;
+    if (array[j] <= array[right]) {
       [array[i], array[j]] = [array[j], array[i]];
+      i++;
     }
   }
 
   // Center the pivot between lesser and greater items by swapping it with first greater item
-  [array[i + 1], array[right]] = [array[right], array[i + 1]];
+  [array[i], array[right]] = [array[right], array[i]];
 
-  return i + 1;
+  return i;
 }
 
 // As JavaScript does not have slices we can not pass a slice of the original array recursively. Thus, we need the left-right indexes.

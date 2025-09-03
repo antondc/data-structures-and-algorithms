@@ -1,7 +1,6 @@
 # Quick Sort
 
 Divide-and-conquer sorting algorithm that selects a pivot element, partitions the array into elements less than and greater than the pivot, and recursively sorts the sub-arrays.
-Efficient.
 
 ## Pseudocode
 
@@ -12,10 +11,10 @@ PARTITION(A):
 
   for j from 0 to right:
     if A[j] <= A[right]:
-      swap B[i] and B[j]
+      swap A[i] and A[j]
       i = i + 1
 
-  swap B[i ] and B[right]
+  swap A[i] and A[right]
 
   return i
 
@@ -34,6 +33,9 @@ QUICKSORT(A):
   - Move elements greater than the pivot to the right.
 - Place the pivot in its correct position.
 - Recursively apply QuickSort to the left and right partitions.
+
+Efficient for small sets of data.
+The reordering is produced in the partitioning phase.
 
 ## Characteristics
 
