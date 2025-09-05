@@ -16,7 +16,7 @@ export const dijkstra = (graph: Graph, source: string): Distances => {
 
   distances[source] = 0;
 
-  // Critical point: a priority queue is more efficient.
+  // Critical point: using an array for simplicity, but a priority queue is more efficient.
   const unvisited = Object.keys(graph);
 
   while (unvisited.length) {
