@@ -1,7 +1,7 @@
 import { dijkstra, Graph } from "./01_dijkstra";
 
-describe("BinarySearchTree is traversed with Depth First Search", () => {
-  test("Using In-Order", async () => {
+describe("Dijkstra algorithm", () => {
+  test("Finds the cost to reach all nodes", async () => {
     //      B   4    D
     //    1       ↗
     //  A       1    1
