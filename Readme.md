@@ -52,10 +52,10 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | • [03_bit_manipulation](./src/02_algorithms/03_bit_manipulation)                                                    |     |     |      |
 | • [04_tree_traversal](./src/02_algorithms/04_tree_traversal/)                                                       |     |     |      |
 | ⠀⠀⁃ [01_depth_first_search](./src/02_algorithms/04_tree_traversal/01_depth_first_search)                            |     |     |      |
-| ⠀⠀⠀⠀· [01_in_order](./src/02_algorithms/04_tree_traversal/01_depth_first_search/01_in_order)                        | ✓   | ✓   | ✓    |
-| ⠀⠀⠀⠀· [02_pre_order](./src/02_algorithms/04_tree_traversal/01_depth_first_search/02_pre_order)                      | ✓   | ✓   | ✓    |
-| ⠀⠀⠀⠀· [03_post_order](./src/02_algorithms/04_tree_traversal/01_depth_first_search/03_post_order)                    | ✓   | ✓   | ✓    |
-| ⠀⠀⁃ [02_breadth_first_search](./src/02_algorithms/04_tree_traversal/02_breadth_first_search)                        | ✓   | ✓   | ✓    |
+| ⠀⠀⠀⠀· [01_in_order](./src/02_algorithms/04_tree_traversal/01_depth_first_search/01_in_order)                        | ✓   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [02_pre_order](./src/02_algorithms/04_tree_traversal/01_depth_first_search/02_pre_order)                      | ✓   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [03_post_order](./src/02_algorithms/04_tree_traversal/01_depth_first_search/03_post_order)                    | ✓   | ✗   | ✗    |
+| ⠀⠀⁃ [02_breadth_first_search](./src/02_algorithms/04_tree_traversal/02_breadth_first_search)                        | ✓   | ✗   | ✗    |
 | • [05_graph_algorithms](./src/02_algorithms/05_graph_algorithms)                                                    |     |     |      |
 | ⠀⠀⁃ [01_graph_traversal](./src/02_algorithms/05_graph_algorithms/01_graph_traversal)                                |     |     |      |
 | ⠀⠀⠀⠀· [01_depth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/01_depth_first_search)     | ✗   | ✗   | ✗    |
