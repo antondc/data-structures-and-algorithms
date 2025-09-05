@@ -62,7 +62,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⠀⠀· [02_breadth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/02_breadth_first_search) | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [02_topological_sort](./src/02_algorithms/05_graph_algorithms/02_topological_sort)                              | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [03_shortest_path](./src/02_algorithms/05_graph_algorithms/03_shortest_path/)                                   |     |     |      |
-| ⠀⠀⠀⠀· [01_dijkstra](./src/02_algorithms/05_graph_algorithms/03_shortest_path/01_dijkstra)                           | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [01_dijkstra](./src/02_algorithms/05_graph_algorithms/03_shortest_path/01_dijkstra)                           | ✓   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [02_bellman_ford](./src/02_algorithms/05_graph_algorithms/03_shortest_path/02_bellman_ford)                   | ✗   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [03_floyd_warshall](./src/02_algorithms/05_graph_algorithms/03_shortest_path/03_floyd_warshall)               | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [04_minimum_spanning_tree](./src/02_algorithms/05_graph_algorithms/04_minimum_spanning_tree)                    | ✗   | ✗   | ✗    |
