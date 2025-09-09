@@ -61,11 +61,20 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⠀⠀· [01_depth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/01_depth_first_search)     | ✗   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [02_breadth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/02_breadth_first_search) | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [02_topological_sort](./src/02_algorithms/05_graph_algorithms/02_topological_sort)                              | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [01_kahn](./src/02_algorithms/05_graph_algorithms/02_topological_sort/01_kahn)                                | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [02_dfs_based_topo_sort](./src/02_algorithms/05_graph_algorithms/02_topological_sort/02_dfs_based_topo_sort)  | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [03_shortest_path](./src/02_algorithms/05_graph_algorithms/03_shortest_path/)                                   |     |     |      |
 | ⠀⠀⠀⠀· [01_dijkstra](./src/02_algorithms/05_graph_algorithms/03_shortest_path/01_dijkstra)                           | ✓   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [02_bellman_ford](./src/02_algorithms/05_graph_algorithms/03_shortest_path/02_bellman_ford)                   | ✗   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [03_floyd_warshall](./src/02_algorithms/05_graph_algorithms/03_shortest_path/03_floyd_warshall)               | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [04_a_star](./src/02_algorithms/05_graph_algorithms/03_shortest_path/04_a_star)                               | ✗   | ✗   | ✗    |
 | ⠀⠀⁃ [04_minimum_spanning_tree](./src/02_algorithms/05_graph_algorithms/04_minimum_spanning_tree)                    | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [01_prim](./src/02_algorithms/05_graph_algorithms/04_minimum_spanning_tree/01_prim)                           | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [02_kruskal](./src/02_algorithms/05_graph_algorithms/04_minimum_spanning_tree/02_kruskal)                     | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [03_boruvka](./src/02_algorithms/05_graph_algorithms/04_minimum_spanning_tree/03_boruvka)                     | ✗   | ✗   | ✗    |
+| ⠀⠀⁃ [05_strongly_connected_components](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components)    | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [01_kosaraju](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/01_kosaraju)           | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [02_tarjan](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/02_tarjan)               | ✗   | ✗   | ✗    |
 
 ### 03. Problem Solving Techniques
 
