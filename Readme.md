@@ -24,7 +24,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | • [07_graph](./src/01_data_structures/07_graph)                                              |     |     |      |
 | ⠀⠀⁃ [01_adjacency_list](./src/01_data_structures/07_graph/01_adjacency_list)                 | ✓   | ✓   | ✓    |
 | ⠀⠀⁃ [02_adjacency_matrix](./src/01_data_structures/07_graph/02_adjacency_matrix)             | ✓   | ✗   | ✗    |
-| ⠀⠀⁃ [03_edge_list](./src/01_data_structures/07_graph/03_edge_list)                           | ✗   | ✗   | ✗    |
+| ⠀⠀⁃ [03_edge_list](./src/01_data_structures/07_graph/03_edge_list)                           | ✓   | ✗   | ✗    |
 | ⠀⠀⁃ [04_directed_acyclic_graph](./src/01_data_structures/07_graph/04_directed_acyclic_graph) | ✗   | ✗   | ✗    |
 | • [08_disjoint_set_union_find](./src/01_data_structures/08_disjoint_set_union_find)          | ✗   | ✗   | ✗    |
 
