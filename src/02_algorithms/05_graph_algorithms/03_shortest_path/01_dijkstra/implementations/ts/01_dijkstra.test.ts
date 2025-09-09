@@ -5,7 +5,7 @@ describe("Dijkstra algorithm", () => {
     //      B   4    D
     //    1       ↗
     //  A       1    1
-    //    2.  ↗
+    //    2   ↗
     //      C   3    E
 
     const graph: Graph = {
