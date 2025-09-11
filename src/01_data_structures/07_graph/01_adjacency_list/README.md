@@ -2,10 +2,10 @@
 
 ## Description
 
-An **Adjacency List** is a graph data structure that maps each vertex to a list of its adjacent (connected) vertices. This representation is ideal for **sparse graphs**, where the number of edges is much smaller than the number of possible connections.
+Graph data structure that maps each vertex to a list of its adjacent (connected) vertices. This representation is ideal for sparse graphs, where the number of edges is much smaller than the number of possible connections.
 
 It is commonly implemented using Hash maps or dictionaries as well as with arrays or lists of lists.
-Widely used because they are space-efficient and allow quick access to a node's neighbors, which is useful in traversal algorithms like **depth-first search** and **breadth-first search**.
+Widely used because they are space-efficient and allow quick access to a node's neighbors, which is useful in traversal algorithms like depth-first search and breadth-first search.
 
 ## Methods
 
@@ -126,7 +126,7 @@ Adjacency List:
 #### Remove Edge
 
     REMOVE_EDGE('A', 'C', false)
-    
+
     G = {
       A: [B],
       B: [A, D, E],
@@ -145,7 +145,24 @@ Adjacency List:
       E: []
     }
 
-### Get Neighbors
+#### Get Neighbors
 
     GET_NEIGHBORS('A') → [B]
     GET_NEIGHBORS('C') → []
+
+### Variant
+
+It is possible to add weights using tuples for the nodes, e.g.: (A, 1).
+
+    A ---1--- B
+    |         |
+    4         2
+    |         |
+    C         D
+
+    G = {
+        A: [(B, 1), (C, 4)],
+        B: [(A, 1), (D, 2)],
+        C: [(A, 4)],
+        D: [(B, 2)]
+    }

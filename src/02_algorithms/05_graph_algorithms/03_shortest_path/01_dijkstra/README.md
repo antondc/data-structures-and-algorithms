@@ -8,7 +8,7 @@ It finds the shortest paths by always selecting the nearest unvisited node and u
 
 ```
 //  graph = {
-//    NODE_KEY: [(NEIGHBOR, WEIGHT)]
+//    NODE_KEY: [(NEIGHBOR, WEIGHT),],
 //  }
 
 graph = {
@@ -31,9 +31,14 @@ DIJKSTRA(graph, source):
     REMOVE current FROM unvisited
     visited[current] = TRUE
 
+    // Iterate neighbors of each unvisited node
     FOR EACH (neighbor, weight) IN graph[current]:
+
+      // If neighbor was not visited, check distance.
       IF visited[neighbor] == FALSE:
         new_distance = distances[current] + weight
+
+        // If resulting distance is lower than current, update.
         IF new_distance < distances[neighbor]:
           distances[neighbor] = new_distance
 

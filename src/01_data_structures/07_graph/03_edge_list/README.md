@@ -102,3 +102,22 @@ Graph representation:
 #### Get Edges
 
     GET_EDGES() → [(A, B), (B, D), (E, B), (B, E)]
+
+### Variant
+
+It is possible to add weights using triples instead of tuples, e.g.: (A, B, 1).
+
+    A ---1--- B
+    |         |
+    4         2
+    |         |
+    C         D
+
+    G = [
+      (A, B, 1),
+      (B, A, 1),
+      (A, C, 4),
+      (C, A, 4),
+      (B, D, 2),
+      (D, B, 2)
+    ]
