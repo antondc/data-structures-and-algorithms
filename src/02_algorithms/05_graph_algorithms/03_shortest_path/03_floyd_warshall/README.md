@@ -8,35 +8,26 @@ Uses a weighted adjacency matrix or distance matrix as a data structure.
 
 ## Pseudocode
 
-             B  →.  5   →    D
-           ↗.
-         4.  ↑  ↘            ↑
-       ↗
-     A      -2      -1       3
-       ↘
-         3   ↑           ↘.  ↑
-        .  ↘
-             C  →.  5   →    E
+![Floyd Warshall example graph.](./img/floid_warshall_graph.png)
 
     G[i][j] = weight of edge i→j if exists, else ∞
     G[i][i] = 0 for all i
 
           j →
           A  B  C  D  E
-    i A  [0, 4, 3, ∞, ∞]
-    ↓ B  [∞, 0, ∞, 5,-1]
-      C  [∞,-2, 0, ∞, 5]
-      D  [∞, ∞, ∞, 0, ∞]
-      E  [∞, ∞, ∞, 3, 0]
+    i A  [ 0, 1, 6, 3, ∞ ]
+    ↓ B  [ ∞, 0, 3, ∞, 4 ]
+      C  [ ∞, 3, 0, ∞,-3 ]
+      D  [-2, ∞, 3, 0, ∞ ]
+      E  [ ∞, 4, ∞, 4, 0 ]
 
     G = [
-          [0, 4, 3, Infinity, Infinity],
-          [Infinity, 0, Infinity, 5, -1],
-          [Infinity, -2, 0, Infinity, 5],
-          [Infinity, Infinity, Infinity, 0, Infinity],
-          [Infinity, Infinity, Infinity, 3, 0],
-        ];
-
+      [0, 1, 6, 3, Infinity],
+      [Infinity, 0, 3, Infinity, 4],
+      [Infinity, 3, 0, Infinity, -3],
+      [-2, Infinity, 3, 0, Infinity],
+      [Infinity, 4, Infinity, 4, 0],
+    ]
 
     FLOYD_WARSHALL(G, vertices):
       FOR k FROM 0 TO LENGTH(vertices) - 1:
