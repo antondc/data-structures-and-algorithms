@@ -8,26 +8,52 @@ Uses a weighted adjacency matrix or distance matrix as a data structure.
 
 ## Pseudocode
 
-    // Initialize matrix D such that:
-    // D[i][j] = weight of edge i→j if exists, else ∞
-    // D[i][i] = 0 for all i
+             B  →.  5   →    D
+           ↗.
+         4.  ↑  ↘            ↑
+       ↗
+     A      -2      -1       3
+       ↘
+         3   ↑           ↘.  ↑
+        .  ↘
+             C  →.  5   →    E
 
-    FLOYD_WARSHALL(vertices, D):
+    G[i][j] = weight of edge i→j if exists, else ∞
+    G[i][i] = 0 for all i
+
+          j →
+          A  B  C  D  E
+    i A  [0, 4, 3, ∞, ∞]
+    ↓ B  [∞, 0, ∞, 5,-1]
+      C  [∞,-2, 0, ∞, 5]
+      D  [∞, ∞, ∞, 0, ∞]
+      E  [∞, ∞, ∞, 3, 0]
+
+    G = [
+          [0, 4, 3, Infinity, Infinity],
+          [Infinity, 0, Infinity, 5, -1],
+          [Infinity, -2, 0, Infinity, 5],
+          [Infinity, Infinity, Infinity, 0, Infinity],
+          [Infinity, Infinity, Infinity, 3, 0],
+        ];
+
+
+    FLOYD_WARSHALL(G, vertices):
       FOR k FROM 0 TO LENGTH(vertices) - 1:
         FOR i FROM 0 TO LENGTH(vertices) - 1:
           FOR j FROM 0 TO LENGTH(vertices) - 1:
-            IF D[i][k] + D[k][j] < D[i][j]:
-              D[i][j] = D[i][k] + D[k][j]
+            IF G[i][k] + G[k][j] < G[i][j]:
+              G[i][j] = G[i][k] + G[k][j]
 
-      return D
+      return G
 
 ## Explanation
 
-- Start with a 2D matrix `D` where `D[i][j]` represents the weight of the edge from `i` to `j`, or `∞` if there’s no direct connection.
+- Start with a 2D matrix `G` where `G[i][j]` represents the weight of the edge from `i` to `j`, or `∞` if there’s no direct connection.
 - Loop over each possible intermediate vertex `k`.
   - For every pair of vertices `(i, j)`, check whether the path `i → k → j` is shorter than the currently known `i → j` path.
-- If so, update `D[i][j]` with the shorter distance.
-- After all iterations, `D[i][j]` will contain the shortest distance between every node pair.
+- If so, update `G[i][j]` with the shorter distance.
+- After all iterations, `G[i][j]` will contain the shortest distance between every node pair.
 
 ## Characteristics
 
