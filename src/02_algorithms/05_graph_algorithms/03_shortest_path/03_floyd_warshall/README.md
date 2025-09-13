@@ -22,29 +22,63 @@ Uses a weighted adjacency matrix or distance matrix as a data structure.
       E  [ ∞, 4, ∞, 4, 0 ]
 
     G = [
-      [0, 1, 6, 3, Infinity],
-      [Infinity, 0, 3, Infinity, 4],
-      [Infinity, 3, 0, Infinity, -3],
-      [-2, Infinity, 3, 0, Infinity],
-      [Infinity, 4, Infinity, 4, 0],
+      [ 0, 1, 6, 3, ∞ ],
+      [ ∞, 0, 3, ∞, 4 ],
+      [ ∞, 3, 0, ∞,-3 ],
+      [-2, ∞, 3, 0, ∞ ],
+      [ ∞, 4, ∞, 4, 0 ],
     ]
 
+    // To be instantiated by FLOYD_WARSHALL
+    // next = [
+    //   [ 0, 0, 0, 0, 0 ],
+    //   [ 1, 1, 1, 1, 1 ],
+    //   [ 2, 2, 2, 2, 2 ],
+    //   [ 3, 3, 3, 3, 3 ],
+    //   [ 4, 4, 4, 4, 4 ],
+    // ]
+
     FLOYD_WARSHALL(G, vertices):
-      FOR k FROM 0 TO LENGTH(vertices) - 1:
-        FOR i FROM 0 TO LENGTH(vertices) - 1:
-          FOR j FROM 0 TO LENGTH(vertices) - 1:
+      next ← 2D array of size n × n where next[i][j] ← i for all i, j;
+
+      FOR k IN RANGE 0 TO LENGTH(vertices):
+        FOR i IN RANGE 0 TO LENGTH(vertices):
+          FOR j IN RANGE 0 TO LENGTH(vertices):
             IF G[i][k] + G[k][j] < G[i][j]:
               G[i][j] = G[i][k] + G[k][j]
+              next[i][j] = next[k][j]
 
-      return G
+      return (G, next)
+
+
+      RECONSTRUCT_PATH(from, to, next, vertices):
+        startIndex ← INDEX_OF(from) IN vertices
+        endIndex ← INDEX_OF(to) IN vertices
+
+        path ← [to]
+        previous ← endIndex
+
+        WHILE previous ≠ next[startIndex][previous]:
+          previous ← next[startIndex][previous]
+          PREPEND vertices[previous] TO path
+
+        RETURN path
 
 ## Explanation
 
+- `FLOYD_WARSHALL` may return only `distances`, or both `distances` and `next` matrices:
+  - Distances: the shortest distances between all pairs of vertices.
+  - Next: a matrix that can be used to reconstruct the shortest path.
+- To reconstruct a path between two nodes, a function `RECONSTRUCT_PATH(from, to, next, vertices)` is required, which returns an array of vertex labels representing the shortest path.
+
+### Steps
+
 - Start with a 2D matrix `G` where `G[i][j]` represents the weight of the edge from `i` to `j`, or `∞` if there’s no direct connection.
+- Initialize a matrix of n × n where for each row all values are the index of the row.
 - Loop over each possible intermediate vertex `k`.
   - For every pair of vertices `(i, j)`, check whether the path `i → k → j` is shorter than the currently known `i → j` path.
-- If so, update `G[i][j]` with the shorter distance.
-- After all iterations, `G[i][j]` will contain the shortest distance between every node pair.
+    - If so, update `G[i][j]` with the shorter distance, and update the value in the `next` matrix.
+- After all iterations, `G[i][j]` contains the shortest distance from `i` to `j`, and `next[i][j]` the next vertex to go to from `i` on the shortest path to `j`.
 
 ## Characteristics
 
@@ -67,11 +101,3 @@ Uses a weighted adjacency matrix or distance matrix as a data structure.
 - Computing transitive closure in graphs
 - All-pairs routing in networks
 - Evaluating consistency of constraints in logic or scheduling
-
-## Variants
-
-- Optionally Floyd-Warshall may return both `distances` and `next` matrices:
-  - Distances: the shortest distances between all pairs of vertices.
-  - Next: a matrix that can be used to reconstruct the shortest path.
-- The graph can be defined using a generic type `Vertices<T>`, allowing for any node label (e.g., strings like `"A"` or `"Node1"`).
-- To reconstruct a path between two nodes, a function `reconstructPath(from, to, next, vertices)` may be implemented, which returns an array of vertex labels representing the shortest path.

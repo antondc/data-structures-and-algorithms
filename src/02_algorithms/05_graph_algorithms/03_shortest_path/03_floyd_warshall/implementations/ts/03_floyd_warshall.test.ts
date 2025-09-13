@@ -8,15 +8,15 @@ import {
 
 describe("Floyd Warshall algorithm", () => {
   test("Finds the cost to reach all nodes", async () => {
-    //          B  →.  5   →    D
-    //        ↗.
-    //      4.  ↑  ↘            ↑
+    //          B  →   5   →    D
+    //        ↗ 
+    //      4   ↑  ↘            ↑
     //    ↗
     //  A      -2      -1       3
-    //.   ↘
-    //      3   ↑           ↘.  ↑
-    //     .  ↘
-    //          C  →.  5   →    E
+    //    ↘
+    //      3   ↑           ↘   ↑
+    //        ↘
+    //          C  →   5   →    E
 
     const vertices: Vertices<string> = ["A", "B", "C", "D", "E"];
 
