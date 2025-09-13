@@ -67,3 +67,11 @@ Uses a weighted adjacency matrix or distance matrix as a data structure.
 - Computing transitive closure in graphs
 - All-pairs routing in networks
 - Evaluating consistency of constraints in logic or scheduling
+
+## Variants
+
+- Optionally Floyd-Warshall may return both `distances` and `next` matrices:
+  - Distances: the shortest distances between all pairs of vertices.
+  - Next: a matrix that can be used to reconstruct the shortest path.
+- The graph can be defined using a generic type `Vertices<T>`, allowing for any node label (e.g., strings like `"A"` or `"Node1"`).
+- To reconstruct a path between two nodes, a function `reconstructPath(from, to, next, vertices)` may be implemented, which returns an array of vertex labels representing the shortest path.
