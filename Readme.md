@@ -58,8 +58,8 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [02_breadth_first_search](./src/02_algorithms/04_tree_traversal/02_breadth_first_search)                        | ✓   | ✗   | ✗    |
 | • [05_graph_algorithms](./src/02_algorithms/05_graph_algorithms)                                                    |     |     |      |
 | ⠀⠀⁃ [01_graph_traversal](./src/02_algorithms/05_graph_algorithms/01_graph_traversal)                                |     |     |      |
-| ⠀⠀⠀⠀· [01_depth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/01_depth_first_search)     | ✗   | ✗   | ✗    |
-| ⠀⠀⠀⠀· [02_breadth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/02_breadth_first_search) | ✗   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [01_depth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/01_depth_first_search)     | ✓   | ✗   | ✗    |
+| ⠀⠀⠀⠀· [02_breadth_first_search](./src/02_algorithms/05_graph_algorithms/01_graph_traversal/02_breadth_first_search) | ✓   | ✗   | ✗    |
 | ⠀⠀⁃ [02_topological_sort](./src/02_algorithms/05_graph_algorithms/02_topological_sort)                              | ✗   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [01_kahn](./src/02_algorithms/05_graph_algorithms/02_topological_sort/01_kahn)                                | ✗   | ✗   | ✗    |
 | ⠀⠀⠀⠀· [02_dfs_based_topo_sort](./src/02_algorithms/05_graph_algorithms/02_topological_sort/02_dfs_based_topo_sort)  | ✗   | ✗   | ✗    |

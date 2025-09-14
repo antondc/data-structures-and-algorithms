@@ -1,4 +1,4 @@
-import { depthFirstSearch } from "./01_depth_first_search";
+import { breadthFirstSearch } from "./01_breadth_first_search";
 
 //   A —— B —— C
 //    \    \
@@ -8,7 +8,7 @@ import { depthFirstSearch } from "./01_depth_first_search";
 //          |
 //    I —— J —— K —— L
 
-describe("Graph is traversed with Depth-First Search", () => {
+describe("Graph is traversed with Breadth-First Search", () => {
   const accumulated = [];
 
   const accumulate = (value: number) => {
@@ -35,14 +35,14 @@ describe("Graph is traversed with Depth-First Search", () => {
       L: ["K"],
     };
 
-    depthFirstSearch(graph, "A", accumulate);
+    breadthFirstSearch(graph, "A", accumulate);
 
     const expectedResult = [
       "A",
       "B",
+      "D",
       "C",
       "E",
-      "D",
       "F",
       "G",
       "H",
@@ -51,6 +51,7 @@ describe("Graph is traversed with Depth-First Search", () => {
       "K",
       "L",
     ];
+
     expect(accumulated).toEqual(expectedResult);
   });
 });

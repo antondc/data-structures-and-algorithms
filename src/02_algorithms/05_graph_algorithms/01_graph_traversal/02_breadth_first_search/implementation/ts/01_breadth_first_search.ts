@@ -1,23 +1,24 @@
 type Graph = Record<string, Array<string>>;
 
-export const depthFirstSearch = (
+export const breadthFirstSearch = (
   graph: Graph,
   start: string,
   visitNode: (node: number | string) => void
 ) => {
   const visited = new Set();
-  const stack = [start];
+  const queue = [start];
 
-  while (stack.length) {
-    const node = stack.pop();
+  while (queue.length) {
+    const node = queue.shift();
 
     if (visited.has(node)) continue;
+
     visitNode(node);
     visited.add(node);
 
-    for (const neighbor of graph[node].slice().reverse()) {
+    for (const neighbor of graph[node]) {
       if (!visited.has(neighbor)) {
-        stack.push(neighbor);
+        queue.push(neighbor);
       }
     }
   }
