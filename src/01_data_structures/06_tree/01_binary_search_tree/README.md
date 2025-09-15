@@ -28,71 +28,63 @@ Typically implemented with pointers —and not with arrays— as they are not al
 
 Inserts a value into the tree while maintaining its ordering property.
 
-```
-INSERT(node, value):
-  if node is null:
-    return new Node(value)
+    INSERT(node, value):
+      if node is null:
+        return new Node(value)
 
-  if value < node.value:
-    node.left = INSERT(node.left, value)
-  else:
-    node.right = INSERT(node.right, value)
+      if value < node.value:
+        node.left = INSERT(node.left, value)
+      else:
+        node.right = INSERT(node.right, value)
 
-  return node
-```
+      return node
 
 ### Delete
 
 Deletes a value from the tree with in-order sucessor.
 
-```
-DELETE(node, value):
-  if node is null:
-    return node
+    DELETE(node, value):
+      if node is null:
+        return node
 
-  if value < node.value:
-    node.left = DELETE(node.left, value)
-  else if value > node.value:
-    node.right = DELETE(node.right, value)
-  else:
-    if node.left is null:
-      return node.right
+      if value < node.value:
+        node.left = DELETE(node.left, value)
+      else if value > node.value:
+        node.right = DELETE(node.right, value)
+      else:
+        if node.left is null:
+          return node.right
 
-    if node.right is null:
-      return node.left
+        if node.right is null:
+          return node.left
 
-    sucessor = MIN_VALUE_NODE(node.right)
-    node.value = sucessor.value
-    node.right = DELETE(node.right, sucessor.value)
+        sucessor = MIN_VALUE_NODE(node.right)
+        node.value = sucessor.value
+        node.right = DELETE(node.right, sucessor.value)
 
-  return node
-```
+      return node
 
 ### Min Value Node (private)
 
 Finds the smallest value in a subtree recursively (used for deletion)
 
-```
-MIN_VALUE_NODE(node):
-  if node.left is not null:
-    return MIN_VALUE_NODE(node.left)
-  else
-    return node
-```
+    MIN_VALUE_NODE(node):
+      if node.left is not null:
+        return MIN_VALUE_NODE(node.left)
+      else
+        return node
 
 ### Search
 
 Searches for a value in the BST.
 
-```
-SEARCH(node, value):
-  if node is null or node.value == value:
-    return node
-  if value < node.value:
-    return SEARCH(node.left, value)
-  else:
-    return SEARCH(node.right, value)
-```
+    SEARCH(node, value):
+      if node is null or node.value == value:
+        return node
+      if value < node.value:
+        return SEARCH(node.left, value)
+      else:
+        return SEARCH(node.right, value)
 
 ## Characteristics
 
@@ -117,69 +109,53 @@ SEARCH(node, value):
 
 INSERT(10)
 
-```
-10
-```
+    10
 
 INSERT(5)
 
-```
-  10
- /
-5
-```
+      10
+     /
+    5
 
 INSERT(15)
 
-```
-  10
- /  \
-5    15
-```
+      10
+     /  \
+    5    15
 
 INSERT(3)
 
-```
-    10
-   /  \
-  5    15
- /
-3
-```
+          10
+        /  \
+       5    15
+      /
+    3
 
 ### Deletion
 
-```
-    10
-   /  \
-  5   15
-     /  \
-   14    16
-  /
- 13
-```
+           10
+          /  \
+         5   15
+        /  \
+      14    16
+      /
+    13
 
 DELETE(10)
 
-```
-   13
-  /  \
- 5    15
-     /  \
-   14    16
-```
+        13
+       /  \
+     5    15
+        /  \
+      14    16
 
 ### Searching
 
-```
-   13
-  /  \
- 5    15
-     /  \
-   14    16
-```
+       13
+      /  \
+     5    15
+        /  \
+      14    16
 
-```
 Search 15 -> Node 15
 Search 7  -> NULL
-```
