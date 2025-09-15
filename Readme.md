@@ -6,32 +6,29 @@ Ongoing effort to document most common data structures and algorithms, with impl
 
 ## 📁 Project Index
 
-| Data Structure                                                                               | JS  | Go  | Rust |
-| -------------------------------------------------------------------------------------------- | --- | --- | ---- |
-| • [01_array](./src/01_data_structures/01_array)                                              | ⚫  | ⚫  | ⚫   |
-| • [02_linked_list](./src/01_data_structures/02_linked_list)                                  | 🟢  | 🟢  | ⚫   |
-| • [03_queue](./src/01_data_structures/03_queue)                                              | 🟢  | ⚪  | 🟢   |
-| • [04_stack](./src/01_data_structures/04_stack)                                              | 🟢  | 🟢  | 🟢   |
-| • [05_hash_table](./src/01_data_structures/05_hash_table)                                    | 🟢  | 🟢  | 🟢   |
-| • [06_tree](./src/01_data_structures/06_tree)                                                |     |     |      |
-| ⠀⠀⁃ [01_binary_search_tree](./src/01_data_structures/06_tree/01_binary_search_tree)          | 🟢  | 🟢  | 🟢   |
-| ⠀⠀⁃ [02_heap](./src/01_data_structures/06_tree/02_heap)                                      | 🟢  | 🟢  | 🟢   |
-| ⠀⠀⁃ [03_trie](./src/01_data_structures/06_tree/03_trie)                                      | 🟢  | 🟢  | 🟢   |
-| ⠀⠀⁃ [04_avl_tree](./src/01_data_structures/06_tree/04_avl_tree)                              | ⚪  | ⚪  | ⚪   |
-| ⠀⠀⁃ [05_b_tree](./src/01_data_structures/06_tree/05_b_tree)                                  | ⚪  | ⚪  | ⚪   |
-| ⠀⠀⁃ [06_red_black_tree](./src/01_data_structures/06_tree/06_red_black_tree)                  | ⚪  | ⚪  | ⚪   |
-| ⠀⠀⁃ [07_b_plus_tree](./src/01_data_structures/06_tree/07_b_plus_tree)                        | ⚪  | ⚪  | ⚪   |
-| • [07_graph](./src/01_data_structures/07_graph)                                              |     |     |      |
-| ⠀⠀⁃ [01_adjacency_list](./src/01_data_structures/07_graph/01_adjacency_list)                 | 🟢  | 🟢  | 🟢   |
-| ⠀⠀⁃ [02_adjacency_matrix](./src/01_data_structures/07_graph/02_adjacency_matrix)             | 🟢  | ⚪  | ⚪   |
-| ⠀⠀⁃ [03_edge_list](./src/01_data_structures/07_graph/03_edge_list)                           | 🟢  | ⚪  | ⚪   |
-| ⠀⠀⁃ [04_directed_acyclic_graph](./src/01_data_structures/07_graph/04_directed_acyclic_graph) | ⚪  | ⚪  | ⚪   |
-| • [08_disjoint_set_union_find](./src/01_data_structures/08_disjoint_set_union_find)          | 🟢  | 🟢  | 🟢   |
-
-### 02. Algorithms
-
-| Algorithm                                                                                                           | JS  | Go  | Rust |
+|                                                                                                                     | JS  | Go  | Rust |
 | ------------------------------------------------------------------------------------------------------------------- | --- | --- | ---- |
+| **Data Structures**                                                                                                 |     |     |      |
+| • [01_array](./src/01_data_structures/01_array)                                                                     | ⚫  | ⚫  | ⚫   |
+| • [02_linked_list](./src/01_data_structures/02_linked_list)                                                         | 🟢  | 🟢  | ⚫   |
+| • [03_queue](./src/01_data_structures/03_queue)                                                                     | 🟢  | ⚪  | 🟢   |
+| • [04_stack](./src/01_data_structures/04_stack)                                                                     | 🟢  | 🟢  | 🟢   |
+| • [05_hash_table](./src/01_data_structures/05_hash_table)                                                           | 🟢  | 🟢  | 🟢   |
+| • [06_tree](./src/01_data_structures/06_tree)                                                                       |     |     |      |
+| ⠀⠀⁃ [01_binary_search_tree](./src/01_data_structures/06_tree/01_binary_search_tree)                                 | 🟢  | 🟢  | 🟢   |
+| ⠀⠀⁃ [02_heap](./src/01_data_structures/06_tree/02_heap)                                                             | 🟢  | 🟢  | 🟢   |
+| ⠀⠀⁃ [03_trie](./src/01_data_structures/06_tree/03_trie)                                                             | 🟢  | 🟢  | 🟢   |
+| ⠀⠀⁃ [04_avl_tree](./src/01_data_structures/06_tree/04_avl_tree)                                                     | ⚪  | ⚪  | ⚪   |
+| ⠀⠀⁃ [05_b_tree](./src/01_data_structures/06_tree/05_b_tree)                                                         | ⚪  | ⚪  | ⚪   |
+| ⠀⠀⁃ [06_red_black_tree](./src/01_data_structures/06_tree/06_red_black_tree)                                         | ⚪  | ⚪  | ⚪   |
+| ⠀⠀⁃ [07_b_plus_tree](./src/01_data_structures/06_tree/07_b_plus_tree)                                               | ⚪  | ⚪  | ⚪   |
+| • [07_graph](./src/01_data_structures/07_graph)                                                                     |     |     |      |
+| ⠀⠀⁃ [01_adjacency_list](./src/01_data_structures/07_graph/01_adjacency_list)                                        | 🟢  | 🟢  | 🟢   |
+| ⠀⠀⁃ [02_adjacency_matrix](./src/01_data_structures/07_graph/02_adjacency_matrix)                                    | 🟢  | ⚪  | ⚪   |
+| ⠀⠀⁃ [03_edge_list](./src/01_data_structures/07_graph/03_edge_list)                                                  | 🟢  | ⚪  | ⚪   |
+| ⠀⠀⁃ [04_directed_acyclic_graph](./src/01_data_structures/07_graph/04_directed_acyclic_graph)                        | ⚪  | ⚪  | ⚪   |
+| • [08_disjoint_set_union_find](./src/01_data_structures/08_disjoint_set_union_find)                                 | 🟢  | 🟢  | 🟢   |
+| **Algorithms**                                                                                                      |     |     |      |
 | • [01_sorting](./src/02_algorithms/01_sorting)                                                                      |     |     |      |
 | ⠀⠀⁃ [01_merge_sort](./src/02_algorithms/01_sorting/01_merge_sort)                                                   | 🟢  | 🟢  | 🟢   |
 | ⠀⠀⁃ [02_bubble_sort](./src/02_algorithms/01_sorting/02_bubble_sort)                                                 | 🟢  | 🟢  | 🟢   |
@@ -75,61 +72,51 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [05_strongly_connected_components](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components)    | ⚪  | ⚪  | ⚪   |
 | ⠀⠀⠀⠀· [01_kosaraju](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/01_kosaraju)           | ⚪  | ⚪  | ⚪   |
 | ⠀⠀⠀⠀· [02_tarjan](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/02_tarjan)               | ⚪  | ⚪  | ⚪   |
-
-### 03. Problem Solving Techniques
-
-| Problem Solving Technique                                                                            | JS  | Go  | Rust |
-| ---------------------------------------------------------------------------------------------------- | --- | --- | ---- |
-| • [01_two_pointers](./src/03_problem_solving_techniques/01_two_pointers)                             | ⚪  | ⚪  | ⚪   |
-| • [02_sliding_window](./src/03_problem_solving_techniques/02_sliding_window)                         | ⚪  | ⚪  | ⚪   |
-| • [03_prefix_sum](./src/03_problem_solving_techniques/03_prefix_sum)                                 | ⚪  | ⚪  | ⚪   |
-| • [04_fast_and_slow_pointers](./src/03_problem_solving_techniques/04_fast_and_slow_pointers)         | ⚪  | ⚪  | ⚪   |
-| • [05_divide_and_conquer](./src/03_problem_solving_techniques/05_divide_and_conquer)                 | ⚪  | ⚪  | ⚪   |
-| • [06_greedy_algorithms](./src/03_problem_solving_techniques/06_greedy_algorithms)                   | ⚪  | ⚪  | ⚪   |
-| • [07_recursion](./src/03_problem_solving_techniques/07_recursion)                                   | ⚪  | ⚪  | ⚪   |
-| • [08_backtracking](./src/03_problem_solving_techniques/08_backtracking)                             | ⚪  | ⚪  | ⚪   |
-| • [09_dynamic_programming](./src/03_problem_solving_techniques/09_dynamic_programming)               | ⚪  | ⚪  | ⚪   |
-| • [10_top_k_element](./src/03_problem_solving_techniques/10_top_k_element)                           | ⚪  | ⚪  | ⚪   |
-| • [bitwise_xor](./src/03_problem_solving_techniques/bitwise_xor)                                     | ⚪  | ⚪  | ⚪   |
-| • [cyclic_sort](./src/03_problem_solving_techniques/cyclic_sort)                                     | ⚪  | ⚪  | ⚪   |
-| • [in_place_reversal_linked_list](./src/03_problem_solving_techniques/in_place_reversal_linked_list) | ⚪  | ⚪  | ⚪   |
-| • [k_way_merge](./src/03_problem_solving_techniques/k_way_merge)                                     | ⚪  | ⚪  | ⚪   |
-| • [knapsack_dynamic_programming](./src/03_problem_solving_techniques/knapsack_dynamic_programming)   | ⚪  | ⚪  | ⚪   |
-| • [merge_intervals](./src/03_problem_solving_techniques/merge_intervals)                             | ⚪  | ⚪  | ⚪   |
-| • [modified_binary_search](./src/03_problem_solving_techniques/modified_binary_search)               | ⚪  | ⚪  | ⚪   |
-| • [subsets](./src/03_problem_solving_techniques/subsets)                                             | ⚪  | ⚪  | ⚪   |
-| • [topological_sort_graph](./src/03_problem_solving_techniques/topological_sort_graph)               | ⚪  | ⚪  | ⚪   |
-| • [tree_breadth_first_search](./src/03_problem_solving_techniques/tree_breadth_first_search)         | ⚪  | ⚪  | ⚪   |
-| • [tree_depth_first_search](./src/03_problem_solving_techniques/tree_depth_first_search)             | ⚪  | ⚪  | ⚪   |
-| • [two_heap](./src/03_problem_solving_techniques/two_heap)                                           | ⚪  | ⚪  | ⚪   |
-
-### 04. Problems
-
-| Problem Solving Technique                                                                              | JS  | Go  | Rust |
-| ------------------------------------------------------------------------------------------------------ | --- | --- | ---- |
-| • [01_fizzbuzz](./src/04_problems/01_fizzbuzz)                                                         | 🟢  | ⚪  | 🟢   |
-| • [02_anagram](./src/04_problems/02_anagram)                                                           | ⚪  | ⚪  | 🟢   |
-| • [03_array_consecutive_missing_numbers](./src/04_problems/03_array_consecutive_missing_numbers)       | ⚪  | ⚪  | 🟢   |
-| • [04_calculate_list_max_items_difference](./src/04_problems/04_calculate_list_max_items_difference)   | ⚪  | ⚪  | 🟢   |
-| • [05_calculate_no_overlaps](./src/04_problems/05_calculate_no_overlaps)                               | ⚪  | ⚪  | 🟢   |
-| • [06_gigasecond](./src/04_problems/06_gigasecond)                                                     | ⚪  | ⚪  | 🟢   |
-| • [07_linear_searching](./src/04_problems/07_linear_searching)                                         | ⚪  | ⚪  | 🟢   |
-| • [08_list_sum_largest_n_numbers](./src/04_problems/08_list_sum_largest_n_numbers)                     | ⚪  | ⚪  | 🟢   |
-| • [09_mystery_algorithm](./src/04_problems/09_mystery_algorithm)                                       | ⚪  | ⚪  | 🟢   |
-| • [10_range_sum_bst](./src/04_problems/10_range_sum_bst)                                               | ⚪  | ⚪  | 🟢   |
-| • [11_reverse_words_in_a_sentence](./src/04_problems/11_reverse_words_in_a_sentence)                   | ⚪  | ⚪  | 🟢   |
-| • [12_sort_string](./src/04_problems/12_sort_string)                                                   | ⚪  | ⚪  | 🟢   |
-| • [13_string_capitalize](./src/04_problems/13_string_capitalize)                                       | ⚪  | ⚪  | 🟢   |
-| • [14_string_reverse](./src/04_problems/14_string_reverse)                                             | ⚪  | ⚪  | 🟢   |
-| • [15_two_sum](./src/04_problems/15_two_sum)                                                           | 🟢  | ⚪  | ⚪   |
-| • [16_satisfiability_of_equality_equations](./src/04_problems/16_satisfiability_of_equality_equations) | 🟢  | ⚪  | ⚪   |
-
-| Task              | Status         |
-| ----------------- | -------------- |
-| Build Project     | 🟢 Done        |
-| Deploy to Staging | ⚪ Pending     |
-| Run Tests         | 🟡 In Progress |
-| Cleanup Step      | ⚫ Canceled    |
+| **Problem Solving Techniques**                                                                                      |     |     |      |
+| • [01_two_pointers](./src/03_problem_solving_techniques/01_two_pointers)                                            | ⚪  | ⚪  | ⚪   |
+| • [02_sliding_window](./src/03_problem_solving_techniques/02_sliding_window)                                        | ⚪  | ⚪  | ⚪   |
+| • [03_prefix_sum](./src/03_problem_solving_techniques/03_prefix_sum)                                                | ⚪  | ⚪  | ⚪   |
+| • [04_fast_and_slow_pointers](./src/03_problem_solving_techniques/04_fast_and_slow_pointers)                        | ⚪  | ⚪  | ⚪   |
+| • [05_divide_and_conquer](./src/03_problem_solving_techniques/05_divide_and_conquer)                                | ⚪  | ⚪  | ⚪   |
+| • [06_greedy_algorithms](./src/03_problem_solving_techniques/06_greedy_algorithms)                                  | ⚪  | ⚪  | ⚪   |
+| • [07_recursion](./src/03_problem_solving_techniques/07_recursion)                                                  | ⚪  | ⚪  | ⚪   |
+| • [08_backtracking](./src/03_problem_solving_techniques/08_backtracking)                                            | ⚪  | ⚪  | ⚪   |
+| • [09_dynamic_programming](./src/03_problem_solving_techniques/09_dynamic_programming)                              | ⚪  | ⚪  | ⚪   |
+| • [10_top_k_element](./src/03_problem_solving_techniques/10_top_k_element)                                          | ⚪  | ⚪  | ⚪   |
+| • [bitwise_xor](./src/03_problem_solving_techniques/bitwise_xor)                                                    | ⚪  | ⚪  | ⚪   |
+| • [cyclic_sort](./src/03_problem_solving_techniques/cyclic_sort)                                                    | ⚪  | ⚪  | ⚪   |
+| • [in_place_reversal_linked_list](./src/03_problem_solving_techniques/in_place_reversal_linked_list)                | ⚪  | ⚪  | ⚪   |
+| • [k_way_merge](./src/03_problem_solving_techniques/k_way_merge)                                                    | ⚪  | ⚪  | ⚪   |
+| • [knapsack_dynamic_programming](./src/03_problem_solving_techniques/knapsack_dynamic_programming)                  | ⚪  | ⚪  | ⚪   |
+| • [merge_intervals](./src/03_problem_solving_techniques/merge_intervals)                                            | ⚪  | ⚪  | ⚪   |
+| • [modified_binary_search](./src/03_problem_solving_techniques/modified_binary_search)                              | ⚪  | ⚪  | ⚪   |
+| • [subsets](./src/03_problem_solving_techniques/subsets)                                                            | ⚪  | ⚪  | ⚪   |
+| • [topological_sort_graph](./src/03_problem_solving_techniques/topological_sort_graph)                              | ⚪  | ⚪  | ⚪   |
+| • [tree_breadth_first_search](./src/03_problem_solving_techniques/tree_breadth_first_search)                        | ⚪  | ⚪  | ⚪   |
+| • [tree_depth_first_search](./src/03_problem_solving_techniques/tree_depth_first_search)                            | ⚪  | ⚪  | ⚪   |
+| • [two_heap](./src/03_problem_solving_techniques/two_heap)                                                          | ⚪  | ⚪  | ⚪   |
+| **Problems**                                                                                                        |     |     |      |
+| • [01_fizzbuzz](./src/04_problems/01_fizzbuzz)                                                                      | 🟢  | ⚪  | 🟢   |
+| • [02_anagram](./src/04_problems/02_anagram)                                                                        | ⚪  | ⚪  | 🟢   |
+| • [03_array_consecutive_missing_numbers](./src/04_problems/03_array_consecutive_missing_numbers)                    | ⚪  | ⚪  | 🟢   |
+| • [04_calculate_list_max_items_difference](./src/04_problems/04_calculate_list_max_items_difference)                | ⚪  | ⚪  | 🟢   |
+| • [05_calculate_no_overlaps](./src/04_problems/05_calculate_no_overlaps)                                            | ⚪  | ⚪  | 🟢   |
+| • [06_gigasecond](./src/04_problems/06_gigasecond)                                                                  | ⚪  | ⚪  | 🟢   |
+| • [07_linear_searching](./src/04_problems/07_linear_searching)                                                      | ⚪  | ⚪  | 🟢   |
+| • [08_list_sum_largest_n_numbers](./src/04_problems/08_list_sum_largest_n_numbers)                                  | ⚪  | ⚪  | 🟢   |
+| • [09_mystery_algorithm](./src/04_problems/09_mystery_algorithm)                                                    | ⚪  | ⚪  | 🟢   |
+| • [10_range_sum_bst](./src/04_problems/10_range_sum_bst)                                                            | ⚪  | ⚪  | 🟢   |
+| • [11_reverse_words_in_a_sentence](./src/04_problems/11_reverse_words_in_a_sentence)                                | ⚪  | ⚪  | 🟢   |
+| • [12_sort_string](./src/04_problems/12_sort_string)                                                                | ⚪  | ⚪  | 🟢   |
+| • [13_string_capitalize](./src/04_problems/13_string_capitalize)                                                    | ⚪  | ⚪  | 🟢   |
+| • [14_string_reverse](./src/04_problems/14_string_reverse)                                                          | ⚪  | ⚪  | 🟢   |
+| • [15_two_sum](./src/04_problems/15_two_sum)                                                                        | 🟢  | ⚪  | ⚪   |
+| • [16_satisfiability_of_equality_equations](./src/04_problems/16_satisfiability_of_equality_equations)              | 🟢  | ⚪  | ⚪   |
+| **Status**                                                                                                          |     |     |      |
+| ⠀Done                                                                                                               |     |     | 🟢   |
+| ⠀Pending                                                                                                            |     |     | ⚪   |
+| ⠀In Progress                                                                                                        |     |     | 🟡   |
+| ⠀Canceled                                                                                                           |     |     | ⚫   |
 
 ## Run
 
