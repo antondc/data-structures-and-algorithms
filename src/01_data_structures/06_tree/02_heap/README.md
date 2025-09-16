@@ -2,7 +2,7 @@
 
 ## Description
 
-A Heap is a _complete_ _ordered_ _binary_ tree with the restriction that the value of parent nodes are greater or equal than the value of children nodes.
+Complete ordered binary tree with the restriction that the value of parent nodes are greater or equal than the value of children nodes.
 There are two types:
 
 - Max-heap: parent nodes are greater of equal than the value of children nodes.
@@ -20,7 +20,7 @@ Builds a heap from an unordered array.
 ```
 HEAP(array):
   for i = (size of array // 2) down to 0:
-    heapify(array, i, size of array)
+    HEAPIFY(array, i, size of array)
 ```
 
 ### Heapify
@@ -40,8 +40,8 @@ HEAPIFY(heap, index, heapSize):
     largest = right
 
   if largest != index:
-    swap heap[index] with heap[largest]
-    heapify(heap, largest, heapSize)
+    SWAP heap[index] with heap[largest]
+    HEAPIFY(heap, largest, heapSize)
 ```
 
 ### Insert
@@ -54,7 +54,7 @@ INSERT(heap, value):
   index = size of heap - 1
 
   while index > 0 and heap[parent(index)] < heap[index]:
-    swap heap[parent(index)] with heap[index]
+    SWAP heap[parent(index)] with heap[index]
     index = parent(index)
 ```
 
