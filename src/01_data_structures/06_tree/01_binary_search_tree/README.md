@@ -33,9 +33,11 @@ Inserts a value into the tree while maintaining its ordering property.
         return new Node(value)
 
       if value < node.value:
-        node.left = INSERT(node.left, value)
+        newLeft = INSERT(node.left, value)
+        return new Node(node.value, newLeft, node.right)
       else:
-        node.right = INSERT(node.right, value)
+        newRight = INSERT(node.right, value)
+        return new Node(node.value, node.legt, newRight)
 
       return node
 
@@ -48,9 +50,11 @@ Deletes a value from the tree with in-order sucessor.
         return node
 
       if value < node.value:
-        node.left = DELETE(node.left, value)
+        newLeft = DELETE(node.left, value)
+        return new Node(node.value, newLeft, node.right)
       else if value > node.value:
-        node.right = DELETE(node.right, value)
+        newRight = DELETE(node.right, value)
+        return new Node(node.value, node.left, newRight)
       else:
         if node.left is null:
           return node.right
@@ -58,7 +62,7 @@ Deletes a value from the tree with in-order sucessor.
         if node.right is null:
           return node.left
 
-        sucessor = MIN_VALUE_NODE(node.right)
+        sucessor = GET_LEFTMOST_NODE(node.right)
         node.value = sucessor.value
         node.right = DELETE(node.right, sucessor.value)
 
@@ -68,9 +72,9 @@ Deletes a value from the tree with in-order sucessor.
 
 Finds the smallest value in a subtree recursively (used for deletion)
 
-    MIN_VALUE_NODE(node):
+    GET_LEFTMOST_NODE(node):
       if node.left is not null:
-        return MIN_VALUE_NODE(node.left)
+        return GET_LEFTMOST_NODE(node.left)
       else
         return node
 
@@ -158,4 +162,4 @@ DELETE(10)
       14    16
 
 Search 15 -> Node 15
-Search 7  -> NULL
+Search 7 -> NULL
