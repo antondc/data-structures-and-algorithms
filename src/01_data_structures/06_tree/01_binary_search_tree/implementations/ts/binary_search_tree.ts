@@ -3,8 +3,10 @@ export class Node {
   left: Node = null;
   right: Node = null;
 
-  constructor(value) {
+  constructor(value, left: Node | null = null, right: Node | null = null) {
     this.value = value;
+    this.left = left;
+    this.right = right;
   }
 }
 
@@ -21,9 +23,11 @@ export class BinarySearchTree {
     if (!node) return new Node(value);
 
     if (value < node.value) {
-      node.left = this.insertNode(node.left, value);
+      const newLeft = this.insertNode(node.left, value);
+      return new Node(node.value, newLeft, node.right);
     } else if (value > node.value) {
-      node.right = this.insertNode(node.right, value);
+      const newRight = this.insertNode(node.right, value);
+      return new Node(node.value, node.left, newRight);
     }
 
     return node;
@@ -39,33 +43,33 @@ export class BinarySearchTree {
     if (!node) return null;
 
     if (value < node.value) {
-      node.left = this.deleteNode(node.left, value);
+      const newLeft = this.deleteNode(node.left, value);
+      return new Node(node.value, newLeft, node.right);
     } else if (value > node.value) {
-      node.right = this.deleteNode(node.right, value);
+      const newRight = this.deleteNode(node.right, value);
+      return new Node(node.value, node.left, newRight);
     } else {
       // Node is target
       if (!node.left) return node.right; // No left, replace with right
       if (!node.right) return node.left; // No right, replace with left
 
       // Node has two children, traverse with in-order sucessor
-      const sucessor = this.minValueNode(node.right); // Get sucessor —deepest rights child leftmost leaf—.
-      node.value = sucessor.value; // Set target as sucessor value.
-      node.right = this.deleteNode(node.right, sucessor.value); // Remove min value from subtree.
-    }
+      const sucessor = this.getLeftmostNode(node.right); // Get in-order successor, smallest node in right subtree.
+      const newRight = this.deleteNode(node.right, sucessor.value); // Remove min value from subtree.
+      const newNode = new Node(sucessor.value, node.left, newRight); // Set target as sucessor value.
 
-    return node;
+      return newNode;
+    }
   }
 
-  private minValueNode(node: Node): Node {
-    if (node.left) return this.minValueNode(node.left);
+  private getLeftmostNode(node: Node): Node {
+    if (node.left) return this.getLeftmostNode(node.left);
 
     return node;
   }
 
   search(value): Node {
-    const result = this.searchNode(this.root, value);
-
-    return result;
+    return this.searchNode(this.root, value);
   }
 
   private searchNode(node: Node, value: number): Node {
