@@ -24,9 +24,11 @@ func (binarySearchTree BinarySearchTree) insertNode(node *Node, value int) *Node
 	}
 
 	if value < node.Value {
-		node.Left = binarySearchTree.insertNode(node.Left, value)
+		newLeft := binarySearchTree.insertNode(node.Left, value)
+		return &Node{Value: node.Value, Left: newLeft, Right: node.Right}
 	} else if value > node.Value {
-		node.Right = binarySearchTree.insertNode(node.Right, value)
+		newRight := binarySearchTree.insertNode(node.Right, value)
+		return &Node{Value: node.Value, Left: node.Left, Right: newRight}
 	}
 
 	return node
@@ -43,9 +45,11 @@ func (binarySearchTree *BinarySearchTree) deleteNode(node *Node, value int) *Nod
 		return node
 	}
 	if value < node.Value {
-		node.Left = binarySearchTree.deleteNode(node.Left, value)
+		newLeft := binarySearchTree.deleteNode(node.Left, value)
+		return &Node{Value: node.Value, Left: newLeft, Right: node.Right}
 	} else if value > node.Value {
-		node.Right = binarySearchTree.deleteNode(node.Right, value)
+		newRight := binarySearchTree.deleteNode(node.Right, value)
+		return &Node{Value: node.Value, Left: node.Left, Right: newRight}
 	} else {
 		// Node is targer
 		if node.Left == nil {
@@ -56,20 +60,18 @@ func (binarySearchTree *BinarySearchTree) deleteNode(node *Node, value int) *Nod
 		}
 
 		// Node has two children, traverse with in-order sucessor
-		// Get sucessor —deepest rights child
-		successor := binarySearchTree.minValueNode(node.Right)
-		// Set target as sucessor value.
-		node.Value = successor.Value
+		// Get in-order successor, smallest node in right subtree.
+		successor := binarySearchTree.getLeftmostNode(node.Right)
 		// Remove min value from subtree.
-		node.Right = binarySearchTree.deleteNode(node.Right, successor.Value)
+		newRight := binarySearchTree.deleteNode(node.Right, successor.Value)
+		// Set target as sucessor value.
+		return &Node{Value: successor.Value, Left: node.Left, Right: newRight}
 	}
-
-	return node
 }
 
-func (binarySearchTree *BinarySearchTree) minValueNode(node *Node) *Node {
+func (binarySearchTree *BinarySearchTree) getLeftmostNode(node *Node) *Node {
 	if node.Left != nil {
-		return binarySearchTree.minValueNode(node.Left)
+		return binarySearchTree.getLeftmostNode(node.Left)
 	}
 
 	return node
