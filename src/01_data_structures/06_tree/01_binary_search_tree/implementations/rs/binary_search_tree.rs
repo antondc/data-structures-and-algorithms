@@ -36,10 +36,21 @@ impl BinarySearchTree {
       })),
       Some(mut boxed_node) => {
         if value < boxed_node.value {
-          boxed_node.left = Self::insert_node(boxed_node.left.take(), value)
+          let new_left = Self::insert_node(boxed_node.left.take(), value);
+          return Some(Box::new(Node {
+            value: boxed_node.value,
+            left: new_left,
+            right: boxed_node.right,
+          }));
         }
         if value > boxed_node.value {
-          boxed_node.right = Self::insert_node(boxed_node.right, value)
+          let new_right = Self::insert_node(boxed_node.right, value);
+
+          return Some(Box::new(Node {
+            value: boxed_node.value,
+            left: boxed_node.left,
+            right: new_right,
+          }));
         }
 
         Some(boxed_node)
@@ -57,15 +68,23 @@ impl BinarySearchTree {
       None => None,
       Some(mut node) => {
         if value < node.value {
-          node.left = Self::delete_node(node.left.take(), value);
+          let new_left = Self::delete_node(node.left.take(), value);
 
-          return Some(node);
+          return Some(Box::new(Node {
+            value: node.value,
+            left: new_left,
+            right: node.right,
+          }));
         }
 
         if value > node.value {
-          node.right = Self::delete_node(node.right.take(), value);
+          let node_right = Self::delete_node(node.right.take(), value);
 
-          return Some(node);
+          return Some(Box::new(Node {
+            value: node.value,
+            left: node.left,
+            right: node_right,
+          }));
         }
 
         // Node to delete found
@@ -78,11 +97,17 @@ impl BinarySearchTree {
         }
 
         // Node has two children, traverse with in-order sucessor
-        let successor_value = Self::min_value_node(node.right.as_ref().unwrap()).value; // Get sucessor —deepest rights child leftmost leaf—.
-        node.value = successor_value; // Set target as sucessor value.
-        node.right = Self::delete_node(node.right, successor_value); // Remove min value from subtree.
+        // Get in-order sucessor, smallest node in right subtree.
+        let right = node.right.take().unwrap();
+        let sucessor_value = Self::min_value_node(&right).value;
+        // Remove min value from subtree.
+        let new_right = Self::delete_node(Some(right), sucessor_value);
 
-        Some(node)
+        Some(Box::new(Node {
+          value: sucessor_value,
+          left: node.left,
+          right: new_right,
+        }))
       }
     }
   }
