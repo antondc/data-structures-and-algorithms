@@ -2,10 +2,14 @@
 
 ## Description
 
-A Binary Search Tree is an _ordered_ _binary_ tree, where:
+A Binary Search Tree is an ordered binary tree, where:
 
-- The left subtree of a node contains only nodes with values _less than_ the node's value.
-- The right subtree of a node contains only nodes with values _greater than_ the node's value.
+- The left subtree of a node contains only nodes with values less than the node's value.
+- The right subtree of a node contains only nodes with values greater than the node's value.
+
+```
+Left < root < right
+```
 
 This property enables efficient search, insertion, and deletion operations.
 
@@ -16,7 +20,7 @@ Typically implemented with pointers —and not with arrays— as they are not al
 ## Methods
 
 - **Search:** Traverse left or right depending on comparison with the current node.
-- **Insert:** Recursively insert in the left or right subtree _as a leaf_, maintaining the BST ordering.
+- **Insert:** Recursively insert in the left or right subtree as a leaf, maintaining the BST ordering.
 - **Delete:** Handle three cases: leaf, one child, or two children. There are two ways to perform the deletion:
   - **In-order successor**: replace the node with the smallest node in the right subtree.
   - **In-order predecessor**: Replace the node with the largest node in the left subtree.

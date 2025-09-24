@@ -8,6 +8,11 @@ There are two types:
 - Max-heap: parent nodes are greater of equal than the value of children nodes.
 - Min-heap: where the value of the parent nodes are lesser or equal than the value of the children nodes.
 
+```
+Max Heap: Parent >= children
+Min Heap: Parent <= children
+```
+
 Commonly used in `priority queues` and `heapsort` algorithms.
 Typically implemented with arrays, as they are complete trees.
 
