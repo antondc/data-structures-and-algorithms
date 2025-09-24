@@ -53,19 +53,19 @@ export class BinarySearchTree {
       if (!node.left) return node.right; // No left, replace with right
       if (!node.right) return node.left; // No right, replace with left
 
-      // Node has two children, traverse with in-order sucessor
-      const sucessor = this.getLeftmostNode(node.right); // Get in-order successor, smallest node in right subtree.
-      const newRight = this.deleteNode(node.right, sucessor.value); // Remove min value from subtree.
-      const newNode = new Node(sucessor.value, node.left, newRight); // Set target as sucessor value.
+      // Node has two children, traverse with in-order successor
+      const successor = this.getLeftmostLeaf(node.right); // Get in-order successor, smallest node in right subtree.
+      const newRight = this.deleteNode(node.right, successor.value); // Remove min value from subtree.
+      const newNode = new Node(successor.value, node.left, newRight); // Set target as successor value.
 
       return newNode;
     }
   }
 
-  private getLeftmostNode(node: Node): Node {
-    if (node.left) return this.getLeftmostNode(node.left);
+  private getLeftmostLeaf(node: Node): Node {
+    if (!node.left) return node;
 
-    return node;
+    return this.getLeftmostLeaf(node.left);
   }
 
   search(value): Node {
