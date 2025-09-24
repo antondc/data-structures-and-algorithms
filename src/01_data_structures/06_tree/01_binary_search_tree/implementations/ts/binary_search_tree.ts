@@ -68,16 +68,16 @@ export class BinarySearchTree {
     return this.getLeftmostLeaf(node.left);
   }
 
-  search(value): Node {
+  search(value: number): Node {
     return this.searchNode(this.root, value);
   }
 
   private searchNode(node: Node, value: number): Node {
-    if (!node || node.value === value) return node;
+    if (!node || value === node.value) return node;
 
     if (value < node.value) {
       return this.searchNode(node.left, value);
-    } else {
+    } else if (value > node.value) {
       return this.searchNode(node.right, value);
     }
   }
