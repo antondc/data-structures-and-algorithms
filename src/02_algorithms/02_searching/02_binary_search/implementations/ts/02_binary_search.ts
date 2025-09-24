@@ -1,14 +1,9 @@
-export const binarySearch = (
-  items: Array<number>,
-  target: number,
-  onStep?: (element) => void
-): number => {
+export const binarySearch = (items: Array<number>, target: number): number => {
   let leftIndex = 0;
   let rightIndex = items.length - 1;
 
   while (leftIndex <= rightIndex) {
     const middleIndex = Math.floor((leftIndex + rightIndex) / 2);
-    onStep(items[middleIndex]);
 
     if (items[middleIndex] === target) return target;
     if (items[middleIndex] < target) leftIndex = middleIndex + 1;
