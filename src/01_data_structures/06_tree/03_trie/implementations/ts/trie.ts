@@ -7,36 +7,41 @@ export class Trie {
   root: Node = new Node();
 
   insert(word: string): Trie {
-    // Iterate string tracking nodes from root.
-    const node = word.split("").reduce((acc, char) => {
-      if (!acc.children[char]) {
-        acc.children[char] = new Node(); // Add node with `char` as key.
+    let node = this.root;
+
+    for (const char of word) {
+      if (!node.children[char]) {
+        node.children[char] = new Node();
       }
 
-      return acc.children[char]; // Replace acc with current node.
-    }, this.root);
-
-    node.end = true; // End of word, mark it.
+      node = node.children[char];
+    }
+    node.end = true;
 
     return this;
   }
 
   search(word: string): boolean {
-    // Iterate string tracking nodes from root to reach the end.
-    const node = word
-      .split("")
-      .reduce((acc, char) => acc?.children[char], this.root);
+    let node = this.root;
 
-    return !!node?.end; // If last character is marked as end, word found.
+    for (const char of word) {
+      if (!node.children[char]) {
+        return false;
+      }
+
+      node = node.children[char];
+    }
+
+    return !!node.end;
   }
 
   delete(word: string): Trie {
-    this.deleteWord(this.root, word, 0);
+    this.deleteNode(this.root, word, 0);
 
     return this;
   }
 
-  private deleteWord(node: Node, word: string, depth: number): boolean {
+  private deleteNode(node: Node, word: string, depth: number): boolean {
     // Reached final node of word
     if (depth === word.length) {
       // If it is marked as end of word
@@ -51,7 +56,7 @@ export class Trie {
     const child = node.children[char];
     if (!child) return false; // If no child, word not present, nothing to delete.
 
-    const shouldDeleteChild = this.deleteWord(child, word, depth + 1); // Check recursively if next node should be deleted.
+    const shouldDeleteChild = this.deleteNode(child, word, depth + 1); // Check recursively if next node should be deleted.
 
     // Delete
     if (shouldDeleteChild) {
