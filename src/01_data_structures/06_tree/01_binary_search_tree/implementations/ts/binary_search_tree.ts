@@ -1,14 +1,8 @@
-export class Node {
-  value: number = null;
-  left: Node = null;
-  right: Node = null;
-
-  constructor(value, left: Node | null = null, right: Node | null = null) {
-    this.value = value;
-    this.left = left;
-    this.right = right;
-  }
-}
+export type Node = {
+  value: number;
+  left: Node;
+  right: Node;
+};
 
 export class BinarySearchTree {
   root: Node = null;
@@ -20,17 +14,17 @@ export class BinarySearchTree {
   }
 
   private insertNode(node: Node, value: number): Node {
-    if (!node) return new Node(value);
+    if (!node) return { value, left: null, right: null };
 
     if (value < node.value) {
       const newLeft = this.insertNode(node.left, value);
-      return new Node(node.value, newLeft, node.right);
+      return { ...node, left: newLeft };
     } else if (value > node.value) {
       const newRight = this.insertNode(node.right, value);
-      return new Node(node.value, node.left, newRight);
+      return { ...node, right: newRight };
+    } else {
+      return node;
     }
-
-    return node;
   }
 
   delete(value: number): BinarySearchTree {
@@ -44,10 +38,10 @@ export class BinarySearchTree {
 
     if (value < node.value) {
       const newLeft = this.deleteNode(node.left, value);
-      return new Node(node.value, newLeft, node.right);
+      return { ...node, left: newLeft };
     } else if (value > node.value) {
       const newRight = this.deleteNode(node.right, value);
-      return new Node(node.value, node.left, newRight);
+      return { ...node, right: newRight };
     } else {
       // Node is target
       if (!node.left) return node.right; // No left, replace with right
@@ -56,7 +50,11 @@ export class BinarySearchTree {
       // Node has two children, traverse with in-order successor
       const successor = this.getLeftmostLeaf(node.right); // Get in-order successor, smallest node in right subtree.
       const newRight = this.deleteNode(node.right, successor.value); // Remove min value from subtree.
-      const newNode = new Node(successor.value, node.left, newRight); // Set target as successor value.
+      const newNode = {
+        value: successor.value,
+        left: node.left,
+        right: newRight,
+      }; // Set target as successor value.
 
       return newNode;
     }

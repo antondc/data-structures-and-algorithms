@@ -6,7 +6,7 @@ Self-balancing Binary Search Tree (BST) where the balance factor (difference in 
 
 This property ensures that the tree remains approximately balanced at all times, guaranteeing O(log n) time complexity for search, insert, and delete operations.
 
-Each node stores an additional piece of information: its height.
+In addition to BST nodes, AVL nodes store their height.
 
 ## Methods
 

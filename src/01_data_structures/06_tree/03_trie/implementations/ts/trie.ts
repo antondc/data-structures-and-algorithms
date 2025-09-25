@@ -1,17 +1,17 @@
-class Node {
-  end: boolean = false;
-  children: Record<string, Node> = {};
-}
+type Node = {
+  end: boolean;
+  children: Record<string, Node>;
+};
 
 export class Trie {
-  root: Node = new Node();
+  root: Node = { end: false, children: {} };
 
   insert(word: string): Trie {
     let node = this.root;
 
     for (const char of word) {
       if (!node.children[char]) {
-        node.children[char] = new Node();
+        node.children[char] = { end: false, children: {} };
       }
 
       node = node.children[char];
