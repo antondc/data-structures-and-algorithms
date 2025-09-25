@@ -18,7 +18,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [01_binary_search_tree](./src/01_data_structures/06_tree/01_binary_search_tree)                                 | 🟢  | 🟢  | 🟢   |
 | ⠀⠀⁃ [02_heap](./src/01_data_structures/06_tree/02_heap)                                                             | 🟢  | 🟢  | 🟢   |
 | ⠀⠀⁃ [03_trie](./src/01_data_structures/06_tree/03_trie)                                                             | 🟢  | 🟢  | 🟢   |
-| ⠀⠀⁃ [04_avl_tree](./src/01_data_structures/06_tree/04_avl_tree)                                                     | 🟡  | ⚪  | ⚪   |
+| ⠀⠀⁃ [04_avl_tree](./src/01_data_structures/06_tree/04_avl_tree)                                                     | 🟢  | ⚪  | ⚪   |
 | ⠀⠀⁃ [05_b_tree](./src/01_data_structures/06_tree/05_b_tree)                                                         | ⚪  | ⚪  | ⚪   |
 | ⠀⠀⁃ [06_red_black_tree](./src/01_data_structures/06_tree/06_red_black_tree)                                         | ⚪  | ⚪  | ⚪   |
 | ⠀⠀⁃ [07_b_plus_tree](./src/01_data_structures/06_tree/07_b_plus_tree)                                               | ⚪  | ⚪  | ⚪   |
