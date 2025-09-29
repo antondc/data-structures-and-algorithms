@@ -19,7 +19,7 @@ describe("SelectionSort", () => {
     expect(result).toEqual(expected_result);
   });
 
-  test("Throws if negative result is passed", () => {
+  test("Throws if negative items are present", () => {
     const array = [10, 9, 8, 7, 6, 5, 4, 3, 2, -1];
 
     expect(()=> bucketSort(array, 5)).toThrow();
