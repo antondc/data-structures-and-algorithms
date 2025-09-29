@@ -36,7 +36,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [04_quicksort](./src/02_algorithms/01_sorting/04_quicksort)                                                     | 🟢 | 🟢 | 🟢   |
 | ⠀⠀⁃ [05_selection_sort](./src/02_algorithms/01_sorting/05_selection_sort)                                           | 🟢 | 🟢 | 🟢   |
 | ⠀⠀⁃ [06_heap_sort](./src/02_algorithms/01_sorting/06_heap_sort)                                                     | 🟢 | 🟢 | 🟢   |
-| ⠀⠀⁃ [07_bucket_sort](./src/02_algorithms/01_sorting/07_bucket_sort)                                                 | 🟡  | ⚪  | ⚪    |
+| ⠀⠀⁃ [07_bucket_sort](./src/02_algorithms/01_sorting/07_bucket_sort)                                                 | 🟢  | ⚪  | ⚪    |
 | ⠀⠀⁃ [08_radix_sort](./src/02_algorithms/01_sorting/08_radix_sort)                                                   | ⚪  | ⚪  | ⚪    |
 | • [02_searching](./src/02_algorithms/02_searching)                                                                  |    |    |      |
 | ⠀⠀⁃ [01_linear_search](./src/02_algorithms/02_searching/01_linear_search)                                           | 🟢 | ⚪  | ⚪    |
@@ -73,7 +73,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⠀⠀· [01_kosaraju](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/01_kosaraju)           | ⚪  | ⚪  | ⚪    |
 | ⠀⠀⠀⠀· [02_tarjan](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/02_tarjan)               | ⚪  | ⚪  | ⚪    |
 | **Problem Solving Techniques**                                                                                      |    |    |      |
-| • [01_two_pointers](./src/03_problem_solving_techniques/01_two_pointers)                                            | ⚪  | ⚪  | ⚪    |
+| • [01_two_pointers](./src/03_problem_solving_techniques/01_two_pointers)                                            | 🟡  | ⚪  | ⚪    |
 | • [02_sliding_window](./src/03_problem_solving_techniques/02_sliding_window)                                        | ⚪  | ⚪  | ⚪    |
 | • [03_prefix_sum](./src/03_problem_solving_techniques/03_prefix_sum)                                                | ⚪  | ⚪  | ⚪    |
 | • [04_fast_and_slow_pointers](./src/03_problem_solving_techniques/04_fast_and_slow_pointers)                        | ⚪  | ⚪  | ⚪    |
