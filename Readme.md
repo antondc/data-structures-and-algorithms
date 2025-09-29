@@ -36,7 +36,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⁃ [04_quicksort](./src/02_algorithms/01_sorting/04_quicksort)                                                     | 🟢 | 🟢 | 🟢   |
 | ⠀⠀⁃ [05_selection_sort](./src/02_algorithms/01_sorting/05_selection_sort)                                           | 🟢 | 🟢 | 🟢   |
 | ⠀⠀⁃ [06_heap_sort](./src/02_algorithms/01_sorting/06_heap_sort)                                                     | 🟢 | 🟢 | 🟢   |
-| ⠀⠀⁃ [07_bucket_sort](./src/02_algorithms/01_sorting/07_bucket_sort)                                                 | ⚪  | ⚪  | ⚪    |
+| ⠀⠀⁃ [07_bucket_sort](./src/02_algorithms/01_sorting/07_bucket_sort)                                                 | 🟡  | ⚪  | ⚪    |
 | ⠀⠀⁃ [08_radix_sort](./src/02_algorithms/01_sorting/08_radix_sort)                                                   | ⚪  | ⚪  | ⚪    |
 | • [02_searching](./src/02_algorithms/02_searching)                                                                  |    |    |      |
 | ⠀⠀⁃ [01_linear_search](./src/02_algorithms/02_searching/01_linear_search)                                           | 🟢 | ⚪  | ⚪    |
