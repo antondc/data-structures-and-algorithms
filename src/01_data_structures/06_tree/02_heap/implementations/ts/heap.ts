@@ -12,13 +12,8 @@ export const heapify = (array: Array<number>, i: number, heapSize: number) => {
   let left = 2 * i + 1;
   let right = 2 * i + 2;
 
-  if (left < heapSize && array[left] > array[largest]) {
-    largest = left;
-  }
-
-  if (right < heapSize && array[right] > array[largest]) {
-    largest = right;
-  }
+  if (left < heapSize && array[left] > array[largest]) largest = left;
+  if (right < heapSize && array[right] > array[largest])  largest = right;
 
   if (largest !== i) {
     [array[i], array[largest]] = [array[largest], array[i]];
