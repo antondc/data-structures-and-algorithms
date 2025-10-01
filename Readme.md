@@ -73,7 +73,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | ⠀⠀⠀⠀· [01_kosaraju](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/01_kosaraju)           | ⚪  | ⚪  | ⚪    |
 | ⠀⠀⠀⠀· [02_tarjan](./src/02_algorithms/05_graph_algorithms/05_strongly_connected_components/02_tarjan)               | ⚪  | ⚪  | ⚪    |
 | **Problem Solving Techniques**                                                                                      |    |    |      |
-| • [01_two_pointers](./src/03_problem_solving_techniques/01_two_pointers)                                            | 🟡  | ⚪  | ⚪    |
+| • [01_two_pointers](./src/03_problem_solving_techniques/01_two_pointers)                                            | 🟢  | ⚪  | ⚪    |
 | • [02_sliding_window](./src/03_problem_solving_techniques/02_sliding_window)                                        | ⚪  | ⚪  | ⚪    |
 | • [03_prefix_sum](./src/03_problem_solving_techniques/03_prefix_sum)                                                | ⚪  | ⚪  | ⚪    |
 | • [04_fast_and_slow_pointers](./src/03_problem_solving_techniques/04_fast_and_slow_pointers)                        | ⚪  | ⚪  | ⚪    |
@@ -107,6 +107,7 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | • [09_mystery_algorithm](./src/04_problems/09_mystery_algorithm)                                                    | ⚪  | ⚪  | 🟢   |
 | • [10_range_sum_bst](./src/04_problems/10_range_sum_bst)                                                            | ⚪  | ⚪  | 🟢   |
 | • [11_reverse_words_in_a_sentence](./src/04_problems/11_reverse_words_in_a_sentence)                                | ⚪  | ⚪  | 🟢   |
+| • [11_container_most_water](./src/04_problems/11_container_most_water)                                              | 🟢  | ⚪  | ⚪   |
 | • [12_sort_string](./src/04_problems/12_sort_string)                                                                | ⚪  | ⚪  | 🟢   |
 | • [13_string_capitalize](./src/04_problems/13_string_capitalize)                                                    | ⚪  | ⚪  | 🟢   |
 | • [14_string_reverse](./src/04_problems/14_string_reverse)                                                          | ⚪  | ⚪  | 🟢   |
