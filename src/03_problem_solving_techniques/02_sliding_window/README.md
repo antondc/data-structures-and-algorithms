@@ -84,3 +84,7 @@ Output: `9` (from subarray `[5, 1, 3]`)
 - Problems about contiguous subarrays/substrings.
 - "Max/Min/Count/Length of subarray that satisfies condition X.”
 - Examples: max sum of size `k`, smallest subarray with sum ≥ `S`, longest substring without repeats, number of subarrays with ≤ `K` distinct elements.
+
+## Problems 
+
+- [2461_maximum_sum_of_distinct_subarrays_with_length_k](../../04_problems/2461_maximum_sum_of_distinct_subarrays_with_length_k)
