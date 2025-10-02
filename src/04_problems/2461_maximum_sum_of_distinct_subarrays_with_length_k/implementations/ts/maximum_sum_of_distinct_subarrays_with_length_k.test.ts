@@ -1,11 +1,10 @@
-import { maxSumSubArrays } from "./maximum_sum_of_distinct_subarrays_with_length_k";
+import { maxSumDistinctSubArrays } from "./maximum_sum_of_distinct_subarrays_with_length_k";
 
-
-describe("MaxSumSubArrays", () => {
+describe("maxSumDistinctSubArrays", () => {
   test("Returns correct result", () => {
     const array = [1, 5, 4, 2, 9, 9, 1];
     const size = 3;
-    const result = maxSumSubArrays(array, size);
+    const result = maxSumDistinctSubArrays(array, size);
 
     const expected_result = 15;
 
@@ -15,7 +14,7 @@ describe("MaxSumSubArrays", () => {
   test("Returns correct result", () => {
     const array = [4, 4, 4];
     const size = 3;
-    const result = maxSumSubArrays(array, size);
+    const result = maxSumDistinctSubArrays(array, size);
 
     const expected_result = 0;
 
@@ -25,7 +24,7 @@ describe("MaxSumSubArrays", () => {
   test("Returns correct result", () => {
     const array = [1, 1, 2, 3, 4];
     const size = 2;
-    const result = maxSumSubArrays(array, size);
+    const result = maxSumDistinctSubArrays(array, size);
 
     const expected_result = 7;
 

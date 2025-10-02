@@ -1,19 +1,21 @@
 export const slidingWindow = (array: Array<number>, size: number): number => {
-  let left = 0;
-  let right = size;
-  let max = 0;
-
-  while (right <= array.length) {
-    const subArray = array.slice(left, right)
-    const result = subArray.reduce((acc, curr) => (acc = acc + curr, acc), 0);
-
-    if (result > max) {
-      max = result;
-    }
-
-    right = right + 1;
-    left = left + 1;
+  if (size > array.length) {
+    return
   }
 
-  return max;
+  let windowSum: number=0;
+  let maxSum: number;
+
+  for (let i = 0; i < size; i++) {
+    windowSum += array[i];
+  }
+
+  maxSum = windowSum;
+
+  for (let i = size; i < array.length; i++) {
+    windowSum += array[i] - array[i - size];
+    maxSum = Math.max(windowSum, maxSum);
+  }
+
+  return maxSum;
 }

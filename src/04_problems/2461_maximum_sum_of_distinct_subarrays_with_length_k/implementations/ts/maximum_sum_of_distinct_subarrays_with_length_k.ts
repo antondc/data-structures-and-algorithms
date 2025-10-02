@@ -1,24 +1,35 @@
-export const maxSumSubArrays = (array: Array<number>, size: number): number => {
+// Time: O(n) Space: O(1)
+export const maxSumDistinctSubArrays = (array: number[], k: number): number => {
+  if (k > array.length) return 0;
+
   let left = 0;
-  let right = size;
-  let max = 0;
+  let windowSum = 0;
+  let maxSum = 0;
+  const visited = new Set<number>();
 
-  while (right <= array.length) {
-    right = right + 1;
-    left = left + 1;
-
-    const subArray = array.slice(left, right)
-    const allDistinct = new Set(subArray);
-
-    if (allDistinct.size !== subArray.length) {
-      continue;
+  for (let right = 0; right < array.length; right++) {
+    // ensure distinct: shrink until array[right] not in window
+    while (visited.has(array[right])) {
+      visited.delete(array[left]);
+      windowSum -= array[left];
+      left++;
     }
 
-    const result = subArray.reduce((acc, curr) => (acc = acc + curr, acc), 0);
-    if (result > max) {
-      max = result;
+    // include array[right]
+    visited.add(array[right]);
+    windowSum += array[right];
+
+    // keep window length ≤ k
+    if (right - left + 1 > k) {
+      visited.delete(array[left]);
+      windowSum -= array[left];
+      left++;
+    }
+
+    if (right - left + 1 === k && windowSum > maxSum) {
+      maxSum = windowSum;
     }
   }
 
-  return max;
-}
+  return maxSum;
+};
