@@ -3,7 +3,7 @@
 import { twoPointers } from "./two_pointers";
 
 
-describe("SelectionSort", () => {
+describe("Two pointers", () => {
   test("Returns correct result", () => {
     const array = [1, 3, 4, 6, 8, 10, 13];
     const target = 13;
