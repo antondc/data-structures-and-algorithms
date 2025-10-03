@@ -1,7 +1,5 @@
 // Time: O(n) Space: O(1)
 export const maxSumDistinctSubArrays = (array: number[], k: number): number => {
-  if (k > array.length) return 0;
-
   let left = 0;
   let windowSum = 0;
   let maxSum = 0;

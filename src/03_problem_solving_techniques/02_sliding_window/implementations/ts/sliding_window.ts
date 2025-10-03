@@ -1,8 +1,5 @@
+// Time: O(n) Space: O(1)
 export const slidingWindow = (array: Array<number>, size: number): number => {
-  if (size > array.length) {
-    return
-  }
-
   let windowSum: number=0;
   let maxSum: number;
 
