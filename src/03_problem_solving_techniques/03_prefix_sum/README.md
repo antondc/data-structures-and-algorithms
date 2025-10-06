@@ -1,11 +1,12 @@
 # Prefix Sum
 
-Pre-calculate the sums of elements in a list or array up to a certain point, so you can quickly find the sum of any subarray —or segment— later on. Helps calculating sums of subarrays quickly by doing most of the work in advance.
+Pre-calculate the sums of elements in a list or array, so you can quickly find the sum of any subarray later on.
+Helps to calculate sums of subarrays quickly by doing most of the work in advance.
 
-Technique for answering range queries fast by precomputing a running total.
-Build an array `P` where `P[i]` holds the sum of the first `i` elements.
-Then the sum of any subarray `[l..r]` (0-indexed, inclusive) is `P[r + 1] - P[l]`.
-This turns many brute-force `O(n * q)` queries into `O(n + q)` (precompute once, each query in `O(1)`).
+Build an array `P` where `P[i]` holds the sum of the first `i` elements. Then the sum of any subarray `[l..r]` (
+0-indexed, inclusive) is `P[r + 1] - P[l]`.
+
+Turns many brute-force `O(n * q)` queries into `O(n + q)` (precompute once, each query in `O(1)`).
 
 ## Pseudocode
 
@@ -14,30 +15,13 @@ This turns many brute-force `O(n * q)` queries into `O(n + q)` (precompute once,
 ```
 PREFIX_SUM(A):
   n = length(A)
-  P = array of size n + 1
-  P[0] = 0
+  P[0..n] ← 0   
   for i from 1 to n:
     P[i] = P[i - 1] + A[i - 1]
   return P
 
-RANGE_SUM(P, l, r):            # 0 ≤ l ≤ r < n
+RANGE_SUM(P, l, r): 
   return P[r + 1] - P[l]
-```
-
-### 2D prefix sums (matrix) — sum of any submatrix in O(1)
-
-```
-PREFIX_SUM_2D(M):               # M has R rows and C cols
-  S of size (R + 1) x (C + 1) filled with 0
-  for i from 1 to R:
-    for j from 1 to C:
-      S[i][j] = M[i-1][j-1] + S[i-1][j] + S[i][j-1] - S[i-1][j-1]
-  return S
-
-SUBMATRIX_SUM(S, r1, c1, r2, c2):    # inclusive 0-indexed coords
-  # convert to 1-based
-  r1++, c1++, r2++, c2++
-  return S[r2][c2] - S[r1-1][c2] - S[r2][c1-1] + S[r1-1][c1-1]
 ```
 
 ## Explanation
@@ -45,13 +29,12 @@ SUBMATRIX_SUM(S, r1, c1, r2, c2):    # inclusive 0-indexed coords
 - Build `P` once in `O(n)`.
 - Any contiguous sum becomes a difference of two prefix values, so each query is `O(1)`.
 - Works beyond sums: convert data to 0/1 (e.g., “is vowel?”, “is even?”) and prefix-sum the counts.
-- In 2D, the inclusion–exclusion formula gives submatrix sums in `O(1)` after `O(R*C)` preprocessing.
 
 ## Time Complexity
 
-- Build: `O(n)` (1D), `O(R*C)` (2D).
+- Build: `O(n)` (1D).
 - Query: `O(1)` for each range or submatrix sum.
-- Space: `O(n)` (1D), `O(R*C)` (2D).
+- Space: `O(n)` (1D).
 
 ## Example
 
@@ -83,14 +66,11 @@ Output: `9`
 
 ## When to Use
 
-- Many range sum queries on the same array/matrix.
+- Many range sum queries on the same array.
 - Count of items satisfying a simple predicate in each range (prefix counts).
-- Problems like: number of subarrays with sum `K` (use prefix sums + hash map), subarray sums divisible by `K` (prefix sums modulo `K`).
+- Problems like: number of subarrays with sum `K` (use prefix sums + hash map), subarray sums divisible by `K` (prefix
+  sums modulo `K`).
 
 ## Problems
 
-- Subarray Sum Equals K (LC 560) — prefix sums + hash map.
-- Range Sum Query – Immutable (LC 303).
-- Continuous Subarray Sum (LC 523) — modulo prefix sums.
-- Subarray Sums Divisible by K (LC 974).
-- Find Pivot Index (LC 724).
+.
