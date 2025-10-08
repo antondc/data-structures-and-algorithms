@@ -15,7 +15,7 @@ Turns many brute-force `O(n * q)` queries into `O(n + q)` (precompute once, each
 ```
 PREFIX_SUM(A):
   n = length(A)
-  P[0..n] ← 0   
+  P = [0]   
   for i from 1 to n:
     P[i] = P[i - 1] + A[i - 1]
   return P

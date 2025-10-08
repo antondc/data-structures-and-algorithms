@@ -1,7 +1,7 @@
 // Time: O(n) Space: O(n)
 export const buildPrefix = (array: Array<number>): Array<number> => {
   const n = array.length;
-  const prefix = new Array(n + 1).fill(0);
+  const prefix = [0];
 
   for (let i = 1; i < n + 1; i++) {
     prefix[i] = prefix[i - 1] + array[i - 1];
