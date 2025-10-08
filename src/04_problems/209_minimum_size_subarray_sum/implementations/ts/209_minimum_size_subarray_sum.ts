@@ -1,4 +1,4 @@
-// O(n²+n);
+// Prefix sum and iterate both array and possible subarrays O(n²+n);
 export const minimumSizeSubarraySum = (array: Array<number>, target: number): number => {
   const n = array.length;
   const prefix = [0];
