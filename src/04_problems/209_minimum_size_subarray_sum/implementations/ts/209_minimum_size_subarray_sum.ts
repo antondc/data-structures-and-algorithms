@@ -11,7 +11,7 @@ export const minimumSizeSubarraySumSuboptimal = (array: Array<number>, target: n
     for (let j = 0; j < n; j++) {
       const result = prefix[j + i + 1] - prefix[j];
 
-      if (result === target) {
+      if (result >= target) {
         return i + 1;
       }
     }
