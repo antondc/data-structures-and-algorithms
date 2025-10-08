@@ -2,7 +2,8 @@
 
 ## Description
 
-Ongoing effort to document most common data structures and algorithms, with implementations TypeScript, Rust and Go.
+Ongoing effort to document most common data structures and algorithms, with implementations
+TypeScript, Rust and Go.
 
 ## 📁 Project Index
 
@@ -113,6 +114,8 @@ Ongoing effort to document most common data structures and algorithms, with impl
 | • [14_string_reverse](./src/04_problems/14_string_reverse)                                                                       | ⚪  | ⚪  | 🟢   |
 | • [15_two_sum](./src/04_problems/15_two_sum)                                                                                     | 🟢  | ⚪  | ⚪   |
 | • [16_satisfiability_of_equality_equations](./src/04_problems/16_satisfiability_of_equality_equations)                           | 🟢  | ⚪  | ⚪   |
+| • [209_minimum_size_subarray_sum](./src/04_problems/209_minimum_size_subarray_sum)                                               | 🟢  | ⚪  | ⚪   |
+| • [303_range_sum_query](./src/04_problems/303_range_sum_query)                                                                   | 🟢  | ⚪  | ⚪   |
 | • [2461_maximum_sum_of_distinct_subarrays_with_length_k](./src/04_problems/2461_maximum_sum_of_distinct_subarrays_with_length_k) | 🟢  | ⚪  | ⚪   |
 | **Status**                                                                                                                       |     |     |      |
 | ⠀Pending                                                                                                                         |     |     | ⚪   |
