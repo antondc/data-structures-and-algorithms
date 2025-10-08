@@ -1,6 +1,5 @@
 import { NumArray } from './303_range_sum_query';
 
-
 describe('NumArray', () => {
   test('Instantiates', () => {
     const nums = [-2, 0, 3, -5, 2, -1];
