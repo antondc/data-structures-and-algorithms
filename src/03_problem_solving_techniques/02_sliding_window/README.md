@@ -12,14 +12,14 @@ This turns many brute-force `O(n * k)` scans into `O(n)` solutions.
 SLIDING_WINDOW_FIXED(A, k):
   n = length(A)
   if k > n: return "invalid"
+  
+  acc_window = accumulate first k elements of A     # initialize accumulator window 
+  best = acc_window                                 # initialize best option with initial value
 
-  window_sum = sum(A[0..k - 1])
-  best = window_sum
-
-  for end from k to n - 1:
-    window_sum += A[end]        # add entering element
-    window_sum -= A[end - k]    # remove leaving element
-    best = max(best, window_sum)
+  for right from k to n - 1:
+    acc_window += A[right]                          # add entering element
+    acc_window -= A[right - k]                      # remove leaving element
+    best = UPDATE_FOLLOWING_PROBLEM_REQUIREMENTS
 
   return best
 ```
@@ -30,18 +30,18 @@ Common for "smallest/longest subarray satisfying X".
 
 ```
 SLIDING_WINDOW_VARIABLE(A, condition):
-  start = 0
-  best = answer_init
-  state = empty_structure
+  left = 0
+  right = 0
+  acc_window = 0                                      # state accumulator window
+  best = Infinity
 
-  for end from 0 to n-1:
-    include A[end] into state
+  for right from 0 to n - 1:
+    add A[left] to acc_window                         # include new right value into accumulator window 
 
-    while state violates condition:
-      remove A[start] from state
-      start += 1
-
-    best = update_answer(best, state, start, end)
+    while state complies with condition:
+      best = UPDATE_FOLLOWING_PROBLEM_REQUIREMENTS
+      remove A[left] from acc_window                  # remove left value from accumulator window
+      left += 1
 
   return best
 ```
@@ -50,7 +50,8 @@ SLIDING_WINDOW_VARIABLE(A, condition):
 
 - Keep two indices, `start` and `end`, marking the current window.
 - Fixed-size: move both ends together; update the window by adding one element and removing one.
-- Variable-size: expand `end` to include more elements; shrink `start` while the condition is violated (or to optimize the answer).
+- Variable-size: expand `end` to include more elements; shrink `start` while the condition is violated (or to optimize
+  the answer).
 - The key idea: each element is added and removed at most once, so total work is linear.
 
 ## Time Complexity
@@ -83,8 +84,9 @@ Output: `9` (from subarray `[5, 1, 3]`)
 
 - Problems about contiguous subarrays/substrings.
 - "Max/Min/Count/Length of subarray that satisfies condition X.”
-- Examples: max sum of size `k`, smallest subarray with sum ≥ `S`, longest substring without repeats, number of subarrays with ≤ `K` distinct elements.
+- Examples: max sum of size `k`, smallest subarray with sum ≥ `S`, longest substring without repeats, number of
+  subarrays with ≤ `K` distinct elements.
 
-## Problems 
+## Problems
 
 - [2461_maximum_sum_of_distinct_subarrays_with_length_k](../../04_problems/2461_maximum_sum_of_distinct_subarrays_with_length_k)
