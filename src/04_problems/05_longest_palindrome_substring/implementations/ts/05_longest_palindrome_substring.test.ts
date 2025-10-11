@@ -5,7 +5,45 @@ import {
 } from './05_longest_palindrome_substring';
 
 
-describe('longestSubstringWithoutRepeatingCharacters', () => {
+describe('findBiggestPalindromeFromSubstring', () => {
+  test('Returns the correct result', () => {
+    const string = 'a';
+    const result = _test.findBiggestPalindromeFromSubstring(string, 0, 0);
+    const expectedResult = [0, 0];
+
+    expect(result).toEqual(expectedResult);
+  });
+  test('Returns the correct result', () => {
+    const string = 'aa';
+    const result = _test.findBiggestPalindromeFromSubstring(string, 0, 1);
+    const expectedResult = [0, 1];
+
+    expect(result).toEqual(expectedResult);
+  });
+  test('Returns the correct result', () => {
+    const string = 'abb';
+    const result = _test.findBiggestPalindromeFromSubstring(string, 1, 1);
+    const expectedResult = [1, 1];
+
+    expect(result).toEqual(expectedResult);
+  });
+  test('Returns the correct result', () => {
+    const string = 'abba';
+    const result = _test.findBiggestPalindromeFromSubstring(string, 1, 2);
+    const expectedResult = [0, 3];
+
+    expect(result).toEqual(expectedResult);
+  });
+  test('Returns the correct result', () => {
+    const string = 'xabba';
+    const result = _test.findBiggestPalindromeFromSubstring(string, 2, 3);
+    const expectedResult = [1, 4];
+
+    expect(result).toEqual(expectedResult);
+  });
+});
+
+describe('longestPalindromeSubstringOptimal', () => {
   test('Returns the correct result', () => {
     const string = 'xabba';
     const result = longestPalindromeSubstringOptimal(string);
@@ -55,44 +93,6 @@ describe('longestSubstringWithoutRepeatingCharacters', () => {
   });
 });
 
-describe('longestSubstringWithoutRepeatingCharacters', () => {
-  test('Returns the correct result', () => {
-    const string = 'a';
-    const result = _test.findBiggestPalindromeFromSubstring(string, 0, 0);
-    const expectedResult = [0, 0];
-
-    expect(result).toEqual(expectedResult);
-  });
-  test('Returns the correct result', () => {
-    const string = 'aa';
-    const result = _test.findBiggestPalindromeFromSubstring(string, 0, 1);
-    const expectedResult = [0, 1];
-
-    expect(result).toEqual(expectedResult);
-  });
-  test('Returns the correct result', () => {
-    const string = 'abb';
-    const result = _test.findBiggestPalindromeFromSubstring(string, 1, 1);
-    const expectedResult = [1, 1];
-
-    expect(result).toEqual(expectedResult);
-  });
-  test('Returns the correct result', () => {
-    const string = 'abba';
-    const result = _test.findBiggestPalindromeFromSubstring(string, 1, 2);
-    const expectedResult = [0, 3];
-
-    expect(result).toEqual(expectedResult);
-  });
-  test('Returns the correct result', () => {
-    const string = 'xabba';
-    const result = _test.findBiggestPalindromeFromSubstring(string, 2, 3);
-    const expectedResult = [1, 4];
-
-    expect(result).toEqual(expectedResult);
-  });
-});
-
 describe('isPalindrome', () => {
   test('Returns the correct result', () => {
     const string = 'a';
@@ -117,7 +117,7 @@ describe('isPalindrome', () => {
   });
 });
 
-describe('longestSubstringWithoutRepeatingCharacters', () => {
+describe('longestPalindromeSubstringSuboptimal', () => {
   test('Returns the correct result', () => {
     const string = 'a';
     const result = longestPalindromeSubstringSuboptimal(string);
@@ -146,30 +146,6 @@ describe('longestSubstringWithoutRepeatingCharacters', () => {
     const string = 'abcacbd';
     const result = longestPalindromeSubstringSuboptimal(string);
     const expectedResult = 'bcacb';
-
-    expect(result).toEqual(expectedResult);
-  });
-});
-
-describe('isPalindrome', () => {
-  test('Returns the correct result', () => {
-    const string = 'a';
-    const result = _test.isPalindrome(string);
-    const expectedResult = true;
-
-    expect(result).toEqual(expectedResult);
-  });
-  test('Returns the correct result', () => {
-    const string = 'aa';
-    const result = _test.isPalindrome(string);
-    const expectedResult = true;
-
-    expect(result).toEqual(expectedResult);
-  });
-  test('Returns the correct result', () => {
-    const string = 'aba';
-    const result = _test.isPalindrome(string);
-    const expectedResult = true;
 
     expect(result).toEqual(expectedResult);
   });
