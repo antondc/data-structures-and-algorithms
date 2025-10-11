@@ -18,12 +18,12 @@ export const longestPalindromeSubstringOptimal = (string: string): string => {
 
   for (let i = 0; i < string.length; i++) {
     const [leftOdd, rightOdd] = findBiggestPalindromeFromSubstring(string, i, i);
-    const palindromeSubstringOdd = string.slice(leftOdd, rightOdd + 1);
-    accumulator =
-      palindromeSubstringOdd?.length > accumulator.length ? palindromeSubstringOdd : accumulator;
     const [leftEven, rightEven] = findBiggestPalindromeFromSubstring(string, i, i + 1);
-    const palindromeEven = string.slice(leftEven, rightEven + 1);
-    accumulator = palindromeEven?.length > accumulator.length ? palindromeEven : accumulator;
+    const [left, right] =
+      rightOdd - leftOdd > rightEven - leftEven ? [leftOdd, rightOdd] : [leftEven, rightEven];
+    const palindrome = string.substring(left, right + 1);
+
+    accumulator = palindrome?.length > accumulator.length ? palindrome : accumulator;
   }
 
   return accumulator;
@@ -48,14 +48,14 @@ const isPalindrome = (string: string) => {
 };
 
 // Suboptimal, O(n³)
-export const longestPalindromeSubstringSuboptimal = (s: string): string => {
+export const longestPalindromeSubstringSuboptimal = (string: string): string => {
   let accumulator = '';
 
   // O(n)
-  for (let left = 0; left < s.length; left++) {
+  for (let left = 0; left < string.length; left++) {
     // O(n)
-    for (let right = 0; right < s.length; right++) {
-      const substring = s.slice(left, right + 1);
+    for (let right = 0; right < string.length; right++) {
+      const substring = string.substring(left, right + 1);
 
       // O(n)
       if (isPalindrome(substring)) {

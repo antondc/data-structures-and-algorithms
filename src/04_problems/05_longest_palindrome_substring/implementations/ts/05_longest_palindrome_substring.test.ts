@@ -4,7 +4,6 @@ import {
   longestPalindromeSubstringSuboptimal,
 } from './05_longest_palindrome_substring';
 
-
 describe('findBiggestPalindromeFromSubstring', () => {
   test('Returns the correct result', () => {
     const string = 'a';
