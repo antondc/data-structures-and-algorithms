@@ -3,6 +3,8 @@
  * We may ignore the zigzag, as finally we will read the rows continuously.
  */
 export const zigzagConversion = (s: string, numRows: number): string => {
+  if (numRows === 1) return s;
+
   const matrix = Array.from({ length: numRows }, () => []);
   let down = true;
   let row = 0;
@@ -10,11 +12,6 @@ export const zigzagConversion = (s: string, numRows: number): string => {
   for (let i = 0; i < s.length; i++) {
     // Push char to row
     matrix[row].push(s[i]);
-
-    // If only one row, continue pushing characters.
-    if (numRows === 1) {
-      continue;
-    }
 
     // If first row, revert direction
     if (row === 0) {
