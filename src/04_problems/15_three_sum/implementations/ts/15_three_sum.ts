@@ -28,7 +28,7 @@ export const threeSumSuboptimal = (nums: number[]): number[][] => {
   return results;
 };
 
-// Optimal, O(n)
+// Optimal, O(n²)
 export const threeSumOptimal = (nums: number[]): number[][] => {
   const results = [];
   nums.sort((a, b) => a - b);
