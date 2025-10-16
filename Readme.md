@@ -113,6 +113,8 @@ TypeScript, Rust and Go.
 | • [12_sort_string](./src/04_problems/12_sort_string)                                                                             | ⚪  | ⚪  | 🟢   |
 | • [13_string_capitalize](./src/04_problems/13_string_capitalize)                                                                 | ⚪  | ⚪  | 🟢   |
 | • [14_string_reverse](./src/04_problems/14_string_reverse)                                                                       | ⚪  | ⚪  | 🟢   |
+| • [15_three_sum](./src/04_problems/15_three_sum)                                                                                 | 🟢 | ⚪  | ⚪    |
+| • [16_three_sum_closest](./src/04_problems/16_three_sum_closest)                                                                 | 🟢 | ⚪  | ⚪    |
 | • [16_satisfiability_of_equality_equations](./src/04_problems/16_satisfiability_of_equality_equations)                           | 🟢 | ⚪  | ⚪    |
 | • [209_minimum_size_subarray_sum](./src/04_problems/209_minimum_size_subarray_sum)                                               | 🟢 | ⚪  | ⚪    |
 | • [303_range_sum_query](./src/04_problems/303_range_sum_query)                                                                   | 🟢 | ⚪  | ⚪    |

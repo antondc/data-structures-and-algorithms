@@ -50,7 +50,7 @@ export const threeSumOptimal = (nums: number[]): number[][] => {
       // If total is greater than 0, we need smaller numbers, move right pointer
       if (total > 0) {
         right--;
-      // If total is smaller than 0, we need greater numbers, move left pointer
+        // If total is smaller than 0, we need greater numbers, move left pointer
       } else if (total < 0) {
         left++;
       } else {
