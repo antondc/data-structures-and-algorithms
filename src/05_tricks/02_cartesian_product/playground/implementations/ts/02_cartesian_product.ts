@@ -10,7 +10,7 @@ const cartesianProduct2byN = <T>(left: T[], right: T[], product: (a: T, b: T) =>
   return cartesianProduct;
 };
 
-export const cartesianProductNbyN = <T>(product: (a: T, b: T) => T, ...matrices: T[][]): T[] => {
+export const cartesianProduct = <T>(product: (a: T, b: T) => T, ...matrices: T[][]): T[] => {
   let accumulator: T[] = [null];
 
   for (let i = 0; i < matrices.length; i++) {
