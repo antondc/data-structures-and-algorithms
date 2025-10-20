@@ -1,5 +1,5 @@
 export function letterCombinations(digits: string): string[] {
-  if (!digits.length) return [];
+  if (!digits?.length) return [];
 
   let accumulator: string[] = [null];
   const map = {
