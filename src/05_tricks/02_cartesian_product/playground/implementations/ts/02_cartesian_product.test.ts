@@ -1,6 +1,5 @@
 import { cartesianProduct } from './02_cartesian_product';
 
-
 describe('maxSumDistinctSubArrays', () => {
   test('Returns correct result', () => {
     const dataA = ['a', 'b'];
