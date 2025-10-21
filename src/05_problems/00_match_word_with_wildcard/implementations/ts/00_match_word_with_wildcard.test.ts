@@ -1,10 +1,16 @@
 import { matcher } from './00_match_word_with_wildcard';
 
-
 describe('maxSumDistinctSubArrays', () => {
   test('Returns correct result', () => {
     const result = matcher('datadog', 'datadog');
     const expectedResult = true;
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  test('Returns correct result', () => {
+    const result = matcher('datadogs', 'datadog');
+    const expectedResult = false;
 
     expect(result).toEqual(expectedResult);
   });
@@ -32,6 +38,13 @@ describe('maxSumDistinctSubArrays', () => {
 
   test('Returns correct result', () => {
     const result = matcher('d3dog', 'datadog');
+    const expectedResult = true;
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  test('Returns correct result', () => {
+    const result = matcher('d2a2g', 'datadog');
     const expectedResult = true;
 
     expect(result).toEqual(expectedResult);

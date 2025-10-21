@@ -1,30 +1,47 @@
+// d3dog datadog
 export function matcher(pattern: string, data: string): boolean {
   let n = data.length;
   let usedWildcards = 0;
-  let left = 0;
+  let patternLength = 0;
 
-  for (let i = 0; i < n; i++) {
-    const wildcard = parseInt(pattern[left]);
+  let i = 0;
+  let j = 0;
+
+  while (i < pattern.length || j < data.length) {
+    if (i < pattern.length) patternLength++; // Accumulate iterations over pattern.
+
+    const wildcard = parseInt(pattern[i]);
     const isNumber = typeof wildcard === 'number' && wildcard > 0;
 
-    if (!isNumber && pattern[left] !== data[i]) {
+    // Is a letter, and it does not match, not a word match.
+    if (!isNumber && pattern[i] !== data[j]) {
       return false;
     }
 
+    // Is a letter, advance pattern pointer.
+    if (!isNumber) {
+      i++;
+    }
+
+    // Is a number, and we do not have wildcards: is a new number, set wildcards
     if (isNumber && usedWildcards === 0) {
       usedWildcards = wildcard;
     }
 
+    // Is a number, and we do have wildcards: consume them and advance if finished.
     if (isNumber && usedWildcards > 0) {
       usedWildcards--;
 
-      if (usedWildcards === 0) left++;
-
-      continue;
+      // Finished with wildcards, advance pattern pointer.
+      if (usedWildcards === 0) {
+        i++;
+      }
     }
 
-    left++;
+    // Advance data pointer.
+    j++;
   }
 
-  return true;
+  // Return true only if both lengths matches.
+  return patternLength === n;
 }
