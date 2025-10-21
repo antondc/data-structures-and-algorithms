@@ -2,23 +2,25 @@ export function fourSum(nums: number[], target: number): number[][] {
   const n = nums.length;
   nums.sort((a, b) => a - b);
   const result = [];
+
   if (n < 4) return result;
 
   for (let i = 0; i < n; i++) {
-    // Prune at i: minimal and maximal possible sums
+    // Prune at i
     const minI = nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3];
-    if (minI > target) break; // numbers only get larger
+    if (minI > target) break;
     const maxI = nums[i] + nums[n - 1] + nums[n - 2] + nums[n - 3];
-    if (maxI < target) continue; // even the largest can't reach target
+    if (maxI < target) continue;
 
     if (i > 0 && nums[i] === nums[i - 1]) continue;
     for (let j = i + 1; j < n; j++) {
+      // Prune at j
       const minJ = nums[i] + nums[j] + nums[j + 1] + nums[j + 2];
-      if (minJ > target) break; // increasing j will only increase sum
+      if (minJ > target) break;
       const maxJ = nums[i] + nums[j] + nums[n - 1] + nums[n - 2];
       if (maxJ < target) continue;
-
       if (j > i + 1 && nums[j] === nums[j - 1]) continue;
+
       let k = j + 1;
       let l = n - 1;
 
