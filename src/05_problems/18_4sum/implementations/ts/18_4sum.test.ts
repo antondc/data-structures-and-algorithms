@@ -1,6 +1,5 @@
 import { fourSum } from './18_4sum';
 
-
 describe('fourSum', () => {
   test('Returns the correct result', () => {
     const nums = [1, 0, -1, 0, -2, 2];
