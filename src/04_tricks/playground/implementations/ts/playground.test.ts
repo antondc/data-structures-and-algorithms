@@ -1,6 +1,6 @@
 import { myFunction } from './playground';
 
-describe('maxSumDistinctSubArrays', () => {
+describe('Playground', () => {
   test('Returns correct result', () => {
     const data = [1, 2];
     const result = myFunction(data);

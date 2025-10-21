@@ -1,0 +1,30 @@
+export function matcher(pattern: string, data: string): boolean {
+  let n = data.length;
+  let usedWildcards = 0;
+  let left = 0;
+
+  for (let i = 0; i < n; i++) {
+    const number = parseInt(pattern[left]);
+    const isNumber = typeof number === 'number' && number > 0;
+
+    if (!isNumber && pattern[left] !== data[i]) {
+      return false;
+    }
+
+    if (isNumber && usedWildcards === 0) {
+      usedWildcards = number;
+    }
+
+    if (isNumber && usedWildcards > 0) {
+      usedWildcards--;
+
+      if (usedWildcards === 0) left++;
+
+      continue;
+    }
+
+    left++;
+  }
+
+  return true;
+}
