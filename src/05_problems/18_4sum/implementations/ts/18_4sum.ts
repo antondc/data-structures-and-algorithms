@@ -3,6 +3,7 @@ export function fourSum(nums: number[], target: number): number[][] {
   nums.sort((a, b) => a - b);
   const result = [];
 
+  // If no enough items, return
   if (n < 4) return result;
 
   for (let i = 0; i < n; i++) {
@@ -19,16 +20,19 @@ export function fourSum(nums: number[], target: number): number[][] {
       if (minJ > target) break;
       const maxJ = nums[i] + nums[j] + nums[n - 1] + nums[n - 2];
       if (maxJ < target) continue;
+      // If duplicated from left side, skip
       if (j > i + 1 && nums[j] === nums[j - 1]) continue;
 
       let k = j + 1;
       let l = n - 1;
 
       while (k < l) {
+        // If duplicated from right side, skip
         if (k > j + 1 && nums[k] === nums[k - 1]) {
           k++;
           continue;
         }
+        // If same element, skip
         if (i === j || i === k || i === l) {
           k++;
           continue;
