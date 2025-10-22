@@ -118,6 +118,8 @@ TypeScript, Rust and Go.
 | • [16_three_sum_closest](./src/05_problems/16_three_sum_closest)                                                                 | 🟢 | ⚪  | ⚪    |
 | • [16_satisfiability_of_equality_equations](./src/05_problems/16_satisfiability_of_equality_equations)                           | 🟢 | ⚪  | ⚪    |
 | • [17_letter_combinations_of_a_phone_number](./src/05_problems/17_letter_combinations_of_a_phone_number)                         | 🟢 | ⚪  | ⚪    |
+| • [18_4sum](./src/05_problems/18_4sum)                                                                                           | 🟢 | ⚪  | ⚪    |
+| • [19_remove_nth_from_end_of_list](./src/05_problems/19_remove_nth_from_end_of_list)                                             | 🟢 | ⚪  | ⚪    |
 | • [209_minimum_size_subarray_sum](./src/05_problems/209_minimum_size_subarray_sum)                                               | 🟢 | ⚪  | ⚪    |
 | • [303_range_sum_query](./src/05_problems/303_range_sum_query)                                                                   | 🟢 | ⚪  | ⚪    |
 | • [2461_maximum_sum_of_distinct_subarrays_with_length_k](./src/05_problems/2461_maximum_sum_of_distinct_subarrays_with_length_k) | 🟢 | ⚪  | ⚪    |
