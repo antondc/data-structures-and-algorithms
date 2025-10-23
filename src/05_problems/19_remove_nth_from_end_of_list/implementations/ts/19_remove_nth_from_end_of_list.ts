@@ -8,7 +8,8 @@ export class ListNode {
   }
 }
 
-export function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+// Two-pass length method O(n)
+export function removeNthFromEndTwoPass(head: ListNode | null, n: number): ListNode | null {
   let i = 0;
   let j = 0;
   let node = head;
@@ -30,19 +31,44 @@ export function removeNthFromEnd(head: ListNode | null, n: number): ListNode | n
     head = head.next;
   }
 
-  // Traverse from left, up to item
-  while (j <= target) {
-    // On target
+  while (j < length - n) {
     if (j === target) {
       node.next = node.next?.next;
 
       break;
     }
 
-    // Otherwise, continue
     node = node.next;
     j++;
   }
 
   return head;
+}
+
+// Fast & Slow method O(n)
+export function removeNthFromEndFastSlow(head: ListNode | null, n: number): ListNode | null {
+  if (!head) return null;
+
+  // Sentinel to allow working with .next values from start.
+  const dummy = new ListNode(null, head);
+  let slow = dummy;
+  let fast = dummy;
+
+  // Move fast pointer up to n
+  for (let i = 0; i < n; i++) {
+    if (!fast.next) return head;
+    fast = fast.next;
+  }
+
+  // Now slow and fast are at a distance of n
+  // Move both: when fast reaches end, slow will be at n from end
+  while (fast && fast.next) {
+    fast = fast.next;
+    slow = slow.next;
+  }
+
+  // Relink items
+  if (slow && slow.next) slow.next = slow.next.next;
+
+  return dummy.next;
 }
