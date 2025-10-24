@@ -121,6 +121,7 @@ TypeScript, Rust and Go.
 | • [18_4sum](./src/05_problems/18_4sum)                                                                                           | 🟢 | ⚪  | ⚪    |
 | • [19_remove_nth_from_end_of_list](./src/05_problems/19_remove_nth_from_end_of_list)                                             | 🟢 | ⚪  | ⚪    |
 | • [20_valid_parentheses](./src/05_problems/20_valid_parentheses)                                                                 | 🟢 | ⚪  | ⚪    |
+| • [21_merge_two_sorted_lists](./src/05_problems/21_merge_two_sorted_lists)                                                       | 🟢 | ⚪  | ⚪    |
 | • [209_minimum_size_subarray_sum](./src/05_problems/209_minimum_size_subarray_sum)                                               | 🟢 | ⚪  | ⚪    |
 | • [303_range_sum_query](./src/05_problems/303_range_sum_query)                                                                   | 🟢 | ⚪  | ⚪    |
 | • [2461_maximum_sum_of_distinct_subarrays_with_length_k](./src/05_problems/2461_maximum_sum_of_distinct_subarrays_with_length_k) | 🟢 | ⚪  | ⚪    |
