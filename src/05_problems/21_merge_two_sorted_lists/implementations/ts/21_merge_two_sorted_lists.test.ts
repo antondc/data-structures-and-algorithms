@@ -1,6 +1,5 @@
 import { ListNode, mergeTwoLists } from './21_merge_two_sorted_lists';
 
-
 describe('mergeTwoLists', () => {
   test('Returns the correct result', () => {
     const list1: ListNode = new ListNode(1, new ListNode(2, new ListNode(4, null)));
