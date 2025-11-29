@@ -1,6 +1,5 @@
 import { addTwoNumbers, ListNode } from './01_add_two_numbers';
 
-
 describe('addTwoNumbers', () => {
   test('Returns the correct result', () => {
     const l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
