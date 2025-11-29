@@ -149,3 +149,5 @@ TypeScript, Rust and Go.
 
     go test ./... -v
     go test src/01_data_structures/04_stack/implementations/go/**/* -v
+
+[1]
