@@ -31,5 +31,6 @@ github_clone:
     - git checkout -B "$CI_COMMIT_REF_NAME"
     - git remote remove github || true
     - git remote add github "git@github.com:${GITHUB_ACCOUNT}/${GITHUB_PROJECT}.git"
+    - git remote -v
     - git push github --all
     - git push github --tags
