@@ -99,6 +99,7 @@ TypeScript, Rust and Go.
 | **Problems**                                                                                                                     |    |    |      |
 | • [01_fizzbuzz](./src/05_problems/01_fizzbuzz)                                                                                   | 🟢 | ⚪  | 🟢   |
 | • [01_two_sum](src/05_problems/01_two_sum)                                                                                       | 🟢 | ⚪  | ⚪    |
+| • [02_add_two_numbers](src/05_problems/02_add_two_numbers)                                                                       | 🟢 | ⚪  | ⚪    |
 | • [02_anagram](./src/05_problems/02_anagram)                                                                                     | ⚪  | ⚪  | 🟢   |
 | • [03_array_consecutive_missing_numbers](./src/05_problems/03_array_consecutive_missing_numbers)                                 | ⚪  | ⚪  | 🟢   |
 | • [04_calculate_list_max_items_difference](./src/05_problems/04_calculate_list_max_items_difference)                             | ⚪  | ⚪  | 🟢   |
