@@ -108,6 +108,7 @@ TypeScript, Rust and Go.
 | • [07_linear_searching](./src/05_problems/07_linear_searching)                                                                   | ⚪  | ⚪  | 🟢   |
 | • [07_reverse_integers](./src/05_problems/07_reverse_integers)                                                                   | 🟢 | ⚪  | ⚪    |
 | • [08_list_sum_largest_n_numbers](./src/05_problems/08_list_sum_largest_n_numbers)                                               | ⚪  | ⚪  | 🟢   |
+| • [08_string_to_integer_atoi](./src/05_problems/08_string_to_integer_atoi)                                                       | ⚪  | ⚪  | 🟢   |
 | • [09_mystery_algorithm](./src/05_problems/09_mystery_algorithm)                                                                 | ⚪  | ⚪  | 🟢   |
 | • [10_range_sum_bst](./src/05_problems/10_range_sum_bst)                                                                         | ⚪  | ⚪  | 🟢   |
 | • [11_reverse_words_in_a_sentence](./src/05_problems/11_reverse_words_in_a_sentence)                                             | ⚪  | ⚪  | 🟢   |
