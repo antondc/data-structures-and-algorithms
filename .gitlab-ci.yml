@@ -25,14 +25,8 @@ cache:
     - .npm/
 
 stages:
-  - test
   - github_clone
-
-test:
-  stage: test
-  script:
-    - npm ci --cache .npm --prefer-offline
-    - npm run test
+  - test
 
 github_clone:
   stage: github_clone
@@ -46,3 +40,9 @@ github_clone:
     - git remote -v
     - git push github --all
     - git push github --tags
+
+test:
+  stage: test
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run test
