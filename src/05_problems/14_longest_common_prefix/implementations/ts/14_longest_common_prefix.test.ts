@@ -1,11 +1,23 @@
-import { letterCombinations } from './14_longest_common_prefix';
+import { longestCommonPrefix } from './14_longest_common_prefix';
 
-
-describe('letterCombinations', () => {
+describe('longestCommonPrefix', () => {
   test('Returns the correct result', () => {
-    const result = letterCombinations('23');
-    console.log(JSON.stringify(result, null, 4));
-    const expectedResult = ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf'];
+    const result = longestCommonPrefix(['flower', 'flow', 'flight']);
+    const expectedResult = 'fl';
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  test('Returns the correct result', () => {
+    const result = longestCommonPrefix(['dog', 'racecar', 'car']);
+    const expectedResult = '';
+
+    expect(result).toEqual(expectedResult);
+  });
+
+  test('Returns the correct result', () => {
+    const result = longestCommonPrefix(['interspecies', 'interstellar', 'interstate']);
+    const expectedResult = 'inters';
 
     expect(result).toEqual(expectedResult);
   });
