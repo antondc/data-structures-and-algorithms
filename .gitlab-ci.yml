@@ -1,4 +1,4 @@
-image: rust:latest
+image: node:latest
 
 before_script:
   - apt-get update -qq
@@ -19,8 +19,20 @@ before_script:
   # Disable strict host key checking
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm/
+
 stages:
+  - test
   - github_clone
+
+test:
+  stage: test
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run test
 
 github_clone:
   stage: github_clone
