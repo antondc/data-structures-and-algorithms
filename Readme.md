@@ -106,6 +106,7 @@ TypeScript, Rust and Go.
 | • [05_calculate_no_overlaps](./src/05_problems/05_calculate_no_overlaps)                                                         | ⚪  | ⚪  | 🟢   |
 | • [06_gigasecond](./src/05_problems/06_gigasecond)                                                                               | ⚪  | ⚪  | 🟢   |
 | • [07_linear_searching](./src/05_problems/07_linear_searching)                                                                   | ⚪  | ⚪  | 🟢   |
+| • [07_reverse_integers](./src/05_problems/07_reverse_integers)                                                                   | 🟢 | ⚪  | ⚪    |
 | • [08_list_sum_largest_n_numbers](./src/05_problems/08_list_sum_largest_n_numbers)                                               | ⚪  | ⚪  | 🟢   |
 | • [09_mystery_algorithm](./src/05_problems/09_mystery_algorithm)                                                                 | ⚪  | ⚪  | 🟢   |
 | • [10_range_sum_bst](./src/05_problems/10_range_sum_bst)                                                                         | ⚪  | ⚪  | 🟢   |
