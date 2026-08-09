@@ -32,6 +32,7 @@ github_clone:
   stage: github_clone
   variables:
     GIT_DEPTH: "0"
+    GIT_STRATEGY: clone
   script:
     - git remote remove github || true
     - git remote add github "git@github.com:${GITHUB_ACCOUNT}/${GITHUB_PROJECT}.git"
